@@ -1,0 +1,124 @@
+
+DIV.footer {
+	font-size: x-small;
+	font-style: italic;
+}
+
+DIV.selector {
+	display: block;
+}
+
+SPAN.selector {
+	margin:0 0 0 0;
+}
+
+SPAN.selector3 {
+	
+	display: block;
+	left:2px;
+	margin-top: 5px;
+	margin-bottom: 15px;
+	font-size: small;
+	font-style: italic;
+}
+
+DIV.head {
+	font-weight: bold;
+	text-align: center;
+	display: block;
+	margin-top:10px;
+	margin-bottom: 5px;
+}
+
+OPTION {
+	font-size: small;
+}
+	
+SPAN.item {
+	font-size:small;
+	display:block;
+	padding: 0px;
+	margin-top: 3pt;
+	margin-bottom: 3pt;
+}
+DIV.about {
+	font-size: x-small;
+	display: block;
+	margin-bottom: 10px;
+}
+
+DIV.pages {
+	font-size: 10pt;
+	font-weight: bold;
+	text-align: right;
+	margin-top: 1ex;
+	margin-bottom: 1ex;
+}
+
+SPAN.pages {
+	display: block;
+	position: absolute;	
+	right:2px;
+	font-size: small;	
+}
+
+DIV.prname {
+	display: block;
+	margin-left: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+DIV.otstup {
+	display: block;
+	padding:0px;
+	margin-left:5px;
+}
+
+INPUT.step1 {
+	width:70px;
+}
+
+TEXTAREA.step1 {
+	width:70px;
+}
+
+INPUT.pr {
+	width: 2em;
+}
+
+TH {
+	font-size:8pt;
+}
+
+SPAN.selector3 {
+	display: block;
+	margin:0 0 0 0;
+	padding-top: 5px;
+	font-size: 10pt;
+}
+
+INPUT.submit3 {
+	font-size: 8pt;
+	font-weight: bold;
+	width:2em;
+	font-style: normal;
+	margin-left:5px;
+	margin-right:0px;
+}
+
+TD.marked {
+	background-color:#ccffcc;
+}
+
+INPUT.submit3 {
+	font-size: 8pt;
+	font-weight: bold;
+	color:red;
+	width:2em;
+	margin-left: 3px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-top:0px;	
+	position:relative;	
+}

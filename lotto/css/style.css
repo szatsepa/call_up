@@ -1,0 +1,206 @@
+/* 
+    Document   : style
+    Created on : 29.07.2012, 16:02:19
+    Author     : serjoga
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+div.main{
+    position: absolute;
+    top: 0;
+    left: 0;
+   width: 1014px;
+   margin: 0 auto;
+   background-color: #f7e4c6; 
+}
+div.style_header{
+    position: relative;
+    background-color: #c52608;
+    width: 1014px;
+    height: 174px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+}
+div.footer{
+    text-align: center;
+    color: black;
+    position: relative;
+    background-color: #c52608;
+    width: 1014px;
+    margin: 0 auto;
+}
+a.footer{
+    color: black;
+}
+#preload{
+    display: none;
+}
+#content{
+	width: 1014px;
+        margin: 0 auto;
+	background-color: #f7e4c6;
+}
+.login_content{
+	float: left;
+	width: 640px;
+	padding-top: 20px;
+	padding-left: 5px;
+}
+#ticket_form{
+	margin-left: 21px;
+}
+#ticket_form_txt{
+	padding-top: 5px;
+	padding-bottom: 5px;
+/*        outline: 1px solid red;*/
+}
+#quick_button {
+/*	background-image: url(../images/bimbam_btn.jpg); */
+        background-color: burlywood;
+	border-bottom: 0px; 
+	border-left: 0px; 
+	width: 121px; 
+	background-repeat: no-repeat; 
+	height: 28px; 
+	border-top: 0px; 
+	cursor: pointer; 
+	border-right: 0px;
+        font-size: 16px;
+        font-weight: bold;
+        color: black;
+}
+#quick_button:hover {
+/*	background-image: url(../images/bimbam_o.jpg); */
+        background-color: brown;
+/*	border-bottom: 0px; 
+	border-left: 0px; 
+	width: 111px; 
+	background-repeat: no-repeat; 
+	height: 28px; 
+	border-top: 0px; 
+	cursor: pointer; 
+	border-right: 0px;*/
+        background-color: brown;
+        color: white;
+}
+.clear_btn {
+	display: block; 
+	cursor: pointer; 
+	width:121px;
+	height:28px;
+/*	background: url('../images/clear_btn.jpg') no-repeat;*/
+        background-color: burlywood;
+	padding: 0;
+	margin: 0;
+	border: none;
+	margin-top: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        color: black;
+}
+
+.clear_btn:hover{
+/*	background: url('../images/clean_o.jpg') no-repeat;*/
+        background-color: brown;
+        color: white;
+}
+#selected {
+        position: relative;
+	width: 295px; 
+	float: left
+}
+.letters {
+	width: 30px; 
+	display: block; 
+	font-family: Leitura-Roman-4; 
+	margin-bottom: 4px; 
+	float: left; 
+	height: 30px;
+	margin-left: 25px; 
+	font-size: 20pt; 
+	font-weight: bold
+}
+.fields {
+	width: 240px; 
+	display: block; 
+	float: left; 
+	height: 30px
+}
+.clearas {
+	CLEAR: both;
+}
+#numbers {
+	border-bottom: #cfaf7d 1px solid;
+        border-left: #cfaf7d 1px solid;
+        width: 263px;
+        background: #fff2dd; 
+        float: left; 
+        height: 236px; 
+        border-top: #cfaf7d 1px solid;
+        border-right: #cfaf7d 1px solid;
+}
+.my_button {
+	border-bottom: medium none; 
+        border-left: medium none; 
+        padding-bottom: 2px; 
+        margin: 1px; 
+        padding-left: 2px; 
+        width: 23px; 
+        padding-right: 2px; 
+        font-family: Georgia;
+        background: #f1dbb9; 
+        height: 23px; 
+        color: #000; 
+        font-size: 11px; 
+        border-top: medium none; 
+        cursor: pointer; 
+        border-right: medium none; 
+        padding-top: 2px
+}
+.my_button:hover {
+	border-bottom: medium none; 
+        border-left: medium none; 
+        padding-bottom: 2px; 
+        margin: 1px; 
+        padding-left: 2px; 
+        width: 23px; 
+        padding-right: 2px; 
+        font-family: Georgia; 
+        background: #f8eddc; 
+        height: 23px; 
+        color: #a2220c; 
+        font-size: 11px;
+        border-top: medium none; 
+        cursor: pointer;
+        border-right: medium none; 
+        padding-top: 2px
+}
+.my_button[disabled] {
+	background: #f8eddc;
+	color: #a2220c;
+}
+#sale_ticket{
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+#sale_ticket:hover{
+    color: blueviolet;
+}
+#my_cart{
+    position: absolute;
+    width: 160px;
+    left: 746px;
+    top: 4px;
+    text-align: left;
+    visibility: hidden;
+    color: black;
+    z-index: 121;
+}

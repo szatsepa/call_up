@@ -1,0 +1,243 @@
+
+
+html, body {
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  font-family: sans-serif;	
+  font-size: 10pt;
+  background-color: #ffffcc;
+}
+
+A {
+	color: #002778;
+}
+
+div.logo {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+span.clock24s {
+	position: absolute;
+	right: 5px;
+	top: 30px;
+}
+
+div.footer{
+	
+	font-weight: bold;
+	font-size: 8pt;
+	color: #999999;
+	text-align: center;
+	display: block;
+	
+}
+
+DIV.pages {
+	font-size: 10pt;
+	font-weight: bold;
+	text-align: right;
+	margin-top: 1ex;
+	margin-bottom: 1ex;
+}
+
+A.header{
+	background : #0066CC;
+	color:White;
+	font-weight:bold;
+	text-decoration:none;
+	font-size:12pt;
+	padding:5px 15px;
+	margin:0;
+}
+
+A:HOVER.header {
+	 background : #000000;
+	color:Yellow;
+	font-weight:bold;
+	text-decoration:none;
+	font-size:12pt;
+	padding:5px 15px;
+	margin:0;
+}
+
+A.header2{
+	background: #002778;
+	color:White;
+	font-size:10pt;
+	padding: 3 15;	
+	font-weight:bold;
+	text-decoration:none;	
+	margin:0;
+}
+
+A:HOVER.header2 {
+	background: #000000;
+	color: Yellow;
+	font-size:10pt;
+	padding: 3 15;
+	font-weight:bold;
+	text-decoration:none;
+	margin:0;
+}
+
+P.small{
+	font-size:1px;	
+}
+
+TABLE.dat {
+	border: solid 1px gray;
+	font-size:10pt;
+}
+TH.dat{
+		background: #002778;
+		color:White;
+		font-size:9pt;
+		padding: 3 15;
+		
+}
+TD.dat {
+		padding: 1 1 ;
+		font-size:9pt;
+		
+	    border-bottom : thin solid;
+}
+TR.dat {
+	border: solid 1px gray;
+	
+}
+
+
+
+DIV.selector {
+	background-color:#e5ccff;
+	border-top:3px solid #a7a7a7;
+	border-bottom:1px solid white;
+	font-size:4ex;
+	padding: 0 0 0 0;
+	margin-top:7px;
+	width:100%;
+	}
+
+SPAN.selector {
+	display: inline;
+	margin-right: 2px;
+	}
+
+SPAN.selector2 {
+	display: inline;
+	position: absolute;
+	right: 5px;
+	margin:0 0 0 0;
+	padding:0 0 0 0;
+	font-size:8pt;
+	
+}
+
+SPAN.selector3 {
+	display: inline;
+	position: absolute;
+	right: 5px;
+	margin:0 0 0 0;
+	padding-top: 5px;
+	font-size: 1ex;
+}
+	
+DIV.password {
+	background-color:#e5ccff;
+	border-top:3px solid #a7a7a7;
+	border-bottom:1px solid white;
+	padding: 2 2 2 8;
+	margin-top:7px;
+	width:100%;
+	text-align: right;
+	display: inline;
+}
+	
+SPAN.password {
+	background-color:#e5ccff;
+	border-top:3px solid #a7a7a7;
+	border-bottom:1px solid white;
+	padding: 2 2 2 8;
+	margin-top:7px;
+	width: 100%;
+	text-align: right;
+}	
+	
+TABLE.cart {
+	border : thin solid Gray;
+	border-width : 1 1 1 1;
+}
+
+TH.cart {
+	border : thin solid Gray;
+	border-width : 1 1 1 1;
+	font-size: 10pt;
+}
+
+TD.cart {
+	border : thin solid Gray;
+	border-width : 1 1 1 1;
+	font-size : 9pt;
+	padding-bottom : 2;
+	padding-left : 5;
+	padding-right : 5;
+	padding-top : 2;
+}
+BUTTON.cart {
+	font-size:8pt;
+	color : #444444;
+	font-weight : bold;
+	font-variant : normal;
+	width : 10ex;
+}
+
+FORM {
+	display:inline;
+}
+
+INPUT.submit {
+	font-size: 8pt;
+	width:2em;
+	position:relative;
+	top:-5px;	
+	
+}
+
+INPUT.submit2 {
+	font-size: 8pt;
+	width:13em;
+	position:relative;
+	top:-5px;	
+}
+INPUT.submit4 {
+	font-size: 8pt;
+	width:13em;
+	position:absolute;
+	top:-5px;	
+}
+
+INPUT.zakaz {
+	font-size: 8pt;
+	width:10em;
+	position:relative;
+	top:-5px;	
+}
+
+SELECT {
+	font-size: 8pt;
+	position:relative;
+	top:-5px;	
+}
+
+H2 {
+	margin-left:1em;
+}
+
+TD {
+	text-align: left;
+} 
+
