@@ -32,7 +32,7 @@ include("act_checkerror.php");
 switch ($attributes[act]) {
     
     case "authentication":
-    include("../main/qry_userauth.php");	
+        include("../main/qry_userauth.php");	
 	include("../main/act_authentication.php");	
 	break;
     
@@ -46,10 +46,16 @@ switch ($attributes[act]) {
     // Компании
     case "companies":
 	include("qry_companies.php");
-    include("dsp_header.php");
-    include("dsp_companylist.php");
-    include("dsp_company.php");
+        include("dsp_header.php");
+        include("dsp_companylist.php");
+        include("dsp_company.php");
 	break;
+    
+    case 'lotto':
+        include 'qry_tickets.php';
+        include 'dsp_header.php';
+        include 'dsp_ticketlist.php';
+        break;
     
     case "company_add":
     include("qry_companyadd.php");

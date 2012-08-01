@@ -57,7 +57,7 @@ $(document).ready(function () {
                             data:{A:obj_A,B:obj_B,C:obj_C,uid:customer['id']},
                             success:function(data){
                                 if(data['ok']){
-                                    alert("OK!");
+//                                    alert("OK!");
                                     _clearAll();
                                 }
                             },
