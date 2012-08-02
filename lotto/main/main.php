@@ -6,6 +6,14 @@
  */
 ?>
 <script type="text/javascript">
+    var stat = false;
+    <?php
+    if(isset($_SESSION['stat'])){
+        ?>
+           stat = true;
+            <?php
+    }
+    ?>
     var customer;
     
     var i = 0;
@@ -17,7 +25,7 @@
 <div id="content" style="height: 643px">
 						
     <div class="page_title" style="height: 24px">
-         <img src="images/border_s.jpg">
+<!--         <img src="images/border_s.jpg">-->
          <br>
     </div>
     <div class="login_content">

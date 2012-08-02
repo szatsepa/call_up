@@ -24,6 +24,10 @@ $(document).ready(function () {
         
         var n = 0;
         
+        if(!stat){
+           stat =  _statistic();
+        }
+        
         $("#vrWrapper").css({'top':'260px','left':'567px','visibility':'hidden'});
         
         $("#sale_ticket").mousedown(function(){
@@ -251,5 +255,24 @@ $(document).ready(function () {
            n = 0;
            return false;
         }
+        function _statistic(){
+                var scr_W = screen.width;
+                var scr_H = screen.height;
+                var colorDepth = screen.colorDepth;
+                
+                $.ajax({
+                    url: './action/statistics.php',
+                    type:'post',
+                    dataType:'json',
+                    data:{scr_W:scr_W,scr_H:scr_H,colorDepth:colorDepth},
+                    success:function(data){
+//                        alert(data['ok']);
+                    },
+                    error:function(data){
+                        document.write(data['responseText']);
+                    }
+                });
+                return false;
+            }
 });
 

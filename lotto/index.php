@@ -23,6 +23,7 @@ if(!isset($_SESSION)){
 if(isset ($_SESSION[id])) {
     include 'query/checkauth.php';
 }
+print_r($_SESSION);
 
 include 'main/header.php';
 
