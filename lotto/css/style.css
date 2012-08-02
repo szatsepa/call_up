@@ -15,11 +15,11 @@ div.main{
     left: 0;
    width: 1014px;
    margin: 0 auto;
-   background-color: #f7e4c6; 
+   background-color: #fff; 
 }
 div.style_header{
     position: relative;
-    background-color: #c52608;
+    background-color: #aaa;
     width: 1014px;
     height: 174px;
     margin: 0 auto;
@@ -30,7 +30,7 @@ div.footer{
     text-align: center;
     color: black;
     position: relative;
-    background-color: #c52608;
+    background-color: #aaa;
     width: 1014px;
     margin: 0 auto;
 }
@@ -43,13 +43,16 @@ a.footer{
 #content{
 	width: 1014px;
         margin: 0 auto;
-	background-color: #f7e4c6;
+	background-color: #fff;
+/*        outline: 1px solid red;*/
 }
 .login_content{
-	float: left;
+/*	float: left;*/
 	width: 640px;
+        margin: 0 auto;
 	padding-top: 20px;
 	padding-left: 5px;
+/*        outline: 1px solid red;*/
 }
 #ticket_form{
 	margin-left: 21px;
@@ -61,7 +64,7 @@ a.footer{
 }
 #quick_button {
 /*	background-image: url(../images/bimbam_btn.jpg); */
-        background-color: burlywood;
+        background-color: #ccc;
 	border-bottom: 0px; 
 	border-left: 0px; 
 	width: 121px; 
@@ -76,16 +79,8 @@ a.footer{
 }
 #quick_button:hover {
 /*	background-image: url(../images/bimbam_o.jpg); */
-        background-color: brown;
-/*	border-bottom: 0px; 
-	border-left: 0px; 
-	width: 111px; 
-	background-repeat: no-repeat; 
-	height: 28px; 
-	border-top: 0px; 
-	cursor: pointer; 
-	border-right: 0px;*/
-        background-color: brown;
+        background-color: #aaa;
+        cursor: pointer;
         color: white;
 }
 .clear_btn {
@@ -94,7 +89,7 @@ a.footer{
 	width:121px;
 	height:28px;
 /*	background: url('../images/clear_btn.jpg') no-repeat;*/
-        background-color: burlywood;
+        background-color: #ccc;
 	padding: 0;
 	margin: 0;
 	border: none;
@@ -106,7 +101,7 @@ a.footer{
 
 .clear_btn:hover{
 /*	background: url('../images/clean_o.jpg') no-repeat;*/
-        background-color: brown;
+        background-color: #bbb;
         color: white;
 }
 #selected {
@@ -117,7 +112,7 @@ a.footer{
 .letters {
 	width: 30px; 
 	display: block; 
-	font-family: Leitura-Roman-4; 
+	font-family: Arial; 
 	margin-bottom: 4px; 
 	float: left; 
 	height: 30px;
@@ -135,14 +130,14 @@ a.footer{
 	CLEAR: both;
 }
 #numbers {
-	border-bottom: #cfaf7d 1px solid;
-        border-left: #cfaf7d 1px solid;
+	border-bottom: #999 1px solid;
+        border-left: #999 1px solid;
         width: 263px;
-        background: #fff2dd; 
+        background: #fff; 
         float: left; 
         height: 236px; 
-        border-top: #cfaf7d 1px solid;
-        border-right: #cfaf7d 1px solid;
+        border-top: #999 1px solid;
+        border-right: #999 1px solid;
 }
 .my_button {
 	border-bottom: medium none; 
@@ -152,8 +147,8 @@ a.footer{
         padding-left: 2px; 
         width: 23px; 
         padding-right: 2px; 
-        font-family: Georgia;
-        background: #f1dbb9; 
+        font-family: Arial;
+        background: #ccc; 
         height: 23px; 
         color: #000; 
         font-size: 11px; 
@@ -170,10 +165,10 @@ a.footer{
         padding-left: 2px; 
         width: 23px; 
         padding-right: 2px; 
-        font-family: Georgia; 
-        background: #f8eddc; 
+        font-family: Arial; 
+        background: #aaa; 
         height: 23px; 
-        color: #a2220c; 
+        color: #fff; 
         font-size: 11px;
         border-top: medium none; 
         cursor: pointer;
@@ -181,8 +176,8 @@ a.footer{
         padding-top: 2px
 }
 .my_button[disabled] {
-	background: #f8eddc;
-	color: #a2220c;
+	background: #fff;
+	color: #000;
 }
 #sale_ticket{
     cursor: pointer;
