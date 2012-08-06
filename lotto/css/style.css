@@ -10,11 +10,12 @@ root {
     display: block;
 }
 div.main{
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
+/*    top: 0;
+    left: 0;*/
    width: 1014px;
-   margin: 0 auto;
+   margin: -8px auto;
+   left: -8px;
    background-color: #fff; 
 }
 div.style_header{
@@ -41,8 +42,9 @@ a.footer{
     display: none;
 }
 #content{
+    position: relative;
 	width: 1014px;
-        margin: 0 auto;
+/*        margin: 0 auto;*/
 	background-color: #fff;
 /*        outline: 1px solid red;*/
 }
