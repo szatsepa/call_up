@@ -63,6 +63,7 @@ $(document).ready(function () {
                                 if(data['ok']){
 //                                    alert("OK!");
                                     _clearAll();
+                                    document.location.href = "?act=order";
                                 }
                             },
                             error:function(data){
@@ -264,13 +265,7 @@ $(document).ready(function () {
                     url: './action/statistics.php',
                     type:'post',
                     dataType:'json',
-                    data:{scr_W:scr_W,scr_H:scr_H,colorDepth:colorDepth},
-                    success:function(data){
-//                        alert(data['ok']);
-                    },
-                    error:function(data){
-                        document.write(data['responseText']);
-                    }
+                    data:{scr_W:scr_W,scr_H:scr_H,colorDepth:colorDepth}
                 });
                 return false;
             }

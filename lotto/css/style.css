@@ -46,7 +46,7 @@ a.footer{
 	width: 1014px;
 /*        margin: 0 auto;*/
 	background-color: #fff;
-/*        outline: 1px solid red;*/
+/*        */
 }
 .login_content{
 /*	float: left;*/
@@ -54,7 +54,7 @@ a.footer{
         margin: 0 auto;
 	padding-top: 20px;
 	padding-left: 5px;
-/*        outline: 1px solid red;*/
+/*        */
 }
 #ticket_form{
 	margin-left: 21px;
@@ -62,7 +62,7 @@ a.footer{
 #ticket_form_txt{
 	padding-top: 5px;
 	padding-bottom: 5px;
-/*        outline: 1px solid red;*/
+/*        */
 }
 #quick_button {
 /*	background-image: url(../images/bimbam_btn.jpg); */
@@ -200,4 +200,52 @@ a.footer{
     visibility: hidden;
     color: black;
     z-index: 121;
+}
+#order_form{
+    position: relative;
+    width: 860px;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    
+}
+div.order_footer{
+    font-weight:normal;
+    position:relative;
+    width: 720px;
+    height:255px;
+    margin: 0 auto;
+    text-align:left;
+    
+}
+#to_order{
+    text-align: right;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    text-decoration:underline;
+    cursor:pointer;
+}
+#o_order{
+    width:520px;
+    height:52px;
+    margin-top: 12px;
+}
+div.field_N{
+    position:relative;
+    text-align:left;
+}
+div.all_fields{
+    font-size:14px;
+    color: black;
+    position:relative;
+    margin:0 auto;
+    width:82%;
+    height:77px;
+}
+div.o_ti{
+    position:relative; 
+    width: 600px;
+    height:27px;
 }

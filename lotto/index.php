@@ -33,6 +33,11 @@ switch ($attributes[act]) {
         include 'main/main.php';
         break;
     
+    case 'order':
+        include 'query/ticket.php';
+        include 'main/order.php';
+        break;
+    
     case "logout": 
         include 'action/logout.php';
         break;
