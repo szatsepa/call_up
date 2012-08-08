@@ -10,10 +10,12 @@ $(document).ready(function () {
 		return;
 	}
         
-        var now = new Date();
+//        $("div").css('outline','1px solid red');
         
-        $("#order_title").text("Заказ №"+num_order+" от "+now.getDate()+" "+month[now.getMonth()]+" "+now.getFullYear()+" г.");
-        
+//        var now = new Date();
+//        
+//        $("#order_title").text("Заказ №"+num_order+" от "+now.getDate()+" "+month[now.getMonth()]+" "+now.getFullYear()+" г.")+"  joo....";
+//        
         $("#shipment").focus();
         
         $("#to_order").mouseover(function(){
@@ -24,8 +26,31 @@ $(document).ready(function () {
         });
         
         $("#to_order").mousedown(function(){
-//            var str = ticket['field_A']+"\n"+ticket['field_B']+"\n"+ticket['field_C'];
-            alert("str");
+            var str = "A("+ticket['field_A']+")\nB("+ticket['field_B']+")\nC("+ticket['field_C']+")";
+            var fA = "A("+ticket['field_A']+")";
+            var fB = "B("+ticket['field_B']+")";
+            var fC = "C("+ticket['field_C']+")";
+            var resolution = screen.width+"X"+screen.height;
+            var colorDepth = screen.colorDepth;
+            var shipment = $("#shipment").val();
+            var phone = $("#phone").val();
+            var comment = document.getElementById('act_comment').value;
+            str = "\n"+resolution+"\n"+colorDepth+"\n"+shipment+"\n"+phone+"\n"+comment;
+                $.ajax({
+                    url: './action/add_order.php',
+                    type:'post',
+                    dataType:'json',
+                    data:{A:fA,B:fB,C:fC,order:num_order,shipment:shipment,phone:phone,comment:comment,resolution:resolution,colorDepth:colorDepth,uid:customer['id'],email:customer['email']},
+                    success:function(data){
+//                        alert(data['query']);
+                        if(data['ok']==1){
+                            document.location.href = "?act=mine";
+                        }
+                    },
+                    error:function(data){
+                        document.write(data['responseText']);
+                    }
+                });
         });
         
 });
