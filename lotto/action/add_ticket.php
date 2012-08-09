@@ -14,7 +14,7 @@ mysql_query($query);
 
 $ins = mysql_insert_id();
 
-$out = array('ok'=>NULL,'query'=>$query);
+$out = array('ok'=>NULL,'query'=>$query, 'ticket'=>$ins);
 
 if($ins){
   $out['ok'] = 1;  

@@ -4,6 +4,8 @@
  */
 $(document).ready(function () {
     
+    $(".style_header").css({height: 174});
+    
         if (document.readyState != "complete"){
              
 		setTimeout( arguments.callee, 100 );
@@ -61,9 +63,9 @@ $(document).ready(function () {
                             data:{A:obj_A,B:obj_B,C:obj_C,uid:customer['id']},
                             success:function(data){
                                 if(data['ok']){
-//                                    alert("OK!");
+                                    var ticket = data['ticket'];
                                     _clearAll();
-                                    document.location.href = "?act=order";
+                                    document.location.href = "?act=order&ticket="+ticket;
                                 }
                             },
                             error:function(data){

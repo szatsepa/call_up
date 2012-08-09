@@ -22,7 +22,7 @@ div.style_header{
     position: relative;
     background-color: #aaa;
     width: 1014px;
-    height: 174px;
+    height:72px;
     margin: 0 auto;
     text-align: center;
     color: white;
@@ -204,6 +204,18 @@ a.footer{
 #order_form{
     position: relative;
     width: 860px;
+    height: 457px;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    
+}
+#order_form_1{
+    display: none;
+    position: relative;
+    width: 860px;
+    height: 457px;
     font-size: 16px;
     font-weight: bold;
     color: black;

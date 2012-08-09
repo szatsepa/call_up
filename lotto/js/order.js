@@ -9,13 +9,7 @@ $(document).ready(function () {
 		setTimeout( arguments.callee, 100 );
 		return;
 	}
-        
-//        $("div").css('outline','1px solid red');
-        
-//        var now = new Date();
-//        
-//        $("#order_title").text("Заказ №"+num_order+" от "+now.getDate()+" "+month[now.getMonth()]+" "+now.getFullYear()+" г.")+"  joo....";
-//        
+              
         $("#shipment").focus();
         
         $("#to_order").mouseover(function(){
@@ -37,7 +31,7 @@ $(document).ready(function () {
                     url: './action/add_order.php',
                     type:'post',
                     dataType:'json',
-                    data:{A:fA,B:fB,C:fC,order:num_order,shipment:shipment,phone:phone,comment:comment,resolution:resolution,colorDepth:colorDepth,uid:customer['id'],email:customer['email']},
+                    data:{ticket:num_ticket,A:fA,B:fB,C:fC,order:num_order,shipment:shipment,phone:phone,comment:comment,resolution:resolution,colorDepth:colorDepth,uid:customer['id'],email:customer['email']},
                     success:function(data){
                         if(data['ok']==1){
                             document.location.href = "?act=mine";

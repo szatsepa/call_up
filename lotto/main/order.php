@@ -6,6 +6,7 @@
  */
 ?>
 <script type="text/javascript">
+    var num_ticket = <?php echo $attributes['ticket'];?>;
     var num_order = <?php echo $ticket['order'];?>;
     var ticket = <?php echo json_encode($ticket['ticket']);?>;
 </script>

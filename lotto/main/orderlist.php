@@ -25,7 +25,7 @@ foreach ($orderlist as $row){
     array_push($orderlist, $row);
 
 		if ($first == 1) echo "<tr>";
-         echo "<td><a class='orders' id='".($rowcount-1)."_O'>Ticket N".$row["id"]." ".$row["zakaz_date"]."&nbsp;&nbsp;".$row["price_name"]."&nbsp;&nbsp;".$row["surname"]."</a></td>";
+         echo "<td><a class='orders' id='".$row["id"]."_O'>Ticket N".$row["id"]." ".$row["zakaz_date"]."&nbsp;&nbsp;".$row["price_name"]."&nbsp;&nbsp;".$row["surname"]."</a></td>";
                 
         if ($first != 1) echo "</tr>";
 		
@@ -44,7 +44,7 @@ foreach ($orderlist as $row){
 </table>
 </div>
 
-<div id="order_form">
+<div id="order_form_1">
     <div class="o_ti">
         <p id="order_title"></p>
     </div>
@@ -52,13 +52,13 @@ foreach ($orderlist as $row){
         
         <div class="all_fields">
             <div class="field_N">
-                <p>Поле A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <p id="p_A"></p>
             </div>
             <div class="field_N">
-                <p>Поле B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <p id="p_B"></p>
             </div>
             <div class="field_N">
-                <p>Поле C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <p id="p_C"></p>
             </div>
         </div>
         
@@ -76,9 +76,13 @@ foreach ($orderlist as $row){
         </div>
         <div id="o_comm">
             <p>
-                <label>Пожелания:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><textarea id="act_comment" cols="72" rows="6"></textarea>
+                <label>Пожелания:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><textarea id="comment" cols="72" rows="6"></textarea>
             </p>
         </div>
-        
+        <div id="o_order">
+            <p id="to_order">
+                Закрыть
+            </p>
+        </div>
      </div>    
 </div>
