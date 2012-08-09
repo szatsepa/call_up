@@ -138,7 +138,7 @@
         </div>
     </div>    
 </div>
-<div class="m_cart" id="my_cart"></div>
+
 
 <?php
 include 'in_form.php';

@@ -26,7 +26,6 @@ $(document).ready(function () {
         });
         
         $("#to_order").mousedown(function(){
-            var str = "A("+ticket['field_A']+")\nB("+ticket['field_B']+")\nC("+ticket['field_C']+")";
             var fA = "A("+ticket['field_A']+")";
             var fB = "B("+ticket['field_B']+")";
             var fC = "C("+ticket['field_C']+")";
@@ -34,15 +33,12 @@ $(document).ready(function () {
             var colorDepth = screen.colorDepth;
             var shipment = $("#shipment").val();
             var phone = $("#phone").val();
-            var comment = document.getElementById('act_comment').value;
-            str = "\n"+resolution+"\n"+colorDepth+"\n"+shipment+"\n"+phone+"\n"+comment;
-                $.ajax({
+            var comment = document.getElementById('act_comment').value;$.ajax({
                     url: './action/add_order.php',
                     type:'post',
                     dataType:'json',
                     data:{A:fA,B:fB,C:fC,order:num_order,shipment:shipment,phone:phone,comment:comment,resolution:resolution,colorDepth:colorDepth,uid:customer['id'],email:customer['email']},
                     success:function(data){
-//                        alert(data['query']);
                         if(data['ok']==1){
                             document.location.href = "?act=mine";
                         }

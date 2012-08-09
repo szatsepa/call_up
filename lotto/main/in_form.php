@@ -22,8 +22,8 @@
                     <input id="registerButton" type="button" value="Зарегистрироваться"/></div>
                     
                 <div class='additional'>
-                    <a name="" id="rem_r" style="text-decoration: underline;cursor: pointer;">Вспомнить пароль</a> 
-                    <a name="" id="log_r" style="text-decoration: underline;cursor: pointer;">Войти</a>
+                    <a id="rem_r" style="text-decoration: underline;cursor: pointer;">Вспомнить пароль</a> 
+                    <a id="log_r" style="text-decoration: underline;cursor: pointer;">Войти</a>
                 </div>
              </div>  
 
@@ -37,8 +37,8 @@
                     <input id="loginButton" type="button" value="Войти"/>
                 </div>
                 <div class='additional'>
-                    <a name="" id="rem_l"  style="text-decoration: underline;cursor: pointer;">Вспомнить пароль</a> 
-                    <a name="" id="reg_l" style="text-decoration: underline;cursor: pointer;">Зарегистрироваться</a>
+                    <a id="rem_l"  style="text-decoration: underline;cursor: pointer;">Вспомнить пароль</a> 
+                    <a id="reg_l" style="text-decoration: underline;cursor: pointer;">Зарегистрироваться</a>
                 </div>
             </div>
             <div id="result"></div> 
@@ -57,8 +57,8 @@
                 <div class='buttonDiv'>
                     <input id="remindButton" type="button" value="Выслать пароль"/></div>
                 <div class='additional'>
-                    <a name="" id="log_rm" style="text-decoration: underline;cursor: pointer;">Войти</a> 
-                    <a name="" id="reg_rm" style="text-decoration: underline;cursor: pointer;">Зарегистрироваться</a></div>
+                    <a id="log_rm" style="text-decoration: underline;cursor: pointer;">Войти</a> 
+                    <a id="reg_rm" style="text-decoration: underline;cursor: pointer;">Зарегистрироваться</a></div>
             </div>
         </div>
     </div>

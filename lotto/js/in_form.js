@@ -32,24 +32,24 @@ $(document).ready(function () {
         var fc = false;
         
 
-        $("#in_cart,#cost").live('mousedown',function(){
-                var back = document.location.search;
-                back = back.substr(5);
-               document.location.href = '?act=cart&b='+back; 
-            
-        });
-        $("#log_in").live('mousedown',function(){
-                var back = document.location.search;
-                back = back.substr(5);
-                document.location.href = '?act=cab&b='+back; 
-            
-        });
-        $("#in_cart,#cost").live('mousedown',function(){
-                var back = document.location.search;
-                back = back.substr(5);
-               document.location.href = '?act=cart&b='+back; 
-            
-        });
+//        $("#in_cart,#cost").live('mousedown',function(){
+//                var back = document.location.search;
+//                back = back.substr(5);
+//               document.location.href = '?act=cart&b='+back; 
+//            
+//        });
+//        $("#log_in").live('mousedown',function(){
+//                var back = document.location.search;
+//                back = back.substr(5);
+//                document.location.href = '?act=cab&b='+back; 
+//            
+//        });
+//        $("#in_cart,#cost").live('mousedown',function(){
+//                var back = document.location.search;
+//                back = back.substr(5);
+//               document.location.href = '?act=cab&b='+back; 
+//            
+//        });
         $("#log_in").live('mousedown',function(){
                 var back = document.location.search;
                 back = back.substr(5);
@@ -63,22 +63,13 @@ $(document).ready(function () {
                     fc = !fc;
                 }
                 $(eval(id)).css('color','blueviolet');
-            
+                
         });
         $("#in_cart,#cost,#log_in,#in_out").live('mouseout',function(){
                var id = this.id;
                $(eval(id)).css('color',font_color);
             
-        });
-//        $("#log_in").live('mouseover',function(){
-//               var id = this.id;
-//               $(eval(id)).css('color','blueviolet');      
-//        });
-//        $("#log_in").live('mouseout',function(){
-//              var id = this.id;
-//               $(eval(id)).css('color','default');
-//        });
-        
+        });        
         $("#in_out").live('mousedown',function(){
             if(confirm("Действительно выйти?")){
                     document.location.href = '?act=logout';
@@ -175,6 +166,13 @@ $(document).ready(function () {
     
     $("#loginButton").mousedown(function(){
             authUser();
+    });
+    
+    $("#my_cart").mouseover(function(){
+        
+    });
+    $("#my_cart").mouseout(function(){
+        
     });
     
 //    массив сообщений о ошибках ввода и тд
@@ -418,21 +416,12 @@ $(document).ready(function () {
     }
 
 function visualCustomer(){
-//    var cart = data;
     $("#my_cart").empty();
     $("#indikator").hide();
     $("#vrWrapper").css('visibility', 'hidden');
     $("#my_cart").css({'visibility': 'visible'});
     $("#my_cart").append("<p id='log_in' name='#'>"+customer['email']+"&nbsp;&nbsp;&nbsp;&nbsp;</p>");
-//    if(data['amount'] != null){
-//        var items = _checkItems(cart['amount']);
-//        $("#my_cart").append("<p id='in_cart' name='#'>В корзине "+cart['amount']+" "+items+"&nbsp;&nbsp;&nbsp;&nbsp;</p>");
-//        $("#my_cart").append("<p id='cost' name='#'>На сумму "+cart['cash']+" р.&nbsp;&nbsp;&nbsp;&nbsp;</p>");
-//    }else{
-//        $("#my_cart").append("<p id='in_cart' name='#'>Корзина пустая.&nbsp;&nbsp;&nbsp;&nbsp;</p>"); 
-//    }
-//    $("#my_cart").append("<p id='in_out'><a id='logaut' name='#'>Выйти</a></p>"); 
-//    $("#log_in,#in_cart,#cost").css({'cursor':'pointer'});
+
     return false;
 }
 

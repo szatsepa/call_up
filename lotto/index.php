@@ -35,7 +35,14 @@ switch ($attributes[act]) {
     
     case 'order':
         include 'query/ticket.php';
+        include 'main/subheader.php';
         include 'main/order.php';
+        break;
+    
+    case 'cab':
+        include 'main/subheader.php';
+        include 'query/orders.php';
+        include 'main/orderlist.php';
         break;
     
     case "logout": 

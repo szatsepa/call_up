@@ -7,7 +7,7 @@
 ?>
 <div class="style_header">
 <br>
-				<span class="">Правила игры:
+				<span id="instr">Правила игры:
                                     <br>
                                     <br>
                                     Заполняемые в сочетаниях числа одного билета не должны повторятся <br> 
@@ -18,3 +18,4 @@
 <br> &nbsp;
 
 </div>
+<div class="m_cart" id="my_cart" title="В кабинет"></div>

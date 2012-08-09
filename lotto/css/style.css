@@ -252,3 +252,16 @@ div.o_ti{
 #to_order{
     color: black;
 }
+a.orders{
+    text-decoration: underline;
+    cursor: pointer;
+}
+a.orders:link{
+    color:  #0000d0;
+}
+a.orders:hover{
+    color: blueviolet;
+}
+#orderlist{
+    visibility: visible;
+}
