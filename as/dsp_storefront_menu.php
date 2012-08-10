@@ -8,6 +8,8 @@
      $st_name =  storefront_name($attributes[stid]);
      
     }
+    
+    $company_id = $_SESSION[user][company_id];
 
   ?>
  <table class="dat" border="0" width="99%">
@@ -66,7 +68,7 @@
           </td>
            
             <td align="center" valign="bottom">
-            <form action="index.php?act=del_storefront" method="post">
+            <form action="index.php?act=dstrf" method="post">
                 <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
                 <input type="submit" value="Удалить витрину"/>
             </form>
@@ -90,6 +92,7 @@
             <input type="submit" value="Запомнить"/> 
             </form>
         </td>
+       <td align="center" valign="bottom"> </td>
 <?php
      }   
         ?>
@@ -101,15 +104,15 @@
         <?php if(!isset ($attributes[st_select])){?> 
 <form action="index.php?act=add_storefront" method="post">
   <td>  
-      <input type="text" size="32" name="name"/>
-     
+      <input required type="text" size="32" name="name"/>
+      <input type="hidden" name="company_id" value="<?php echo $company_id;?>"/>
       <input type="submit" name="create_storefront" value="Создать"/>
      
   </td>
   </form>
   <td>
       
-   <form action="index.php?act=strf" method="post">     
+       
                
                <?php
               
@@ -118,15 +121,28 @@ $role = intval($_SESSION[user][role]);
 $com_id = intval($_SESSION[user][company_id]);
 
 $stores = qry_select_storefront($role, $com_id); 
+
+$len = count($stores);
+
+if($len != 0){
+
+?>
+  <form action="index.php?act=strf" method="post">      
+       <?php
                
               include("dsp_storefront_select.php");
                
                ?>
        <input type="hidden" name="st_select" value="select"/>
+       <input type="hidden" name="company_select" value="select"/>
+       <input type="hidden" name="company_id" value="<?php echo $com_id;?>"/>
           <input type="submit" value="Выбрать"/>
    </form>   
      
-<?php } ?>
+<?php
+
+    }
+} ?>
   </td>   
 
   
@@ -135,72 +151,6 @@ $stores = qry_select_storefront($role, $com_id);
 </table>
 <br/>
 <?php 
-if(isset ($attributes[st_select]) && $attributes[st_select] == "select"){
-    ?>
-
- <table class="dat" width="99%">
-
-    <tr>
-        <td align="left" valign="top">
-            <strong>Добавьте компанию из списка </strong><br/><br/>
-          </td>
-
-       <td> 
-           <form action="index.php?act=strf" method="post"/>
-                    <input type="hidden" name="company_select" value="select"/>
-                    <input type="hidden" name="st_select" value="select"/>
-                     <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
-                 <?php include("dsp_companyselect_store.php"); ?>
-                <input type="submit" value="Добавить"/>
-                </form>
-           <br/>
-    </td> 
-    
-     <td align="left" valign="top">
-            <strong>Удалить компанию из списка </strong><br/><br/>
-          </td>
-
-       <td> 
-           <form action="index.php?act=delcom" method="post"/>
-                    <input type="hidden" name="company_select" value="select"/>
-                    <input type="hidden" name="st_select" value="select"/>
-                     <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
-                <select name="company_id" class="common">
-
-<?php 
-
-$companies_array = qry_companies($attributes[stid]);
-
-        foreach ($companies_array as $value) {
-     if ($row_select["id"] == $company_id){        
-        echo  "<option value='".$value[company_id]."'selected>".$value[company]."</option>";
-		}else{
-		echo  "<option value='".$value[company_id]."'>".$value[company]."</option>";
-		}
-    }
-	
-?></select>
-                <input type="submit" value="Удалить"/>
-                </form> 
-           <br/>
-    </td> 
-    <td>
-      <form action="index.php?act=strf" method="post"/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="hidden" name="company_select" value="select"/>
-                    <input type="hidden" name="st_select" value="select"/>
-                    <input type="hidden" name="company_id" value="<?php echo $companies_array[0][company_id];?>"/>
-                     <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
-                    <input type="submit" value="Далее"/>
-                </form>   
-        
-    </td>
-</tr>
-</table>
-<br/>
- 
-
-<?php } 
 
 if($attributes[company_select] == 'select'){ 
     ?>
@@ -252,8 +202,8 @@ if($attributes[company_select] == 'select'){
                     <input type="hidden" name="company_select" value="select"/>
                     <input type="hidden" name="st_select" value="select"/>
                     <input type="hidden" name="price_select" value="select"/>
-                    <input type="hidden" name="price-id" value="<?php echo $storefront_array[0][id];?>"/>
-                    <input type="hidden" name="company_id" value="<?php echo $companies_array[0][company_id];?>"/>
+                    <input type="hidden" name="price_id" value="<?php echo $storefront_array[0][id];?>"/>
+                    <input type="hidden" name="company_id" value="<?php echo $attributes[company_id];?>"/>
                      <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
                     <input type="submit" value="Далее"/>
                 </form>   
@@ -423,11 +373,75 @@ if(file_exists ($filename )){
 
 </table>
 <br/>
+<table class="dat" width="99%">
+    <form action="index.php?act=info" method="post">
+    <tr>
+        <td align="left" valign="top">
+            <strong>Дополнительная информация</strong>
+            <br/><br/>
+        </td>
+        </tr>
+        <tr>
+            <td><p><strong>О магазине</strong></p>
+                <input type="text" size="104" name="about" value="<?php echo $info[about_store];?>"/>
+<!--                 <textarea rows="3" cols="104" name="about"></textarea>-->
+            </td>
+        </tr>
+        <tr>
+            <td><p><strong>Центральный офис</strong></p>
+                <input type="text" size="104" name="office" value="<?php echo $info[head_office];?>"/>
+<!--                 <textarea rows="3" cols="104" name="office"><?php echo $info[head_office];?></textarea>-->
+            </td>
+        </tr>
+        <tr>
+            <td><p><strong>Скидки</strong></p>
+                <input type="text" size="104" name="discount" value="<?php echo $info[discount];?>"/>
+<!--                 <textarea rows="3" cols="104" name="discount"><?php echo $info[discount];?></textarea>-->
+            </td>
+        </tr>
+        <tr>
+            <td><p><strong>Гарантия</strong></p>
+                <input type="text" size="104" name="warranty" value="<?php echo $info[warranty];?>"/>
+<!--                 <textarea rows="3" cols="104" name="warranty"><?php echo $info[warranty];?></textarea>-->
+            </td>
+        </tr>
+        <tr>
+            <td><p><strong>Доставка</strong></p>
+                <input type="text" size="104" name="delivery" value="<?php echo $info[delivery];?>"/>
+<!--                 <textarea rows="3" cols="104" name="delivery"><?php echo $info[delivery];?></textarea>-->
+            </td>
+        </tr>
+        <tr>
+            <td><p><strong>Способы оплаты</strong></p>
+                <input type="text" size="104" name="payment" value="<?php echo $info[payment];?>"/>
+<!--                 <textarea rows="3" cols="104" name="payment"><?php echo $info[payment];?></textarea>-->
+            </td>
+        </tr>
+        <tr>
+            <td><p><strong>Наш телефон</strong></p>
+                <input type="text" size="104" name="phone" value="<?php echo $info[phone];?>"/>
+<!--                 <textarea rows="3" cols="104" name="payment"><?php echo $info[payment];?></textarea>-->
+            </td>
+        </tr>
+        <tr>
+              <td>
+                    <input type="hidden" name="company_select" value="select"/>
+                    <input type="hidden" name="st_select" value="select"/>
+                    <input type="hidden" name="price_select" value="select"/>
+                    <input type="hidden" name="price_id" value="<?php echo $storefront_array[0][id];?>"/>
+                    <input type="hidden" name="company_id" value="<?php echo $attributes[company_id];?>"/>
+                    <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
+                    <input type="submit" name="open" value="Сохранить"/>
+                
+         </td>
+    </tr>
+    </form>
+</table>
+<br/>
 <?php 
-
-
- $domen = my_domen($attributes[stid]);
+    $domen = my_domen($attributes[stid]);
 ?>
+
 <table class="dat" width="99%">
     
     <tr>
@@ -439,7 +453,8 @@ if(file_exists ($filename )){
                     <input type="submit" name="open" value="Посмотреть витрину"/>
                 </form>
     </td></tr>
-</table><br/>
+</table>
+<br/>
 
 <?php
 }
@@ -491,3 +506,4 @@ if(isset($attributes[msg]) and $attributes[msg]==0)echo '
 </tr>
 </table>
 ';?>
+

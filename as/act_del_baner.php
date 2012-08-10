@@ -1,5 +1,5 @@
-<?php 
-
+<?php
+ 
 // To do сделать это в качестве функции
 
 
@@ -9,13 +9,9 @@ $dir = "../images/storefront/";
 
 $del_filename = $dir.$filename;
 
-// print "$del_filename<br/>";
-
 if(file_exists ($del_filename )){
     
-//    print "$del_filename<br/>";
-    
-    if(unlink($del_filename))return true;
+        if(unlink($del_filename))return true;
     
   
 }

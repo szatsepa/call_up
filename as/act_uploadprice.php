@@ -76,8 +76,8 @@ while ($data = fgetcsv ($handle, 65636,";")) {
         $data[10] = 999999999;
     }
 	
-	$artikul	      = quote_smart(iconv("WINDOWS-1251", "UTF-8", $data[0]));
-	$str_barcode      = quote_smart(iconv("WINDOWS-1251", "UTF-8", $data[1]));
+    $artikul	      = quote_smart(iconv("WINDOWS-1251", "UTF-8", $data[0]));
+    $str_barcode      = quote_smart(iconv("WINDOWS-1251", "UTF-8", $data[1]));
     $str_code2        = quote_smart(iconv("WINDOWS-1251", "UTF-8",$data[2]));
     $str_name         = quote_smart(iconv("WINDOWS-1251", "UTF-8", $data[3]));
     $str_state        = quote_smart(iconv("WINDOWS-1251", "UTF-8", $data[4]));
@@ -87,23 +87,8 @@ while ($data = fgetcsv ($handle, 65636,";")) {
     $num_price_pack   = intval($data[8]);
     $num_amount       = intval($data[9]);
     $str_group        = quote_smart(iconv("WINDOWS-1251", "UTF-8",$data[10]));
-     $str_unit = quote_smart(mysql_real_escape_string($data[12]));
-    $pricelist_id     = intval($attributes[price_id]);
-    
-//    $artikul = quote_smart(mysql_real_escape_string($data[0]));
-//    $str_barcode = quote_smart(mysql_real_escape_string($data[1]));
-//    $str_code2 = quote_smart(mysql_real_escape_string($data[2]));
-//    $str_name = quote_smart(mysql_real_escape_string($data[3]));
-//    $str_state = quote_smart(mysql_real_escape_string($data[4]));
-//    $str_volume = quote_smart(mysql_real_escape_string($data[5]));
-//    $str_package = quote_smart(mysql_real_escape_string($data[6]));
-//    $num_price_single = quote_smart(mysql_real_escape_string($data[7]));
-//    $num_price_pack = quote_smart(mysql_real_escape_string($data[8]));
-//    $num_amount = quote_smart(mysql_real_escape_string($data[9]));
-//    $str_group = quote_smart(mysql_real_escape_string($data[10]));
-//    $str_unit = quote_smart(mysql_real_escape_string($data[12]));
-//    $pricelist_id     = intval($attributes[price_id]);
-    
+    $str_unit         = quote_smart(iconv("WINDOWS-1251", "UTF-8",$data[12]));
+    $pricelist_id     = intval($attributes[price_id]);  
     
 	$query3 = "INSERT INTO pricelist 
 					   (str_code1,
@@ -134,9 +119,8 @@ while ($data = fgetcsv ($handle, 65636,";")) {
                                                 $str_unit)";
 						
 	$result = mysql_query($query3) or die($query3."<br>");
-	
-        echo "$query3<br/>";
-//        or die($query3."<br>")
+
+        
 	$sucs++;
 
 }

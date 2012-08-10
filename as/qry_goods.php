@@ -16,7 +16,8 @@ $query = "SELECT barcode,
 				 short_description,
 				 ingridients, 
 				 specification, 
-				 gost 
+				 gost,
+                                 nds
 			FROM goods ".
 			$condition.
 	"	ORDER BY barcode";

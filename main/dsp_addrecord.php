@@ -23,8 +23,8 @@
                                                 'num_price_single':$("#num_price_single").val(),
                                                 'num_price_pack':$("#num_price_pack").val(),
                                                 'num_amount':$("#num_amount").val(),
-												'str_group1':$("#str_group1").val(),
-												'str_group2':$("#str_group2").val(),
+						'str_group1':$("#str_group1").val(),
+						'str_group2':$("#str_group2").val(),
                                                 'pricelist_id':<?php echo $attributes[pricelist_id];?>}); 
             
             return false;

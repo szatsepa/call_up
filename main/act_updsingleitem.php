@@ -7,7 +7,6 @@ $new_button = "e".$id;
 $del_button = "d".$id;
 
 $ced = trim($attributes[num_price_single]);
-//number_format($number, 2, '.', '')
 $ced = number_format($ced, 2, '.', '');
 
 $kor = trim($attributes[num_price_pack]);

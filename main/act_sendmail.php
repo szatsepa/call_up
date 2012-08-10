@@ -2,7 +2,7 @@
 // To do сделать проверку полученных данных перед отправкой письма.
 
 
-$to  = 'operator@call-up.ru';
+$to  = 'operator@shop.animals-food.ru';
 
 // subject
 $subject = 'Сообщение от пользователя '.$user["surname"]." ".$user["name"];

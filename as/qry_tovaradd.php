@@ -8,6 +8,7 @@ $short_description	= quote_smart(trim($attributes[short_description]));
 $ingridients   		= quote_smart(trim($attributes[ingridients]));
 $specification 		= quote_smart(trim($attributes[specification]));
 $gost 		   		= quote_smart(trim($attributes[gost]));
+$nds =quote_smart(trim($attributes[nds]));
 
 
 $query = "INSERT INTO goods 
@@ -16,13 +17,15 @@ $query = "INSERT INTO goods
 					  short_description,
 					  ingridients, 
 					  specification, 
-					  gost) 
+					  gost,
+                                          nds) 
 		  	  VALUES ($barcode, 
 			  		  $name,
 					  $short_description,
 					  $ingridients, 
 					  $specification, 
-					  $gost)";
+					  $gost,
+                                          $nds)";
 			  
 $qry_tovaradd = mysql_query($query) or die($query);
 

@@ -1,28 +1,20 @@
 <?php
 // update 30.05.2011
-//echo $_SERVER["QUERY_STRING"];
 // Просто комменты
 if(!isset($attributes) || !is_array($attributes)) {
 	$attributes = array();
 	$attributes = array_merge($_GET,$_POST,$_COOKIE); 
 }
 
-
+//print_r($attributes);
+//echo "<br/>";
 include ("main/qry_connect.php");
 include ("main/act_quotesmart.php");
 include ("main/act_checkmobile.php");
-
-//$mobile = 'true';
-// authentication == yes/no 
-
 include ("as/qry_user.php");
 include ("main/act_checkauth.php");
 include ("main/act_redirect.php");
-
 include ("main/act_setstyle.php");
-
-//print_r($attributes);
-//echo "<br/>";
 
 switch ($attributes[act]) {
 
@@ -172,7 +164,6 @@ break;
     include ("main/qry_archzakazlist.php");
     include ("main/qry_zakazweek.php");
 	include ("main/qry_cartlist.php");
-//	include ("main/qry_cart.php");
     include ("main/qry_advert.php");
     include ("as/qry_companies.php");
     include ("as/qry_prices.php");
@@ -194,35 +185,35 @@ break;
 
 	//storefront
 
-	case "open_storefront":
-		$title = "Витрина";
-               include ("as/act_md5name.php");
-              $cod = md5name($attributes[user_id],$attributes[company_id],$attributes[price_id]);
-              header ("location:http://shop.animals-food.ru/custom/index.php?act=customer&cod=$cod&admin=1");
-	break;
+//	case "open_storefront":
+//		$title = "Витрина";
+//               include ("as/act_md5name.php");
+//              $cod = md5name($attributes[user_id],$attributes[company_id],$attributes[price_id]);
+//              header ("location:http://shop.animals-food.ru/custom/index.php?act=customer&cod=$cod&admin=1");
+//	break;
 
 	// customer
 
-	case "customers":
-		$title = "Витрина для вас";
-	if(isset($attributes[action]) and $attributes[action] == "add_cart"){
-		include ("main/act_add_cart.php");
-	}
-        include ("main/act_parse_md5.php");
-	include ('main/act_customer_auth.php');
-	include ("main/dsp_header.php");
-	include ("main/dsp_storefront_main.php");
-	include ("main/dsp_footer.php");
-	break;
+//	case "customers":
+//		$title = "Витрина для вас";
+//	if(isset($attributes[action]) and $attributes[action] == "add_cart"){
+//		include ("main/act_add_cart.php");
+//	}
+//        include ("main/act_parse_md5.php");
+//	include ('main/act_customer_auth.php');
+//	include ("main/dsp_header.php");
+//	include ("main/dsp_storefront_main.php");
+//	include ("main/dsp_footer.php");
+//	break;
 		
 		// описание товара
-	 case "item_description";
-	 $title = "Описание товара";
-	include ("main/dsp_header.php");
-	include ("main/qry_company.php");
-	include ("main/dsp_description.php");
-	//include ("main/dsp_footer.php");
-	 break;
+//	 case "item_description";
+//	 $title = "Описание товара";
+//	include ("main/dsp_header.php");
+//	include ("main/qry_company.php");
+//	include ("main/dsp_description.php");
+//	
+//	 break;
 
     case "supplier":
 	$title = "Кабинет поставщика";
@@ -286,11 +277,10 @@ break;
 	break;
     
     case "sendpsw":
-//       include 'main/dsp_header.php';
-//      include 'main/qry_customer.php';
+
    include ("main/act_sendpsw.php");
 	break;
-    // end customers
+   
     
     case "status_price":	
 	include ("main/qry_setpricestatus.php");
@@ -323,7 +313,6 @@ break;
 	
     case "kotirovka":
 	$title = "Текущие сравнительные котировки";
-	//include ("qry_archzakaz.php");
 	include ("main/dsp_header.php");
     include ("main/dsp_selector.php");
 	include ("main/dsp_kotirovka.php");
@@ -425,12 +414,14 @@ break;
 	include ("main/qry_disconnect.php");
 	break;
     
-	case "report_csv":    
-	include ("as/qry_otchet.php");
-	include ("as/dsp_report_csv.php");
-	break;
-	
-	case "arch_done":	
+    
+        case "report":    
+        include ("main/qry_report_csv.php");
+        include ("main/dsp_report_csv.php");
+        break;
+
+    
+   case "arch_done":	
     $title = "Архив поставок"; 
     include ("main/dsp_header.php");
     include ("main/dsp_selector.php");	
@@ -524,8 +515,7 @@ break;
     include ("main/dsp_selector.php");	
     include ("main/dsp_companies.php"); 
 	include ("main/dsp_footer.php");
-        $_SESSION[customer] = 0;
-	include ("main/qry_disconnect.php");
+        include ("main/qry_disconnect.php");
 	break;
       
 	}

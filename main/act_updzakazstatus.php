@@ -13,14 +13,6 @@ if (isset($attributes[id]) and $attributes[id] > 0 and isset($attributes[status]
     }
     
     
-    
-    
-	/*$query = "UPDATE arch_zakaz 
-              SET status  = $attributes[status],
-                  time    = now(),
-                  user_id = $user[id]".$and." 
-              WHERE id = $attributes[id]";	
-	*/
 	
 	$query = "UPDATE arch_zakaz 
               SET status  = $attributes[status]"

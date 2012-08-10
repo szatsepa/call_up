@@ -57,6 +57,26 @@ if($iid>0){
     $query = "UPDATE `tickets` SET `num_order` = $iid WHERE `id` = $ticket";
     
     mysql_query($query);
+    
+    $aff_r = mysql_affected_rows();
+    
+    if($aff_r > 0){
+        $message ="Здравствуйте! Вы заказали лотерейный билет №$iid Он зарегистрирован и будет рассмотрен.\r\n Пароль для входа - $code.\r\n C уважением. Администрация. ";              
+
+        $headers = 'From: administrator@lotto.ru\r\n';
+
+        $headers  .= 'MIME-Version: 1.0' . "\r\n";
+
+        $headers .= 'Content-type: text/plain; charset=utf-8' . "\r\n";
+        
+        $to= $row[name]." ".$row[surname]."<".$row[email].">" ; 
+
+        $out = array();
+
+        mail($to, 'Новый заказ', $message, $headers);
+    }
+    
+    
 }
 
 echo json_encode($out);

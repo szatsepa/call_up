@@ -1,7 +1,7 @@
 <?php
 
 /*
- * created by arcady.1254 1.11.2011
+ * created by arcady.1254@gmail.com 1.11.2011
  */
 
 header('Content-Type: text/html; charset=utf-8');  
@@ -37,12 +37,7 @@ $to  = $user_check["e_mail"].",7905415@mail.ru";
 	// Additional headers
 	$headers .= 'From: noreply@shop.animals-food.ru \r\n';
 	
-	//if ($environment == "pro") {
-	
-		//$headers .= "Bcc: 7905415@mail.ru,djv57@yandex.ru"."\r\n";
-	
-	//}
-	
+		
 	// Mail it
 	mail($to, $subject, $message, $headers);
 

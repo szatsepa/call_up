@@ -7,7 +7,17 @@ function qry_companies($storefront_id){
     
     $com_arr = array();
     
-    $query = "SELECT s.id, s.name, sd.company_id, (SELECT name FROM companies WHERE id=sd.company_id) AS company, sd.price_id, (SELECT comment FROM price WHERE id = sd.price_id) AS price FROM storefront AS s, storefront_data AS sd  WHERE s.id = $storefront_id AND s.id = sd.storefront_id GROUP BY sd.company_id";
+    $query = "SELECT s.id, 
+                     s.name,
+                     sd.company_id, 
+                     (SELECT name FROM companies WHERE id=sd.company_id) AS company, 
+                     sd.price_id, 
+                     (SELECT comment FROM price WHERE id = sd.price_id) AS price 
+                 FROM storefront AS s, 
+                      storefront_data AS sd  
+                WHERE s.id = $storefront_id 
+                AND s.id = sd.storefront_id 
+                GROUP BY sd.company_id";
  
     $result = mysql_query($query) or die ($query);
     
@@ -18,7 +28,14 @@ function qry_companies($storefront_id){
  }
 function  qry_about_storefronts($storefront_id){
     
-    $query = "SELECT s.id, s.name, sd.company_id, (SELECT name FROM companies WHERE id=sd.company_id) AS company, sd.price_id, (SELECT comment FROM price WHERE id = sd.price_id) AS price FROM storefront AS s, storefront_data AS sd  WHERE s.id = $storefront_id AND s.id = sd.storefront_id";
+    $query = "SELECT s.id, 
+                     s.name, 
+                     sd.company_id, 
+                    (SELECT name FROM companies WHERE id=sd.company_id) AS company, 
+                     sd.price_id, 
+                    (SELECT comment FROM price WHERE id = sd.price_id) AS price 
+             FROM storefront AS s, storefront_data AS sd  
+             WHERE s.id = $storefront_id AND s.id = sd.storefront_id";
 
     $result = mysql_query($query) or die($query); 
     

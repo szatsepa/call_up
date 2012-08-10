@@ -1,24 +1,25 @@
-<br />
-<br />
-<table class="dat">
-<th class="dat">Штрих-код</th>
-<th class="dat">Наименование</th>
-<th class="dat">Краткое описание</th>
-<th class="dat">Состав</th>
-<th class="dat">Описание</th>
-<th class="dat">Сайт поддержки</th>
-<th class="dat"></th>
-<th class="dat"></th>
-
 <?php 
 
 $item_array = array();
+
+
+while ($row = mysql_fetch_assoc($qry_goods)) {
+    
+    array_push($item_array, $row);
+    
+}
+
+
+
+$cnt = count($item_array);
+
+$pages = ceil($cnt/36);
 
 if(isset ($attributes[page])){
     
     $page = intval($attributes[page]);
     
-    $start = 36 + 36*$page;
+    $start = 36*$page;
     
 }else{
     
@@ -37,15 +38,29 @@ if($start < 0){
     $start = 0;
 }
 
-while ($row = mysql_fetch_assoc($qry_goods)) {
-    
-    array_push($item_array, $row);
-    
-}
+
+?>
+<br />
+<?php 
+//echo "$page ==== $cnt  -   $pages  &&& start >> $start<br/>";
+include 'dsp_pager.php';
+?>
+<br />
+<table class="dat">
+<th class="dat">Штрих-код</th>
+<th class="dat">Наименование</th>
+<th class="dat">Краткое описание</th>
+<th class="dat">Состав</th>
+<th class="dat">Описание</th>
+<th class="dat">Сайт поддержки</th>
+<th class="dat">НДС %</th>
+<th class="dat"></th>
+
+<?php
 
 $rows = 0;
 
-for($i=$start;$i<(count($item_array)-1);$i++) {
+for($i=$start;$i<($cnt-1);$i++) {
     
     $row = $item_array[$i];
 	
@@ -90,8 +105,7 @@ for($i=$start;$i<(count($item_array)-1);$i++) {
 		$row["specification"] = $row["specification"];
 		
 	}
-//        print_r($row);
-//        echo "<br/>";
+
     echo "<tr>";
     echo "<td class='dat'>".$row["barcode"]."</td>";
     echo "<td class='dat'>".$row["name"]."</td>";
@@ -99,47 +113,31 @@ for($i=$start;$i<(count($item_array)-1);$i++) {
     echo "<td class='dat'>".$row["ingridients"]."</td>";
     echo "<td class='dat'>".$row["specification"]."</td>";
     echo "<td class='dat'>".$row["gost"]."</td>";
-    echo "<td class='dat'><a href='index.php?act=tovar_edit&barcode=".$row["barcode"]."'>Редакт.</a></td>";
-    echo "<td class='dat'><!-- a href='index.php?act=tovar_delete&barcode=".$row["barcode"]."'>Удалить</a --></td>";
+    echo "<td class='dat'>".$row["nds"]."</td>";
+    echo "<td class='dat'><a href='index.php?act=tovar_edit&barcode=".$row["barcode"]."&page=".$attributes[page]."'>Редакт.</a></td>";
+    echo "<td class='dat'><!-- a href='index.php?act=tovar_delete&barcode=".$row["barcode"]."&page=".$attributes[page]."'>Удалить</a --></td>";
 ?>
         
 <?php        
     echo "</tr>";
     
-//    if($rows == 36){
-//        
-//                break;
-//                 
-//                }
+    if($rows > 34){
+        
+                break;
+                 
+                }
     
     $rows++;
 }
 
-$page += 1;
-
 ?>
-<tr>
-    <td>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-    <td>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-    <td align="center">
-        <?php
-        if($rows < count($item_array)){
-            ?>
-<!--        <p align="center"><a href="index.php?act=goods&page=<?php echo $page;?>">Dalsche >>> </a></p>   -->
-        <?php
-        }
-        ?>
-    </td>
-    <td>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-    <td>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </td>
-</tr>
 </table>
 <br/>
+<!--<tr></tr>-->
+    
+        <?php
+            include 'dsp_pager.php';
+        ?>
+    
+
+

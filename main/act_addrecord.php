@@ -100,6 +100,8 @@ $result = mysql_query($query3) or die('<span class="edit4">Ошибка</span>')
 
 $new_id = mysql_insert_id();
 
+echo "$query3<br/>";
+
 ?>
 <span class="edit5">Позиция <?php echo $str_name;?> добавлена</span>
 <script language="JavaScript">
@@ -122,6 +124,6 @@ $("#str_group1").val(<?php echo $new_group; ?>);
 $("#group").append("<option value=<?php echo $new_group; ?>><?php echo str_replace ("'","",$new_group); ?></option>");
 $("#group option[value=<?php echo $new_group;?>]").attr("selected", "selected");
 
-<?php } ?>
+<?php } ?> 
 
 </script>

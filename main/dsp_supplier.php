@@ -1,17 +1,49 @@
 <h3><?php echo $user["company_name"]; ?></h3>
 <?php include "main/dsp_message.php";
 	  include ("main/act_md5name.php");
-	  ?>
+ ?>
+
+<script>
+var min = 3;
+var sec = 0;
+var timerid;
+function timer()
+{
+  sec--; /* уменьшаем на одну секунду */
+  if (sec<0) /* следующая минута */
+  {
+    sec = 59;
+    min--;
+  }
+if (min==0 && sec==0)
+  {
+    clearInterval(timerid); /* останавливаем таймер */
+
+document.location.href = "http://shop.animals-food.ru/index.php?act=supplier";
+
+   
+  }
+}
+ 
+timerid = setInterval(timer,1000); /* запускаем таймер */
+
+</script>
+<!--<div id="time">1:00</div>-->
 <div align="center">
     
 <table border="0">
     <tr>
-        <td valign="top" class="kab"><table border="0" cellpadding="5" cellspacing="5" width="230">
+        <td valign="top" class="kab">
+            <table border="0" cellpadding="5" cellspacing="5" width="230">
                 <tr>
                 	<td><div class="kab">Новые заказы</div></td>
                 </tr>
 				<tr><td><?php
-				while ($row = mysql_fetch_assoc($qry_allcompanyzakaz)) { 
+         
+				 foreach ($users_array as $row) { 
+                                    
+//                                    array_push($orders_arr, $row);
+                                    
 					if ($row["status"] == 1 or $row["status"] == 4) {
 						echo "<p>N".$row["id"]."&nbsp;".$row["zakaz_date"];
 						
@@ -26,40 +58,41 @@
 						echo "<br /><a href='index.php?act=view_archzakaz&amp;zakaz=no&amp;id=".$row["id"]."&amp;dsp=accept".$urladd."'>".$row["price_name"]."</a></p>";
 					}
 				}
-				if (mysql_num_rows($qry_allcompanyzakaz) > 0) {
-					mysql_data_seek($qry_allcompanyzakaz,0);
-				}
+//				if (mysql_num_rows($qry_allcompanyzakaz) > 0) {
+//					mysql_data_seek($qry_allcompanyzakaz,0);
+//				}
 				 ?></a></td></tr>				
-            </table></td>
+            </table>
+        </td>
             
-            <!-- вот сюда пожалуй вставить бы заказы по витринам -->
+                <!-- вот сюда пожалуй вставить бы заказы по витринам -->
     <td valign="top" class="kab"><table border="0" cellpadding="5" cellspacing="5" width="230">
                 <tr>
-                	<td><div class="kab">Витрины заказы</div></td>
+                        <td><div class="kab">Витрины заказы</div></td>
                 </tr>
-				<tr><td><?php
-				while ($row = mysql_fetch_assoc($qry_customer_orders)) { 
-					if ($row["status"] == 1 or $row["status"] == 4) {
-						echo "<p>N".$row["id"]."&nbsp;".$row["zakaz_date"];
-						
-						// Отсроченный заказ?
-						if ($row["exe_date"] != '') {
-						
-							echo "<br /><strong><small>Исполнить ".$row["exe_date"]."</small></strong>";
-						
-						}
-						
-						if ($row["status"] == 4) echo " (Демо)";
-						echo "<br /><a href='index.php?act=view_archzakaz&amp;store=1&amp;zakaz=no&amp;id=".$row["id"]."&amp;dsp=accept".$urladd."'>".$row["price_name"]."</a></p>";
-					}
-				}
-				if (mysql_num_rows($qry_customer_orders) > 0) {
-					mysql_data_seek($qry_customer_orders,0);
-				}
-				 ?></a></td></tr>				
+                                <tr><td><?php
+                                foreach ($customers_array as $row) {  
+                                        if ($row["status"] == 1 or $row["status"] == 4) {
+                                                echo "<p>N".$row["id"]."&nbsp;".$row["zakaz_date"];
+                                                
+                                                // Отсроченный заказ?
+                                                if ($row["exe_date"] != '') {
+                                                
+                                                        echo "<br /><strong><small>Исполнить ".$row["exe_date"]."</small></strong>";
+                                                
+                                                }
+                                                
+                                                if ($row["status"] == 4) echo " (Демо)";
+                                                echo "<br /><a href='index.php?act=view_archzakaz&amp;store=1&amp;zakaz=no&amp;id=".$row["id"]."&amp;dsp=accept".$urladd."'>".$row["price_name"]."</a></p>";
+                                        }
+                                }
+                                if (mysql_num_rows($qry_customer_orders) > 0) {
+                                        mysql_data_seek($qry_customer_orders,0);
+                                }
+                                 ?></a></td></tr>                               
             </table></td>                
                     <!-- END INSERTED -->
-                    
+          
                     
 		<td valign="top" class="kab">
             <table border="0" cellpadding="5" cellspacing="5" width="230">
@@ -67,19 +100,39 @@
                     
                 	<td><div class="kab">Текущие заказы</div></td>
                 </tr>
-				<tr><td><?php 
-				while ($row = mysql_fetch_assoc($qry_allcompanyzakaz)) { 
+				<tr><td>
+                                <?php
+                                
+//                                $arhorder_array = array_merge($users_array, $customers_array);
+                                
+                                rsort($arhorder_array);
+                                
+                                
+                                                                 
+				foreach ($arhorder_array as $row) { 
                                     
+                                    switch ($row[report]){
+                                        case 0:
+                                            $color = "blue";
+                                            break;
+                                        
+                                        case 1:
+                                            $color = "green";
+                                            break;
+                                    }          
                                     
-					
+				if(($row["status"])== 5)$color = "brown";
+                                
+                                if($row[report] == 1)$label = "doc";
+                                
 					// Выводим только подтвержденные и отгруженные заказы
 					if ($row["status"] == 2 or $row["status"] == 5) {
-						echo "<p>N".$row["id"]."&nbsp;".$row["zakaz_date"];
+						echo "<p style='color: ".$color.";'>N".$row["id"]."&nbsp;".$row["zakaz_date"];
 						
 						// Отсроченный заказ?
 						if ($row["exe_date"] != '') {
 						
-							echo "<br /><strong><small>Исполнить ".$row["exe_date"]."</small></strong>";
+							echo "<br /><strong><small>Исполнить ".$row["exe_date"]."</small></strong><br/>";
 						
 						}
 						
@@ -104,53 +157,28 @@
                                 $dsp = "no";
                             break;
                         }
+                        
+                        echo " $label.";
 
-						echo "<br /><a href='index.php?act=view_archzakaz&amp;zakaz=no&amp;id=".$row["id"]."&amp;dsp=".$dsp.$urladd."'>".$row["price_name"]."</a></p>";
+						echo "<br /><a href='index.php?act=view_archzakaz&amp;zakaz=no&amp;id=".$row["id"]."&amp;dsp=".$dsp.$urladd."'  style='color: ".$color.";'>".$row["price_name"]."</a></p>";
 					}				
 				}
                                 
-                       while ($row = mysql_fetch_assoc($qry_customer_orders)) { 
-                                    
-                                    
-					
-					// Выводим только подтвержденные и отгруженные заказы
-					if ($row["status"] == 2 or $row["status"] == 5) {
-						echo "<p>N".$row["id"]."&nbsp;".$row["zakaz_date"];
-						
-						// Отсроченный заказ?
-						if ($row["exe_date"] != '') {
-						
-							echo "<br /><strong><small>Исполнить ".$row["exe_date"]."</small></strong>";
-						
-						}
-						
-                        switch ($row["status"]) {
-                            case 2:
-                                echo " (Подтвержден)";
-                                $dsp = "accepted";
-                            break;
-                                
-                            case 3:
-                                echo " (Отменен)";
-                                $dsp = "no";
-                            break;
-                            
-                            case 5:
-                                echo " (Отгружен)";
-                                $dsp = "shipped";
-                            break;
-                            
-                            case 6:
-                                echo " (Выполнен)";
-                                $dsp = "no";
-                            break;
-                        }
 
-						echo "<br /><a href='index.php?act=view_archzakaz&amp;zakaz=no&amp;id=".$row["id"]."&amp;dsp=".$dsp.$urladd."'>".$row["price_name"]."</a></p>";
-					}				
-				}
-				?></td></tr>				
+				?></td>
+                                   
+                                </tr>	
+                                <tr align="center">
+                                    <td align="center">
+                                        <form action="index.php?act=report" method="post" target="_blank">
+                                            <input type="hidden" name="company_id" value="<?php echo $user[company_id];?>"/>
+                                            <input type="submit" value="Текущий отчет"/>
+                                    
+                                         </form>
+                                    </td>
+                                </tr>			
             </table>
+                   
         </td>
         <td valign="top"><table border="0" cellpadding="5" cellspacing="5" width="370">
                 <tr>
@@ -221,6 +249,7 @@
 <p align="right"><a href="index.php?act=arch_done<?php echo $urladd; ?>" class="help" style="text-decoration: underline;">Архив поставок</a>&nbsp;&nbsp;</p>
 <p align="right"><a href="index.php?act=arch_decline<?php echo $urladd; ?>" class="help" style="text-decoration: underline;">Отменённые заказы</a>&nbsp;&nbsp;</p>
 <p align="right"><a href="index.php?act=otchet" class="help" style="text-decoration:underline;">Отчеты</a>&nbsp;&nbsp;</p>
+
 
 
 

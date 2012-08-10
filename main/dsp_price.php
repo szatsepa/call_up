@@ -126,7 +126,22 @@ if ($authentication == "no" or (in_array("add_cart",$rights))) {
 }
 
 ?>
-<div class="prname"><a href="index.php?act=company_prices&amp;company_id=<?php echo $company_id.$urladd; ?>"><?php echo $company_name; ?></a>&nbsp;/&nbsp;<a href="index.php?act=single_price&amp;pricelist_id=<?php echo $attributes[pricelist_id].$urladd; ?>"><?php echo $price_name; ?></a></div>
+<div class="prname">
+    <a href="index.php?act=company_prices&amp;company_id=<?php echo $company_id.$urladd; ?>"><?php echo $company_name; ?></a>
+    &nbsp;/&nbsp;
+    <a href="index.php?act=single_price&amp;pricelist_id=<?php echo $attributes[pricelist_id].$urladd; ?>"><?php echo $price_name; ?></a>
+    <div style="position:relative;float: right; font-size: 8px; display: block;">
+         <form  action="" method="get">
+             <input type="hidden" name="act" value="edit_price"/>
+             <input type="hidden" name="search" value="1"/>
+             <input type="hidden" name="pricelist_id" value="<?php echo $attributes[pricelist_id];?>"/>
+             <input type="text"  name="word" value="<?php echo $attributes[word];?>" onclick="this.select();"/>
+             <input type="submit" value="Поиск"/>&nbsp;&nbsp;
+        </form>
+    </div>
+</div>
+<br/>
+
 <?php
 if ($attributes[act] == 'single_item') {
 	$barcode        = mysql_result($qry_price,0,"str_barcode");
@@ -189,7 +204,10 @@ if ($num_rows > $per_page){
     if (isset($attributes[border])){
         $pages_display .= "<input type='hidden' name='border' value='$attributes[border]'>";
     }
-    
+    if(isset ($attributes[search])){
+        $pages_display .= "<input type='hidden' name='search' value='1'>";
+        $pages_display .= "<input type='hidden' name='word' value='$attributes[word]'>";
+    }
     $pages_display .= "<input type='hidden' name='act' value='$attributes[act]'>";
     $pages_display .= "<input type='hidden' name='pricelist_id' value='$attributes[pricelist_id]'>";
     

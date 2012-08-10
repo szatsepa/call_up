@@ -18,7 +18,7 @@ $handle = fopen ($nameoffile,"r");
 // Количество успешно добавленных строк
 $sucs = 0;
 
-
+$bad = 0;
 
 while ($data = fgetcsv ($handle, 65636,";")) {
     	
@@ -29,6 +29,7 @@ while ($data = fgetcsv ($handle, 65636,";")) {
 	
 	}
     
+        $aff = 0;
 
         $barcode  		= quote_smart(iconv("WINDOWS-1251", "UTF-8", $data[0]));
     $name       		= quote_smart(iconv("WINDOWS-1251", "UTF-8", $data[1]));
@@ -52,18 +53,31 @@ while ($data = fgetcsv ($handle, 65636,";")) {
 						  $ingridients, 
 						  $specification, 
 						  $gost)";
-				  
-	$qry_goodsadd = mysql_query($query);
 	
-	$sucs++;
-
+	$qry_goodsadd = mysql_query($query);
+        
+        $aff = mysql_affected_rows();
+				  
+	if($aff != 0){
+            
+            $sucs++;
+            
+        }
+        
 }
+
 
 fclose ($handle);
 
 unlink ($nameoffile);
 
 // Информация для редиректа
-$attributes[query_str] = 'act=goods&eid=10';
+//$attributes[query_str] = 'act=goods&eid=10';
 
- ?>
+?>
+<script language="javascript">alert("Добавлено <?php echo $sucs;?> строк.")</script>
+<form action="index.php?act=goods" method="post">
+    <script language="javascript">
+    document.write ('</form>');
+    document.forms[0].submit();
+    </script>

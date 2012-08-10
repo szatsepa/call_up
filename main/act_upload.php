@@ -16,9 +16,6 @@ $handle = fopen ($nameoffile,"r");
 // Количество успешно добавленных строк
 $sucs = 0;
 
-/*$data = fgetcsv ($handle, 10000,";");
-$num = count ($data);
-echo "<p>". $num . "</p>";*/
 
 $query2 = "DELETE FROM pricelist";
 $result = mysql_query($query2) or die("Ошибка базы данных.Невозможно занести данные в таблицу.");
@@ -28,8 +25,6 @@ $group_flag = 0;
 
 while ($data = fgetcsv ($handle, 10000,";")) {
     
-	//$num = count ($data);
-    //print "<p> $num fields in line $row: <br>\n";
     
 	// Пропускаем первые 13 строк прайса
 	if ($row < 14) 
@@ -70,7 +65,6 @@ while ($data = fgetcsv ($handle, 10000,";")) {
 	
 	
 	$row++;
-	//echo "--".$data[0]." ".$data[1]." ".$data[2]." ".$data[3]." <b>".$group."</b><br>";
 	$actual_row = $row - 1;
 	$error = false;
 	
@@ -91,11 +85,6 @@ while ($data = fgetcsv ($handle, 10000,";")) {
 	
 	$sucs++;
 	
-    /*for ($c=0; $c < $num; $c++) 
-	{
-        print " ".$data[$c] . " ";
-    }
-	echo "<br>";*/
 }
 
 

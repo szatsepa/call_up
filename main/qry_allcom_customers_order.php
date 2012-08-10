@@ -23,7 +23,8 @@ $query = "SELECT DISTINCT a.id,
 						  DATE_FORMAT(a.exe_time, '%d.%m.%y %H:%i') exe_date,
                           g.price_id,
                           p.comment price_name,
-						  u.surname  
+						  u.surname,
+a.report 
           FROM arch_zakaz AS a, 
                arch_goods AS g,
                price AS p,

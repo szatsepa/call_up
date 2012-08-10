@@ -10,6 +10,8 @@
 
 $attributes[pricelist_id] = intval($attributes[pricelist_id]);
 
+$string = quote_smart(trim($attributes[word]));
+
 if($attributes[act] == 'step1' or $attributes[act] == 'step2'){
   // $attributes[pricelist_id] = 0;
 }
@@ -101,8 +103,30 @@ if(!isset($attributes[group]) and !isset($attributes[border])) {
               ORDER  BY id";
 		
 	}
+        if($attributes[act] == 'edit_price' && $attributes[search]==1){
+            
+            $query = "SELECT  id,
+                     str_code1,
+                     str_barcode,
+                     str_code2,
+                     str_name,
+                     str_group,
+                     str_state,
+                     str_volume,
+                     str_package,
+                     num_price_single,
+                     num_price_pack,
+                     num_amount,
+                     pricelist_id
+            FROM pricelist
+        WHERE MATCH (str_barcode,str_name) 
+        AGAINST ($string)";
+
+        }
 	
 }
+
+//echo "$query<br/>";
 
 $qry_price = mysql_query($query) or die($query);
 

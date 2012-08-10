@@ -8,7 +8,7 @@ $name        = quote_smart(trim($attributes[name]));
 $about       = quote_smart(trim($attributes[about]));
 $full_about  = quote_smart(trim($attributes[full_about]));
 $user_id     = $user['id'];
-$inn	     = quote_smart(trim($attributes[inn]));
+$inn	     = trim($attributes[inn]);
 $contragent  = quote_smart(trim($attributes[contragent]));
 
 
@@ -25,7 +25,7 @@ $query = "INSERT INTO companies
 			 creation,
 			 time,
 			 user_id,
-			 status,
+			 `status`,
 			 inn,
 			 contragent) 
 		  VALUES 

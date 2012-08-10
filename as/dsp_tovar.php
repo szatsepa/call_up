@@ -17,6 +17,7 @@ if ($attributes[act] == 'tovar_edit') {
     $ingridients 	 	= $row["ingridients"];
     $specification   	= $row["specification"];
     $gost      		 	= $row["gost"];
+    $nds = $row[nds];
 	$disabled   	 	= " disabled='disabled'";
     
 } else {
@@ -30,6 +31,7 @@ if ($attributes[act] == 'tovar_edit') {
     $specification   	= "";
     $gost      		 	= "";
 	$disabled   	 	= "";
+        $nds = "";
 }
 //$disabled   	 	= "";
  ?>
@@ -71,6 +73,11 @@ if ($attributes[act] == 'tovar_edit') {
 	<td>Сайт поддержки</td>
 	<td><input type="text" name="gost" size="25" value="<?php echo $gost; ?>"/></td>
 </tr>
+<tr>
+<input type="hidden" name="page" value="<?php echo $attributes[page];?>"/>
+	<td>НДС %</td>
+	<td><input type="text" name="nds" size="25" value="<?php echo $nds; ?>"/></td>
+</tr>
 <tr><td></td><td>
 <table>
     <tr>
@@ -79,8 +86,11 @@ if ($attributes[act] == 'tovar_edit') {
  </form>  
 <?php if ($attributes[act] == 'tovar_edit') { ?>
 <form action="index.php?act=del_item" method="post">
+    <input type="hidden" name="page" value="<?php echo $attributes[page];?>"/>
     <input type="hidden" name="barcode" value="<?php echo $barcode;?>"/>
-        <td align="right"><br /><input type="submit" value="Удалить" /></td>
+        <td align="right"><br />
+            <input type="submit" value="Удалить" />
+        </td>
 </form> 
 <?php } ?>
         </tr>

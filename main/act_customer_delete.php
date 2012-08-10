@@ -19,7 +19,17 @@ if($qry_customer_delete){
         
         $query = "DELETE FROM cart WHERE customer = $customer_id";
 
-        $qry_clear_cart = mysql_query($query) or die($query);
+        $qry_clear_cart = mysql_query($query);
+        
+        $query_reserved = "DELETE FROM reserved_items WHERE customer = $customer_id";
+
+        $qry_clear_reserved = mysql_query($query_reserved);
+        
+        mysql_query("DELETE FROM message_read  WHERE customer = $customer_id");
+        
+        mysql_query("DELETE FROM kabinet WHERE customer = $customer_id");
+        
+        mysql_query("DELETE FROM favorites WHERE customer = $customer_id");
     }
 }
 

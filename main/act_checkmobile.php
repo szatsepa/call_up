@@ -16,5 +16,4 @@ if (isset($attributes[mob])) {
 	$mobile = 'true';
 }
 
-//$mobile = 'true';
 ?>

@@ -133,8 +133,6 @@ if ($mobile == 'false') {
 	
 	}
 	
-	//print_r ($attributes);
-
 	// если в корзине колич товаров равно нулю то удаляем сей артикул из корзины
 
 	mysql_query("DELETE FROM cart WHERE num_amount = 0");
@@ -149,9 +147,8 @@ if ($mobile == 'false') {
 
 } else {
 // Мобильная версия добавления в корзину
-	//print_r ($attributes);
 	
-	$artikul  = array();
+        $artikul  = array();
 	$amount   = array();
 	$discount = array();
 	$package  = array();

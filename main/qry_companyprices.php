@@ -13,7 +13,7 @@ if ($authentication == "yes") {
 }
 $company_id = quote_smart($attributes[company_id]);
 
-$query = "SELECT p.id,p.comment,k.price_id,k.user_id,p.status, p.storefront
+$query = "SELECT p.id,p.comment,k.price_id,k.user_id,p.status
 FROM price p
 LEFT OUTER JOIN kabinet k
 ON p.id = k.price_id AND k.user_id = $user_for_select

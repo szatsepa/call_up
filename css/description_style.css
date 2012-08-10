@@ -1,0 +1,24 @@
+.ds_header_bg
+{
+position:fixed; top:15px; left:10px;
+}
+.ds_header_right
+{
+position:fixed; top:15px; left:829px;
+}
+.header_bottom
+{
+position:fixed; top:136px; left:10px;
+}
+.left_img
+{
+position:fixed; top:173px; left:10px;
+}
+.description_center
+{
+position:fixed; top:173px; left:506px;
+}
+.for_images
+{
+position:fixed; top:615px; left:10px;
+}

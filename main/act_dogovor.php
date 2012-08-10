@@ -1,10 +1,9 @@
 <?php 
 
 $company_name = mysql_result($qry_cart,0,"company_name");
-//$row = mysql_fetch_assoc($qry_cart);
-//$company_name = $row["company_name"];
 
-$to  = 'operator@100ok.ru';
+
+$to  = 'operator@shop.animals-food.ru';
 
 // subject
 $subject = 'Заявка на заключение договора от пользователя '.$user["surname"]." ".$user["name"];

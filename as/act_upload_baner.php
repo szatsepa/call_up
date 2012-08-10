@@ -38,7 +38,7 @@ if (!move_uploaded_file($_FILES['imgfile']['tmp_name'], $imgfile_b)) {
             
             $flnm = rnd_Cod();
             
-             $new_imgfile = $document_root."images/advert". $flnm.$filetype;
+             $new_imgfile = "$document_root/images/advert/ $flnm.$filetype";
              
              $attributes[name] = "/images/advert/ $flnm.$filetype";
              

@@ -1,9 +1,13 @@
-<?php $query ="SELECT id, comment FROM price WHERE company_id=$attributes[company_id]";
+<?php 
+$query ="SELECT id, comment FROM price WHERE company_id=$attributes[company_id]";
+
+//echo "com_id ".$attributes[company_id];
+
 $qry_price = mysql_query($query);
 
-$count_rows = mysql_num_rows($qry_price);
+//if($qry_price)$count_rows = mysql_num_rows($qry_price);
 
-if($count_rows != 0){
+if($qry_price){
     
 
 
@@ -24,7 +28,7 @@ $i = 0;
                 <input type="submit" name="open" value="Добавить" <?php echo $dis; ?>/>
                 
                 <?php 
-  
+     mysql_free_result($qry_price);  
  } 
  else
  {?>

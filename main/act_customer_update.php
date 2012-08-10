@@ -1,9 +1,9 @@
 <?php
 
 /*
- * created by arcady1254 1.11.2011
+ * created by arcady.1254@gmail.com 1.11.2011
  */
-//print_r($attributes);
+
 $surname = quote_smart($attributes[surname]);
 $name = quote_smart($attributes[name]);
 $patronymic = quote_smart($attributes[patronymic]);
