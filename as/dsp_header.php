@@ -64,8 +64,8 @@ if (isset($attributes[error])) {
 <!--    <a href="index.php?act=allstorefront" class="header2">Все витрины</a>-->
     <a href="index.php?act=rubrikator" class="header2">Рубрикатор</a>
     <a href="index.php?act=arch_zakaz&amp;display=all" class="header2">Заказы</a>
-<!--    <a href="index.php?act=messages" class="header2">Сообщения</a>-->
-    <!-- <a href="index.php?act=statistics" class="header2">Статистика</a> -->
+    <a href="index.php?act=reports" class="header2">Отчеты</a>
+    <a href="index.php?act=statistics" class="header2">Статистика</a> 
 </td>
 <td width='*' align='right'>
     <small>
@@ -87,7 +87,7 @@ if (isset($attributes[error])) {
     <a href="index.php?act=rubrikator" class="header2">Рубрикатор</a>
     <a href="index.php?act=arch_zakaz&amp;display=all" class="header2">Заказы</a>
     <a href="index.php?act=messages" class="header2">Сообщения</a>
-    <a href="index.php?act=lotto" class="header2">Лотерея</a> 
+<!--    <a href="index.php?act=statistics" class="header2">Статистика</a> -->
 </td>
 <td width='*' align='right'>
     <small>
@@ -100,5 +100,5 @@ if (isset($attributes[error])) {
 </tr>
     </table>
 </div>
-<br />
+<br /> 
 <h3><?php echo $title; ?></h3>

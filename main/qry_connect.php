@@ -23,7 +23,6 @@ if ($_SERVER["SERVER_NAME"] == "localhost" or $_SERVER["SERVER_NAME"] == "192.16
 	$link = mysql_connect("localhost","root","") or die ("Ошибка ");
 	mysql_select_db("call_up_ru");
 	mysql_query ("SET NAMES utf8");
-        
     $document_root = $_SERVER["DOCUMENT_ROOT"]."/call";
 	$host          = $_SERVER["HTTP_HOST"]."/call";
 	} else {

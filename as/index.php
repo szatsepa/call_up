@@ -11,7 +11,8 @@ if(!isset($_SESSION)){
     session_start();
 }
 
-
+//session_destroy();
+//
 //print_r($_SESSION);
 //echo "<br>";
 //print_r($attributes); 
@@ -32,7 +33,7 @@ include("act_checkerror.php");
 switch ($attributes[act]) {
     
     case "authentication":
-        include("../main/qry_userauth.php");	
+    include("../main/qry_userauth.php");	
 	include("../main/act_authentication.php");	
 	break;
     
@@ -46,16 +47,10 @@ switch ($attributes[act]) {
     // Компании
     case "companies":
 	include("qry_companies.php");
-        include("dsp_header.php");
-        include("dsp_companylist.php");
-        include("dsp_company.php");
+    include("dsp_header.php");
+    include("dsp_companylist.php");
+    include("dsp_company.php");
 	break;
-    
-    case 'lotto':
-        include 'qry_tickets.php';
-        include 'dsp_header.php';
-        include 'dsp_ticketlist.php';
-        break;
     
     case "company_add":
     include("qry_companyadd.php");
@@ -167,7 +162,7 @@ switch ($attributes[act]) {
 	case "uploadgoods":
       include("dsp_header.php");       
     include("act_uploadgoods.php");
-	include("act_to.php");
+//	include("act_to.php"); 
 	break;
 	
     // Управление прайс-листами
@@ -330,12 +325,19 @@ switch ($attributes[act]) {
 	// Витрина
 
 	case "strf":
+            include 'qry_storefront_info.php';
     include 'qry_about_storefront.php';        
     include 'qry_select_storefront.php';
     include("qry_companies.php");
     include("dsp_header.php");
     include("dsp_storefront_menu.php");
 	break;
+    
+    case 'info':
+        
+        include 'act_add_info.php';
+        
+        break;
     
     case "delcom":
         
@@ -358,23 +360,20 @@ switch ($attributes[act]) {
         break;
     
     case 'del_storefront':
+       
         include 'act_del_baner.php';
-        $whot = del_baner("H_$attributes[stid].jpg");
+         $whot = del_baner("H_$attributes[stid].jpg");
         $whot = del_baner("F_$attributes[stid].jpg");
         $whot = del_baner("logo_$attributes[stid].jpg");
-        include 'act_del_storefront.php'; 
-//          if($whot){
-//                        echo "RAS<br/>";  
-//            if($whot){                echo "DVA<br>";
-//                
-//            }
-//        }
-//        if($whot){
-//                        echo "TRI <br>";
-//            
-//        }else{            echo "HERA<br>";
-////            header("location:index.php?act=strf");
-//        }         
+        include 'act_del_storefront.php';
+               
+        break;
+    
+    case 'dstrf':
+         include("dsp_header.php");
+         include 'act_to_delstorefront.php';
+       
+        
         break;
     
     case "codhtml":
@@ -514,6 +513,16 @@ switch ($attributes[act]) {
     include("dsp_header.php");
 	include("dsp_mainmenu.php");
 	break;
+    case "reports":
+        	
+//	include ("qry_companies.php");
+//	include ("qry_users.php");
+        include 'dsp_header.php';
+        include ("dsp_fn_otchet.php");
+        include ("dsp_fn_option.php");
+        include ("../main/dsp_otchet.php");
+        
+        break;
     
     case "logout":
     include("../main/act_logout.php");
@@ -527,6 +536,7 @@ switch ($attributes[act]) {
     
 	}
 	
+        include '../main/dsp_footer.php';
     // Disconnect from db
     include("../main/qry_disconnect.php");
 

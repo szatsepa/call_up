@@ -1,8 +1,6 @@
 <?php 
 $query ="SELECT id, comment FROM price WHERE company_id=$attributes[company_id]";
 
-//echo "com_id ".$attributes[company_id];
-
 $qry_price = mysql_query($query);
 
 //if($qry_price)$count_rows = mysql_num_rows($qry_price);

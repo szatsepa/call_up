@@ -1,0 +1,1389 @@
+* {
+        margin: 0;
+        padding: 0;
+}
+/*all styles*/
+body {
+        font: 12px/18px Arial, Tahoma, Verdana, sans-serif;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+}
+/*id*/
+#wrapper {
+    position: relative;
+       width: 1008px;
+       height: auto !important;
+        margin: 0px auto;
+}
+div.outside{
+    position: absolute;
+    width: 96%;
+        }
+
+/* classes*/
+/*end all*/
+p {
+        margin: 0 0 18px;
+}
+img {
+        border: none;
+}
+input {
+        vertical-align: middle;
+}
+
+
+/* header
+-----------------------------------------------------------------------------*/
+#header {
+        width : 100%;
+        height: 120px;
+}
+
+.head {
+        float: left;
+        width: 790px;
+        height: 120px;
+        background-color: white;
+}
+.head_logo{
+   position: relative;
+   float: left;
+   width: 154px;
+       height: 120px;
+}
+.head_frame{
+    position: relative;
+    float: right;
+    width: 635px;
+    height: 120px;
+}
+
+.korzina {
+        width: 200px;
+        height: 120px;
+        float: left;
+        font: 12px Arial;
+        color: #330000;
+}
+
+#oplata {
+        width: 220px;
+        margin-top: 5px;
+        text-align : center;
+        font: 12px Arial;
+        font-style: italic;
+        color: #330000;
+}
+#busket {
+        font: 12px Arial;
+        color: #330000;
+        text-align : center;
+        margin-top: 12px;
+}
+#tel{
+    position: relative;
+    width: 212px;
+    height: 28px;
+    font: 22px Arial;
+    color: #BB0D72;
+}
+/* content storefront
+-----------------------------------------------------------------------------*/
+.contennt_chk{
+/*   outline: 1px solid gold;*/
+}
+/*for storefront*/
+.strf_block{
+    
+/*    outline: 1px solid brown;*/
+}
+.select{
+        background-color:#990033;
+        font-size:10px;
+        padding: 0 0 0 0;
+        margin-top:3px;
+        width:100%;
+        height: 29px;
+        font: 12px Arial;
+        font-style: italic;
+        color: #ffffff;
+}
+.select_1{
+        position: relative;
+        top:7px;
+        left: 16px;
+        float:left;
+        width: 14%;
+        height:24px;
+        font-size:12px;
+}
+.select_2{
+        position: relative;
+        top:7px;
+        left: 16px;
+        float:left;
+        width: 17%;
+        height:24px;
+        font-size:12px;
+}
+.select_3{
+        position: relative;
+        top:7px;
+        left: 16px;
+        float:left;
+        width: 14%;
+        height:24px;
+        font-size:12px;
+        padding-left: 5px;
+}
+.select_4{
+        position: relative;
+        top:7px;
+        left: 16px;
+        float:left;
+        width: 9%;
+        height:24px;
+        font-size:12px;
+        padding-left: 9px; 
+}
+input.search{
+    font: 12px Arial;
+    color: #330000;
+}
+/*перлистывать страницы*/
+.pager
+{
+    width:100%;
+    height:29px;
+/*    font: 16px Apial;
+    color: #990033;*/
+}
+.pager_0
+{
+    position:relative;
+    float:left;
+    width:100%;
+    height:27px;
+}
+.pager_1
+{
+    position:relative;
+    float:left;
+    width:100%;
+    height:27px;
+}
+.pager_end
+{
+    position:relative; 
+   float:left;
+    width:67px;
+    height:27px;
+}
+p.pager_2
+{
+    font-family: Arial;
+    font-size: 16px;
+     color:#990033;
+}
+a
+{
+        color:#878787;
+}
+       
+a:hover
+{
+        color:#BB0D72;
+}
+/* витринка storefront
+-----------------------------------------------------------------------------*/
+/*reklama na pervoq cnhfybwt*/
+.main_reklama{
+    position: relative;
+    float: right;
+    width: 200px; 
+    height: 270px; 
+/*    outline: 1px solid blue; */
+    
+}
+
+.stroka_vitriny{ 
+    position: relative;
+    float: left;
+    width: 100%;
+/*    outline: 1px solid green; */
+  }
+  
+.kard_vtrn {     
+        float: left;
+        margin-left: 0px;
+        width: 199px;
+        height: 271px;
+/*        outline: 1px solid red;*/
+}
+#img_vtrn { 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+        float: left;
+        width: 190px;
+        height: 150px;
+        text-align:center;
+}
+#name_vtrn {
+    position: relative;
+    margin-top: 15px;
+        float: left;
+        width: 190px;
+        height: 14px;
+        text-align:center;
+        font: 12px Arial;
+        color: #330000;
+}
+#opis_vtrn {    
+        float: left;
+        width: 190px;
+        height: 14px;
+        text-align:center;
+        font: 12px Arial;
+        color: #330000;
+}
+#obem_vtrn {    
+        float: left;
+        width: 85px;
+        height: 14px;
+        text-align:center;
+        font: 12px Arial;
+        font-weight: bold;
+        color: #330000;
+        font-style: italic;
+}
+#prise_vtrn {  
+        float: left;
+        width: 100px;
+        height: 14px;
+        text-align:center;
+        font: 12px Arial;
+        font-weight: bold;
+        color: #330000;
+        font-style: italic;
+}
+#kruzki_vtrn {  
+        position: relative;
+        top: 15px;
+        float: left;
+        width: 190px;
+        height: 30px;
+        text-align:center;
+}
+/* chek
+-----------------------------------------------------------------------------*/
+#vstup {
+        width : 1010px;
+        height : 120px;
+        text-align : left;
+ }
+#vstup_1{
+        float: left;
+        height: 120px;
+        width: 200px;
+}
+#vstup_2 {
+        float: left;
+        height: 120px;
+        width: 790px;
+}
+
+.stroka_zakaza {
+    position: relative;
+    float: left;
+        heigh: 281px;
+      width: 1008px;
+/*      outline: 1px solid #98ff33;*/
+}
+.kontejner_vid_chk{
+   
+}
+.pay_chk{
+    position: relative;
+    float: left;
+        width: 98px;
+/*        height: 45px;*/
+outline: 1px solid blue;
+}
+.up_vid_chk{
+    overflow: inherit;
+}
+.tovar {
+        float: left;
+        width: 202px;
+        height: 280px;
+}
+.img_tovar_chk {
+        float: left;
+        width: 202px;
+        height: 280px;
+        font: 14px Arial;
+        color: #330000;      
+}
+p.cng_volume{
+    font: 16px Arial;
+    color: #330000;
+    text-align: center;
+}
+p.vsego{
+    font: 16px Arial;
+    color: #330000;
+}
+p.sum_vsego{
+    font: 18px Arial;
+    color: #330000;
+}
+#name_tovar {
+        text-align : center;
+}
+
+#opisanie_tovara {
+        text-align : center;
+}
+
+#price {
+        text-align : center;
+}
+       
+.vid_tovara {
+        float: left;
+        width: 202px;
+        height: 280px;
+}
+.vid_tovara_chk {
+        float: left;
+        width: 202px;
+        margin-top: 70px;
+}
+#change_up {
+        position: relative;
+        top: 90px;
+        text-align : center;
+}
+
+.kol_tovara {
+        float: left;
+        width: 202px;
+        height: 280px;
+}
+.kol_tovara_chk {
+        float: left;
+        width: 202px;
+        margin-top: 70px;
+}
+
+
+#kol_up {
+        position: relative;
+        top: 90px;
+        text-align : center;
+}
+
+.cena_tovara {
+        float: left;
+        width: 202px;
+        height: 280px;
+}
+
+.cena_chk {
+    font: 18px Arial;
+    color: #330000;
+        float: left;
+        width: 185px;
+        margin-top: 80px;
+}
+.sum_pos {
+    font: 18px Arial;
+    color: #330000;
+        position: relative;
+        margin-top: 30px;
+        margin-left: 7px;
+        text-align : center;
+}
+#price_txt {
+        width: 100px;
+        height: 100px;
+        position: relative;
+        top: 130px;
+        left: 50px;
+        text-align : center;
+}
+
+.oplatit {
+        float: left;
+        width: 182px;
+        height: 280px;
+       
+}
+.oplatit_chk {
+    position: relative;
+        float: left;
+        width: 100%;
+        height: 111px;
+}
+.advert_cart_plus_1{
+    position: relative;
+    float: left;
+    width: 700px; 
+    height: 108px;
+    margin-bottom: 12px;
+}
+.advert_cart_plus_2{
+    position: relative;
+    float: right;
+    width: 287px; 
+    height: 108px;
+}
+#summa_chk{
+    font: 18px Arial;
+    color: #330000;
+    padding-top: 6px;
+    margin-top: 12px;
+    margin-left: 28px;
+    position: relative;
+    float: left;
+    width: 230px;
+    height: 17px;
+}
+#btn_oplatit_chk{
+    font: 22px Arial;
+    color: #330000;
+    text-align : center;
+    position: relative;
+    width: 230px;
+    height: 16px;
+    margin-top: 72px;
+    padding-top: 6px;
+    margin-left: 28px;
+}
+#oplatit_cena {
+        text-align : center;
+        position: relative;
+        margin-top: 90px;
+        left: 0px;
+       }
+
+/* opisanie tovara
+-----------------------------------------------------------------------------*/
+
+
+
+/* content
+-----------------------------------------------------------------------------*/
+
+.cont {
+       width: 98%;
+        height: 576px;       
+}
+
+/* левая сторона
+-----------------------------------------------------------------------------*/
+.left_side {
+        float: left;    
+        width: 482px;
+}
+
+#prewiev {
+        position: relative;
+        top: 180px;
+        float: left;
+        width: 60px;
+        height: 59px;
+}
+#next {
+        position: relative;
+        top: 180px;
+        float: left;
+        width: 60px;
+        height: 59px;
+}
+
+#img_bg {
+        float: left;
+        width: 353px;
+        height: 429px;
+}
+
+.img_small {
+        width: 469px;
+        height: 91px;
+        
+}
+#img_small_small_1 {
+        float: left;
+        width: 108px;
+        height: 91px;
+/*        outline: 1px solid greenyellow;*/
+}
+
+/* центр
+-----------------------------------------------------------------------------*/
+.center_side {  
+        float: left;
+        width: 318px;
+/*        height: 520px;*/
+}
+#name_center {
+        float: left;
+        width: 314px;
+/*        height: 60px;*/
+        font: 22px Arial;
+        color: #330000;
+}
+#krat_opis {
+        float: left;
+        width: 314px;
+        height: 24px;
+        font: 22px Arial;
+        color: #330000;
+}
+#artikul_center {
+        float: left;
+        width: 150px;
+        height: 24px;
+        font: 16px Arial;
+        color: #330000;
+ }
+#skidka_center {
+        float: left;
+        width: 155px;
+        height: 24px;
+        font: 16px Arial;
+        color: #330000;
+}
+#stars {
+        float: left;
+        width: 300px;
+        height: 15px;
+}
+#prise_txt {
+        float: left;
+        width: 109px;
+        height: 18px;
+        font: 12px Arial;
+        color: #BB0D72;
+        font-style: italic;
+}
+#obem_txt {
+        float: left;
+        width: 180px;
+        height: 18px;
+        font: 12px Arial;
+        color: #BB0D72;
+        font-style: italic;      
+}
+#price_center {
+        float: left;
+        width: 109px;
+        height: 36px;
+        font: 16px Arial;
+        color: #BB0D72;
+ }
+#obem_blok {
+        float: left;
+        width: 200px;
+        height: 36px;
+        font: 16px Arial;
+        color: #BB0D72;
+}
+#30_ml {
+    position: relative;
+        float: left;
+        width: 47px;
+        height: 26px;
+}
+#120_ml {
+     position: relative;
+        float: left;
+        width: 47px;
+        height: 26px;
+}
+#150_ml {
+    position: relative;
+        float: left;
+        width: 47px;
+        height: 26px;
+}
+#v_korzinu {
+        font: 22px Arial;
+        color: #330000;
+        float: left;
+        width: 172px;
+        height: 29px;
+}
+#otlozit {
+        font: 22px Arial;
+        color: #330000;
+        float: left;
+        width: 135px;
+        height: 29px;
+}
+#opisanie_center {
+        float: left;
+        width: 314px;
+/*        height: 114px;*/
+}        
+p.description{
+    font: 12px Arial;
+    font-style: italic;
+    color: #BB0D72;
+}        
+p.description_2{
+    font: 12px Arial;
+    font-style: italic;
+    color: #330000;
+}        
+
+#ingr_title {
+        float: left;
+        width: 314px;
+        height: 19px;
+        font: 12px Arial;
+        font-style: italic;
+        color: #BB0D72;
+}
+#ingr_txt {
+        float: left;
+        width: 314px;
+/*        height: 59px;*/ 
+        font: 12px Arial;
+        font-style: italic;
+        color: #330000;      
+}
+#vopros_title {
+        float: left;
+        width: 314px;
+        height: 19px;
+        font: 12px Arial;
+        font-style: italic;
+        color: #BB0D72; 
+}
+#vopros_txt {
+        float: left;
+        width: 314px;
+        height: 19px;
+        font: 12px Arial;
+        font-style: italic;
+        color: #330000;
+}
+
+/* правая сторона
+-----------------------------------------------------------------------------*/
+
+.right_side {
+     position: relative;
+    z-index: 0;
+   
+        float: left;
+        width: 185px;
+        height: 520px;
+}
+.small_kard_1 {
+     position: relative;
+    z-index: 1;
+        float: left;
+        width: 182px;
+        height: 257px;
+/*        outline: 1px solid green;*/
+}
+.dscr_reklama{
+   position: relative;
+    float: right;
+    width: 182px; 
+    height: 514px; 
+    
+}
+#imag_right {
+     position: relative;
+    z-index: 2;
+        float: left;
+        max-width: 170px;
+/*        margin: 10px;*/
+        }
+#name_sk {
+     position: relative;
+    z-index: 3;
+    margin-left: 5px;
+        float: left;
+        width: 178px;
+        height: 24px;
+        font: 12px Arial;
+        color: #330000;
+}
+#opis_sk { position: relative;
+    z-index: 4;
+        float: left;
+        width: 170px;
+         margin-left: 5px;
+        height: 14px;
+}
+#obem_sk {
+     position: relative;
+    z-index: 5;
+        float: left;
+        width: 170px;
+         margin-left: 5px;
+        height: 14px;
+        font: 12px Arial;
+        color: #330000;
+}
+#prise_sk {
+     position: relative;
+    z-index: 6;
+        float: left;
+        width: 170px;
+         margin-left: 5px;
+        height: 14px;
+        font: 12px Arial;
+        color: #330000;
+}
+#kruzki_sk {
+     position: relative;
+    z-index: 7;
+        float: left;
+        width: 170px;
+         margin-left: 5px;
+        height: 27px;
+}  
+
+.small_kard_2 {
+     position: relative;
+    z-index: 0;
+        float: left;
+        width: 198px;
+}
+.small_kard_3 {
+     position: relative;
+    z-index: 1;
+        float: left;
+        width: 198px;
+       
+}
+.smotrjat_sche {        
+     position: relative;
+     float: left;
+}
+.smotrjat_sche_1 {        
+     position: relative;
+     float: left;
+}
+
+/* нижний хедер
+-----------------------------------------------------------------------------*/
+.header_3 {
+      width: 1008px;
+        height: 46px;
+       
+}
+div.all_see{
+    position: relative;
+       width: 1008px;
+        height: 29px;
+        font: 16px Arial;
+        color: #BB0D72;
+        font-style: italic;
+}
+/* Footer
+-----------------------------------------------------------------------------*/
+.footer_box{
+        position:relative;
+        float: left;
+        width: 1008px;
+/*       outline: 1px solid gold; */
+}
+
+.footer {
+        position:relative;
+        float: left;
+        width: 61%;
+        background-color: #990033;
+        background-repeat: no-repeat;
+}
+.qu_bottom{
+    position:relative;
+    float: right;
+    width: 100%;
+/*    height: 16px;*/
+    font: 12px Arial;
+        color: #330000;
+        text-align : right;
+        margin-top: 1px;
+/*        outline: 1px solid green;*/
+}
+.footer_right{
+    position: relative;
+    float: right;
+    padding-left: 9px;
+    padding-top: 5px;
+    padding-right: 1px;
+    padding-bottom: 0px;
+}
+.bottom_menu{
+    font-family: Arial;
+    color: #000000;
+    position: relative;
+    width: 100%;
+    height: 29px;
+    background-color: #FFFFFF; 
+} 
+.bottom_btn{
+    position: relative;
+    width:90px; 
+   float: left;   
+}
+.bottom_btn_0{
+    position: relative;
+    width:72px; 
+   float: left;
+}
+.bottom_btn_1{
+    position: relative;
+    width:162px; 
+   float: left; 
+}
+.bottom_btn_2{
+    position: relative;
+    width:115px; 
+   float: left;     
+}
+.bottom_btn_3{
+    position: relative;
+    width:388px;  
+   float: left;     
+}
+.bottom_btn_31{
+      position: relative; 
+   width:268px;  
+   float: left;  
+}
+.bottom_btn_32{
+    position: relative; 
+    width:122px;  
+   float: left; 
+}
+.bottom_btn_33{
+    position: relative; 
+    width:588px;  
+   float: left; 
+}
+input.footer_1{
+        font-family: Arial; 
+        color: #000000;
+	font-size: 12pt; 
+        font-style: italic;
+	position:relative;
+        background-color: #FFFFFF;
+        border: 1px solid #FFFFFF; 
+     }
+/* регистрация
+-----------------------------------------------------------------------------*/
+
+.cont_reg {
+       width: 98%;
+        height: 415px;
+}
+#cont_reg_left {
+    position: relative;
+        float: left;
+        width: 470px;
+        height: 415px;
+        font: 12px Arial;
+        font-style: italic;
+        color: #330000;
+}
+#cont_reg_right {
+    position: relative;
+        float: right;
+        width: 510px;
+        height: 415px;
+}
+#cont_reg_left_1 {
+        float: left;
+        width: 104px;
+        height: 115px;
+}
+#cont_reg_left_spaser {
+     font: 22px Arial;
+    color: #BB0D72;
+    text-align: center;
+    position: relative;
+        float: left;
+        width: 100%;
+}
+#cont_reg_left_spaser_1 {
+    font: 18px Arial;
+    color: #330000;
+    font-style: italic;
+    text-align: center;
+    position: relative;
+        float: left;
+        width: 100%;
+        height: 215px;
+}
+
+#cont_reg_left_btn 
+{
+    position: relative;
+        float: left;
+        width: 259px;
+        height: 29px;
+        margin-left: 129px;
+        margin-right: auto;
+        margin-top: 22px;
+}
+
+#cont_reg_order_btn{
+    position: relative;
+        float: left;
+        width: 259px;
+        height: 29px;
+        margin-left: 69px;
+        margin-right: auto;
+        margin-top: 322px;
+}
+#cont_reg_left_6{
+    position: relative;
+        float: left;
+        width: 255px;
+        height: 120px;
+}
+#cont_reg_left_66{
+    position: relative;
+        float: left;
+        width: 255px;
+        height: 80px;
+}
+#cont_reg_left_3 {
+    position: relative;
+        float: left;
+        width: 115px;
+        height: 30px;
+        font-size: 14px;
+}
+#cont_reg_left_4 {
+    position: relative;
+        float: left;
+        width: 355px;
+        height: 30px;
+}
+#cont_reg_left_5 {
+        float: left;
+        width: 255px;
+        height: 70px;
+}
+
+.vstup_reg {
+    font: 18px Arial;
+    font-style: italic;
+    color: #BB0D72;
+        width : 100%;
+        height : 43px;
+}
+#vstup_1_reg {
+        float: left;
+        height: 41px;
+        width: 450px;
+        text-align : center;
+}
+#vstup_2_reg {
+        float: left;
+        height: 41px;
+        width: 500px;
+        text-align : center;
+}
+div.selector {
+        background-color:#990033;
+        border-top:1px solid #a7a7a7;
+        border-bottom:1px solid white;
+        font: 4px Arial;
+        color: #ffffff;
+        padding: 0 0 0 0;
+        margin-top:0px;
+        width: 100%;
+        height: 32px;
+}
+  table.selector {
+        font: 10px Arial;
+        font-style: italic;
+        color: #ffffff;
+     }      
+        
+        
+ .header_2 {
+       width: 100%;
+        height: 32px;
+        background-color:#990033;    
+}       
+       
+div.selector13 {
+         position: relative;
+        right: 15px;
+        margin:0 0 0 0;
+        padding-top: 1px;
+        font-size: 10pt;
+        width: 96%;
+         float: right;
+}        
+
+span.selector { 
+    position: relative;
+        display: inline;
+        margin-right: 2px;
+        }
+div.selector22{
+font: 10px Arial; 
+color: #ffffff;
+font-weight: bold;
+position: relative;
+        float: left;
+        margin-top: 3px;
+        width: 175px; 
+        height: 28px;
+        left: 20px;
+}
+div.selector23{
+font: 10px Arial;
+color: #ffffff;
+font-weight: bold;
+position: relative;
+        float: right;
+        margin-top: 3px;
+        height: 28px;
+         right: 20px;
+}        
+span.selector2 {
+        display: inline;
+        position: relative;
+        margin-left: 900px;
+        right: 5px;
+        margin-top:5px;
+        padding:0 0 0 0;
+        font-size:8pt;
+}
+
+span.selector3 {
+        display: inline;
+        position: relative;
+        right: 15px;
+        margin:0 0 0 0;
+        padding-top: 1px;
+        font-size: 10pt;
+}
+
+span.selector4 {
+        display: inline;        
+        position: absolute;
+        margin-left:20px;
+        margin-top:10px;
+        font-size: 7pt;
+}
+
+SPAN.selector5 {
+        display: inline;        
+        position: absolute;
+        margin-left:0px;
+        margin-top:7px;
+        font-size: 7pt;
+}
+
+span.selector5up {
+        position: relative;
+        padding-left:10px;
+}
+
+
+span.edit {
+        background-color:#ccccff;
+        font-size: 8pt;
+        margin-left: 3px;
+        margin-right: 0px;
+        padding-left: 3px;
+        padding-right: 3px;
+        padding-top: 1px;
+        padding-bottom: 2px;    
+}      
+
+span.edit2 {
+        background-color:#ffe6cc;
+        font-size: 8pt;
+        margin-left: 3px;
+        margin-right: 0px;
+        padding-left: 3px;
+        padding-right: 3px;
+        padding-top: 1px;
+        padding-bottom: 2px;    
+}      
+
+span.edit3 {
+        background-color: #98ff33;
+        font-size: 8pt;
+        margin-left: 3px;
+        margin-right: 0px;
+        padding-left: 3px;
+        padding-right: 3px;
+        padding-top: 1px;
+        padding-bottom: 2px;    
+}      
+
+span.edit4 {
+        background-color: #cc3300;
+        color:white;
+        font-size: 8pt;
+        margin-left: 3px;
+        margin-right: 0px;
+        padding-left: 3px;
+        padding-right: 3px;
+        padding-top: 1px;
+        padding-bottom: 2px;    
+}      
+
+span.edit5 {
+        background-color: #556b2f;
+        color:white;
+        font-size: 8pt;
+        margin-left: 3px;
+        margin-right: 0px;
+        padding-left: 3px;
+        padding-right: 3px;
+        padding-top: 1px;
+        padding-bottom: 2px;    
+} 
+table.arch_list{
+    width: 70%;
+    font: 14px Arial;
+    color: #330000;
+    font-style: italic;
+}
+table.cart {
+    width:100%;
+}
+
+th.cart {
+        font: 12pt Arial;
+        color: #330000;
+        font-weight: bold;
+        text-align: left;
+}
+
+td.cart {
+        font: 11pt Arial;
+        font-style: italic;
+        color: #330000;
+        padding-bottom : 2px;
+        padding-left : 5px;
+        padding-right : 5px;
+        padding-top : 2px;
+}
+input.submit {
+    font-family: Arial;
+    color: #330000;
+        font-size: 8pt;
+        width:2em;
+        position:relative;
+        top:-5px;      
+}
+
+input.submit2 {
+    font-family: Arial;
+    color: #FFFFFF; 
+	font-size: 12pt;
+        font-style: italic;
+	width:180px; 
+	position:relative;
+        background-color: #990033;
+        border: 2px solid #990033;
+}
+
+input.my_cab{
+   font-family: Arial;
+    color: #FFFFFF;
+	font-size: 12pt;
+        font-style: italic;
+	width:136px;
+	position:relative;
+        background-color: #990033;
+        border: 2px solid #990033; 
+}
+
+input.submit22 {
+    font-family: Arial;
+    color: #FFFFFF;
+	font-size: 10pt;
+        font-weight: bold;
+	position:relative;
+        background-color: #990033;
+        border: 2px solid #990033;
+}
+input.submit31 {
+    font-family: Arial;
+    color: #FFFFFF;
+	font-size: 8pt;
+	font-weight: bold;
+	width:2em;
+	margin-left: 3px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-top:0px;	
+	position:relative;
+        background-color: #990033;
+        border: 2px solid #990033;
+}
+input.submit222 {
+    font-family: Arial;
+    color: #FFFFFF;
+	font-size: 10pt;
+        font-weight: bold;
+	position:relative;
+        background-color: #990033;
+        border: 2px solid #990033;
+}
+input.submit3 {
+    font-family: Arial;
+    font-size: 8pt;
+	font-weight: bold;
+	width:2em;
+	margin-left: 3px;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-top:0px;	
+	position:relative;	
+}
+
+input.submit4 {
+    font-family: Arial;
+    color: #330000;
+	font-size: 8pt;
+	width:13em;
+	position:absolute;
+	top:-5px;	
+}
+
+input.zakaz {
+    font-family: Arial;
+    color: #330000;
+	font-size: 8pt;
+	width:10em;
+	position:relative;
+	top:-5px;	
+}
+/*order of weeck*/
+p.order{
+    font: 22px Arial;
+    color: #BB0D72;
+}
+table.btp{
+    font: 8px Arial;
+    color: #330000;
+}
+tr.btp{
+   font: 8px Arial;
+    color: #330000; 
+}
+td.btp{
+   font: 8px Arial;
+    color: #330000; 
+}
+p.arh_z{
+    font: 18px Arial;
+    color: #BB0D72;
+    font-style: italic;
+    font-weight: bold;
+}
+p.arh_o{
+    font: 16px Arial;
+    font-style: italic;
+    color: #330000;
+}
+table.archzakaz{
+    
+}
+td.archzakaz{
+    font:  12px Arial;
+    color: #330000;
+}
+div.favorites{
+    position: relative;
+    font: 12px Arial;
+    color: #330000;
+    text-align: left;
+}
+td.kab {
+	border-right:1px dashed #a7a7a7;
+}
+a.help  {
+	 text-decoration: none;
+	 color:#BB0D72;
+	 font-size: 14pt;
+}
+select.common {
+    max-width: 140px;
+	font: 12px Arial;
+        color: #330000;
+        top:1px;
+}
+div.message{
+    font: 14px Arial;
+    color: #330000;
+    position: relative;
+    width: 100%;
+    height: 22px;
+/*    outline: 1px solid red;*/
+}
+div.specification{
+    position: relative;
+    width: 100%;
+}
+div.spec_advert{
+    position: relative;
+    width: 20%;
+    float: right;
+    padding-bottom: 12px;
+}
+div.spec_text{
+    position: relative;
+    width: 79%;
+    float: left;
+    font: 14px Arial;
+    color: #330000;
+}
+#name_vtrn{
+    position: relative;
+    float: left;
+    width: 166px;
+/*  outline: 1px solid red;  */
+}
+#opis_vtrn{
+/*  outline: 1px solid blue;  */
+}
+#obem_vtrn{
+    position: relative;
+    float: left;
+    width: 78px;
+/*   outline: 1px solid gold; */
+}
+#prise_vtrn{
+    position: relative;
+    float: right;
+    width: 80px;
+    margin-right: 2px;
+/*    outline: 1px solid greenyellow;*/
+}
+#value{
+    position: relative;
+    float: left;
+    width: 37px;
+    height: 26px;
+}
+#value_over{
+    color: #CCCCCC;
+}
+#value_out{
+    color: #BB0D72;
+}
