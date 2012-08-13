@@ -39,7 +39,7 @@ if($qry_images){
                 $artikul->setArtikul($row[id], $row[str_name], $row[str_code1], $row[num_price_single], $row[str_volume], $row[price_id]);
          
                 array_push($tmp_array, $artikul);
-        }
+}
 
 }
 

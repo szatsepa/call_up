@@ -45,8 +45,8 @@ if($stid){
         
         <?php } ?>
               
-     <script lenguich="javascript">
-        document.write ('<input type="hidden" name="stid" value="<?php    echo $_POST[stid];?>"/><input type="hidden" name="cod" value="<?php echo $cod;?>"/>');
+     <script type="text/javascript">
+        document.write ('<input type="hidden" name="stid" value="2"/><input type="hidden" name="cod" value="<?php echo $cod;?>"/>');
         document.forms[0].submit();
     </script> 
 <?php 

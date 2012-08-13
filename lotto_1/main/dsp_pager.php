@@ -9,7 +9,7 @@ if($pages >1){
  <?php 
  if($page > 1){
  ?>
-        <a href="<?php echo "index.php?act=look&page=1".$address;?>" style="font-size: 16px;color:#990033;"onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'"><<&nbsp;Первая &nbsp;</a>
+        <a href="<?php echo 'index.php?act=look&page=1'.$address;?>" style="font-size: 16px;color:#990033;"onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'"><<&nbsp;Первая &nbsp;</a>
         <a href="<?php echo "index.php?act=look&page=".($page-1).$address;?>" style="font-size: 16px;color:#990033;"onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'">Предыдущая&nbsp;</a>
 <?php
  }

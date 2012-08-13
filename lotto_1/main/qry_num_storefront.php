@@ -14,5 +14,7 @@ $row = mysql_fetch_assoc($result);
 
 $stid = $row[id];
 
-$attributes[storefront] = $stid;
+//$attributes[storefront] = $stid;
+$attributes[storefront] = 1;
+
 ?>

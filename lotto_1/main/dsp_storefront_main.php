@@ -124,7 +124,7 @@ for($i=0;$i<4;$i++){
                         <div class = "kard_vtrn">
 				<div id = "img_vtrn">
                                     <form action="index.php?act=item_description" method="post">
-                                    <input type="image" src="main/act_prewiew.php?src=<?php echo "http://$_SESSION[domen]";?>/images/goods/<?php echo $image;?>&amp;width=80&amp;height=185"/>
+                                    <input type="image" src="main/act_prewiew.php?src=http://call-up.ru/images/goods/<?php echo $image;?>&amp;width=80&amp;height=185"/>
                                     <input type="hidden" name="price_id" value="<?php echo $price_id;?>"/>
                                     <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
                                     <?php if(!isset ($_SESSION[auth]) or $_SESSION[auth]==0){?>

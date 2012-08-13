@@ -1,6 +1,6 @@
 <?php
 
-function artikul($st_id, $select, $group,$search){
+function artikul($st_id, $select, $group, $search){
     
     if($select == "group" && $group == 'default'){
         
@@ -42,7 +42,7 @@ function artikul($st_id, $select, $group,$search){
         AND gp.pictype = 1
             AND pl.str_name LIKE '$string'
             GROUP BY pl.str_name
-                    ORDER BY pl.str_name";
+                    ORDER BY pl.str_barcode";
              
         }else{
             
@@ -69,7 +69,7 @@ function artikul($st_id, $select, $group,$search){
         AND p.status <> 2
         AND gp.pictype = 1
             GROUP BY pl.str_name
-                    ORDER BY pl.str_name";
+                    ORDER BY pl.str_barcode";
         }
         
     }else if (isset ($select) and $select == 'price'){
@@ -250,10 +250,10 @@ function artikul($st_id, $select, $group,$search){
 //    echo "$query<br/>";
     
     $qry_images = mysql_query($query) or die($query);
-    
 
-    
+        
+
           return $qry_images;  
-       
-}
+                
+    }
 ?>

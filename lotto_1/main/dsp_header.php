@@ -15,10 +15,10 @@ header('Content-Type: text/html; charset=utf-8');
         <meta name="description" content="" />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-        <link rel="stylesheet" href="/css/custom_style.css" type="text/css" media="screen, projection" />
-        <script type="text/javascript" src="/js/psw_validation.js"></script>
-        <script type="text/javascript" src="/js/my_function.js"></script>
-        <script type="text/javascript" src="/js/AC_runActiveContent.js"></script>
+        <link rel="stylesheet" href="./css/custom_style.css" type="text/css" media="screen, projection" />
+        <script type="text/javascript" src="./js/psw_validation.js"></script>
+        <script type="text/javascript" src="./js/my_function.js"></script>
+        <script type="text/javascript" src="./js/AC_runActiveContent.js"></script>
  </head>
 <?php 
 
@@ -39,13 +39,13 @@ include 'dsp_selector.php';
                         <form action="index.php?act=look" method="post">
                              <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
                              <input type="hidden" name="cod" value="<?php echo $attributes[cod];?>"/>
-                             <input type="image" src="<?php echo "http://$_SESSION[domen]";?>/images/storefront/logo_<?php echo $attributes[stid];?>.jpg" title="На главную" alt="На главную"/>
+                             <input type="image" src="../images/storefront/logo_<?php echo $attributes[stid];?>.jpg" title="На главную" alt="На главную"/>
                     
                         </form> 
                     </div>
                     <div class="head_frame">
                         
-                         <img src="<?php echo "http://$_SESSION[domen]";?>/images/storefront/H_<?php echo $attributes[stid];?>.jpg" width="635" height="120"  alt="верхний баннер"/>
+                         <img src="../images/storefront/H_<?php echo $attributes[stid];?>.jpg" width="635" height="120"  alt="верхний баннер"/>
                     
                     </div>
                 </div>

@@ -27,8 +27,8 @@ if ($_SERVER["SERVER_NAME"] == "localhost" or $_SERVER["SERVER_NAME"] == "192.16
 	$host          = $_SERVER["HTTP_HOST"]."/call";
 	} else {
 	$environment = "pro";
-	$link = mysql_connect("localhost:/tmp/mysqld.sock","afood", "zhivzhrathochet") or die ("Ошибка");
-	mysql_select_db("afood_shop_ru");
+	$link = mysql_connect("localhost:/tmp/mysqld.sock","call_up", "call2010") or die ("Ошибка");
+	mysql_select_db("call_up_ru");
     mysql_query ("SET NAMES utf8");
     $document_root = $_SERVER["DOCUMENT_ROOT"];
 	$host          = $_SERVER["HTTP_HOST"];

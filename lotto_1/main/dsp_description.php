@@ -17,12 +17,12 @@
                                 <input type="hidden" name="artikul" value="<?php echo $attributes[artikul];?>"/>
                                 <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
                                 <input type="hidden" name="price_id" value="<?php echo $attributes[price_id];?>"/>
-                                <input type="image" src="http://<?php echo $_SESSION[domen];?>/images/storefront/back_btn.jpg" <?php echo $btn[status];?> />
+                                <input type="image" src="http://call-up.ru/images/storefront/back_btn.jpg" <?php echo $btn[status];?> />
                             </p>
                         </form>
                     </div>
                     <div id = "img_bg">
-                        <img src="main/act_prewiew.php?src=http://<?php echo $_SESSION[domen];?>/images/goods/<?php echo $item_img;?>&width=338&height=411"/>
+                        <img src="main/act_prewiew.php?src=http://call-up.ru/images/goods/<?php echo $item_img;?>&width=338&height=411"/>
                     </div>
                     <div id = "next">
 
@@ -35,7 +35,7 @@
                                 <input type="hidden" name="artikul" value="<?php echo $attributes[artikul];?>"/>
                                 <input type="hidden" name="img" value="<?php echo ($img + 1);?>"/>
                                 <input type="hidden" name="price_id" value="<?php echo $attributes[price_id];?>"/>
-                               <input type="image" src="http://<?php echo $_SESSION[domen];?>/images/storefront/next_btn.jpg" <?php echo $btn[status];?>/>
+                               <input type="image" src="http://call-up.ru/images/storefront/next_btn.jpg" <?php echo $btn[status];?>/>
                            </p>
                         </form>
                     </div>

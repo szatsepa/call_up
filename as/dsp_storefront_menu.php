@@ -447,7 +447,7 @@ if(file_exists ($filename )){
     <tr>
         <td align="left" valign="top"><strong>Контроль витрины </strong><br><br></td>
               <td>
-                <form action="http://<?php echo $domen[where_res];?>/index.php?act=look" method="post" target="_blank">
+                <form action="http://<?php echo $domen[where_res];?>" method="post" target="_blank">
                     <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
                     <input type="hidden" name="user_id" value="<?php echo $_SESSION[id];?>"/>
                     <input type="submit" name="open" value="Посмотреть витрину"/>
