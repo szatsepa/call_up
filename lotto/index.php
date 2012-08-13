@@ -30,8 +30,7 @@ if(!isset($_SESSION)){
         unset($_SESSION[auth]);
      } 
 
-//print_r($_SESSION);  
-
+//print_r($_SESSION); 
 //print_r($attributes); 
 //echo "<br>";
 
@@ -59,7 +58,8 @@ if(isset ($_SESSION[auth]) && $_SESSION[auth] > 0){
    
     include 'main/act_checkauth.php';
 }
-
+$attributes[stid] = 2;
+$_SESSION[domen] = "call-up.ru";
 
 $storefront = new Storefront();
 

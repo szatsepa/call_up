@@ -30,7 +30,8 @@ if(!isset($_SESSION)){
         unset($_SESSION[auth]);
      } 
 
-//print_r($_SESSION); 
+//print_r($_SESSION);  
+
 //print_r($attributes); 
 //echo "<br>";
 
