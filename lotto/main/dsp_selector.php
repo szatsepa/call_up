@@ -11,8 +11,8 @@ if (!isset ($_SESSION[user])) {
         
         <form action="index.php?act=authentication" method="post">
            Ключ:
-            <input type="password" required name="code" size="14" style='font-size:8pt;'/>
-            <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"  />
+            <input type="password" required name="code" size="14" value="cr_0378" style='font-size:8pt;'/>
+            <input type="hidden" name="stid" value="2"  />
             <input type="submit" value="&gt;&gt;" class='submit3' style='color:green' />
         </form>
     </div>

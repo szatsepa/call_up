@@ -1387,3 +1387,11 @@ div.spec_text{
 #value_out{
     color: #BB0D72;
 }
+a.to_cart{
+   color: #878787;
+   text-decoration: underline;
+   cursor: pointer;
+}
+a.to_cart:hover{
+    color: #BB0D72;
+}

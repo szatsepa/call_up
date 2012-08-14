@@ -101,13 +101,18 @@ class Name_artikul{
     var $unit;
     var $volume = array();
     var $barcode;
-    var $artikles = array();
+//    var $artikles = array();
+    var $id;
     
     function Name_artikul(){
         
     }
 
-    function setName_artikul($name, $artikul, $price_id){
+    function setName_artikul($name, $artikul, $price_id){  
+        
+        $this->artikul = $artikul;
+        $this->name = $name;
+        $this->pricelist = $price_id; 
         
       $artikul = quote_smart($artikul);
       
@@ -121,32 +126,34 @@ class Name_artikul{
                             p.id AS pricelist_id,
                             pl.num_price_single,
                             pl.id AS goods_id,
-                            pl.str_barcode AS barcode
+                            pl.str_barcode AS barcode,
+                            pl.id
                         FROM pricelist AS pl, 
                             goods_pic AS gp, 
                             price AS p
                         WHERE gp.barcode = pl.str_barcode 
-                            AND pl.str_name = $name
+                            AND pl.str_code1 = $artikul
                             AND p.id = $price_id
                         ORDER BY gp.id";
         
-//        echo "$query<br>";
+//        echo "$query<br>"; 
     
     $qry_name = mysql_query($query) or die($query);
     
         while($row = mysql_fetch_assoc($qry_name)){
-            $this->name = $row[str_name];
+//            $this->name = $row[str_name];
             $this->state = $row[str_state];
             $this->pakage = $row[str_pakage];
             $this->group = $row[str_group];
             $this->unit = $row[str_unit];
-            $this->pricelist = $row[pricelist_id];
+//            $this->pricelist = $row[pricelist_id];
             $this->img = $row[good_picture];
             $this->p_name = $row[comment];
             $this->barcode = $row[barcode];
+            $this->id = $row[id];
         }
-        
-              
+//        
+//              
       $query = "SELECT  pl.id, 
                         pl.str_code1, 
                         pl.str_barcode, 

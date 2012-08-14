@@ -16,8 +16,9 @@ header('Content-Type: text/html; charset=utf-8');
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="./css/custom_style.css" type="text/css" media="screen, projection" />
-         <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js'></script>
+        <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js'></script>
         <script type="text/javascript" src="./js/psw_validation.js"></script>
+        <script type="text/javascript"  src="./js/description.js"></script>
         <script type="text/javascript" src="./js/my_function.js"></script>
         <script type="text/javascript" src="./js/AC_runActiveContent.js"></script>
  </head>
