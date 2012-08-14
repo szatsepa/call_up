@@ -56,7 +56,7 @@ unset ($artikul);
 
 $var = new Artikul();
 
-if(count($tmp_array) < 9){
+if(count($tmp_array) < 999){
     
     for($i = count($tmp_array); $i < 10; $i++){
         
@@ -78,8 +78,8 @@ unset ($var);
 
 foreach ($tmp_array as $key => $value) {
     
-   if($key < 9){
-       
+   if($key < 999){
+   
        $store_arr[$key] = $value;
        
    }else{
@@ -93,7 +93,7 @@ $huj = new Artikul();
 
 $huj->setArtikul(NULL, null, NULL, NULL, NULL,NULL);
 
-$store_arr[9] = $huj;  
+$store_arr[999] = $huj;  
 
 unset ($huj);
 

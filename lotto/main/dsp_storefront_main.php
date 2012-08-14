@@ -1,6 +1,3 @@
- 
-<!--контент-->
-	
 <?php
 include 'cnt_storefront.php';
 
@@ -9,7 +6,7 @@ if($cnt > 0){
 
 //определим количество страниц
 
-$pages = ceil(($cnt/20));
+$pages = floor(($cnt/90));
 
 
 ?>
@@ -24,7 +21,7 @@ $pages = ceil(($cnt/20));
      $page = intval($attributes[page]);
 //     $pg = $attributes[page];
      
-     $start = 20*($page-1);
+     $start = 90*($page-1);
      
 //  echo "page $page start $start<br/>";   
      
@@ -55,9 +52,9 @@ if(isset ($attributes)){
 include 'dsp_pager.php';
 // echo "dlina massiva $cnt i nomer stranitsy $pg kolkist storinok $pages startovy numer $start<br>";
      
-if(($start+20)>$cnt){ 
+if(($start+90)>$cnt){ 
     
-	$start = $cnt - 20;
+	$start = $cnt - 90;
         
 }
     
@@ -74,7 +71,7 @@ $lenght = count($store_arr);
 
 $pos_adv = 0;
 
-for($i=0;$i<4;$i++){
+for($i=0;$i<9;$i++){
     
     ?>
    <div class = "stroka_vitriny">
@@ -83,13 +80,12 @@ for($i=0;$i<4;$i++){
        
        <?php
 
-	for($ii=0;$ii<5;$ii++){
+	for($ii=0;$ii<10;$ii++){
 
             if(!$store_arr[$start]){
                 break;
             }
 
-//            echo "<br/>";
             $id = $store->id;
             $artikul_i = $store_arr[$start]->artikul;
             $image = $store_arr[$start]->image;
@@ -107,7 +103,7 @@ for($i=0;$i<4;$i++){
                 
                 $name = iconv("WINDOWS-1251", "UTF-8", $name);
             
-            if($pos_adv == 9){ ?>
+            if($pos_adv == 999){ ?>
                 <div class="main_reklama">
                 
         <?php 
@@ -124,7 +120,7 @@ for($i=0;$i<4;$i++){
                         <div class = "kard_vtrn">
 				<div id = "img_vtrn">
                                     <form action="index.php?act=item_description" method="post">
-                                    <input type="image" src="main/act_prewiew.php?src=http://call-up.ru/images/goods/<?php echo $image;?>&amp;width=80&amp;height=185"/>
+                                    <input type="image" src="main/act_prewiew.php?src=http://call-up.ru/images/goods/<?php echo $image;?>&amp;width=60&amp;height=60"/>
                                     <input type="hidden" name="price_id" value="<?php echo $price_id;?>"/>
                                     <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
                                     <?php if(!isset ($_SESSION[auth]) or $_SESSION[auth]==0){?>
@@ -133,14 +129,14 @@ for($i=0;$i<4;$i++){
                                     <input type="hidden" name="artikul" value="<?php echo $artikul_i;?>"/>
                                     </form>
                                 </div>  
-				<div id = "name_vtrn">
-                                   <a href="index.php?act=item_description&artikul=<?php echo $artikul_i.$address.'&price_id='.$price_id;?>"><?php echo $name;?></a>
-                                   <br/>
+<!--				<div id = "name_vtrn">-->
+<!--                                   <a href="index.php?act=item_description&artikul=<?php echo $artikul_i.$address.'&price_id='.$price_id;?>"><?php echo $name;?></a>
+                                   <br/>-->
                                    
-                                <div id = "opis_vtrn"><?php echo $stid;?></div>
-				<div id = "obem_vtrn"><?php echo $volume;?> кг.</div>
-				<div id = "prise_vtrn">Цена <?php echo $price;?></div>
-                                </div>
+<!--                                <div id = "opis_vtrn"><?php echo $stid;?></div>-->
+<!--				<div id = "obem_vtrn"><?php echo $volume;?> кг.</div>-->
+<!--				<div id = "prise_vtrn">Цена <?php echo $price;?></div>-->
+<!--                                </div>-->
 			</div>
                  
          <?php       
@@ -189,4 +185,10 @@ if(isset($attributes[reg]) && $attributes[reg] == 1){?>
   
 }
 ?>
+<script type="text/javascript">
+    $(document).ready(function () {
+    
+//    $("div").css('outline','1px solid red');
+});
+</script>
 

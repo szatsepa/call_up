@@ -218,8 +218,8 @@ a:hover
 .kard_vtrn {     
         float: left;
         margin-left: 0px;
-        width: 199px;
-        height: 271px;
+        width: 98px;
+        height: 136px;
 /*        outline: 1px solid red;*/
 }
 #img_vtrn { 
@@ -227,8 +227,8 @@ a:hover
     margin-right: auto;
     margin-top: 0;
         float: left;
-        width: 190px;
-        height: 150px;
+        width: 90px;
+        height: 120px;
         text-align:center;
 }
 #name_vtrn {
@@ -1356,7 +1356,7 @@ div.spec_text{
 #name_vtrn{
     position: relative;
     float: left;
-    width: 166px;
+    width: 90px;
 /*  outline: 1px solid red;  */
 }
 #opis_vtrn{
