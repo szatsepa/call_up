@@ -24,7 +24,9 @@ $query = "SELECT DISTINCT a.id,
                           g.price_id,
                           p.comment price_name,
 						  u.surname,
-a.report 
+a.report,
+                         a.c_number 
+
           FROM arch_zakaz AS a, 
                arch_goods AS g,
                price AS p,

@@ -31,7 +31,7 @@ while ($row = mysql_fetch_assoc($qry_zakazweek)) {
     }
     if($row["status"] == 6) $status = "<span class='edit5'>Выполнен</span>";
     
-    $dat = $zakaz[$row["weekday"]]."<p style='margin-left:5px;margin-top:5px;margin-bottom:10px;margin-right:3px;'><a href='index.php?act=view_arch_order&stid=".$attributes[stid]."&id=".$row["id"]."'>N".$row["id"]."&nbsp;".$row["zakaz_date"]."<br />".$row["price_name"]."</a><br />".$status."</p>";
+    $dat = $zakaz[$row["weekday"]]."<p style='margin-left:5px;margin-top:5px;margin-bottom:10px;margin-right:3px;'><a href='index.php?act=view_arch_order&stid=".$attributes[stid]."&id=".$row["id"]."'>N".$row["c_number"]."&nbsp;".$row["zakaz_date"]."<br />".$row["price_name"]."</a><br />".$status."</p>";
 
     $zakaz[$row["weekday"]] = $dat;
     
@@ -46,11 +46,14 @@ while ($row = mysql_fetch_assoc($qry_zakazweek)) {
 <div style="margin-left:5px;">
     <p class="order">Заказы по дням недели:</p>
 <table class='cart'>
+    <thead>
 <?php
 foreach ($days as $day) {
 ?>
 <th  class='cart' style="width:10em;"><?php echo $day;?></th>
 <?php } ?>
+</thead>
+<tbody>
 <tr>
 <?php
 foreach ($zakaz as $dat) {
@@ -58,6 +61,7 @@ foreach ($zakaz as $dat) {
 <td class='cart' style="text-align:left;" valign="top"><?php echo $dat;?><br/>&nbsp;</td>
 <?php } ?>
 </tr>
+</tbody>
 </table>
     
     <p><a href="index.php?act=all_orders&amp;stid=<?php echo $attributes[stid];?>" class="help" style="text-decoration:underline;">Архив заказов</a>&nbsp;&nbsp;</p>

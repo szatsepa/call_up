@@ -19,7 +19,8 @@ $query = "SELECT DISTINCT a.id,
                           DATE_FORMAT(a.time, '%d.%m.%y') zakaz_date,
                           g.price_id,
                           p.comment price_name,
-                          a.status
+                          a.status,
+                          a.c_number 
                       FROM arch_zakaz AS a,
                            arch_goods AS g,
                            price AS p

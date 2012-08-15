@@ -24,6 +24,8 @@ $comment = quote_smart($attributes[desire]);
 
 $tags = quote_smart($attributes[mark]);
 
+$c_num = numOrder();
+
 // Соберем статистику о пользователе
 
 $ip = $_SERVER['REMOTE_ADDR'];
@@ -75,7 +77,8 @@ $query = "INSERT INTO arch_zakaz
            ip,
            resolution,
            agent,
-           tags) 
+           tags,
+            c_number) 
           VALUES 
           ($id,
           $exe_time,
@@ -86,7 +89,8 @@ $query = "INSERT INTO arch_zakaz
           $ip,
           $resolution,
           $agent,
-          $tags)";
+          $tags,
+        $c_num)";
 
 $qry_add = mysql_query($query) or die($query);
 
@@ -170,4 +174,14 @@ if ($zakaz) {
                            
             <?php 
              
-}?>
+}
+function numOrder(){
+    $str = '';
+    for($i=0;$i<6;$i++){
+        $tmp = rand(0,9);
+        $str .= "$tmp";
+    }
+    
+    return $str;
+}
+?>

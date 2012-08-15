@@ -21,7 +21,8 @@ $query = "SELECT DISTINCT a.id,
                           DATE_FORMAT(a.time, '%d.%m.%y') zakaz_date,
                           g.price_id,
                           p.comment price_name,
-                          a.status
+                          a.status,
+                          a.c_number
                       FROM arch_zakaz AS a,
                            arch_goods AS g,
                            price AS p
@@ -30,7 +31,7 @@ $query = "SELECT DISTINCT a.id,
                         AND p.id=g.price_id
                        AND TO_DAYS(NOW()) - TO_DAYS(a.time) >= 54  
                       ORDER BY weekday,
-                            a.id DESC";
+                            a.id DESC"; 
 
 
 $qry_archzakazlist = mysql_query($query) or die($query);
@@ -51,7 +52,8 @@ $query = "SELECT DISTINCT a.id,
                           g.price_id,
                           p.comment price_name,
                           a.status,
-                          a.tags
+                          a.tags,
+                          a.c_number
                       FROM arch_zakaz AS a,
                            arch_goods AS g,
                            price AS p

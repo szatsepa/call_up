@@ -1,6 +1,20 @@
+<?php 
+function numOrder(){
+    $str = '';
+    for($i=0;$i<6;$i++){
+        $tmp = rand(0,9);
+        $str .= "$tmp";
+    }
+    
+    return $str;
+}
+//print_r($arhorder_array);
+//$no = numOrder();
+//echo $no; 
+?>
 <h3><?php echo $user["company_name"]; ?></h3>
 <?php include "main/dsp_message.php";
-	  include ("main/act_md5name.php");
+	  include ("main/act_md5name.php"); 
  ?>
 
 <script>
@@ -13,13 +27,13 @@ function timer()
   if (sec<0) /* следующая минута */
   {
     sec = 59;
-    min--;
-  }
+    min--; 
+  } 
 if (min==0 && sec==0)
   {
-    clearInterval(timerid); /* останавливаем таймер */
+    clearInterval(timerid); /* останавливаем таймер */ 
 
-document.location.href = "http://shop.animals-food.ru/index.php?act=supplier";
+document.location.reload();
 
    
   }
@@ -36,19 +50,18 @@ timerid = setInterval(timer,1000); /* запускаем таймер */
         <td valign="top" class="kab">
             <table border="0" cellpadding="5" cellspacing="5" width="230">
                 <tr>
-                	<td><div class="kab">Новые заказы</div></td>
+                	<td><div class="kab">Новые заказы</div></td> 
                 </tr>
 				<tr><td><?php
          
-				 foreach ($users_array as $row) { 
-                                    
-//                                    array_push($orders_arr, $row);
+				 foreach ($users_array as $row) {  
+//                                    $row["id"] = numOrder();
                                     
 					if ($row["status"] == 1 or $row["status"] == 4) {
-						echo "<p>N".$row["id"]."&nbsp;".$row["zakaz_date"];
+						echo "<p>N".$row["c_number"]."&nbsp;".$row["zakaz_date"];
 						
 						// Отсроченный заказ?
-						if ($row["exe_date"] != '') {
+						if ($row["exe_date"] != '') { 
 						
 							echo "<br /><strong><small>Исполнить ".$row["exe_date"]."</small></strong>";
 						
@@ -61,7 +74,9 @@ timerid = setInterval(timer,1000); /* запускаем таймер */
 //				if (mysql_num_rows($qry_allcompanyzakaz) > 0) {
 //					mysql_data_seek($qry_allcompanyzakaz,0);
 //				}
-				 ?></a></td></tr>				
+				 ?>
+<!--                                        </a>-->
+                                    </td></tr>				
             </table>
         </td>
             
@@ -73,7 +88,7 @@ timerid = setInterval(timer,1000); /* запускаем таймер */
                                 <tr><td><?php
                                 foreach ($customers_array as $row) {  
                                         if ($row["status"] == 1 or $row["status"] == 4) {
-                                                echo "<p>N".$row["id"]."&nbsp;".$row["zakaz_date"];
+                                                echo "<p>N".$row["c_number"]."&nbsp;".$row["zakaz_date"];
                                                 
                                                 // Отсроченный заказ?
                                                 if ($row["exe_date"] != '') {
@@ -89,7 +104,9 @@ timerid = setInterval(timer,1000); /* запускаем таймер */
                                 if (mysql_num_rows($qry_customer_orders) > 0) {
                                         mysql_data_seek($qry_customer_orders,0);
                                 }
-                                 ?></a></td></tr>                               
+                                 ?>
+                                        </a>
+                                    </td></tr>                               
             </table></td>                
                     <!-- END INSERTED -->
           
@@ -107,7 +124,7 @@ timerid = setInterval(timer,1000); /* запускаем таймер */
                                 
                                 rsort($arhorder_array);
                                 
-                                
+//                                print_r($row) ;                             
                                                                  
 				foreach ($arhorder_array as $row) { 
                                     
@@ -127,7 +144,7 @@ timerid = setInterval(timer,1000); /* запускаем таймер */
                                 
 					// Выводим только подтвержденные и отгруженные заказы
 					if ($row["status"] == 2 or $row["status"] == 5) {
-						echo "<p style='color: ".$color.";'>N".$row["id"]."&nbsp;".$row["zakaz_date"];
+						echo "<p style='color: ".$color.";'>N".$row["c_number"]."&nbsp;".$row["zakaz_date"];
 						
 						// Отсроченный заказ?
 						if ($row["exe_date"] != '') {
@@ -199,7 +216,7 @@ timerid = setInterval(timer,1000); /* запускаем таймер */
                         mysql_data_seek($qry_companycart,0);
                     }
                     
-                    $where = whereS(9);  
+                    $where = whereS(9);    
                     
 			        echo "<div style='margin-bottom:0px;'>".$rowcount.".<a href='index.php?act=single_price&pricelist_id=".$row["id"].$urladd."'>".$row["comment"]."</a>"; ?>&nbsp;<a href='#' class='cloud' title='Удалить' onclick='javascript:blockPrice("<?php echo $row["id"].$urladd; ?>",<?php echo $zakaz_exists; ?>,0); return false;'>x</a></div><br />
 					<?php if ($row["status"] == 2) { ?><span class="edit"><a href="index.php?act=edit_price&amp;pricelist_id=<?php echo $row["id"].$urladd ?>">Редактировать</a></span><?php } if ($row["status"] == 1){ ?><span class="edit2"><a href='#' onclick='javascript:blockPrice("<?php echo $row["id"].$urladd; ?>",<?php echo $zakaz_exists; ?>,2); return false;'>Блокировать</a></span>
