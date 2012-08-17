@@ -141,7 +141,7 @@ class Name_artikul{
     $qry_name = mysql_query($query) or die($query);
     
         while($row = mysql_fetch_assoc($qry_name)){
-//            $this->name = $row[str_name];
+            $this->name = $row[str_name];
             $this->state = $row[str_state];
             $this->pakage = $row[str_pakage];
             $this->group = $row[str_group];

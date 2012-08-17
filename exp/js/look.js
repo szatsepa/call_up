@@ -18,6 +18,10 @@
         
         var C_array = new Array();
         
+        var check_B = new Array(0,0,0,0,0,0,0,0,0);
+         
+        var check_C = new Array(0,0,0,0,0,0,0,0,0);
+        
         var n = 0;
         
         var uid = $("#uid").val();
@@ -35,9 +39,9 @@
                var artikul = this.name;
                if(atr != 'disabled'){
                    if(code != undefined){
-                       document.location.href = "?act=dscr&artikul="+artikul+"&price_id=2&stid=2&cod="+code;
+                       document.location.href = "?act=dscr&artikul="+artikul+"&cod="+code;
                    }else{
-                       document.location.href = "?act=dscr&artikul="+artikul+"&price_id=2&stid=2"; 
+                       document.location.href = "?act=dscr&artikul="+artikul; 
                    }
                     
                }
@@ -108,8 +112,9 @@
 //                       str += "#"+id+'; ';
                    }  
                });
-           }else if(A_array.length == 5 && page == 1){
-               for(var i = 0;i < 89;i++){
+           }
+           if(A_array.length == 5 && page == 1){
+               for(var i = 0;i < 90;i++){
                        var id = i;
                        var did = (i+1);
                        if(i<9){
@@ -121,17 +126,34 @@
 //                      
                    }
            }
+           if(page == 2 && B_array.length < 10 && A_array.length == 5){
+               $.each(B_array, function(){
+                   var num = this;
+                   num = num.substr(1,2);
+                   var row = Math.floor(num/10);
+//                   str += row+"; "
+                   for(var i = (row*10);i < 10*(row+1);i++){
+                       var id = i;
+                       var did = (i+1);
+                       if(i<9){
+                           id="0"+i;
+                           did="0"+(i+1); 
+                       }
+                       $("#"+id).attr({'disabled':'disabled'});
+                       $("#b"+did).css({'background-color':'#eeeeee'}); 
+//                       str += "#"+id+'; ';
+                   }  
+               });
+           }
 //           alert(str);
            return false;
        }
        function checkButton(){
-//           var str = '';
            $("#cont").each(function(nd,my_div){
                $('#' + $(my_div).attr('id') + ' input:image').each(function(nd, inputData){
                 var input_id = inputData.id;
                 $("#"+input_id).attr({'disabled':false});
                 input_array.push(input_id);
-//                str += input_id+";  ";
                 n++;
             });
            });

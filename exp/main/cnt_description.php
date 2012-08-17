@@ -7,9 +7,9 @@
     $name_artikul = new Name_artikul();
     
     $name_artikul->setName_artikul($name, $attributes[artikul],$price_id);
-    
+//    echo "<br>";    
 //    print_r($name_artikul);
-//    echo "<br>";
+//    echo "<br>";  
     ?>
 <script type="text/javascript">
     var artikul = {group:<?php echo $name_artikul->group;?>, artikul:<?php echo $attributes[artikul];?>,uid:<?php echo $_SESSION[id];?>,cod:<?php echo $attributes[cod];?>};

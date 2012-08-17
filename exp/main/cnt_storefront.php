@@ -19,6 +19,10 @@ if(isset ($store_arr)){
     }
 }
 
+if(!isset($attributes[page]) && isset($_SESSION[page])){
+    $attributes[page] = $_SESSION[page];
+}
+
 //создадим массив для хранения товаров витрины
 
 $tmp_array = array();

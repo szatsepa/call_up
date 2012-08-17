@@ -25,6 +25,8 @@ $pages = floor(($cnt/90));
      
      $page = 1;
  } 
+ 
+ $_SESSION[page] = $page;
      
 $address = "";
     

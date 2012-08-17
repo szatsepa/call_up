@@ -31,7 +31,7 @@ if(!isset($_SESSION)){
      } 
 
 //print_r($_SESSION); 
-//print_r($attributes); 
+
 //echo "<br>";
 
 include 'main/cnt_classes.php';
@@ -48,7 +48,8 @@ include 'main/qry_storefront_info.php';
 //    session_unset();
 //    session_destroy();
 //}
-$attributes[stid]=2;
+
+
 if(isset($attributes[act]))include 'main/qry_domen.php';
 include ("main/qry_good_img.php");
 include ("main/qry_customer.php");
@@ -59,9 +60,12 @@ if(isset ($_SESSION[auth]) && $_SESSION[auth] > 0){
     include 'main/act_checkauth.php';
 }
 $attributes[stid] = 2;
+$attributes[price_id]=2; 
 $_SESSION[domen] = "call-up.ru";
 
 $storefront = new Storefront();
+
+//print_r($attributes); 
 
 switch ($attributes[act]) {  
     
