@@ -18,29 +18,30 @@
     
   if(isset ($attributes[cod])) $str_code = "&amp;cod=$attributes[cod]";
   
-  $imgs_array = art_Images($attributes[artikul]);          
+  $imgs_array = art_Images($attributes[artikul]);  
+//  print_r($imgs_array);
   
-  $item_img = $art_arr[id].".jpg";
+//  $item_img = $art_arr[id].".jpg";
   
-  
-  if(isset ($attributes[img]) && count($imgs_array)){
-      
-      $img = intval($attributes[img]);
-      
-      if($img == count($imgs_array)){
-          
-          $img = 0;
-          
-          $item_img = $art_arr[id].".jpg";
-          
-      }  else {
-          
-          $item_img = $imgs_array[$img][id].'.'.$imgs_array[$img][extention];
-          
-      }
-      
-      
-      
-  }
+   $item_img = $imgs_array[0][id].'.'.$imgs_array[0][extention];
+//  if(isset ($attributes[img]) && count($imgs_array)){
+//      
+//      $img = intval($attributes[img]);
+//      
+//      if($img == count($imgs_array)){
+//          
+//          $img = 0;
+//          
+//          $item_img = $art_arr[id].".jpg";
+//          
+//      }  else {
+//          
+//          $item_img = $imgs_array[$img][id].'.'.$imgs_array[$img][extention];
+//          
+//      }
+//      
+//      
+//      
+//  }
   
 ?>

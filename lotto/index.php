@@ -31,7 +31,7 @@ if(!isset($_SESSION)){
      } 
 
 //print_r($_SESSION); 
-//print_r($attributes); 
+//print_r($attributes);  
 //echo "<br>";
 
 include 'main/cnt_classes.php';

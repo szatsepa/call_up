@@ -42,13 +42,13 @@ include 'main/act_random_coder.php';
 include 'main/qry_advert.php';
 include 'main/dsp_advert_img.php';
 include 'main/qry_storefront_info.php';
-
-if(!isset ($attributes[stid])){
-
-    session_unset();
-    session_destroy();
-}
-
+//
+//if(!isset ($attributes[stid])){
+//
+//    session_unset();
+//    session_destroy();
+//}
+$attributes[stid]=2;
 if(isset($attributes[act]))include 'main/qry_domen.php';
 include ("main/qry_good_img.php");
 include ("main/qry_customer.php");
@@ -74,7 +74,7 @@ switch ($attributes[act]) {
         include 'main/dsp_footer.php';
         break;
     
-    case 'item_description':
+    case 'dscr':
         $title = "Описание товара";
         include 'main/qry_images.php';
         include 'main/dsp_header.php';

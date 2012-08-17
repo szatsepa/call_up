@@ -8,7 +8,7 @@ include 'connect.php';
 
 $uid = intval($_POST[uid]);
 
-$query = "SELECT c.artikul, pl.str_group FROM cart AS c, pricelist AS pl WHERE c.customer = $uid AND c.artikul = pl.str_code1";
+$query = "SELECT c.artikul, pl.str_group AS simbl FROM cart AS c, pricelist AS pl WHERE c.customer = $uid AND c.artikul = pl.str_code1";
 
 $out = array();
 
