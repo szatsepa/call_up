@@ -228,8 +228,9 @@ a:hover
     margin-top: 0;
         float: left;
         width: 90px;
-        height: 120px;
+        height: 90px;
         text-align:center;
+        padding-top: 15px;
 }
 #name_vtrn {
     position: relative;

@@ -12,6 +12,8 @@
         
         var input_array = new Array();
         
+        var num_array = new Array();
+        
         var A_array = new Array();
         
         var B_array = new Array();
@@ -76,6 +78,11 @@
                
                simbl = this['simbl'];
                weight = this['artikul'];
+               num = weight.substr(1,2);
+               num_array.push(num);
+               str += weight+"; ";
+               var ltr = simbl.toLowerCase();
+               
                if(simbl == "A"){
                    
                    A_array.push(weight);
@@ -84,7 +91,7 @@
                    B_array.push(weight);
                    weight = weight.substr(1,2);
                    num = parseInt(weight);
-                   str += changeBtn(num,'b')+"; ";
+//                   str += changeBtn(num,ltr)+"; ";
                    if ((num >= 1) && (num <= 10)){check_B[0]++;}
                     else if ((num >= 11) && (num <= 20)){check_B[1]++;}
                     else if ((num >= 21) && (num <= 30)){check_B[2]++;}			
@@ -100,7 +107,7 @@
                    C_array.push(weight);
                    weight = weight.substr(1,2);
                    num = parseInt(weight);
-                   str += changeBtn(num,'c')+"; ";
+//                   str += changeBtn(num,ltr)+"; ";
                    if ((num >= 1) && (num <= 10)){check_C[0]++;}
                     else if ((num >= 11) && (num <= 20)){check_C[1]++;}
                     else if ((num >= 21) && (num <= 30)){check_C[2]++;}			
@@ -114,7 +121,7 @@
                
            });
            
-//           console.log(str);
+           console.log(str);
             checkPage();        
            return false;
        }
@@ -122,8 +129,18 @@
            
            var i;
            var mstr = '';
-           var str = '';
-//           str = "AL "+ A_array.length;
+           var str = 'page => ';
+           var ltr = 'a';
+           if(page == 2){
+               ltr = 'b';
+           }else if(page == 3){
+               ltr = 'c';
+           }
+           
+           $.each(num_array, function(){
+               var num = parseInt(this);
+               changeBtn((num-1),ltr);
+           });
            if(page == 1 && A_array.length < 5){
 //               
                $.each(A_array, function(){
@@ -133,7 +150,7 @@
 //                   str += row+"; "
                    for(i = (row*10);i < (10*(row+1));i++){
                        
-                      changeBtn(i,'a');
+                      changeBtn(i,ltr);
                    }  
                });
 //               alert(str);
@@ -141,7 +158,7 @@
            if(A_array.length == 5 && page == 1){
 //               str += "A 5 p 1:  M "; 
                for(i = 0;i < 90;i++){
-                      mstr = changeBtn(i,'a')+"; "; 
+                      mstr = changeBtn(i,ltr)+"; "; 
                       
 //                      str += "; "+i+"/"+mstr; 
                    }
@@ -152,15 +169,15 @@
                    num = num.substr(1,2);
                    var row = Math.floor(num/10);
                    if(check_B[row] == 2){
-                        for(i = (row*10);i < 10*(row+1);i++){
-                            changeBtn(i,'b');
+                        for(i = (row*10);i < (10*(row+1));i++){
+                            str += changeBtn(i,ltr)+"; ";
                         } 
                     }
                });
            }
            if(B_array.length == 10 && page == 2){
                for(i = 0;i < 90;i++){
-                         changeBtn(i,'b');   
+                         changeBtn(i,ltr);   
 //                      
                    }
            }
@@ -170,15 +187,15 @@
                    num = num.substr(1,2);
                    var row = Math.floor(num/10);
                    if(check_C[row] == 3){
-                        for(i = (row*10);i < 10*(row+1);i++){
-                            changeBtn(i,'c');
+                        for(i = (row*10);i < (10*(row+1));i++){ 
+                            changeBtn(i,ltr);
                         } 
                     }
                });
            }
-           if(С_array.length == 15 && page == 3){
+           if(C_array.length == 15 && page == 3){
                for(i = 0;i < 90;i++){
-                         changeBtn(i,'с');   
+                         changeBtn(i,ltr);   
 //                      
                    }
            }
@@ -200,19 +217,17 @@
        }
        
        function changeBtn(id, simbl){
-            var bid = id;
-            var did = (id+1);
+            var bid = (id);
             if(id<10){
                 bid="0"+bid; 
             }
-            if(id<9){
-                did="0"+did;
-            }
+            
             $("#"+bid).attr({'disabled':'disabled'});
             $("#"+bid).css({'cursor':'default'});
-            $("#"+simbl+did).css({'background-color':'#999999'}); 
+            $("#im_"+bid).css({'border':'2px solid black'}); 
+            $("#im_"+bid).css({'background-color':'#999999'}); 
             
-            return bid+"|"+did;
+            return bid+"| im_"+bid;
     }
         
 });  
