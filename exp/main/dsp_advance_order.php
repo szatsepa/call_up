@@ -178,7 +178,7 @@ $contragent_name = $_SESSION[user]->data[name]." ".$_SESSION[user]->data[surname
                         </div>
         
     </div>
-  </form>  
+<!--  </form>  -->
 </div>
 <script language="JavaScript" type="text/javascript">
 	document.write('<input type="hidden" name=scr_width  value="' + screen.width  +'">');

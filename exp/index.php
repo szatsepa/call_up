@@ -66,6 +66,9 @@ $_SESSION[domen] = "call-up.ru";
 $storefront = new Storefront();
 
 //print_r($attributes); 
+if(!isset($_SESSION[id])){
+//   $attributes[act] = 'logaut';
+}
 
 switch ($attributes[act]) {  
     

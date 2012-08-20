@@ -3,7 +3,7 @@
 /*
  * createdby arcady.1254@gmail.com 19.11.2011
  */
-$query = "SELECT name FROM storefront WHERE id = $attributes[stid]";
+$query = "SELECT name FROM storefront WHERE id = 2";
 
 $result = mysql_query($query) or die($query);
 

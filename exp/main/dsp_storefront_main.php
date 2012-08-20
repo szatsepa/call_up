@@ -108,14 +108,14 @@ for($i=0;$i<9;$i++){
 	
 		$name = substr($name,0,42)."...";
                 
-                $name = iconv("WINDOWS-1251", "UTF-8", $name);
+                $name = iconv("WINDOWS-1251", "UTF-8", $name); 
             
  if($artikul_i){
 
            ?> 
                     <div class = "kard_vtrn" id="<?php echo $artikul_i;?>">
                             <div class = "img_vtrn" id="im_<?php echo $ind;?>">
-                                    <input class='my_button' id='<?php echo $ind;?>' name ="<?php echo $artikul_i;?>" type="image" src="main/act_prewiew.php?src=http://call-up.ru/images/goods/<?php echo $image;?>&amp;width=60&amp;height=60"/>
+                                    <input class='my_button' id='<?php echo $ind;?>' name ="<?php echo $artikul_i;?>" type="image" src="main/act_prewiew.php?src=http://call-up.ru/images/goods/<?php echo $image;?>&amp;width=60&amp;height=60" disabled/>
                             </div>
                     </div>
                  

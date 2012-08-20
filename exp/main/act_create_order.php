@@ -1,5 +1,7 @@
 <?php
 
+unset($_SESSION[page]);
+
 if(isset ($_SESSION[auth]) && $_SESSION[auth] == 1){
     
     $who = "user_id";
