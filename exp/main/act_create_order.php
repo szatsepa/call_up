@@ -154,7 +154,7 @@ if ($zakaz) {
       
       $name = $_SESSION[user]->data[name];
               
-            $message ="Здравствуйте $surname $name! Ваш заказ № $zakaz  принят в обработку. С вами свяжется оператор .\n C уважением. Администрация. ";              
+            $message ="Здравствуйте $surname $name! Ваш заказ № $c_num  принят в обработку. С вами свяжется оператор .\n C уважением. Администрация. ";              
  
             $headers = 'From: administrator@'. $_SERVER[SERVER_NAME]. "\r\n";
             
