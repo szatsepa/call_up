@@ -59,8 +59,9 @@
                 dataType:'json',
                 data:{uid:uid},
                 success:function(data){
-                      sortingCart(data['cart']);
-                      
+                    if(data['ok']){
+                       sortingCart(data['cart']); 
+                    }
                 },
                 error:function(data){
                     document.write(data['responseText']); 

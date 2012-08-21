@@ -19,9 +19,5 @@ session_destroy();
 // Удаляем куки для мобильной версии
 if ($mobile == 'true') setcookie("di", 0, time()-1200);
 
+header("location:index.php");
 ?>
-<form action="http://<?php echo $_SERVER[SERVER_NAME];?>" method="post">
-    <script language="javascript">
-    document.write ('</form>');
-    document.forms[0].submit();
-    </script>

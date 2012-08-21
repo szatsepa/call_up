@@ -8,21 +8,31 @@ include 'connect.php';
 
 $uid = intval($_POST[uid]);
 
-$query = "SELECT c.artikul, pl.str_group AS simbl FROM cart AS c, pricelist AS pl WHERE c.customer = $uid AND c.artikul = pl.str_code1";
-
 $out = array();
 
-$out['query'] = $query; 
+if($uid && $uid > 0){
+    
+    $query = "SELECT c.artikul, pl.str_group AS simbl FROM cart AS c, pricelist AS pl WHERE c.customer = $uid AND c.artikul = pl.str_code1";
 
-$result = mysql_query($query);
+    $out['query'] = $query; 
 
-$tmp_array = array();
+    $result = mysql_query($query);
 
-while ($var = mysql_fetch_assoc($result)){
-    array_push($tmp_array, $var);
+    $tmp_array = array();
+
+    while ($var = mysql_fetch_assoc($result)){
+        array_push($tmp_array, $var);
+    } 
+    
+    $out['cart'] = $tmp_array;
+    
+    $out['ok'] = 1;
+    
+}else{
+    
+    $out['ok'] = NULL;
+    
 }
-
-$out['cart'] = $tmp_array;
 
 echo json_encode($out); 
 
