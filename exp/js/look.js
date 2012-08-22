@@ -39,13 +39,15 @@
                var atr = $("#"+id).attr('disabled');  
                var code = $("#cod").val();
                var artikul = this.name;
-               if(atr != 'disabled'){
+               if(atr != 'disabled' && uid){
                    if(code != undefined){
                        document.location.href = "?act=dscr&artikul="+artikul+"&cod="+code;
                    }else{
                        document.location.href = "?act=dscr&artikul="+artikul; 
                    }
                     
+               }else if (!uid){
+                   document.location.href = "?act=regs"; 
                }
                
            });
@@ -59,8 +61,9 @@
                 dataType:'json',
                 data:{uid:uid},
                 success:function(data){
+//                    alert(data['ok']);  
                     if(data['ok']){
-                       sortingCart(data['cart']); 
+                       sortingCart(data['cart']);  
                     }
                 },
                 error:function(data){
@@ -119,13 +122,13 @@
                     else if ((num >= 71) && (num <= 80)){check_C[7]++;}
                     else if ((num >= 81) && (num <= 90)){check_C[8]++;}
                }
-               if(A_array.length == 5 && B_array.length < 10 && (page == 1)){
-                   document.location.href = "?act=look&page=2";
-               }else if(B_array.length == 10 && C_array.length < 15 && (page == 2 || page == 1)){
-                   document.location.href = "?act=look&page=3";
-               }else if(C_array.length == 15 && (page == 3 || page == 1 || page == 2)){ 
-                   document.location.href = "?act=private_office";
-               }
+//               if(A_array.length == 5 && B_array.length < 10 && (page == 1)){
+//                   document.location.href = "?act=look&page=2";
+//               }else if(B_array.length == 10 && C_array.length < 15 && (page == 2 || page == 1)){
+//                   document.location.href = "?act=look&page=3";
+//               }else if(C_array.length == 15 && (page == 3 || page == 1 || page == 2)){ 
+//                   document.location.href = "?act=private_office";
+//               }
            });
            
            console.log(str);

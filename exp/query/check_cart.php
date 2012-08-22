@@ -10,7 +10,9 @@ $uid = intval($_POST[uid]);
 
 $out = array();
 
-if($uid && $uid > 0){
+$out['uid'] = $uid; 
+
+if($uid && $uid != 0){
     
     $query = "SELECT c.artikul, pl.str_group AS simbl FROM cart AS c, pricelist AS pl WHERE c.customer = $uid AND c.artikul = pl.str_code1";
 

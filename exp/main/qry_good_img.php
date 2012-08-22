@@ -8,9 +8,10 @@ function count_cart($first, $who, $cod){
     
     if(isset($who) && $who == 1) {
         $hto_tam = "user_id";
-    }else if(isset($who) && $who == 2){
+    }else if(isset($who) && $who == 2){ 
         $hto_tam = "customer";
-    }else if(isset ($cod) && !isset ($who)){
+    }
+    else if(isset ($cod) && !isset ($who)){
         $hto_tam = "cod";
         
         $first = $cod;
@@ -44,7 +45,9 @@ function count_cart($first, $who, $cod){
                 while ($cnt_row = mysql_fetch_assoc($res)){
                     
                     $count += $cnt_row[num_amount];
-                }        
+                }  
+                  
+        if($hto_tam == 'cod')$count = 0;        
 
 	return $count;
 }

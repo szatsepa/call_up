@@ -26,7 +26,7 @@
                                    
                                     <form action="index.php?act=change_volume" method="post">
                                         <p align="center">
-                                            <input type="image" src="<?php echo "http://$_SESSION[domen]";?>/images/storefront/btn_up.gif" alt="Изменить." name="submit" value="val" style="vertical-align: middle" <?php //echo $dis;?>/></p>
+<!--                                            <input type="image" src="<?php echo "http://$_SESSION[domen]";?>/images/storefront/btn_up.gif" alt="Изменить." name="submit" value="val" style="vertical-align: middle" <?php //echo $dis;?>/></p>-->
                                             <input type="hidden" name="name" value="<?php echo $name;?>"/>                                        
                                             <?php if(isset ($attributes[cod])){ ?> <input type="hidden" name="cod" value="<?php echo $attributes[cod]; ?>"/><?php } ?>                                        
                                             <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
@@ -40,10 +40,10 @@
                                     <?php
                                     
                                     $dis = ''; }else{?>
-                                    <p align="center"><img  src="<?php echo "http://$_SESSION[domen]";?>/images/storefront/btn_up.gif" alt="Изменить." /></p>
+<!--                                    <p align="center"><img  src="<?php echo "http://$_SESSION[domen]";?>/images/storefront/btn_up.gif" alt="Изменить." /></p>-->
                                     <?php }?>
                                 </div>
-				<div id = "vid_chk"><p class="cng_volume"><?php echo $volume;?> кг. </p></div>
+<!--				<div id = "vid_chk"><p class="cng_volume"><?php echo $volume;?> кг. </p></div>-->
 				<div id = "up_vid_chk">
                                      <?php if($count_volume>1  && $list_volume[$posart - 1][str_code1]){ 
      
@@ -52,7 +52,7 @@
                                          ?>
                                     <form action="index.php?act=change_volume" method="post">
                                         <p align="center">
-                                             <input type="image" src="<?php echo "http://$_SESSION[domen]";?>/images/storefront/btn_down.gif" alt="Удалить" name="submit" value="val" style="vertical-align: middle" <?php //echo $dis;?>/>
+<!--                                             <input type="image" src="<?php echo "http://$_SESSION[domen]";?>/images/storefront/btn_down.gif" alt="Удалить" name="submit" value="val" style="vertical-align: middle" <?php //echo $dis;?>/>-->
                                             <input type="hidden" name="name" value="<?php echo $name;?>"/>
                                             <?php if(isset ($attributes[cod])){ ?> <input type="hidden" name="cod" value="<?php echo $attributes[cod]; ?>"/><?php } ?>
                                             <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
@@ -65,7 +65,7 @@
                                         </p>
                                     </form>
                                     <?php $dis = "";}else{?>
-                                    <p align="center"><img src="<?php echo "http://$_SESSION[domen]";?>/images/storefront/btn_down.gif" alt="Добвить" /></p>
+<!--                                    <p align="center"><img src="<?php echo "http://$_SESSION[domen]";?>/images/storefront/btn_down.gif" alt="Добвить" /></p>-->
                                     <?php }?>
                                 </div>
 			</div>
@@ -84,11 +84,11 @@
                                             <input type="hidden"  name="up" value="1"/>
                                             <input type="hidden"  name="amount" value="1"/>
                                             <input type="hidden"  name="type" value="2"/>
-                                            <input type="image" src="<?php echo "http://$_SESSION[domen]";?>/images/storefront/btn_up.gif" alt="Добвить" name="submit0" value="val" style="vertical-align: middle"/>
+<!--                                            <input type="image" src="<?php echo "http://$_SESSION[domen]";?>/images/storefront/btn_up.gif" alt="Добвить" name="submit0" value="val" style="vertical-align: middle"/>-->
                                         </p>
                                     </form>
                                 </div>
-				<div id = "kol_chk"><p class="cng_volume"><?php echo $amount;?> шт.</p></div>
+<!--				<div id = "kol_chk"><p class="cng_volume"><?php echo $amount;?> шт.</p></div>-->
 				<div id = "up_kol_chk">
                                     <form action="index.php?act=<?php echo $str_act;?>" method="post">
                                         <p align="center">
@@ -100,7 +100,7 @@
                                             <input type="hidden"  name="down" value="1"/>
                                             <input type="hidden"  name="type" value="2"/>
                                             <input type="hidden"  name="cod" value="<?php echo $attributes[cod];?>"/>
-                                            <input type="image" src="<?php echo "http://$_SESSION[domen]";?>/images/storefront/btn_down.gif" alt="Удалить" name="submit1" value="val" style="vertical-align: middle"/>
+<!--                                            <input type="image" src="<?php echo "http://$_SESSION[domen]";?>/images/storefront/btn_down.gif" alt="Удалить" name="submit1" value="val" style="vertical-align: middle"/>-->
                                         </p>
                                     </form>
                                 </div>
@@ -108,9 +108,9 @@
 		</div>
 		<div class = "cena_chk">
                     <div class="sum_pos">
-                        <p> 
-                                            <?php $all_cost += ($amount*$price); echo ($amount*$price);?> р.
-                        </p>
+<!--                        <p> 
+                                            <?php $all_cost += ($amount*$price); echo ($amount*$price);?> 
+                        </p>-->
 <?php 
                         $str = "act=del_item&artikul=$artikul&stid=$attributes[stid]&type=$type";
                         
@@ -121,7 +121,7 @@
                         
                         ?>
 <div style="font: 22px Arial;color: #330000;text-align: center;">
-    <a href="index.php?<?php echo $str;?>">Удалить</a>
+<!--    <a href="index.php?<?php echo $str;?>">Удалить</a>--> 
 </div>
                     </div>
 		</div>

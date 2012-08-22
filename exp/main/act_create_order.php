@@ -92,7 +92,7 @@ $query = "INSERT INTO arch_zakaz
           $resolution,
           $agent,
           $tags,
-        $c_num)";
+        '$c_num')";
 
 $qry_add = mysql_query($query) or die($query);
 
@@ -164,24 +164,16 @@ if ($zakaz) {
         
              if (mail($eml, 'Заказ', $message, $headers)){ }
  
- header("location:index.php?act=look&stid=$stid");             
-                
-             ?>
-<!--                
-<form action="index.php?act=look" method="post">
-    <script language="javascript">
-    document.write ('<input type="hidden" name="stid" value="<?php echo $stid;?>"/></form>');
-    document.forms[0].submit();
-    </script>-->
-                           
-            <?php 
-             
+     header("location:index.php?act=look&stid=$stid&order=$c_num");             
 }
 function numOrder(){
     $str = '';
-    for($i=0;$i<6;$i++){
-        $tmp = rand(0,9);
-        $str .= "$tmp";
+    for($ii = 0;$ii<4;$ii++){
+        for($i=0;$i<3;$i++){
+            $tmp = rand(0,9);
+            $str .= "$tmp";
+        }
+       if($ii != 3)$str .= ' ';         
     }
     
     return $str;

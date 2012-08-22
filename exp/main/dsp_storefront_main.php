@@ -45,7 +45,7 @@ if(isset ($attributes)){
     
 }
  
-//include 'dsp_pager.php';
+include 'dsp_pager.php'; 
 
 if(($start+90)>$cnt){ 
     
@@ -131,7 +131,7 @@ for($i=0;$i<9;$i++){
 ?> 
 </div>   
    <?php 
-//include 'dsp_pager.php';
+include 'dsp_pager.php';
 
 if(isset($attributes[order])){
     ?>
