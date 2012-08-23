@@ -51,13 +51,13 @@ $storefront = quote_smart($attributes[stid]);
 
 $secret_key = quote_smart($secret_key);
 
-$query = "SELECT Count(id) FROM customer WHERE cod = $key";
+$query = "SELECT Count(id) FROM customer WHERE cod = $key"; 
 
 $count = mysql_query($query) or die ($query);
 
 $is_log = mysql_fetch_row($count);
 
-$log = $is_log[0];
+$log = 0;
 
 if($log == 0){
     

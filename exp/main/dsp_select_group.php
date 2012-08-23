@@ -1,7 +1,6 @@
-<select id="selector" class="common" name="group" onchange="javascript:gotoSelectedPage(this.options[this.selectedIndex])">
+<select id="selector" class="common">
         
         <option value="default">Выбрать группу</option>
-        
     <?php 
     
          $groups = groupInPrice(2);
@@ -21,15 +20,3 @@
     }
     ?>
     </select>
-<script type="text/javascript">
-    function gotoSelectedPage(val){   
-//        var str = val;
-        var page = 1;
-        if(val.innerText == 'B'){
-            page = 2;
-        }else if(val.innerText == 'C'){
-            page = 3;
-        }
-       document.location.href='?act=look&page='+page; 
-    }
-</script>

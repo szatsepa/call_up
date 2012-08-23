@@ -52,7 +52,19 @@
                
            });
 
-       $(".my_button").css({'cursor':'pointer'});  
+       $(".my_button").css({'cursor':'pointer'}); 
+       
+       $("#selector").change(function(){
+           var obj = this.options[this.selectedIndex]; 
+           var str = obj.text;
+            var page = 1;
+            if(str == 'B'){
+                page = 2;
+            }else if(str == 'C'){
+                page = 3;
+            }
+            document.location.href='?act=look&page='+page; 
+       });
        
        function checkCart(uid){ 
             $.ajax({ 
@@ -60,8 +72,7 @@
                 type:'post',
                 dataType:'json',
                 data:{uid:uid},
-                success:function(data){
-//                    alert(data['ok']);  
+                success:function(data){ 
                     if(data['ok']){
                        sortingCart(data['cart']);  
                     }
@@ -84,9 +95,7 @@
                weight = this['artikul'];
                num = weight.substr(1,2);
                num_array.push(num);
-               str += weight+"; ";
-               var ltr = simbl.toLowerCase();
-               
+               str += weight+"; ";               
                if(simbl == "A"){
                    
                    A_array.push(weight);
@@ -95,7 +104,6 @@
                    B_array.push(weight);
                    weight = weight.substr(1,2);
                    num = parseInt(weight);
-//                   str += changeBtn(num,ltr)+"; ";
                    if ((num >= 1) && (num <= 10)){check_B[0]++;}
                     else if ((num >= 11) && (num <= 20)){check_B[1]++;}
                     else if ((num >= 21) && (num <= 30)){check_B[2]++;}			
@@ -111,7 +119,6 @@
                    C_array.push(weight);
                    weight = weight.substr(1,2);
                    num = parseInt(weight);
-//                   str += changeBtn(num,ltr)+"; ";
                    if ((num >= 1) && (num <= 10)){check_C[0]++;}
                     else if ((num >= 11) && (num <= 20)){check_C[1]++;}
                     else if ((num >= 21) && (num <= 30)){check_C[2]++;}			
@@ -122,13 +129,13 @@
                     else if ((num >= 71) && (num <= 80)){check_C[7]++;}
                     else if ((num >= 81) && (num <= 90)){check_C[8]++;}
                }
-//               if(A_array.length == 5 && B_array.length < 10 && (page == 1)){
-//                   document.location.href = "?act=look&page=2";
-//               }else if(B_array.length == 10 && C_array.length < 15 && (page == 2 || page == 1)){
-//                   document.location.href = "?act=look&page=3";
-//               }else if(C_array.length == 15 && (page == 3 || page == 1 || page == 2)){ 
-//                   document.location.href = "?act=private_office";
-//               }
+               if(A_array.length == 5 && B_array.length < 10 && (page == 1)){
+                   
+               }else if(B_array.length == 10 && C_array.length < 15 && (page == 2 || page == 1)){
+                   
+               }else if(C_array.length == 15 && (page == 3 || page == 1 || page == 2)){ 
+                   
+               }
            });
            
            console.log(str);
@@ -151,29 +158,24 @@
                var num = parseInt(this);
                changeBtn((num-1),ltr);
            });
-           if(page == 1 && A_array.length < 5){
-//               
+           if(page == 1 && A_array.length < 5){             
                $.each(A_array, function(){
                    var num = this;
                    num = num.substr(1,2);
                    var row = Math.floor(num/10);
-//                   str += row+"; "
                    for(i = (row*10);i < (10*(row+1));i++){
                        
                       changeBtn(i,ltr);
                    }  
                });
-//               alert(str);
            }
            if(A_array.length == 5 && page == 1){
-//               str += "A 5 p 1:  M "; 
                for(i = 0;i < 90;i++){
                       mstr = changeBtn(i,ltr)+"; "; 
-                      
-//                      str += "; "+i+"/"+mstr; 
+             
                    }
            } 
-           if(page == 2 && B_array.length < 10 && A_array.length == 5){ 
+           if(page == 2 && B_array.length < 10){ 
                $.each(B_array, function(){
                    var num = this;
                    num = num.substr(1,2);
@@ -191,7 +193,7 @@
 //                      
                    }
            }
-           if(page == 3 && B_array.length < 15 && A_array.length == 5 && B_array.length == 10){ 
+           if(page == 3 && C_array.length < 15){ 
                $.each(C_array, function(){
                    var num = this;
                    num = num.substr(1,2);
@@ -205,11 +207,9 @@
            }
            if(C_array.length == 15 && page == 3){
                for(i = 0;i < 90;i++){
-                         changeBtn(i,ltr);   
-//                      
+                         changeBtn(i,ltr);  
                    }
            }
-//            console.log(mstr); 
             console.log(str);
            return false;
        }
@@ -222,7 +222,6 @@
                 n++;
             });
            });
-//           alert(str);
             return false; 
        }
        
@@ -235,8 +234,6 @@
             $("#"+bid).attr({'disabled':'disabled'});
             $("#"+bid).css({'cursor':'default'});
             $("#"+bid).remove();
-//            $("#im_"+bid).css({'border':'2px solid black'}); 
-//            $("#im_"+bid).css({'background-color':'#999999'}); 
             
             return bid+"| im_"+bid;
     }
