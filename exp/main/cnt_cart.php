@@ -98,9 +98,13 @@ foreach ($c_list_array as $key => $value) {
                                     
         }
         
-        include 'dsp_cart_plus.php';
+//        include 'dsp_cart_plus.php';
+        
+            
     
-}?>
+}
+include 'dsp_ticket.php';
+?>
  <div class = "oplatit_chk">
      
      <div class="advert_cart_plus_1">
@@ -111,7 +115,7 @@ foreach ($c_list_array as $key => $value) {
                    
                  <div id = "summa_chk">
 
-<p align="center" valign="center"> Итого: <?php echo $all_cost;?>  р. </p>
+<p align="center" valign="center"> Итого: <?php // echo $all_cost;?>  р. </p>
 
 </div>
 
@@ -120,9 +124,12 @@ foreach ($c_list_array as $key => $value) {
                  
                 <div id = "btn_oplatit_chk"> 
 <p align="center">
-<?php if(!isset ($_SESSION[user])) echo "<a href='index.php?act=regs&stid=$attributes[stid]&price_id=$price_id&cod=$attributes[cod]'>Заказать.</a>";?>                
-<?php if(isset ($_SESSION[user]) && $is_cart == 1) echo "<a href='index.php?act=advance&stid=$attributes[stid]&price_id=$price_id'>Заказать.</a>";?> 
-<?php if(isset ($_SESSION[user]) && $is_cart == 0) echo "<a href='index.php?act=private_office&stid=$attributes[stid]'>Заказать.</a>";?>                    
+    <a class="to_cart" id='make_order'>Заказать.</a>
+<?php 
+//if(!isset ($_SESSION[user])) echo "<a href='index.php?act=regs&stid=$attributes[stid]&price_id=$price_id&cod=$attributes[cod]'>Заказать.</a>";
+//if(isset ($_SESSION[user]) && $is_cart == 1) echo "<a href='index.php?act=advance&stid=$attributes[stid]&price_id=$price_id'>Заказать.</a>";
+//if(isset ($_SESSION[user]) && $is_cart == 0) echo "<a href='index.php?act=private_office&stid=$attributes[stid]'>Заказать.</a>";
+?>                    
 </p>     
                 </div>            
              </div>

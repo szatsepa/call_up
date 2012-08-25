@@ -299,7 +299,7 @@ a:hover
 .stroka_zakaza {
     position: relative;
     float: left;
-        heigh: 281px;
+        height: 281px;
       width: 1008px;
 /*      outline: 1px solid #98ff33;*/
 }
@@ -594,12 +594,12 @@ p.sum_vsego{
         font: 16px Arial;
         color: #BB0D72;
 }
-#30_ml {
+/*#30_ml {
     position: relative;
         float: left;
         width: 47px;
         height: 26px;
-}
+}*/
 #120_ml {
      position: relative;
         float: left;

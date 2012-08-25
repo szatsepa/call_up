@@ -26,7 +26,7 @@
                                    
                                     <form action="index.php?act=change_volume" method="post">
                                         <p align="center">
-                                            <input type="image" src="<?php echo "http://$_SESSION[domen]";?>/images/storefront/btn_up.gif" alt="Изменить." name="submit" value="val" style="vertical-align: middle" <?php //echo $dis;?>/></p>
+                                            <input type="image" src="<?php echo "http://$_SESSION[domen]";?>/images/storefront/btn_up.gif" alt="Изменить." name="submit" value="val" style="vertical-align: middle" <?php echo $dis;?>/></p>
                                             <input type="hidden" name="name" value="<?php echo $name;?>"/>                                        
                                             <?php if(isset ($attributes[cod])){ ?> <input type="hidden" name="cod" value="<?php echo $attributes[cod]; ?>"/><?php } ?>                                        
                                             <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
@@ -52,7 +52,7 @@
                                          ?>
                                     <form action="index.php?act=change_volume" method="post">
                                         <p align="center">
-                                             <input type="image" src="<?php echo "http://$_SESSION[domen]";?>/images/storefront/btn_down.gif" alt="Удалить" name="submit" value="val" style="vertical-align: middle" <?php //echo $dis;?>/>
+                                             <input type="image" src="<?php echo "http://$_SESSION[domen]";?>/images/storefront/btn_down.gif" alt="Удалить" name="submit" value="val" style="vertical-align: middle" <?php echo $dis;?>/>
                                             <input type="hidden" name="name" value="<?php echo $name;?>"/>
                                             <?php if(isset ($attributes[cod])){ ?> <input type="hidden" name="cod" value="<?php echo $attributes[cod]; ?>"/><?php } ?>
                                             <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>

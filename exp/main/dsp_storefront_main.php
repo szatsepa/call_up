@@ -70,7 +70,7 @@ for($i=0;$i<9;$i++){
     
     ?>
    <div class = "stroka_vitriny"> 
-       <input type="hidden" id="uid" value="<?php echo $_SESSION[id];?>"/>
+<!--       <input type="hidden" id="uid" value="<?php echo $_SESSION[id];?>"/>-->
        <input type="hidden" id="page" value="<?php echo $page;?>"/> 
        <?php
        if(!isset($_SESSION[id])){

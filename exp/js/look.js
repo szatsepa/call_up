@@ -115,7 +115,7 @@
                     else if ((num >= 81) && (num <= 90)){check_B[8]++;}
                }
                if(simbl == "C"){
-                   weight = this['artikul']; 
+                   
                    C_array.push(weight);
                    weight = weight.substr(1,2);
                    num = parseInt(weight);

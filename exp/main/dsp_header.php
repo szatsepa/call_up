@@ -18,11 +18,9 @@ header('Content-Type: text/html; charset=utf-8');
         <link rel="stylesheet" href="./css/custom_style.css" type="text/css" media="screen, projection" />
         <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js'></script>
         <script type="text/javascript" src="./js/psw_validation.js"></script>
-<!--        <script type="text/javascript"  src="./js/description.js"></script>-->
         <script type="text/javascript" src="./js/my_function.js"></script>
-<!--        <script type="text/javascript" src="./js/my_request.js"></script>-->
+        <script type="text/javascript" src="./js/my_request.js"></script>
         <script type="text/javascript" src="./js/<?php echo $attributes[act];?>.js"></script>
-<!--        <script type="text/javascript" src="./js/AC_runActiveContent.js"></script>-->
  </head>
 <?php 
 
@@ -36,7 +34,8 @@ include 'dsp_selector.php';
 ?>
     
         <div id="header">
-
+            
+<input type="hidden" id="uid" value="<?php echo $_SESSION[id];?>"/>
             
                 <div class = "head">
                     <div class="head_logo">
