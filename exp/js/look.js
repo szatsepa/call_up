@@ -129,16 +129,25 @@
                     else if ((num >= 71) && (num <= 80)){check_C[7]++;}
                     else if ((num >= 81) && (num <= 90)){check_C[8]++;}
                }
-               if(A_array.length == 5 && B_array.length < 10 && (page == 1)){
-                   
-               }else if(B_array.length == 10 && C_array.length < 15 && (page == 2 || page == 1)){
-                   
-               }else if(C_array.length == 15 && (page == 3 || page == 1 || page == 2)){ 
-                   
+               if(A_array.length == 5 && B_array.length == 10 && C_array.length == 15){
+                   alert("Билет заполнен!");
+                   document.location.href = "?act=order&type=2&stid=2";
                }
+               
+//               if(A_array.length == 5 && page == 1){
+//                   document.location.href = "?act=look&page=2";
+//               }else if(B_array.length == 10 && C_array.length < 15 && (page == 2)){
+//                   document.location.href = "?act=look&page=3";
+//               }else if(B_array.length == 10 && A_array.length < 5 && (page == 2)){ 
+//                   document.location.href = "?act=look&page=1";  
+//               }else if(B_array.length == 10 && C_array.length == 15 && (page == 2)){
+//                   document.location.href = "?act=look&page=1";
+//               }else if(B_array.length == 10 && C_array.length == 15 && (page == 3)){ 
+//                   document.location.href = "?act=look&page=1";  
+//               }
            });
            
-           console.log(str);
+//           console.log(str);
             checkPage();        
            return false;
        }

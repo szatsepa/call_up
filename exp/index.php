@@ -128,13 +128,12 @@ switch ($attributes[act]) {
         include ("main/qry_favorite_goods.php");
         include ("main/qry_arch_order_list.php");
         include 'main/qry_cartlist.php';
-        include 'main/qry_reserved_list.php';
+        include 'main/qry_tickets.php';
         include 'main/qry_order_of_week.php';
         include 'main/dsp_header.php';
         include 'main/dsp_private_ofice.php';
         include 'main/dsp_order_of_week.php';
-        include 'main/dsp_carts.php';
-        include 'main/dsp_reserveds.php';
+        include 'main/dsp_tickets.php';
         include 'main/dsp_footer.php';
         
         break;

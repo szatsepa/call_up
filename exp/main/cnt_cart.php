@@ -113,11 +113,11 @@ include 'dsp_ticket.php';
       <div class="advert_cart_plus_2">                            
 <!--             <div class = "pay_chk"> </div>-->
                    
-                 <div id = "summa_chk">
+<!--                 <div id = "summa_chk">
 
 <p align="center" valign="center"> Итого: <?php // echo $all_cost;?>  р. </p>
 
-</div>
+</div>-->
 
 <!--<br/>
 <br/>-->

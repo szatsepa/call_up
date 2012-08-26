@@ -27,7 +27,41 @@
          checkCart(uid);
          
          $("#make_order").mousedown(function(){
-             alert(N_O+" "+order_ready);
+             
+             var A = '';
+             $.each(A_array,function(){
+                 A += ':'+this['artikul'];
+             });
+             var B = '';
+             $.each(B_array,function(){
+                 B += ':'+this['artikul'];
+             });
+             var C = '';
+             $.each(C_array,function(){
+                 C += ':'+this['artikul'];
+             });
+             A = A.substr(1);
+             B = B.substr(1);
+             C = C.substr(1);
+             console.log(N_O+" "+order_ready+"\n"+A+"\n"+B+"\n"+C+"\n");
+             
+             if(order_ready){
+                 $.ajax({
+                     url:'./action/create_order.php',
+                     type:'post',
+                     tataType:'json',
+                     data:{uid:uid,num:N_O,A:A,B:B,C:C},
+                     success:function(data){
+                         if(data['ok']==1){
+                             document.location.href = "?act=look";
+                         }
+                     },
+                     error:function(data){
+                         document.write(data['responseText']);
+                     }
+                 });
+                 
+             }
          });
          
          $(".artikul_t").live('mousedown',function(){
@@ -150,10 +184,10 @@
             var str = '';
             for(var ii = 0;ii<4;ii++){
                 for(var i=0;i<3;i++){
-                    var tmp = Math.ceil(Math.random()*10);
+                    var tmp = Math.ceil(Math.random()*9);
                     str += tmp;
                 }
-            if(ii != 3)str += ' ';         
+            if(ii != 3)str += ' ';          
             }
 
             return str;

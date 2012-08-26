@@ -1,7 +1,5 @@
 <br />
-<?php if ($mobile != 'true') { ?>
-<div style="margin-left:5px;margin-bottom:10px;">
-<?php }
+<?php 
 
 //$num_rows	=	count($artikul_arr);
 //$num_fields	= count($artikul_arr[0]);

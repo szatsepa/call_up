@@ -457,14 +457,14 @@ p.sum_vsego{
     font: 22px Arial;
     color: #330000;
     text-align : center;
-    position: relative;
+    position: relative; 
     width: 230px;
     height: 16px;
-    margin-top: 72px;
+    margin-top: 22px; 
     padding-top: 6px;
     margin-left: 28px;
 }
-#oplatit_cena {
+#oplatit_cena { 
         text-align : center;
         position: relative;
         margin-top: 90px;
@@ -600,7 +600,7 @@ p.sum_vsego{
         width: 47px;
         height: 26px;
 }*/
-#120_ml {
+/*#120_ml {
      position: relative;
         float: left;
         width: 47px;
@@ -611,7 +611,7 @@ p.sum_vsego{
         float: left;
         width: 47px;
         height: 26px;
-}
+}*/
 #v_korzinu {
         font: 22px Arial;
         color: #330000;
@@ -1280,17 +1280,25 @@ p.order{
     color: #BB0D72;
 }
 table.btp{
-    font: 8px Arial;
+    font: 14px Arial;
     color: #330000;
 }
-tr.btp{
-   font: 8px Arial;
-    color: #330000; 
+thead.btp{
+    text-align: center;
+    font: 16px Arial;
+    color: #330000;
+    font-weight: bold;
+}
+tr.btp{ 
+   font: 14px Arial;
+    color: #330000;
+    font-weight: normal; 
 }
 td.btp{
-   font: 8px Arial;
+   font: 14px Arial;
     color: #330000; 
 }
+
 p.arh_z{
     font: 18px Arial;
     color: #BB0D72;

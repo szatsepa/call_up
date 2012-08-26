@@ -1,7 +1,7 @@
-<br/>
-<?php if(count($cartlist_array)) { ?>
-<p class="order">Незавершенные заказы</p>
-<?php }
+<br/><p class="order">Незавершенные заказы</p>
+<?php if(count($cartlist_array)) { ?><?php }
+
+
 // Выводим все корзины для текущего пользователя
 
 $cart_count = 1;
@@ -14,7 +14,9 @@ foreach ($cartlist_array as $row) {
         
         include ("dsp_backtoprice.php");
 	
-        include ("qry_cart_for_ofice.php");
+//        include ("qry_cart_for_ofice.php");
+        
+        include 'qry_tickets.php';
         
 	include ("dsp_cart.php");
         
