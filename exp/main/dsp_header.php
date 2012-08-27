@@ -21,6 +21,7 @@ header('Content-Type: text/html; charset=utf-8');
         <script type="text/javascript" src="./js/my_function.js"></script>
         <script type="text/javascript" src="./js/my_request.js"></script>
         <script type="text/javascript" src="./js/<?php echo $attributes[act];?>.js"></script>
+        <script type="text/javascript" src="./js/header.js"></script>
  </head>
 <?php 
 
@@ -70,13 +71,13 @@ include 'dsp_selector.php';
      
  }
      
-        if($string_count !='disabled'){?>
+        ?>
                     
-                          <a href="index.php?act=order&amp;type=<?php echo $type.$str_query;?>">В корзине: <?php echo $count_in_cart." ".$string_out;?> .&nbsp;<?php echo $string_count;?></a>
+                          <a id="cart_info" href="index.php?act=order&amp;type=<?php echo $type.$str_query;?>"></a>
                                 <?php
                                 
-                                        }else{
-                                              echo  " В корзине: ".$count_in_cart." ".$string_out;
+         if($string_count !='disabled'){                               }else{
+//                                              echo  " В корзине: ".$count_in_cart." ".$string_out;
                                         }
                                if(!isset($_SESSION[admin]) or $_SESSION[admin] != 1){  }else{
                                     

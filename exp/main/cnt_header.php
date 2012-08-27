@@ -80,5 +80,4 @@ if($count_in_cart == 0){
 }
 
 unset ($prices_array);
-?>
-
+?> 

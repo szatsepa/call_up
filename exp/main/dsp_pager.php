@@ -9,8 +9,8 @@ if($pages >1){
  <?php 
  if($page > 1){
  ?>
-        <a href="<?php echo 'index.php?act=look&page=1'.$address;?>" style="font-size: 16px;color:#990033;" onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'"><<&nbsp;Первая &nbsp;</a>
-        <a href="<?php echo "index.php?act=look&page=".($page-1).$address;?>" style="font-size: 16px;color:#990033;" onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'">Предыдущая&nbsp;</a>
+        <a href="<?php echo 'index.php?act=look&page=1';?>" style="font-size: 16px;color:#990033;" onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'"><<&nbsp;Первая &nbsp;</a>
+        <a href="<?php echo "index.php?act=look&page=".($page-1);?>" style="font-size: 16px;color:#990033;" onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'">Предыдущая&nbsp;</a>
 <?php
  }
 for($i=($page-1);$i<($page+2);$i++){ 
@@ -22,7 +22,7 @@ for($i=($page-1);$i<($page+2);$i++){
         ?>
 
     
-        <a href="<?php echo "index.php?act=look&page=$p$address";?>" style="font-size: 16px;color:#990033;" onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'"><?php echo $simbl_array[$p];?></a>
+        <a href="<?php echo "index.php?act=look&page=$p";?>" style="font-size: 16px;color:#990033;" onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'"><?php echo $simbl_array[$p];?></a>
     
 
 
@@ -32,8 +32,8 @@ for($i=($page-1);$i<($page+2);$i++){
     }
   if($page < $pages){  
     ?>
-        <a href="<?php echo "index.php?act=look&page=".($page+1).$address;?>" style="font-size: 16px;color:#990033;" onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'">&nbsp;Следующая</a>
-        <a href="<?php echo "index.php?act=look&page=".$pages.$address;?>" style="font-size: 16px;color:#990033;" onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'">&nbsp;Последняя&nbsp;>> </a>
+        <a href="<?php echo "index.php?act=look&page=".($page+1);?>" style="font-size: 16px;color:#990033;" onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'">&nbsp;Следующая</a>
+        <a href="<?php echo "index.php?act=look&page=".$pages;?>" style="font-size: 16px;color:#990033;" onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'">&nbsp;Последняя&nbsp;>> </a>
     </p>
  </div>    
     <?php

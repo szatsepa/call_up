@@ -6,6 +6,25 @@ $(document).ready(function () {
     
     var uid = $("#uid").val();
     
+    var fields = new Array();
+    
+    var nums = new Array();
+    
+    setNums();
+    
+    function setNums(){
+        for(var i = 1;i<91;i++){
+                var inp = i;
+                if(i < 10){
+                    inp = "0"+inp;
+                }
+                nums.push(inp);
+        }
+        console.log(nums);
+    }
+    
+    goodLuck();
+        
     $("#dele_t").mousedown(function(){
         var id = this.name;
         $.ajax({
@@ -32,9 +51,6 @@ $(document).ready(function () {
             dataType:'json',
             data:{id:id,resolution:resolution},
             success:function(data){
-                console.log(data['simbls']);
-                console.log(data['ok']);
-                alert("ПРОДАНО!!!");
                 if(data['ok'] == 30){
                     document.location.href = "?act=private_office";
                 }
@@ -45,5 +61,16 @@ $(document).ready(function () {
          
         });
     });
+        
+    function goodLuck(){
+        while(fields.length < 30){
+            var pos =  Math.ceil(Math.random() * (nums.length - 1)); 
+            if(nums[pos]!=null)fields.push(nums[pos]);
+            delete nums[pos];
+        }
+        
+        console.log(nums);
+        console.log(fields);
+    }
 });
 

@@ -43,7 +43,7 @@
              A = A.substr(1);
              B = B.substr(1);
              C = C.substr(1);
-             console.log(N_O+" "+order_ready+"\n"+A+"\n"+B+"\n"+C+"\n");
+             //console.log(N_O+" "+order_ready+"\n"+A+"\n"+B+"\n"+C+"\n");
              
              if(order_ready){
                  $.ajax({
@@ -53,7 +53,7 @@
                      data:{uid:uid,num:N_O,A:A,B:B,C:C},
                      success:function(data){
                          if(data['ok']==1){
-                             document.location.href = "?act=look";
+                             document.location.href = "?act=look&page=1";
                          }
                      },
                      error:function(data){
@@ -61,6 +61,8 @@
                      }
                  });
                  
+             }else{
+                 alert("Билет не заполнен!");
              }
          });
          
@@ -148,7 +150,7 @@
                   
                }
            });
-//           console.log(str);
+//           //console.log(str);
            if(C_array.length == 15 && B_array.length == 10 && A_array.length == 5){
                order_ready = true;
            }

@@ -134,21 +134,43 @@
                    document.location.href = "?act=order&type=2&stid=2";
                }
                
-//               if(A_array.length == 5 && page == 1){
-//                   document.location.href = "?act=look&page=2";
-//               }else if(B_array.length == 10 && C_array.length < 15 && (page == 2)){
-//                   document.location.href = "?act=look&page=3";
-//               }else if(B_array.length == 10 && A_array.length < 5 && (page == 2)){ 
-//                   document.location.href = "?act=look&page=1";  
-//               }else if(B_array.length == 10 && C_array.length == 15 && (page == 2)){
-//                   document.location.href = "?act=look&page=1";
-//               }else if(B_array.length == 10 && C_array.length == 15 && (page == 3)){ 
-//                   document.location.href = "?act=look&page=1";  
-//               }
+               var a = (A_array.length == 5);
+               var b = (B_array.length == 10);
+               var c = (C_array.length == 15);
+               
+//               console.log(a && true);
+               
+               if(page == 1 && a){
+                   document.location.href = "?act=look&page=2";
+               }
+               if(page == 2 && b){
+                   if(!a){
+                       document.location.href = "?act=look&page=1";
+                   }
+                   if(!c){
+                      document.location.href = "?act=look&page=3"; 
+                   }
+                   if(a && c){
+                      document.location.href = "?act=order&type=2"; 
+                   }
+                   
+               }
+               if(page == 3 && c){
+                   if(!a){
+                       document.location.href = "?act=look&page=1";
+                   }
+                   if(!b){
+                      document.location.href = "?act=look&page=2"; 
+                   }
+                   if(a && b){
+                      document.location.href = "?act=order&type=2"; 
+                   }  
+               }
            });
            
-//           console.log(str);
-            checkPage();        
+//           console.log(str); 
+            checkPage();
+
            return false;
        }
        function checkPage(){ 
@@ -246,6 +268,30 @@
             
             return bid+"| im_"+bid;
     }
+//    function setCartInfo(count){
+//            var str_product = new Array('товар','товара','товаров');
+//            var str_out = '';
+//
+//            if(count > 5 && count < 21){
+//
+//                str_out = str_product[2];
+//
+//            }else if(count == '1'){
+//                
+//                str_out = str_product[0]; 
+//                
+//            }else if(count =='2' || count == '3' || count == '4'){
+//                
+//                str_out = str_product[1];
+//                
+//            }else{
+//                
+//                str_out = str_product[2];
+//            }
+//                
+//       return str_out;         
+//            
+//    }
         
 });  
 
