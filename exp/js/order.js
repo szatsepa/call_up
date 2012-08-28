@@ -42,8 +42,7 @@
              });
              A = A.substr(1);
              B = B.substr(1);
-             C = C.substr(1);
-             //console.log(N_O+" "+order_ready+"\n"+A+"\n"+B+"\n"+C+"\n");
+             C = C.substr(1); 
              
              if(order_ready){
                  $.ajax({
@@ -52,9 +51,10 @@
                      tataType:'json',
                      data:{uid:uid,num:N_O,A:A,B:B,C:C},
                      success:function(data){
-                         if(data['ok']==1){
+                         console.log(data);
+//                         if(data['query']){ }
                              document.location.href = "?act=look&page=1";
-                         }
+                         
                      },
                      error:function(data){
                          document.write(data['responseText']);

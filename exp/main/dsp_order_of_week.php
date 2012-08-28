@@ -58,11 +58,11 @@ foreach ($days as $day) {
 <?php
 foreach ($zakaz as $dat) {
 ?>
-<td class='cart' style="text-align:left;" valign="top"><?php echo $dat;?><br/>&nbsp;</td>
+<td class='cart' style="text-align:left;" valign="top"><?php echo $dat;?><br/>&nbsp;</td> 
 <?php } ?>
 </tr>
 </tbody>
 </table>
     
-    <p><a href="index.php?act=all_orders&amp;stid=<?php echo $attributes[stid];?>" class="help" style="text-decoration:underline;">Архив заказов</a>&nbsp;&nbsp;</p>
+    <p><a href="index.php?act=all_orders&amp;stid=<?php echo $attributes[stid];?>" class="help" style="text-decoration:underline;">Архив заказов</a>&nbsp;&nbsp;<a id="good_luck" class="help" style="text-decoration:underline;cursor: pointer" title="Заполнить билет случайным образом!">Good Luck</a></p>
 </div>

@@ -15,7 +15,6 @@ $(document).ready(function(){
             dataType:'json',
             data:{uid:customer},
             success:function(data){
-//                alert(data['ok']);
                 setCartInfo(data['ok']);
             },
             error:function(data){

@@ -10,7 +10,7 @@
 		return; 
 	}
         
-        var input_array = new Array();
+        var input_array = new Array(); 
         
         var num_array = new Array();
         

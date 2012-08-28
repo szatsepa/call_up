@@ -22,14 +22,17 @@ $query = "INSERT INTO tickets (customer,field_A,field_B,field_C,num_order) VALUE
 
 mysql_query($query);
 
-if(mysql_insert_id()>0){
+$ins= mysql_insert_id();
+
+if($ins){  
     
     $query = "DELETE FROM cart WHERE customer = $uid";
     
     mysql_query($query);
     
-    if(mysql_affected_rows())$out['ok'] = 1;
-}
+}   
+
+$out['ok'] = $ins;
 
 $out['query'] = $query;
 
