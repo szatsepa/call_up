@@ -177,7 +177,7 @@
            
            var i;
            var mstr = '';
-           var str = 'page => ';
+           var str = '';
            var ltr = 'a';
            if(page == 2){
                ltr = 'b';
@@ -193,11 +193,14 @@
                $.each(A_array, function(){
                    var num = this;
                    num = num.substr(1,2);
+                   num = num-1;
                    var row = Math.floor(num/10);
-                   for(i = (row*10);i < (10*(row+1));i++){
-                       
+                   str += num+" - "+row+"\n";
+                   for(i = (row*10);i < (10*(row)+10);i++){
+                       str+=i+'; ';
                       changeBtn(i,ltr);
-                   }  
+                   }
+                   str+="\n";
                });
            }
            if(A_array.length == 5 && page == 1){
@@ -212,7 +215,7 @@
                    num = num.substr(1,2);
                    var row = Math.floor(num/10);
                    if(check_B[row] == 2){
-                        for(i = (row*10);i < (10*(row+1));i++){
+                        for(i = (row*10);i < (10*(row)+9);i++){
                             str += changeBtn(i,ltr)+"; ";
                         } 
                     }
@@ -230,7 +233,7 @@
                    num = num.substr(1,2);
                    var row = Math.floor(num/10);
                    if(check_C[row] == 3){
-                        for(i = (row*10);i < (10*(row+1));i++){ 
+                        for(i = (row*10);i < (10*(row)+9);i++){ 
                             changeBtn(i,ltr);
                         } 
                     }
@@ -266,32 +269,7 @@
             $("#"+bid).css({'cursor':'default'});
             $("#"+bid).remove();
             
-            return bid+"| im_"+bid;
-    }
-//    function setCartInfo(count){
-//            var str_product = new Array('товар','товара','товаров');
-//            var str_out = '';
-//
-//            if(count > 5 && count < 21){
-//
-//                str_out = str_product[2];
-//
-//            }else if(count == '1'){
-//                
-//                str_out = str_product[0]; 
-//                
-//            }else if(count =='2' || count == '3' || count == '4'){
-//                
-//                str_out = str_product[1];
-//                
-//            }else{
-//                
-//                str_out = str_product[2];
-//            }
-//                
-//       return str_out;         
-//            
-//    }
-        
+            return false;
+    }       
 });  
 

@@ -100,7 +100,7 @@ input {
 /*    outline: 1px solid brown;*/
 }
 .select{
-        background-color:#990033;
+        background-color:#ffcc00;
         font-size:10px;
         padding: 0 0 0 0;
         margin-top:3px;
@@ -804,7 +804,7 @@ div.all_see{
         position:relative;
         float: left;
         width: 61%;
-        background-color: #990033;
+        background-color:#ffcc00;
         background-repeat: no-repeat;
 }
 .qu_bottom{
@@ -1000,7 +1000,7 @@ input.footer_1{
         text-align : center;
 }
 div.selector {
-        background-color:#990033;
+        background-color:#ffcc00;
         border-top:1px solid #a7a7a7;
         border-bottom:1px solid white;
         font: 4px Arial;
@@ -1020,7 +1020,7 @@ div.selector {
  .header_2 {
        width: 100%;
         height: 32px;
-        background-color:#990033;    
+        background-color:#ffcc00;    
 }       
        
 div.selector13 {
@@ -1198,8 +1198,8 @@ input.submit2 {
         font-style: italic;
 	width:180px; 
 	position:relative;
-        background-color: #990033;
-        border: 2px solid #990033;
+        background-color:#ffcc00;
+        border: 2px solid #ffcc00;;
 }
 
 input.my_cab{
@@ -1209,8 +1209,8 @@ input.my_cab{
         font-style: italic;
 	width:136px;
 	position:relative;
-        background-color: #990033;
-        border: 2px solid #990033; 
+        background-color:#ffcc00;
+        border: 2px solid #ffcc00;; 
 }
 
 input.submit22 {
@@ -1219,8 +1219,8 @@ input.submit22 {
 	font-size: 10pt;
         font-weight: bold;
 	position:relative;
-        background-color: #990033;
-        border: 2px solid #990033;
+        background-color:#ffcc00;
+        border: 2px solid #ffcc00;;
 }
 input.submit31 {
     font-family: Arial;
@@ -1233,8 +1233,8 @@ input.submit31 {
 	margin-right: 0px;
 	margin-top:0px;	
 	position:relative;
-        background-color: #990033;
-        border: 2px solid #990033;
+        background-color:#ffcc00;
+        border: 2px solid #ffcc00;;
 }
 input.submit222 {
     font-family: Arial;
@@ -1242,8 +1242,8 @@ input.submit222 {
 	font-size: 10pt;
         font-weight: bold;
 	position:relative;
-        background-color: #990033;
-        border: 2px solid #990033;
+        background-color:#ffcc00;
+        border: 2px solid #ffcc00;;
 }
 input.submit3 {
     font-family: Arial;
