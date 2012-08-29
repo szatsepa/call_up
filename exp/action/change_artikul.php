@@ -12,7 +12,9 @@ $id = intval($_POST[id]);
 
 //$artikul = $_POST[artikul];
 
-$query = "DELETE FROM cart WHERE id = $id";
+//$query = "DELETE FROM cart WHERE id = $id";
+
+$query = "UPDATE cart SET artikul = 'NULL' WHERE id = $id";
 
 mysql_query($query);
 

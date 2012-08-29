@@ -175,18 +175,8 @@ switch ($attributes[act]) {
         include 'main/dsp_header.php';
         include 'main/qry_count_volume.php';
         include ("main/qry_cart.php");
-       
-        if(!isset ($attributes[type])){
-
-            include 'main/act_to_ofice.php';
-                
-            }else{
-               
-            include 'main/cnt_cart.php';
-                            
-        }
-        
-            include 'main/dsp_footer.php';
+        include 'main/cnt_cart.php';
+        include 'main/dsp_footer.php';
 
        break;
        

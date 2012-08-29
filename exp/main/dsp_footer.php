@@ -1,6 +1,6 @@
             <div class="footer_box">
                 <div class = "footer">
-                        <img src="../images/storefront/F_2.jpg" width="1008" alt="Нижний баннер"/>
+<!--                        <img src="../images/storefront/F_2.jpg" width="1008" alt="Нижний баннер"/>-->
                 </div>
                 <div class="footer_right">
                     

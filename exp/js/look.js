@@ -39,13 +39,15 @@
                var atr = $("#"+id).attr('disabled');  
                var code = $("#cod").val();
                var artikul = this.name;
+              
+                
                if(atr != 'disabled' && uid){
-                   if(code != undefined){
-                       document.location.href = "?act=dscr&artikul="+artikul+"&cod="+code;
-                   }else{
-                       document.location.href = "?act=dscr&artikul="+artikul; 
-                   }
-                    
+                   
+                    if(window.item_id == undefined){
+                            document.location.href = "?act=dscr&artikul="+artikul;
+                        }else{
+                            document.location.href = "?act=dscr&artikul="+artikul+"&art="+item_id;
+                        }
                }else if (!uid){
                    document.location.href = "?act=regs"; 
                }

@@ -1,230 +1,45 @@
 <?php
-include './query/connect.php';
+include 'connect.php';
 
-$ip = $_SERVER["REMOTE_ADDR"];
+$out = array('ok'=>NULL);
+        
+$uid = intval($_POST[uid]);
 
-$ip = quote_smart($ip);
+$artikul = $_POST[artikul];
 
-if($_SESSION[auth] == 1){
-   
-    $who = 'user_id';
+if(isset($_POST[itid])){
     
-}  else if($_SESSION[auth] == 2){
+    $item_id = $_POST[itid];
     
-    $who = 'customer';
-    
+    $query   = "UPDATE cart 
+                    SET artikul = '$artikul'
+                    WHERE id    = $item_id";
+}else{
+    $query = "INSERT INTO cart 
+		          (num_amount,
+		           num_discount,
+		           artikul,
+		           price_id,
+		           time,
+                           customer) 
+		          VALUES 
+		          (1,
+		           0,
+		           '$artikul',
+		           2,
+		           now(),
+                           $uid)";
 }
 
-$user_id = $_SESSION[id];
-        
-$user_id = quote_smart($user_id);
- 
-$price_id = intval($attributes[pricelist_id]);
-        
-if(!isset($attributes[cod])) $cod = NULL;
+$result = mysql_query($query);
 
-	// Избавимся от "неправильных" значений
-	if (!is_numeric($attributes[amount])) {
-		$attributes[amount] = 1;
-	}
-			
-	$attributes[amount] = intval($attributes[amount]);
+if($result)$out['ok'] = 1;
 	
-	
-	if ($attributes[amount] <= 0) {
-		$attributes[amount] = 1;
-	}
-        
-	
-	$artikul = quote_smart($attributes[artikul]);
-	$storefront_id = intval($attributes[stid]);
-        
-        if(isset ($attributes[discount])){
-            $discount = quote_smart($attributes[discount]);
-        }else{
-            $discount = 0;
-        }
-        
-        $amount = quote_smart($attributes[amount]);
-        
-        $cod = quote_smart($attributes[cod]);
-        
-        $add_message = '';
+// если в корзине колич товаров равно нулю то удаляем сей артикул из корзины
 
-        if (isset($attributes[package])) {
-	
-		$attributes[package] = intval($attributes[package]);
-		
-	    $add_message = " Возможен заказ только полных упаковок.";
-	    
-	    // Сколько полных упаковок?
-	    $packages = ceil ($attributes[amount] / $attributes[package]);
-	    
-	    // Новое количество товара с учетом полных упаковок
-	    $amount = $packages * $attributes[package];
-	}
+mysql_query("DELETE FROM cart WHERE num_amount = 0");
 
-	// Попытаемся обновить существующие записи в корзине
-        
-        if(isset ($attributes[up]) && !isset ($_SESSION[user])){
-            
-            $query   = "UPDATE cart 
-				   SET num_amount   = (num_amount + $amount),
-				       num_discount = $discount,
-				       time         = now(),
-                                       ip = $ip
-				 WHERE artikul    = $artikul
-                                  AND  cod   = $cod";
-        }else if(isset ($attributes[down]) && !isset ($_SESSION[user])){
-            
-            $query   = "UPDATE cart 
-				   SET num_amount   = (num_amount - $amount),
-				       num_discount = $discount,
-				       time         = now(),
-                                       ip = $ip
-                                   WHERE artikul    = $artikul
-                                   AND  cod         = $cod";
-            
-        }else if(isset ($attributes[up]) && isset ($_SESSION[user])){
-            
-            $query   = "UPDATE cart 
-				   SET num_amount   = (num_amount + $amount),
-				       num_discount = $discount,
-				       time         = now(),
-                                       ip = $ip
-				 WHERE artikul    = $artikul
-                                  AND  $who    = $user_id";
-            
-        }else if(isset ($attributes[down]) && isset ($_SESSION[user])){
-            
-            $query   = "UPDATE cart 
-				   SET num_amount   = (num_amount - $amount),
-				       num_discount = $discount,
-				       time         = now(),
-                                       ip = $ip
-                                   WHERE artikul    = $artikul
-                                   AND  $who    = $user_id";            
-            
-        }
-					   
-	$query_try = mysql_query($query) or die($query);
-
-
-	
-	// Таких записей нет, делаем простой INSERT
-	if (mysql_affected_rows() == 0) {
-            
-            if(!isset ($_SESSION[user])){
-                
-                $query = "INSERT INTO cart 
-		          (num_amount,
-		           num_discount,
-		           artikul,
-		           price_id,
-		           time,
-                           cod,
-                           ip) 
-		          VALUES 
-		          ($amount,
-		           $discount,
-		           $artikul,
-		           $price_id,
-		           now(),
-                           $cod,
-                           $ip)";
-                
-            }else{
-                
-                $query = "INSERT INTO cart 
-		          (num_amount,
-		           num_discount,
-		           artikul,
-		           price_id,
-		           time,
-                           $who,
-                           ip) 
-		          VALUES 
-		          ($amount,
-		           $discount,
-		           $artikul,
-		           $price_id,
-		           now(),
-                           $user_id,
-                           $ip)";
-                
-            }                       
-            
-            $qry_add = mysql_query($query) or die($query);
-	}
-        
-        $affected = mysql_affected_rows();
-     
-      	
-	$query = "SELECT num_amount,pricelist_id 
-	          FROM   pricelist 
-	          WHERE  str_code1    = $artikul 
-        AND str_code2 <> 'X'";
-					 
-	$qry_row = mysql_query($query) or die($query);
-	$current_amount = mysql_result($qry_row,0,'num_amount');
-	$pricelist_id = mysql_result($qry_row,0,'pricelist_id');
-	
-	if ($current_amount != 999999999 and !isset($demo)) {
-		
-		if(!isset($attributes[down])){
-				  $query = "UPDATE pricelist 
-							 SET num_amount = ($current_amount - $amount) 
-							  WHERE str_code1    = $artikul AND str_code2 <> 'X'";
-
-		}else{
-                    //// ежели вернули из корзины товар то
-					$query = "UPDATE pricelist 
-							 SET num_amount = ($current_amount + $amount) 
-							  WHERE str_code1    = $artikul AND str_code2 <> 'X'";
-		}
-	    $qry_row = mysql_query($query) or die($query);
-	}
-
-	
-
-	// Обновим время укладки в корзину для всех товаров текущего пользователя
-	// Это необходимо для корректной чистки корзины от "устаревших" товаров
-	if(!isset ($_SESSION[user])){
-            
-            $query = "UPDATE cart SET time = now()  
-			  WHERE cod  = $cod AND 
-			  price_id = $price_id";
-            
-        }else {
-            
-            $query = "UPDATE cart SET time = now()  
-			  WHERE $who  = $user_id AND 
-			  price_id = $price_id";
-            
-        }
-        
-	$qry_row = mysql_query($query) or die($query);
-	
-	
-	// Пропишем в корзине id заказа, из которого создан данный заказ
-        $parent_zakaz = quote_smart($attributes[parent_order]);
-        
-	if (isset($parent_zakaz) and $parent_zakaz > 0) {
-            
-            if(isset ($_SESSION[user])){
-            
-            $query = "UPDATE cart SET parent_zakaz = $parent_zakaz  
-			  	   WHERE $who  = $id_user AND 
-			        price_id = $price_id";
-            
-        }
-		$qry_parent_zakaz = mysql_query($query) or die($query);
-	
-	}
-	
-	// если в корзине колич товаров равно нулю то удаляем сей артикул из корзины
-
-	mysql_query("DELETE FROM cart WHERE num_amount = 0");
+echo json_encode($out);
        
 mysql_close();       
 ?>

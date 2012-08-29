@@ -51,7 +51,7 @@
                      tataType:'json',
                      data:{uid:uid,num:N_O,A:A,B:B,C:C},
                      success:function(data){
-                         console.log(data);
+                         //console.log(data);
 //                         if(data['query']){ }
                              document.location.href = "?act=look&page=1";
                          
@@ -83,7 +83,7 @@
                  data:{id:id},
                  success:function(data){
                      if(data['ok'] == 1){
-                         document.location.href = "?act=look&page="+page;
+                         document.location.href = "?act=look&page="+page+"&art="+id;
                      }
                  },
                  error:function(data){
@@ -150,7 +150,7 @@
                   
                }
            });
-//           //console.log(str);
+//           ////console.log(str);
            if(C_array.length == 15 && B_array.length == 10 && A_array.length == 5){
                order_ready = true;
            }

@@ -89,8 +89,8 @@ $(document).ready(function () {
         var str = '';
         
         while(A_array.length<5){
-            r = Math.ceil(Math.random()*9);
-            c = Math.ceil(Math.random()*9);
+            r = Math.floor(Math.random()*9);
+            c = Math.floor(Math.random()*9);
             num = 10*r+c+1;
             point = {weight:num,row:r,cell:c};
             if(desk[r][c]['dis']){
@@ -111,8 +111,8 @@ $(document).ready(function () {
                 desk[this['row']][this['cell']]['dis']=false;
             });
              while(B_array.length<10){
-                r = Math.ceil(Math.random()*9);
-                c = Math.ceil(Math.random()*9);
+                r = Math.floor(Math.random()*9);
+                c = Math.floor(Math.random()*9);
                 num = 10*r+c+1;
                 point = {weight:num,row:r,cell:c};
                 if(desk[r][c]['dis'] && check_B[r] < 2){

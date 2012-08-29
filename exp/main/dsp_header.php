@@ -30,7 +30,14 @@ include 'cnt_header.php';
     
 ?>
 <body onload="">
+<?php 
+if(isset($attributes[art])){
+?>
+<script type="text/javascript">
+    var item_id = <?php echo intval($attributes[art]);?>;
+</script>
 <?php
+}
 include 'dsp_selector.php';
 ?>
     

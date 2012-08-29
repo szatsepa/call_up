@@ -8,7 +8,7 @@ include 'connect.php';
 
 $uid = intval($_POST[uid]);
 
-$query = "SELECT Count(id) FROM cart WHERE customer = $uid";
+$query = "SELECT Count(id) FROM cart WHERE customer = $uid AND artikul <> 'NULL'";
 
 $result = mysql_query($query);
 

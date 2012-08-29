@@ -3,7 +3,11 @@
 
 	<div class="cont">
             
- <?php $artikul = $attributes[artikul];?>           
+ <?php
+     $artikul = $attributes[artikul];
+     $item_id = "&art=".$attributes[art];
+ 
+ ?>           
 	
 <!--left_side модуль изображения товара----------------------------------------------------------------------------- -->
 
@@ -71,11 +75,11 @@ foreach ($name_artikul->volume as $value) {
                          
                 <!-- END -->
                 <div id = "v_korzinu">
-<!--                    <a class="to_cart" id="<?php echo $attributes[artikul];?>" name="<?php echo $attributes[cod];?>">В корзину</a>-->
-                    <a id="to_cart" href="index.php?act=to_order&amp;stid=2&amp;artikul=<?php echo $attributes[artikul];?>&amp;pricelist_id=<?php echo $name_artikul->pricelist;?>&amp;amount=1&amp;type=1&cod=<?php echo $attributes[cod];?>&amp;up=1">В корзину</a>
+                    <a class="to_cart" id="add_cart" name="<?php echo $attributes[artikul];?>">В корзину</a>
+<!--                    <a id="to_cart" href="index.php?act=to_order&amp;stid=2&amp;artikul=<?php echo $attributes[artikul];?>&amp;pricelist_id=<?php echo $name_artikul->pricelist;?>&amp;amount=1&amp;type=1&cod=<?php echo $attributes[cod];?>&amp;up=1<?php echo $item_id;?>">В корзину</a>-->
                 </div>
                 <div id = "otlozit">
-                    <a href="index.php?act=to_reserved&amp;stid=<?php echo $attributes[stid];?>&amp;artikul=<?php echo $attributes[artikul];?>&amp;pricelist_id=<?php echo $name_artikul->pricelist;?>&amp;amount=1&amp;type=1&amp;cod=<?php echo $attributes[cod];?>&amp;up=1">Отложить</a>
+<!--                    <a href="index.php?act=to_reserved&amp;stid=<?php echo $attributes[stid];?>&amp;artikul=<?php echo $attributes[artikul];?>&amp;pricelist_id=<?php echo $name_artikul->pricelist;?>&amp;amount=1&amp;type=1&amp;cod=<?php echo $attributes[cod];?>&amp;up=1">Отложить</a>-->
                 </div>
 			<div id = "opisanie_center">
                             <br/><br/>

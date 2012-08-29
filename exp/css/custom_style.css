@@ -803,7 +803,7 @@ div.all_see{
 .footer {
         position:relative;
         float: left;
-        width: 61%;
+        width: 100%;
         background-color:#ffcc00;
         background-repeat: no-repeat;
 }
