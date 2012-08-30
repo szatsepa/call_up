@@ -1,3 +1,4 @@
+   
 <?php
 include 'cnt_storefront.php';
 
@@ -12,6 +13,9 @@ $pages = floor(($cnt/90));
 ?>
 
 <div class = "contennt_chk" id="cont"> 
+    
+       
+  
     <?php
 
  if(isset($attributes[page])){

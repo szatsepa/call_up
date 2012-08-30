@@ -29,7 +29,7 @@ header('Content-Type: text/html; charset=utf-8');
 include 'cnt_header.php';
     
 ?>
-<body onload="">
+<body>
 <?php 
 if(isset($attributes[art])){
 ?>
@@ -185,4 +185,4 @@ include 'dsp_selector.php';
           </div>
 
 <!--end header-->
-         
+<!--<div id="safe">         -->

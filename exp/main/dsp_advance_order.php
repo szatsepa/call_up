@@ -1,3 +1,6 @@
+<script type="text/javascript">
+    var order = <?php echo intval($_GET[ticket]);?>;
+</script>
 <table class='cart'>
     <tr>
         <td class='cart' style="font-size: 18px; font-weight: bold">
@@ -19,20 +22,10 @@ if ($title != '') echo "<br/><h2>".$title."</h2><br/>";
     <tbody>
         <tr>
             <td class="btp">
-                <form action="index.php?act=look" method="post">
-                    <input type="hidden" name="cod" value="<?php echo $attributes[cod];?>"/>
-                    <input type="hidden" name="select" value="prices"/>
-                    <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
-                    <input type="hidden" name="group" value="<?php echo $price_id; ?>"/>
-                    <input type="submit" onmouseover="this.style.color='#CCCCCC'" onmouseout="this.style.color='#FFFFFF'" value="Прайс заказа<?php echo $message; ?>" class="submit2"/>
-                </form>
+                <input id="edit_order" type="button" value="Редактировать" class="submit2" />
             </td>
             <td class="btp">
-                <form action="index.php?act=del_order" method="post">
-                    <input type="hidden" name="stid" value="<?php echo $attributes[stid]; ?>"/>
-                    <input type="hidden" name="price_id" value="<?php echo $price_id; ?>"/> 
-                    <input type='Submit' onmouseover="this.style.color='#CCCCCC'" onmouseout="this.style.color='#FFFFFF'" value='Удалить заказ<?php echo $message; ?>'  class="submit2" />
-                </form>
+                <input  id="delete_order" type='button'value='Удалить'  class="submit2" />
             </td>
         </tr>
     </tbody>
@@ -41,64 +34,62 @@ if ($title != '') echo "<br/><h2>".$title."</h2><br/>";
 
 <?php 
 
-$price = $price_id;
+$price = 2;
 
-include 'dsp_cart.php';
+include 'dsp_ticket.php';
 
-$contragent_name = $_SESSION[user]->data[name]." ".$_SESSION[user]->data[surname];
 ?>
 
 <br />
 <div class = "cont_reg">
-            
-<form action="index.php?act=create_order" method="post" name="addform" enctype="multipart/form-data"> 
-    <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
-    <input type="hidden" name="price_id" value="<?php echo $price; ?>"/>
-    <input type="hidden" name="contragent_id" value="<?php echo $_SESSION[user]->data[id];?>"/> 
-    <div id = "cont_reg_left">
+<div id = "cont_reg_left">
                     <br/>
                     <br/>
                     <br/>
 
                     <div id = "cont_reg_left_3">E-mail: </div>
-                    <div id = "cont_reg_left_4"><input type="text" required id="eml"  onblur="return isEmailCorrect()" name="e_mail" size="30" value="<?php echo $_SESSION[user]->data[email];?>"/></div>
-                    <div id = "cont_reg_left_3">Адрес доставки: </div>
-                    <div id = "cont_reg_left_66"><textarea rows="3" cols="29" name="adress"><?php echo $_SESSION[user]->data[shipping_address];?></textarea></div>
-                    <div id = "cont_reg_left_3">Пожелания заказчика: </div>
-                    <div id = "cont_reg_left_66"><textarea rows="3" cols="29" name="desire"></textarea></div>
-                    <div id = "cont_reg_left_3">Метка: </div>
-                    <div id = "cont_reg_left_4"><input type="text" name="mark" size="30"/></div>
-                    <div id = "cont_reg_left_3">Отсрочить до: </div>
                     <div id = "cont_reg_left_4">
-                        <select name="day" class="step1">
+                        <input type="text" required id="to_email"  onblur="return isEmailCorrect()" name="e_mail" size="30" value="<?php echo $_SESSION[user]->data[email];?>"/>
+                    </div>
+                    <div id = "cont_reg_left_3">Адрес доставки: </div>
+                    <div id = "cont_reg_left_66"><textarea rows="3" id="to_shipment" cols="29" name="adress"><?php echo $_SESSION[user]->data[shipping_address];?></textarea></div>
+                    <div id = "cont_reg_left_3">Пожелания заказчика: </div>
+                    <div id = "cont_reg_left_66"><textarea rows="3" id="desire" cols="29" name="desire"></textarea></div>
+                    <div id = "cont_reg_left_3">Метка: </div>
+                    <div id = "cont_reg_left_4"><input id="marck" type="text" name="mark" size="30"/></div>
+                    <div id = "cont_reg_left_3">Отсрочить до: </div>
+                    <div id = "cont_reg_left_4" >
+                       <select id="dey" name="day" class="step1">
                         <?php 
                         
                         $day = date(j)+1;
                         $month = date(n);
                         $year = date(Y);
-                        if($day>23){
-                            $day=0;
-                            $month++;
+                        
+//                        if($day>23){
+//                            $day=0;
+//                            $month++;
                             
                             if($month>12){
                                 $month=1;
                                 $year++;
                             }
                             
-                        }
+//                        }
                         ?>
                         <option value="<?php echo $day;?>"><?php echo $day;?></option>
                         <?php
-                        for($i = ($day-1);$i < date(t);$i++){ ?>
+                        for($i = ($day);$i < date(t);$i++){ ?>
                         
                             <option value="<?php echo $i;?>"><?php echo $i;?></option>
                             
                       <?php }
                         
                         ?>
+                             
                             </select>
 -
-                            <select name="mon" class="step1">
+                            <select id="month" name="mon" class="step1">
                        <?php 
                         
                         for($i = $month;$i < 13;$i++){ ?>
@@ -110,7 +101,7 @@ $contragent_name = $_SESSION[user]->data[name]." ".$_SESSION[user]->data[surname
                         ?>
                             </select>
                         -
-                        <select name="year" class="step1">
+                        <select id="year" name="year" class="step1">
                         <?php 
                         
                         
@@ -131,7 +122,7 @@ $contragent_name = $_SESSION[user]->data[name]." ".$_SESSION[user]->data[surname
                             </select>
                         
                         &nbsp;дд-мм-гггг&nbsp;&nbsp;
-                        <select name="hh" class="step1">
+                        <select id="hh" name="hh" class="step1">
                          <option value="<?php echo date(H);?>"><?php echo date(H);?></option>   
                             
                         <?php 
@@ -149,7 +140,7 @@ $contragent_name = $_SESSION[user]->data[name]." ".$_SESSION[user]->data[surname
                         ?>
                             </select>
                         -
-                        <select name="mm" class="step1">
+                        <select id="mm" name="mm" class="step1">
                             
                             <option value="<?php echo date(i);?>"><?php echo date(i);?></option>
                         <?php 
@@ -174,16 +165,9 @@ $contragent_name = $_SESSION[user]->data[name]." ".$_SESSION[user]->data[surname
     <div id = "cont_reg_right" >
         <div id = "cont_reg_order_btn">
                         
-                        <input type="submit"  onmouseover="this.style.color='#CCCCCC'" onmouseout="this.style.color='#FFFFFF'" value="Отправить заказ"   class="submit2"/>
+                        <input id="oderonosets" type="button" value="Отправить заказ"   class="submit2" /> 
                         </div>
         
     </div>
-<!--  </form>  -->
 </div>
-<script language="JavaScript" type="text/javascript">
-	document.write('<input type="hidden" name=scr_width  value="' + screen.width  +'">');
-	document.write('<input type="hidden" name=scr_height value="' + screen.height +'">');
-</script>
-
-</form>
 <br>

@@ -64,22 +64,24 @@ $(document).ready(function () {
     });
     $("#sale_t").mousedown(function(){
         var id = this.name;
-        var resolution = screen.width+"X"+screen.height;
-        $.ajax({
-           url:'./action/buy_ticket.php',
-            type:'post',
-            dataType:'json',
-            data:{id:id,resolution:resolution},
-            success:function(data){
-                if(data['ok'] == 30){
-                    document.location.href = "?act=private_office";
-                }
-            },
-            error:function(data){
-                document.write(data['responseText']);
-            }
-         
-        });
+        document.location.href = "?act=advance&ticket="+id;
+//        
+//        var resolution = screen.width+"X"+screen.height;
+//        $.ajax({
+//           url:'./action/buy_ticket.php',
+//            type:'post',
+//            dataType:'json',
+//            data:{id:id,resolution:resolution},
+//            success:function(data){
+//                if(data['ok'] == 30){
+//                    document.location.href = "?act=private_office";
+//                }
+//            },
+//            error:function(data){
+//                document.write(data['responseText']);
+//            }
+//         
+//        });
     });
         
    function goodLuck(){

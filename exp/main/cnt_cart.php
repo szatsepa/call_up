@@ -10,7 +10,7 @@ include 'dsp_ticket.php';
                  
                 <div id = "btn_oplatit_chk"> 
 <p align="center">
-    <a class="to_cart" id='make_order'>Заказать.</a>                    
+    <a class="to_cart" id='make_order'>Зарезервировать.</a>                    
 </p>     
                 </div>            
              </div>

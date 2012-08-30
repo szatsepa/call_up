@@ -92,7 +92,7 @@ input {
 /* content storefront
 -----------------------------------------------------------------------------*/
 .contennt_chk{
-/*   outline: 1px solid gold;*/
+   outline: 1px solid gold; 
 }
 /*for storefront*/
 .strf_block{
@@ -1201,6 +1201,10 @@ input.submit2 {
         background-color:#ffcc00;
         border: 2px solid #ffcc00;;
 }
+input.submit2:hover {
+    
+    color: #999; 
+}
 
 input.my_cab{
    font-family: Arial;
@@ -1403,4 +1407,28 @@ a.to_cart{
 }
 a.to_cart:hover{
     color: #BB0D72;
+}
+/*===========preloader=================================*/
+.QOverlay {
+	background-color: #aaa;
+	z-index: 9999;
+}
+
+.QLoader {
+	background-color: #aaa;
+        opacity: .72;
+	height: 2px;
+}
+
+.QAmt {
+	color:#333333;
+	font-family:"Trebuchet MS",Arial,Helvetica,sans-serif;
+	font-size:40px;
+	font-weight:bold;
+	line-height:50px;
+	height:354px;
+	width:211px;
+	margin:-220px 0 0 -50px;
+        background-color: graytext;
+        background-repeat: no-repeat;
 }

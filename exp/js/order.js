@@ -45,15 +45,17 @@
              C = C.substr(1); 
              
              if(order_ready){
+//                 alert("JOPPA");
                  $.ajax({
                      url:'./action/create_order.php',
                      type:'post',
                      tataType:'json',
                      data:{uid:uid,num:N_O,A:A,B:B,C:C},
                      success:function(data){
+                         
                          //console.log(data);
 //                         if(data['query']){ }
-                             document.location.href = "?act=look&page=1";
+                             document.location.href = "?act=private_office"; 
                          
                      },
                      error:function(data){
