@@ -1,5 +1,7 @@
 <script type="text/javascript">
     var order = <?php echo intval($_GET[ticket]);?>;
+    var deys = <?php echo date(t);?>;
+    var low_y =<?php echo date(L);?>; 
 </script>
 <table class='cart'>
     <tr>
@@ -60,102 +62,24 @@ include 'dsp_ticket.php';
                     <div id = "cont_reg_left_3">Отсрочить до: </div>
                     <div id = "cont_reg_left_4" >
                        <select id="dey" name="day" class="step1">
-                        <?php 
                         
-                        $day = date(j)+1;
-                        $month = date(n);
-                        $year = date(Y);
-                        
-//                        if($day>23){
-//                            $day=0;
-//                            $month++;
-                            
-                            if($month>12){
-                                $month=1;
-                                $year++;
-                            }
-                            
-//                        }
-                        ?>
-                        <option value="<?php echo $day;?>"><?php echo $day;?></option>
-                        <?php
-                        for($i = ($day);$i < date(t);$i++){ ?>
-                        
-                            <option value="<?php echo $i;?>"><?php echo $i;?></option>
-                            
-                      <?php }
-                        
-                        ?>
-                             
                             </select>
 -
                             <select id="month" name="mon" class="step1">
-                       <?php 
-                        
-                        for($i = $month;$i < 13;$i++){ ?>
-                        
-                            <option value="<?php echo $i;?>"><?php echo $i;?></option>
-                            
-                      <?php }
-                        
-                        ?>
+                      
                             </select>
                         -
                         <select id="year" name="year" class="step1">
-                        <?php 
-                        
-                        
-                        for($i = $year;$i < ($year + 2);$i++){
-                            
-                            ?>
-                            <option value="<?php echo $i;?>"><?php echo $i;?></option>
-                            
-                            
-                            
-                      <?php 
-                      
-                      
-                          
-                      }
-                        
-                        ?>
-                            </select>
+<!--                            <option value="<?php echo date(Y);?>" selected><?php echo date(Y);?></option>-->
+                         </select>
                         
                         &nbsp;дд-мм-гггг&nbsp;&nbsp;
                         <select id="hh" name="hh" class="step1">
-                         <option value="<?php echo date(H);?>"><?php echo date(H);?></option>   
-                            
-                        <?php 
-                        for($i = 0;$i < 25;$i++){ 
-                            
-                            $hh = "$i";
-                            
-                            if($i < 10)$hh = "0$i";
-                            ?>
-                        
-                            <option value="<?php echo $hh;?>"><?php echo $hh;?></option>
-                            
-                      <?php }
-                        
-                        ?>
+                         
                             </select>
                         -
                         <select id="mm" name="mm" class="step1">
-                            
-                            <option value="<?php echo date(i);?>"><?php echo date(i);?></option>
-                        <?php 
-                        for($i = 0;$i < 60;$i+=5){ 
-                            
-                            $mm = "$i";
-                            
-                            if($i < 10)$mm = "0$i";
-                            ?>
-                        
-                            <option value="<?php echo $mm;?>"><?php echo $mm;?></option>
-                            
-                      <?php }
-                        
-                        ?>
+                          
                             </select>
                         &nbsp;чч-мм
                         <br />
@@ -165,7 +89,7 @@ include 'dsp_ticket.php';
     <div id = "cont_reg_right" >
         <div id = "cont_reg_order_btn">
                         
-                        <input id="oderonosets" type="button" value="Отправить заказ"   class="submit2" /> 
+                        <input id="orderonosets" type="button" value="Отправить заказ"   class="submit2" /> 
                         </div>
         
     </div>
