@@ -10,7 +10,17 @@ $out = array('ok'=>NULL);
 
 $id = intval($_POST[id]);
 
+$uid = intval($_POST[uid]);
+
 $resolution = $_POST[resolution];
+
+$shipment = $_POST[shipment];
+
+$desire = $_POST[desire];
+
+$mark = $_POST[mark];
+
+$exe_time = $_POST[exe_time];
 
 $query = "SELECT * FROM tickets WHERE id = $id";
 
@@ -34,21 +44,11 @@ $B_array = explode(':',$str_B);
 
 $C_array = explode(':',$str_C);
 
-$query = "SELECT * FROM customer WHERE id = $uid";
-
-$result = mysql_query($query);
-
-$var = mysql_fetch_assoc($result);
-
-$email = $var[email];
-
-$shipment = $var[shipping_address];
-
 $ip = $_SERVER['REMOTE_ADDR'];
 
 $agent = $_SERVER["HTTP_USER_AGENT"];
 
-$query = "INSERT INTO arch_zakaz (customer,email,shipment,ip,resolution,agent,c_number) VALUES ($uid,'$email','$shipment','$ip','$resolution','$agent','$num_order')";
+$query = "INSERT INTO arch_zakaz (customer,email,shipment,comments,ip,resolution,agent,tags,c_number) VALUES ($uid,'$email','$shipment','$desire','$ip','$resolution','$agent','$mark','$num_order')";
 
 mysql_query($query);
 

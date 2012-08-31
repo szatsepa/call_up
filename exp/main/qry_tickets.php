@@ -21,5 +21,17 @@ while ($var = mysql_fetch_assoc($result)){
 
 mysql_free_result($result);
 
+$query = "SELECT p.`str_code1`, CONCAT(g.id,'.',g.extention) AS img FROM `pricelist` AS p, goods_pic AS g WHERE  p.`pricelist_id`=2 AND p.`str_barcode` = g.barcode AND g.pictype = 1";
+
+$result = mysql_query($query) or die($query);
+
+$pictyre_array = array();
+
+while ($var = mysql_fetch_assoc($result)){
+    $pictyre_array[$var[str_code1]] = $var[img];
+}
+
+mysql_free_result($result);
+
 
 ?>

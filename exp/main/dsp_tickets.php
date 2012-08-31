@@ -4,53 +4,94 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-//print_r($tickets_array);
+$n = 0;
 if($tickets_array){
     foreach ($tickets_array as $value) {
-        
-    
+        $A_array = explode(":", $value[field_A]);
+    $B_array = explode(":", $value[field_B]);
+    $C_array = explode(":", $value[field_C]);
 ?>
-        <table class="btp" border="1" > 
+        <table class="btp" border="1" id="ticket_<?php echo $n;?>"> 
             <thead class="btp">
                 <tr>
-                    <td colspan="5">
+                    <th colspan="4">
                         <p><?php echo "Билет №".$value[num_order]." от ".$value[time];?></p>
-                    </td>
+                    </th>
+                </tr>
+                <tr class="btp" >
+                    <th class="btp" align="center">
+                       Поле А 
+                    </th>
+                    <th class="btp" align="center">
+                       Поле В 
+                    </th>
+                    <th class="btp" align="center"> 
+                       Поле С 
+                    </th>
+<!--                    <td class="btp" >
+                        
+                    </td>-->
+                    <th class="btp" >
+                        
+                    </th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="btp" >
-                    <td class="btp" align="center">
-                       Поле А 
-                    </td>
-                    <td class="btp" align="center">
-                       Поле В 
-                    </td>
-                    <td class="btp" align="center"> 
-                       Поле С 
-                    </td>
-                    <td class="btp" >
-                        
-                    </td>
-                    <td class="btp" >
-                        
-                    </td>
-                </tr>
+                
                 <tr class="btp" >
                     <td class="btp" >
-                       <?php echo $value[field_A];?> 
+                        <table>
+                            <tr>
+                                <?php
+                                    foreach($A_array as $var){  
+                                        ?>
+                                 <td>
+                                    <input class='my_button' id='<?php echo $var;?>' name ="<?php echo $artikul_i;?>" type="image" src="main/act_prewiew.php?src=http://call-up.ru/images/goods/<?php echo $pictyre_array[$var];?>&amp;width=30&amp;height=30" disabled/>
+                                    
+                                </td>
+<?php
+                                    }
+                                ?> 
+                            </tr>
+                        </table>
                     </td>
                     <td class="btp" >
-                        <?php echo $value[field_B];?> 
+                        <table>
+                            <tr>
+                                <?php
+                                    foreach($B_array as $var){  
+                                        ?>
+                                 <td>
+                                    <input class='my_button' id='<?php echo $var;?>' name ="<?php echo $artikul_i;?>" type="image" src="main/act_prewiew.php?src=http://call-up.ru/images/goods/<?php echo $pictyre_array[$var];?>&amp;width=30&amp;height=30" disabled/>
+                                    
+                                </td>
+<?php
+                                    }
+                                ?> 
+                            </tr>
+                        </table>
                     </td>
-                    <td class="btp" >
-                        <?php echo $value[field_C];?>  
+                    <td class="btp" > 
+                        <table>
+                            <tr>
+                                <?php
+                                    foreach($C_array as $var){  
+                                        ?>
+                                <td>
+                                    <input class='my_button' id='<?php echo $var;?>' name ="<?php echo $artikul_i;?>" type="image" src="main/act_prewiew.php?src=http://call-up.ru/images/goods/<?php echo $pictyre_array[$var];?>&amp;width=30&amp;height=30" disabled/>
+                                    
+                                </td>
+<?php
+                                    }
+                                ?> 
+                            </tr>
+                        </table>  
                     </td>
-                    <td class="btp" >
+<!--                    <td class="btp" >
                         <a class="to_cart" id="dele_t" name="<?php echo $value[id];?>">&nbsp;&nbsp;Удалить&nbsp;&nbsp;</a>
-                    </td>
+                    </td>-->
                     <td class="btp" >
-                        <a class="to_cart" id="sale_t" name="<?php echo $value[id];?>">&nbsp;&nbsp;Купить&nbsp;&nbsp;</a>
+                        <a class="to_cart" id="sale_t" name="<?php echo $value[id];?>" title="Произвести некоторые действия над лотерейным билетом">&nbsp;&nbsp;ACTION!!!&nbsp;&nbsp;</a>
                     </td>
                 </tr>
                 
@@ -58,6 +99,7 @@ if($tickets_array){
         </table>
 <br/>
 <?php 
+$n++; 
     }
 }
 ?>

@@ -1,7 +1,5 @@
 <script type="text/javascript">
     var order = <?php echo intval($_GET[ticket]);?>;
-    var deys = <?php echo date(t);?>;
-    var low_y =<?php echo date(L);?>; 
 </script>
 <table class='cart'>
     <tr>
@@ -27,7 +25,7 @@ if ($title != '') echo "<br/><h2>".$title."</h2><br/>";
                 <input id="edit_order" type="button" value="Редактировать" class="submit2" />
             </td>
             <td class="btp">
-                <input  id="delete_order" type='button'value='Удалить'  class="submit2" />
+                <input  id="delete_order" type='button' value='Удалить'  class="submit2" />
             </td>
         </tr>
     </tbody>
@@ -61,24 +59,24 @@ include 'dsp_ticket.php';
                     <div id = "cont_reg_left_4"><input id="marck" type="text" name="mark" size="30"/></div>
                     <div id = "cont_reg_left_3">Отсрочить до: </div>
                     <div id = "cont_reg_left_4" >
-                       <select id="dey" name="day" class="step1">
+                       <select class="date_select" id="dey" name="day" class="step1">
                         
                             </select>
 -
-                            <select id="month" name="mon" class="step1">
+                            <select class="date_select" id="month" name="mon" class="step1">
                       
                             </select>
                         -
-                        <select id="year" name="year" class="step1">
+                        <select class="date_select" id="year" name="year" class="step1">
 <!--                            <option value="<?php echo date(Y);?>" selected><?php echo date(Y);?></option>-->
                          </select>
                         
                         &nbsp;дд-мм-гггг&nbsp;&nbsp;
-                        <select id="hh" name="hh" class="step1">
+                        <select class="date_select" id="hh" name="hh" class="step1">
                          
                             </select>
                         -
-                        <select id="mm" name="mm" class="step1">
+                        <select class="date_select" id="mm" name="mm" class="step1">
                           
                             </select>
                         &nbsp;чч-мм

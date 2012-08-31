@@ -5,9 +5,11 @@
 
 $(document).ready(function(){
     
-    alert("В свете посених заемечеаней эта страница подвегнецца коренной переломке!!!\nПриносим искренние извинения за моральный ущерб!!!\nПросьба ничего не НАЖИМАТЬ!!!");
+    alert("В свете посених заемечеаней эта страница подвегнецца коренной переломке!!!\nКой чего работаит НО еще не все!!!");
 
     var dt = new Date();
+    
+    var uid = $("#uid").val();
     
     var month_array = new Array('01','02','03','04','05','06','07','08','09','10','11','12');
     
@@ -17,78 +19,44 @@ $(document).ready(function(){
 
     var C_array = new Array();
     
-    var artikuls = new Array();
+//    var artikuls = new Array();
     
-     var str_date = dt.getDate()+"-"+month_array[dt.getMonth()]+"-"+dt.getFullYear();
+    var str_date = dt.getDate()+"-"+month_array[dt.getMonth()]+"-"+dt.getFullYear();
     
     readOrder(window.order); 
     
     firstSelect();
     
-//    buildSelect(dt);
-    
-    $("#year").change(function(){
-        
-//        console.log ($("#year :selected").val());
-        
-        $.ajax({
-            url:'./query/whot_time.php',
-            type:'post',
-            dataType:'json',
-            data:{YY:$("#year :selected").val()},
-            success:function(data){
-                var mdt = new Date();
-//                console.log(data);
-                window.low_y = data['low'];
-                mdt.setYear($("#year :selected").val());
-                clearSelect(mdt);
-            },
-            error:function(data){
-                console.log(data);
-            }
-        });
-        
-        
-        
-    });
-    $("#month").change(function(){
-        
-//        console.log ($("#month :selected").val());
-        
-        $.ajax({
-            url:'./query/whot_time.php',
-            type:'post',
-            dataType:'json',
-            data:{YY:$("#year :selected").val(),MM:$("#month :selected").val()},
-            success:function(data){
-                console.log(data);
-                var mdt = new Date();
-                window.low_y = data['low'];
-                mdt.setYear($("#year :selected").val());
-                mdt.setMonth(data['month']+1);
-                clearSelect(mdt);
-            },
-            error:function(data){
-                console.log(data);
-            }
-        });
-        
-        
-        
-    });
-    
     $("#orderonosets").mousedown(function(){
         var email = $("#to_email").val();
         var shipment = document.getElementById("to_shipment").value;
         var desire = document.getElementById("desire").value;
-        var marck = $("#marck").val();
+        var mark = $("#marck").val();
         var dey = $("#dey :selected").val();
         var month = $("#month :selected").val();
         var year = $("#year :selected").val();
         var hh = $("#hh :selected").val();
         var mm = $("#mm :selected").val();
-//        console.log(email+" "+shipment+" "+desire+" "+marck+" "+dey+" "+month+" "+year+" "+hh+" "+mm);
-        
+        var resolution = screen.width+"X"+screen.height;
+        var exe_time = year+"-"+month+"-"+dey+" "+hh+":"+mm;
+        var out = {id:window.order,uid:uid,email:email,shipment:shipment,desire:desire,mark:mark,resolution:resolution,exe_time:exe_time};
+        console.log(out);
+        $.ajax({
+           url:'./action/buy_ticket.php',
+            type:'post',
+            dataType:'json',
+            data:out,
+            success:function(data){
+                console.log(data);
+                if(data['ok'] == 30){
+                    document.location.href = "?act=private_office";
+                }
+            },
+            error:function(data){
+                document.write(data['responseText']);
+            }
+         
+        });
     });
     
     function readOrder(order){ 
@@ -99,7 +67,6 @@ $(document).ready(function(){
                 dataType:'json',
                 data:{order:order},
                 success:function(data){ 
-//                    console.log(data);
                     $("#n_ticket").text('Билет № '+data['ok']+' от '+str_date+'г.')
                     if(data['ok']){
                        sortingCart(data['artikuls']); 
@@ -128,7 +95,6 @@ $(document).ready(function(){
                img = this['img'];
                id = this['id'];
                num = weight.substr(1,2);
-//               str += weight+"; "+img+"; "; 
                
                var obj = {id:id,simbl:simbl,artikul:weight,img:img};
                
@@ -148,11 +114,6 @@ $(document).ready(function(){
                   
                }
            });
-//           ////console.log(str);
-//           if(C_array.length == 15 && B_array.length == 10 && A_array.length == 5){
-//               order_ready = true;
-//           }
-           
            return false 
        }
        
@@ -163,25 +124,25 @@ $(document).ready(function(){
            
            $.each(A_array, function(){
                str = this['img'];
-               $("#TA_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' title='Изменить?'/>")
+               $("#TA_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' title='Изменить?' disabled/>")
                a++;
            });
            a=0;
            $.each(B_array, function(){
                str = this['img'];
-               $("#TB_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' title='Изменить?'/>")
+               $("#TB_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' title='Изменить?'  disabled/>")
                a++;
            });
            a=0;
            $.each(C_array, function(){
                str = this['img'];
-               $("#TC_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' title='Изменить?'/>")
+               $("#TC_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' title='Изменить?'  disabled/>")
                a++;
            });
            return false;
-       }
+       } 
        
-       function buildSelect(ydt,mn){
+       function buildSelect(ydt,deys){
            
            var yy = dt.getFullYear();
            var syy = ydt.getFullYear();
@@ -193,33 +154,28 @@ $(document).ready(function(){
                    $("#year").append("<option value='"+i+"'>"+i+"</option>");
                }
            }
-           buildMonthSelect(ydt,mn);
+           buildMonthSelect(ydt,deys);
        }
        
-       function buildMonthSelect(dt,y){
-           var mm = 0;
-           if(!y){
-               mm = dt.getMonth();
-           }
+       function buildMonthSelect(dt,deys){
+           
+           var mm = dt.getMonth();
+           
           for(var i=0;i<12;i++){ 
                if(mm == i){
-                   $("#month").append("<option value='"+i+"' selected>"+month_array[i]+"</option>");
+                   $("#month").append("<option value='"+month_array[i]+"' selected>"+month_array[i]+"</option>");
                }else{
-                   $("#month").append("<option value='"+i+"'>"+month_array[i]+"</option>");
+                   $("#month").append("<option value='"+month_array[i]+"'>"+month_array[i]+"</option>");
                }
            }
-           buildDeySellect(mm,dt);
+           buildDeySellect(dt,deys);
        }
-       function buildDeySellect(mm,dt){
-           var count_dd = new Array(31,28,31,30,31,30,31,31,30,31,30,31);
+       function buildDeySellect(dt, deys){
+          
            var dd = dt.getDate();
            var hh = dt.getHours();
            var minits = dt.getMinutes();
-           var count = count_dd[mm];
-           if(mm == 1 && window.low_y == 1){
-               count = 29;
-           }
-           for(var i=0;i<count;i++){
+           for(var i=0;i<(31);i++){
                var n = i+1;
                if(n<10){n = "0"+n;}
                if(dd == (i+1)){
@@ -240,7 +196,6 @@ $(document).ready(function(){
            for(i=0;i<60;i+=5){ 
                var n = i;
                if(n<10){n = "0"+n;} 
-//               console.log(minits+" > "+i+" "+(minits > i-4 )+" "+minits+" < "+(i)+" "+(minits < i+5 )); 
                if(minits > (i-4) && minits < (i+4)){ 
                    $("#mm").append("<option value='"+n+"' selected>"+n+"</option>");
                }else{
@@ -252,23 +207,8 @@ $(document).ready(function(){
            var now = new Date();
            var YY = now.getFullYear();
            var MM = now.getMonth();
-           var DD = now.getDate();
-           $.ajax({
-            url:'./query/whot_time.php',
-            type:'post',
-            dataType:'json',
-            data:{YY:YY,MM:MM,DD:DD},
-            success:function(data){
-                var mdt = new Date();
-//                console.log(data);
-                window.low_y = data['low'];
-                mdt.setYear(data['year']);
-                clearSelect(mdt,false);
-            },
-            error:function(data){
-                console.log(data);
-            }
-        });
+           var dayofmonth = 32 - new Date(YY, MM, 32).getDate();
+           clearSelect(now,dayofmonth);
        }
        function clearSelect(mdt,mn){ 
            $("#year, #month, #dey").empty();

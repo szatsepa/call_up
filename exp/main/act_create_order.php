@@ -164,7 +164,7 @@ if ($zakaz) {
         
              if (mail($eml, 'Заказ', $message, $headers)){ }
  
-     header("location:index.php?act=look&stid=$stid&order=$c_num");             
+     header("location:index.php?act=look&stid=2&order=$c_num");             
 }
 function numOrder(){
     $str = '';

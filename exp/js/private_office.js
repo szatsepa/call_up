@@ -44,44 +44,21 @@ $(document).ready(function () {
         
 //         
     });
-           
-    $("#dele_t").mousedown(function(){
-        var id = this.name;
-        $.ajax({
-            url:'./action/delete_ticket.php',
-            type:'post',
-            dataType:'json',
-            data:{id:id},
-            success:function(data){
-                if(data['ok'] == 1){
-                    document.reload();
-                }
-            },
-            error:function(data){
-                document.write(data['responseText']);
-            }
-        });
+    
+     $('tr').click(function(){
+         var str = '';
+         $.each($("#ticket_0 tr(2) td(0)"),function(){ 
+             $.each(this,function(){
+                 console.log(this);
+             });
+             
+         });
+        
     });
+           
     $("#sale_t").mousedown(function(){
         var id = this.name;
         document.location.href = "?act=advance&ticket="+id;
-//        
-//        var resolution = screen.width+"X"+screen.height;
-//        $.ajax({
-//           url:'./action/buy_ticket.php',
-//            type:'post',
-//            dataType:'json',
-//            data:{id:id,resolution:resolution},
-//            success:function(data){
-//                if(data['ok'] == 30){
-//                    document.location.href = "?act=private_office";
-//                }
-//            },
-//            error:function(data){
-//                document.write(data['responseText']);
-//            }
-//         
-//        });
     });
         
    function goodLuck(){
