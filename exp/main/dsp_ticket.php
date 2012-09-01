@@ -26,6 +26,8 @@
             
         </div>
     </div>
+    
+    
     <div class="ticket_sek" style="position: absolute;top: 115px;width: 100%;height: 30px;background-color: #eee;font-size: 18px;font-weight: bold;padding-top: 4px;">
         Sektor - A.
     </div>
@@ -120,5 +122,11 @@
     <div class="ticket_sek" style="position: absolute;top: 600px;width: 100%;height: 30px;background-color: #eee;font-size: 18px;font-weight: bold;padding-top: 4px;">
         Sektor - C.
     </div>
-    
+    <div id="new_points" style="position: absolute;top:25px;left: 133px;width: 800px;height: 600px;outline: 1px solid red;display: none;background-color: #eee;">
+        <table id="simbl_points" border="1" width="100%">
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
 </div> 

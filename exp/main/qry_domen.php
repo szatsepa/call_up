@@ -15,7 +15,7 @@ if(!isset ($_SESSION[domen])){
      } 
 
 
-$query = "SELECT domen, where_res FROM storefront WHERE id = $st_id";
+$query = "SELECT domen, where_res FROM storefront WHERE id = 2";
 
 $result = mysql_query($query) or die($query);
 

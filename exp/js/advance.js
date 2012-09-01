@@ -19,6 +19,10 @@ $(document).ready(function(){
 
     var C_array = new Array();
     
+    var edit = false;
+    
+    var olld_simbl = '';
+    
 //    var artikuls = new Array();
     
     var str_date = dt.getDate()+"-"+month_array[dt.getMonth()]+"-"+dt.getFullYear();
@@ -58,11 +62,120 @@ $(document).ready(function(){
          
         });
     });
+    $("#edit_order").mousedown(function(){ 
+        $(".artikul_t").attr('title','Изменить?').css('cursor','pointer');
+        edit = !edit;
+        if(edit){
+          $("#edit_order").css('background-color','green'); 
+          
+        }else{
+          $("#edit_order").css('background-color','#ffcc00');
+          $(".artikul_t").removeAttr('title').css('cursor','default');
+          $("#new_points").css({'display':'none','z-index':9999});
+        }
+        
+    });
+    $(".edit_p").live('click',function(){
+        var artikul = this.id;
+        var str = this.id;
+                str = str.substr(0,1).toUpperCase(); 
+                var top=45;
+                if(str == 'B'){
+                    top=185;
+                }else if(str == 'C'){
+                    top=395;
+                }
+                str = 'field_'+str;
+                
+                var new_num = parseInt(artikul.substr(1));
+                var old_num = parseInt(old_simbl.substr(1));   
+                
+        var out = {field:str,new_artikul:this.id,old_artikul:old_simbl,order:window.order};
+//                var out = {simbl:str}
+                 console.log(new_num+" out "+old_num);
+            $.ajax({
+                     url:'./action/edit_ticket.php',
+                     type:'post',
+                     dataType:'json', 
+                     data:out,
+                     success:function(data){
+                         
+                         document.location.href = "?act=advance&ticket="+window.order;
+//                            document.location.href = "?act=private_office";
+                         console.log(data);
+                     },
+                     error:function(data){
+//                         console.log(data['responseText']);
+                         document.write(data['responseText']);
+                     } 
+                 });
+    });
+    $(".artikul_t").live('click',function(){
+        if(edit){
+             
+             old_simbl = this.id;
+            var str = this.id;
+                str = str.substr(0,1).toUpperCase(); 
+                var top=45;
+                if(str == 'B'){
+                    top=185;
+                }else if(str == 'C'){
+                    top=395;
+                }
+                $("#new_points").css({'display':'block','z-index':9999,'top':top});
+//                str = 'field_'+str;
+        
+//        var out = {field:str,artikul:this.id,order:window.order};
+                var out = {simbl:str}
+                 console.log(out);
+                 
+                 $.ajax({
+                     url:'./query/simbl_list.php',
+                     type:'post',
+                     dataType:'json', 
+                     data:out,
+                     success:function(data){
+//                         $("#simbl_points tbody"). 
+                        
+                         for(var i = 0;i<9;i++){
+                              $("#simbl_points tbody").append("<tr><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+1]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+1]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+2]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+2]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+3]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+3]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+4]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+4]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+5]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+5]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+6]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+6]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+7]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+7]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+8]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+8]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+9]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+9]['img']+"' width='80' height='80'/></td></tr>");
+                         }
+//                         console.log(data['simbls']);
+                     },
+                     error:function(data){
+//                         console.log(data['responseText']);
+                         document.write(data['responseText']);
+                     } 
+                 });
+        }
+    });
     
+    $("#delete_order").mousedown(function(){
+        var out = {id:window.order};
+        console.log(out);
+        if(confirm("Действительно удалить?")){
+            $.ajax({
+                url:'./action/delete_ticket.php',
+                type:'post',
+                dataType:'json',
+                data:out,
+                success:function(data){
+                    console.log(data);
+                    if(data['ok']){
+                        document.location.href = "?act=private_office";
+                    }
+                },
+                error:function(data){
+                    console.log(data);
+                    document.write(data['responseText']);
+                }
+            });
+        }
+    });
     function readOrder(order){ 
                    
             $.ajax({ 
-                url:'./query/read_order.php',    
+                url:'./query/read_order.php',     
                 type:'post',
                 dataType:'json',
                 data:{order:order},
@@ -124,21 +237,24 @@ $(document).ready(function(){
            
            $.each(A_array, function(){
                str = this['img'];
-               $("#TA_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' title='Изменить?' disabled/>")
+               $("#TA_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' />")
                a++;
+//                title='Изменить?'
            });
            a=0;
            $.each(B_array, function(){
                str = this['img'];
-               $("#TB_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' title='Изменить?'  disabled/>")
+               $("#TB_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' />")
                a++;
            });
            a=0;
            $.each(C_array, function(){
                str = this['img'];
-               $("#TC_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' title='Изменить?'  disabled/>")
+               $("#TC_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' />")
                a++;
            });
+           $(".artikul_t").css('cursor','default');
+           
            return false;
        } 
        

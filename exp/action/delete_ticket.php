@@ -14,7 +14,7 @@ $query = "DELETE FROM tickets WHERE id = $id";
 
 mysql_query($query);
 
-$out = array('ok'=>NULL);
+$out = array('ok'=>NULL,'query'=>$query);
 
 if(mysql_affected_rows())$out['ok'] = 1;
 
