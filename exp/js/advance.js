@@ -122,28 +122,35 @@ $(document).ready(function(){
                 }else if(str == 'C'){
                     top=395;
                 }
-                $("#new_points").css({'display':'block','z-index':9999,'top':top});
-//                str = 'field_'+str;
-        
-//        var out = {field:str,artikul:this.id,order:window.order};
                 var out = {simbl:str}
-                 console.log(out);
+//                 console.log(out);
                  
                  $.ajax({
                      url:'./query/simbl_list.php',
                      type:'post',
                      dataType:'json', 
                      data:out,
-                     success:function(data){
-//                         $("#simbl_points tbody"). 
-                        
+                     success:function(data){ 
+                         $("#new_points").css({'display':'block','z-index':9999,'top':top});
+                         $("#simbl_points tbody").empty();
+                          var old_index = Math.floor(parseInt(old_simbl.substr(1))/10);
                          for(var i = 0;i<9;i++){
-                              $("#simbl_points tbody").append("<tr><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+1]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+1]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+2]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+2]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+3]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+3]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+4]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+4]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+5]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+5]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+6]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+6]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+7]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+7]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+8]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+8]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+9]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+9]['img']+"' width='80' height='80'/></td></tr>");
-                         }
-//                         console.log(data['simbls']);
+                             var row = true;
+                             
+                             $.each(eval(str+"_array"),function(){
+                                    var num_index = Math.floor(parseInt(this['artikul'].substr(1))/10);
+                                    if(num_index == i && old_index != i){
+                                        row = false;
+                                    }
+                                });
+                                
+                                  $("#simbl_points tbody").append("<tr><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+1]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+1]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+2]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+2]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+3]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+3]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+4]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+4]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+5]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+5]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+6]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+6]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+7]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+7]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+8]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+8]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+9]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+9]['img']+"' width='80' height='80'/></td></tr>");  
+                               
+                               if(row){  }
+                                 
+                         } 
                      },
                      error:function(data){
-//                         console.log(data['responseText']);
                          document.write(data['responseText']);
                      } 
                  });
