@@ -5,7 +5,7 @@
 
 $(document).ready(function(){
     
-    alert("В свете посених заемечеаней эта страница подвегнецца коренной переломке!!!\nКой чего работаит НО еще не все!!!");
+//    alert("В свете посених заемечеаней эта страница подвегнецца коренной переломке!!!\nКой чего работаит НО еще не все!!!");
 
     var dt = new Date();
     
@@ -19,11 +19,11 @@ $(document).ready(function(){
 
     var C_array = new Array();
     
+    var S_array = new Array();
+    
     var edit = false;
     
     var olld_simbl = '';
-    
-//    var artikuls = new Array();
     
     var str_date = dt.getDate()+"-"+month_array[dt.getMonth()]+"-"+dt.getFullYear();
     
@@ -44,14 +44,14 @@ $(document).ready(function(){
         var resolution = screen.width+"X"+screen.height;
         var exe_time = year+"-"+month+"-"+dey+" "+hh+":"+mm;
         var out = {id:window.order,uid:uid,email:email,shipment:shipment,desire:desire,mark:mark,resolution:resolution,exe_time:exe_time};
-        console.log(out);
+
         $.ajax({
            url:'./action/buy_ticket.php',
             type:'post',
             dataType:'json',
             data:out,
             success:function(data){
-                console.log(data);
+                
                 if(data['ok'] == 30){
                     document.location.href = "?act=private_office";
                 }
@@ -62,6 +62,7 @@ $(document).ready(function(){
          
         });
     });
+    
     $("#edit_order").mousedown(function(){ 
         $(".artikul_t").attr('title','Изменить?').css('cursor','pointer');
         edit = !edit;
@@ -75,24 +76,54 @@ $(document).ready(function(){
         }
         
     });
+    
     $(".edit_p").live('click',function(){
-        var artikul = this.id;
-        var str = this.id;
+        
+//        var tmp = '';
+        
+                var artikul = this.id;
+                var str = this.id;
                 str = str.substr(0,1).toUpperCase(); 
-                var top=45;
-                if(str == 'B'){
-                    top=185;
-                }else if(str == 'C'){
-                    top=395;
-                }
-                str = 'field_'+str;
                 
                 var new_num = parseInt(artikul.substr(1));
-                var old_num = parseInt(old_simbl.substr(1));   
+                var old_num = parseInt(old_simbl.substr(1)); 
                 
-        var out = {field:str,new_artikul:this.id,old_artikul:old_simbl,order:window.order};
-//                var out = {simbl:str}
-                 console.log(new_num+" out "+old_num);
+                var new_min = (Math.floor(new_num/10))*10+1;
+                var new_max = new_min+9;
+                
+                var count = 0;
+                
+                tmp = "A "+artikul+" S "+old_simbl+" m "+new_min+" "+new_num+" "+new_max+" M ";
+                
+                $.each(eval(artikul.substr(0,1).toUpperCase()+"_array"),function(){
+                    var num = parseInt(this['artikul'].substr(1));
+                    if(num >= new_min && num <= new_max){
+                        count++;
+                    }
+                });
+                
+                var nu_sho = false;
+
+                if(str == 'A' && count == 1){
+
+                        nu_sho = true;
+                }else if(str == 'B' && count == 2){
+                        nu_sho = true;
+                }else if(str == 'C' && count == 3){
+                        nu_sho = true;
+                }
+                
+                if(nu_sho){
+                    alert("В этой строке уже выбрано возможное число символов!");
+                    return false; 
+                }
+                
+                str = 'field_'+str;
+                
+               console.log(tmp);
+               
+            var out = {field:str,new_artikul:this.id,old_artikul:old_simbl,order:window.order};
+            
             $.ajax({
                      url:'./action/edit_ticket.php',
                      type:'post',
@@ -101,15 +132,15 @@ $(document).ready(function(){
                      success:function(data){
                          
                          document.location.href = "?act=advance&ticket="+window.order;
-//                            document.location.href = "?act=private_office";
-                         console.log(data);
+                         
                      },
                      error:function(data){
-//                         console.log(data['responseText']);
+                         
                          document.write(data['responseText']);
                      } 
                  });
     });
+    
     $(".artikul_t").live('click',function(){
         if(edit){
              
@@ -122,9 +153,7 @@ $(document).ready(function(){
                 }else if(str == 'C'){
                     top=395;
                 }
-                var out = {simbl:str}
-//                 console.log(out);
-                 
+                var out = {simbl:str};
                  $.ajax({
                      url:'./query/simbl_list.php',
                      type:'post',
@@ -133,22 +162,34 @@ $(document).ready(function(){
                      success:function(data){ 
                          $("#new_points").css({'display':'block','z-index':9999,'top':top});
                          $("#simbl_points tbody").empty();
-                          var old_index = Math.floor(parseInt(old_simbl.substr(1))/10);
+                         
                          for(var i = 0;i<9;i++){
-                             var row = true;
-                             
-                             $.each(eval(str+"_array"),function(){
-                                    var num_index = Math.floor(parseInt(this['artikul'].substr(1))/10);
-                                    if(num_index == i && old_index != i){
-                                        row = false;
-                                    }
-                                });
-                                
-                                  $("#simbl_points tbody").append("<tr><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+1]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+1]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+2]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+2]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+3]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+3]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+4]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+4]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+5]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+5]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+6]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+6]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+7]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+7]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+8]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+8]['img']+"' width='80' height='80'/></td><td><input type='image' class='edit_p' id='"+data['simbls'][(i*10)+9]['artikul']+"' src='../images/goods/"+data['simbls'][(i*10)+9]['img']+"' width='80' height='80'/></td></tr>");  
-                               
-                               if(row){  }
+                                    $("#simbl_points tbody").append("<tr id='"+i+"_r'></tr>");   
+                          } 
+                         var row_str = '';
+                         $.each($("#simbl_points tbody tr"),function(){
+                             var id = this.id;
+                             var num = parseInt(id);
+                             for(var i=0;i<10;i++){ 
                                  
-                         } 
+                                   $("#"+id).append("<td id='"+(num*10+i)+"_c'><input type='image'  class='edit_p' id='"+data['simbls'][num*10+i]['artikul']+"' src='../images/goods/"+data['simbls'][num*10+i]['img']+"' width='80' height='80'/></td>");
+                               
+                             }
+                             
+                         });
+//                         var tmp_arr = new Array();
+//                         var m = 0;
+                         $.each(S_array,function(){
+                             
+                             var num_a = parseInt(this['artikul'].substr(1));
+                                 $("#"+num_a+"_c").empty();
+//                                 tmp_arr.push(this['artikul']);
+//                             
+//                             m++;
+                         });
+//                         console.log(m);
+//                         console.log(tmp_arr);
+                          
                      },
                      error:function(data){
                          document.write(data['responseText']);
@@ -160,20 +201,20 @@ $(document).ready(function(){
     $("#delete_order").mousedown(function(){
         var out = {id:window.order};
         console.log(out);
-        if(confirm("Действительно удалить?")){
+        if(confirm("Действительно удалить?")){ 
             $.ajax({
                 url:'./action/delete_ticket.php',
                 type:'post',
                 dataType:'json',
                 data:out,
                 success:function(data){
-                    console.log(data);
+//                    console.log(data);
                     if(data['ok']){
                         document.location.href = "?act=private_office";
                     }
                 },
                 error:function(data){
-                    console.log(data);
+//                    console.log(data);
                     document.write(data['responseText']);
                 }
             });
@@ -234,6 +275,8 @@ $(document).ready(function(){
                   
                }
            });
+           
+           S_array = A_array.concat(B_array,C_array);
            return false 
        }
        

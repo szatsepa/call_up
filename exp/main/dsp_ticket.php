@@ -122,7 +122,7 @@
     <div class="ticket_sek" style="position: absolute;top: 600px;width: 100%;height: 30px;background-color: #eee;font-size: 18px;font-weight: bold;padding-top: 4px;">
         Sektor - C.
     </div>
-    <div id="new_points" style="position: absolute;top:25px;left: 133px;width: 800px;display: none;background-color: #eee;">
+    <div id="new_points" style="position: absolute;top:25px;left: 133px;width: 820px;display: none;background-color: #eee;">
         <table id="simbl_points" border="0" width="100%">
             <tbody>
                 
