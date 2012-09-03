@@ -52,7 +52,7 @@ $(document).ready(function(){
             data:out,
             success:function(data){
                 
-                if(data['ok'] == 30){
+                if(data['ok'] == 30){ 
                     document.location.href = "?act=private_office";
                 }
             },
@@ -166,29 +166,37 @@ $(document).ready(function(){
                          for(var i = 0;i<9;i++){
                                     $("#simbl_points tbody").append("<tr id='"+i+"_r'></tr>");   
                           } 
-                         var row_str = '';
+                         var row_str = 'ALL ';
+                         var tmp_1_arr = new Array(); 
                          $.each($("#simbl_points tbody tr"),function(){
                              var id = this.id;
                              var num = parseInt(id);
                              for(var i=0;i<10;i++){ 
+                                 var u = data['simbls'][num*10+i]['artikul'].substr(1, 2);
                                  
-                                   $("#"+id).append("<td id='"+(num*10+i)+"_c'><input type='image'  class='edit_p' id='"+data['simbls'][num*10+i]['artikul']+"' src='../images/goods/"+data['simbls'][num*10+i]['img']+"' width='80' height='80'/></td>");
-                               
+                                   $("#"+id).append("<td id='"+u+"_c'><input type='image'  class='edit_p' id='"+data['simbls'][num*10+i]['artikul']+"' src='../images/goods/"+data['simbls'][num*10+i]['img']+"' width='80' height='80'/></td>");
+                               tmp_1_arr.push(data['simbls'][num*10+i]['artikul']);
+                               row_str +=  u+";";
                              }
-                             
+                            row_str +=  "\n";
                          });
-//                         var tmp_arr = new Array();
-//                         var m = 0;
+                         var tmp_arr = new Array();
+                         var m = "DELL ";
                          $.each(S_array,function(){
                              
-                             var num_a = parseInt(this['artikul'].substr(1));
+                             var num_a = this;
+                             
                                  $("#"+num_a+"_c").empty();
-//                                 tmp_arr.push(this['artikul']);
+                                 tmp_arr.push(this);
 //                             
-//                             m++;
+                             m += this+";"; 
                          });
+                         var sm = "c09";
+                         var nm = parseInt(sm.substr(1, 2));
+//                         console.log(nm);
 //                         console.log(m);
-//                         console.log(tmp_arr);
+//                         console.log(row_str);
+//                         console.log(S_array);
                           
                      },
                      error:function(data){
@@ -200,7 +208,7 @@ $(document).ready(function(){
     
     $("#delete_order").mousedown(function(){
         var out = {id:window.order};
-        console.log(out);
+//        console.log(out);
         if(confirm("Действительно удалить?")){ 
             $.ajax({
                 url:'./action/delete_ticket.php',
@@ -276,7 +284,17 @@ $(document).ready(function(){
                }
            });
            
-           S_array = A_array.concat(B_array,C_array);
+//           S_array = A_array.concat(B_array,C_array);
+$.each(A_array,function(){
+    S_array.push(this['artikul'].substr(1, 2));
+});
+$.each(B_array,function(){
+    S_array.push(this['artikul'].substr(1, 2));
+});
+$.each(C_array,function(){
+    S_array.push(this['artikul'].substr(1, 2));
+});
+//S_array.sort();
            return false 
        }
        
