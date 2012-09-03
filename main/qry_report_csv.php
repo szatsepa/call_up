@@ -3,7 +3,7 @@
 
 $company_id = intval($attributes[company_id]);
 
-$query = "SELECT a.id AS НомерЗаявки, 
+$query = "SELECT a.c_number AS НомерЗаявки, 
                  ag.artikul AS Артикул,  
                  ag.amount AS Количество, 
                 (ag.amount*ag.price_single) AS СуммаСНДС, 
@@ -35,7 +35,7 @@ $report_array = array();
 
 while ($var = mysql_fetch_assoc($result)){
     
-    mysql_query("UPDATE arch_zakaz SET report = 1 WHERE id = $var[НомерЗаявки]");
+//    mysql_query("UPDATE arch_zakaz SET report = 1 WHERE id = $var[НомерЗаявки]");
     
     array_push($report_array, $var);
     
@@ -43,7 +43,8 @@ while ($var = mysql_fetch_assoc($result)){
 
 mysql_free_result($result);
 
-$query = "SELECT a.id AS НомерЗаявки, 
+$query = "SELECT 
+                 a.c_number AS НомерЗаявки,
                  ag.artikul AS Артикул,  
                  ag.amount AS Количество, 
                 (ag.amount*ag.price_single) AS СуммаСНДС, 

@@ -5,124 +5,124 @@
  * and open the template in the editor.
  */
 ?>
-<div id="ticket_blank" style="position: relative;width: 1016px;height: 660px;">
-    <div id="n_ticket" style="position: relative;height: 28px;background-color: #eee;width: 100%;font-size: 18px;font-weight: bold;text-align: center;">
+<div id="ticket_blank">
+    <div id="n_ticket">
         Билет № ---_---_---_--- от дд-м-гггг. 
     </div>
-    <div id="sek_A" style="position: absolute;top:30px;width: 100%;height: 85px;">
-        <div id="TA_0" style="position: absolute;width: 85px;height: 85px;">
+    <div id="sek_A" class="point_section" style="top:30px;">
+        <div id="TA_0" class="point_item">
             
         </div>
-        <div id="TA_1" style="position: absolute;width: 85px;height: 85px;left:85px;">
+        <div id="TA_1" class="point_item" style="left:85px;">
             
         </div>
-        <div id="TA_2" style="position: absolute;width: 85px;height: 85px;left:170px;">
+        <div id="TA_2" class="point_item" style="left:170px;">
             
         </div>
-        <div id="TA_3" style="position: absolute;width: 85px;height: 85px;left:255px;">
+        <div id="TA_3" class="point_item" style="left:255px;">
             
         </div>
-        <div id="TA_4" style="position: absolute;width: 85px;height: 85px;left:340px;">
+        <div id="TA_4" class="point_item" style="left:340px;">
             
         </div>
     </div>
     
     
-    <div class="ticket_sek" style="position: absolute;top: 115px;width: 100%;height: 30px;background-color: #eee;font-size: 18px;font-weight: bold;padding-top: 4px;">
+    <div class="ticket_sek">
         Sektor - A.
     </div>
-    <div id="sek_B" style="position: absolute;top:145px;width: 100%;height: 85px;">
-        <div id="TB_0" style="position: absolute;width: 85px;height: 85px;">
+    <div id="sek_B" class="point_section" style="top:145px;">
+        <div id="TB_0" class="point_item">
             
         </div>
-        <div id="TB_1" style="position: absolute;width: 85px;height: 85px;left:85px;">
+        <div id="TB_1" class="point_item" style="left:85px;">
             
         </div>
-        <div id="TB_2" style="position: absolute;width: 85px;height: 85px;left:170px;">
+        <div id="TB_2" class="point_item" style="left:170px;">
             
         </div>
-        <div id="TB_3" style="position: absolute;width: 85px;height: 85px;left:255px;">
+        <div id="TB_3" class="point_item" style="left:255px;">
             
         </div>
-        <div id="TB_4" style="position: absolute;width: 85px;height: 85px;left:340px;">
-            
-        </div>
-    </div>
-    <div id="sek_B1" style="position: absolute;top:230px;width: 100%;height: 85px;">
-        <div id="TB_5" style="position: absolute;width: 85px;height: 85px;">
-            
-        </div>
-        <div id="TB_6" style="position: absolute;width: 85px;height: 85px;left:85px;">
-            
-        </div>
-        <div id="TB_7" style="position: absolute;width: 85px;height: 85px;left:170px;">
-            
-        </div>
-        <div id="TB_8" style="position: absolute;width: 85px;height: 85px;left:255px;">
-            
-        </div>
-        <div id="TB_9" style="position: absolute;width: 85px;height: 85px;left:340px;">
+        <div id="TB_4" class="point_item" style="left:340px;">
             
         </div>
     </div>
-    <div class="ticket_sek" style="position: absolute;top: 315px;width: 100%;height: 30px;background-color: #eee;font-size: 18px;font-weight: bold;padding-top: 4px;">
+    <div id="sek_B1" class="point_section" style="top:230px;">
+        <div id="TB_5"  class="point_item">
+            
+        </div>
+        <div id="TB_6" class="point_item" style="left:85px;">
+            
+        </div>
+        <div id="TB_7" class="point_item" style="left:170px;">
+            
+        </div>
+        <div id="TB_8" class="point_item" style="left:255px;">
+            
+        </div>
+        <div id="TB_9" class="point_item" style="left:340px;">
+            
+        </div>
+    </div>
+    <div class="ticket_sek" style="top: 315px;">
         Sektor - B.
     </div>
-    <div id="sek_C" style="position: absolute;top:345px;width: 100%;height: 85px;">
-        <div id="TC_0" style="position: absolute;width: 85px;height: 85px;">
+    <div id="sek_C" class="point_section" style="top:345px;">
+        <div id="TC_0"  class="point_item">
             
         </div>
-        <div id="TC_1" style="position: absolute;width: 85px;height: 85px;left:85px;">
+        <div id="TC_1" class="point_item" style="left:85px;">
             
         </div>
-        <div id="TC_2" style="position: absolute;width: 85px;height: 85px;left:170px;">
+        <div id="TC_2" class="point_item" style="left:170px;">
             
         </div>
-        <div id="TC_3" style="position: absolute;width: 85px;height: 85px;left:255px;">
+        <div id="TC_3" class="point_item" style="left:255px;">
             
         </div>
-        <div id="TC_4" style="position: absolute;width: 85px;height: 85px;left:340px;">
-            
-        </div>
-    </div>
-    <div id="sek_C1" style="position: absolute;top:430px;width: 100%;height: 85px;">
-        <div id="TC_5" style="position: absolute;width: 85px;height: 85px;">
-            
-        </div>
-        <div id="TC_6" style="position: absolute;width: 85px;height: 85px;left:85px;">
-            
-        </div>
-        <div id="TC_7" style="position: absolute;width: 85px;height: 85px;left:170px;">
-            
-        </div>
-        <div id="TC_8" style="position: absolute;width: 85px;height: 85px;left:255px;">
-            
-        </div>
-        <div id="TC_9" style="position: absolute;width: 85px;height: 85px;left:340px;">
+        <div id="TC_4" class="point_item" style="left:340px;">
             
         </div>
     </div>
-    <div id="sek_C2" style="position: absolute;top:515px;width: 100%;height: 85px;">
-        <div id="TC_10" style="position: absolute;width: 85px;height: 85px;">
+    <div id="sek_C1" class="point_section" style="top:430px;">
+        <div id="TC_5"  class="point_item">
             
         </div>
-        <div id="TC_11" style="position: absolute;width: 85px;height: 85px;left:85px;">
+        <div id="TC_6" class="point_item" style="left:85px;">
             
         </div>
-        <div id="TC_12" style="position: absolute;width: 85px;height: 85px;left:170px;">
+        <div id="TC_7" class="point_item" style="left:170px;">
             
         </div>
-        <div id="TC_13" style="position: absolute;width: 85px;height: 85px;left:255px;">
+        <div id="TC_8" class="point_item" style="left:255px;">
             
         </div>
-        <div id="TC_14" style="position: absolute;width: 85px;height: 85px;left:340px;">
+        <div id="TC_9" class="point_item" style="left:340px;">
             
         </div>
     </div>
-    <div class="ticket_sek" style="position: absolute;top: 600px;width: 100%;height: 30px;background-color: #eee;font-size: 18px;font-weight: bold;padding-top: 4px;">
+    <div id="sek_C2" class="point_section" style="top:515px;">
+        <div id="TC_10"  class="point_item">
+            
+        </div>
+        <div id="TC_11" class="point_item" style="left:85px;">
+            
+        </div>
+        <div id="TC_12" class="point_item" style="left:170px;">
+            
+        </div>
+        <div id="TC_13" class="point_item" style="left:255px;">
+            
+        </div>
+        <div id="TC_14" class="point_item" style="left:340px;">
+            
+        </div>
+    </div>
+    <div class="ticket_sek" style="top: 600px;">
         Sektor - C.
     </div>
-    <div id="new_points" style="position: absolute;top:25px;left: 133px;width: 820px;display: none;background-color: #eee;">
+    <div id="new_points">
         <table id="simbl_points" border="0" width="100%">
             <tbody>
                 
