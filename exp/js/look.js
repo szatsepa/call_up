@@ -246,7 +246,7 @@
                          changeBtn(i,ltr);  
                    }
            }
-            console.log(str);
+//            console.log(str);
            return false;
        }
        function checkButton(){

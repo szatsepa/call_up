@@ -11,9 +11,9 @@ if (!isset ($_SESSION[user])) {
         
         <form action="index.php?act=authentication" method="post">
            Ключ:
-            <input type="password" required name="code" size="14" value="cr_0378" style='font-size:8pt;'/>
+            <input id="pwd" type="password" required name="code" size="14" value="" style='font-size:8pt;'/>
             <input type="hidden" name="stid" value="2"  />
-            <input type="submit" value="&gt;&gt;" class='submit3' style='color:green' />
+            <input id="log_in" type="submit" value="&gt;&gt;" class='submit3' style='color:green' />
         </form>
     </div>
           <div class="selector23">
@@ -27,7 +27,7 @@ if (!isset ($_SESSION[user])) {
                          <?php } ?>
                 <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
                 <input style="font: 10px Arial;color: #0000FF;" type="text" required  name="str" value="<?php echo $attributes[str];?>"/>
-                <input  size="14" type="submit" value="&gt;&gt;" style='color:green;font-size: 8px'/>
+                <input type="submit" value="&gt;&gt;" style='color:green;font-size: 8px'/>
            </form> 
           </div>
 <?php } 

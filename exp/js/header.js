@@ -8,6 +8,21 @@ $(document).ready(function(){
     
     countCart(customer);
     
+     $("#log_in").mousedown(function(){  
+               var scr_W = screen.width;
+                var scr_H = screen.height;
+                var colorDepth = screen.colorDepth;
+                var pwd = $("#pwd").val();
+                var out = {scr_W:scr_W,scr_H:scr_H,colorDepth:colorDepth,pwd:pwd}
+                $.ajax({
+                    url: './action/statistics.php',
+                    type:'post',
+                    dataType:'json',
+                    data:out,
+                });
+                return false;
+            });
+    
     function countCart(customer){ 
         $.ajax({
             url:'./query/count_in_cart.php',
@@ -60,8 +75,8 @@ $(document).ready(function(){
             
             $("#cart_info").text(str_out);
             
-//            console.log('function Info count = '+count+"\n"+"text -> "+str_out);
-//            console.log($("#cart_info").text());
+            
+         
 
         return false;         
             

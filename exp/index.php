@@ -285,7 +285,7 @@ case "statistics":
     
 default :
 
-    include 'main/act_redirect.php';
+    header("location:index.php?act=look");
    
 }
 

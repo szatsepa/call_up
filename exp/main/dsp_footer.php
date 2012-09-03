@@ -21,12 +21,12 @@
                           
         </div>
 <?php if($_GET[act]== 'look'){ ?> 
-<div id="preload"></div>
+<!--<div id="preload"></div>
 
 <script type="text/javascript">
 	QueryLoader.selectorPreload = "body";
 	QueryLoader.init();
-</script>
+</script>-->
 <?php } ?>
          </body>
 </html>
