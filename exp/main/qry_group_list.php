@@ -31,13 +31,27 @@ function groupInPrice($id){
     }
         
     }
-    
-    
-    
-   
-    
-    return $group_arr; 
+  return $group_arr; 
 }
+function priceID($comid){
+     
+     $query = "SELECT p.id,
+                      p.tags 
+            FROM price AS p
+            WHERE p.company_id = $comid 
+            ORDER BY p.comment";
+     
+     $result = mysql_query($query) or die($query); 
+     
+     $out = array();
+    
+    while($row = mysql_fetch_assoc($result)){
+        
+       $out[$row[id]] = $row[tags];
 
+    }
+     
+  return $out; 
+}
 
 ?>

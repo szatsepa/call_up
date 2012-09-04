@@ -8,7 +8,8 @@ include 'connect.php';
 
 $order = intval($_POST[order]);
 
-$query = "SELECT a.artikul AS artikul, 
+$query = "SELECT p.id,
+                 a.artikul AS artikul, 
                  a.name, 
                  a.price_single,
                  a. amount,

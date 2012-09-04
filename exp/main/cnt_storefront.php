@@ -1,9 +1,9 @@
 <?php
 
-include 'qry_artikul.php'; 
+include 'qry_artikuls.php'; 
 
-if(!isset($attributes[select])){
-    $attributes[select] = "default";
+if(!isset($attributes[pid])){
+    $attributes[pid] = 2;
 }
 
  unset($_SESSION[ok]);
@@ -27,35 +27,27 @@ if(!isset($attributes[page]) && isset($_SESSION[page])){
 
 $tmp_array = array();
 
-$qry_images = artikul($attributes[stid], $attributes[select], $attributes[group], $attributes[search]);
+$qry_images = artikul($attributes[pid]);
 
 
 if($qry_images){
          
 //   $str = mysql_real_escape_string($attributes[str]);
 
-    while($row = mysql_fetch_assoc($qry_images)) {
+    while($row = mysql_fetch_assoc($qry_images)) { 
         
         $artikul = new Artikul();
         
-                $_SESSION[ok] = 0;
+                $_SESSION[ok] = 0;  
                 
-                $artikul->setArtikul($row[id], $row[str_name], $row[str_code1], $row[num_price_single], $row[str_volume], $row[price_id]);
+                $artikul->setArtikul($row[img], $row[str_name], $row[str_code1], $row[num_price_single], $row[str_volume], $row[price_id]);
          
                 array_push($tmp_array, $artikul);
 }
 
 }
 
-if(count($tmp_array) == 0 or !count($tmp_array)){
-    ?>
 
-<script type="text/javascript">
-    alert("Поисковый запрос вернул пустой результат!");
-    document.location.href = "index.php?act=look&stid=<?php echo $attributes[stid];?>&cod=<?php echo $attributes[cod];?>";
-</script>
-    <?php
-} 
 unset ($artikul); 
 
 $var = new Artikul();

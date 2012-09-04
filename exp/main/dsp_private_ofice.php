@@ -95,8 +95,9 @@ if ($rowcount == 1){
 }
 ?>                       
             </table>
-        </td>        
-    <td valign="top" class="kab"><table border="0" cellpadding="5" cellspacing="5" width="230">
+        </td>  
+        
+<!--    <td valign="top" class="kab"><table border="0" cellpadding="5" cellspacing="5" width="230">
                 <tr>
                 	<td><div class="kab">Любимые товары</div></td>
                 </tr>
@@ -138,7 +139,7 @@ if ($rowcount == 1){
 $rowcount = 1;
             ?>
                     
-            </table></td>
+            </table></td>-->
     
 	<td valign="top"><table border="0" cellpadding="5" cellspacing="5" width="230">
                 <tr>

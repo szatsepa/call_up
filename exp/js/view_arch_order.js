@@ -86,19 +86,19 @@ $(document).ready(function(){
            
            $.each(A_array, function(){
                str = this['img'];
-               $("#TA_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' title='Изменить?'/>")
+               $("#TA_"+a).append("<img class='artikul_t' id='"+this['artikul']+"' alt='"+this['artikul']+"' src='../images/goods/"+this['img']+"' width='80' height='80'/>")
                a++;
            });
            a=0;
            $.each(B_array, function(){
                str = this['img'];
-               $("#TB_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' title='Изменить?'/>")
+               $("#TB_"+a).append("<img class='artikul_t' id='"+this['artikul']+"' alt='"+this['artikul']+"' src='../images/goods/"+this['img']+"' width='80' height='80'/>")
                a++;
            });
            a=0;
            $.each(C_array, function(){
                str = this['img'];
-               $("#TC_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' title='Изменить?'/>")
+               $("#TC_"+a).append("<img class='artikul_t' id='"+this['artikul']+"' alt='"+this['artikul']+"' src='../images/goods/"+this['img']+"' width='80' height='80'/>")
                a++;
            });
            return false;

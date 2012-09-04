@@ -33,51 +33,51 @@ if($attributes[act]=='item_description'){
 
     $rnd_arr = goods_rnd($attributes[stid], $attributes[artikul]);
 
-    $count = count($rnd_arr);
+    $count = 0; 
 
 }
 
 $first = $_SESSION[user]->data[id];
 
- if(!isset ($_SESSION[auth]) or $_SESSION[auth] == 0){
-    
-    $cod = quote_smart($attributes[cod]);
-
-}
- 
-    $who = $_SESSION[auth]; 
-    
-    if(isset ($cod) && $cod == '') unset ($cod);
-
-$count_in_cart = count_cart($first, $who, $cod);
-
-$str_product = array('товар','товара','товаров');
-
-if($count_in_cart > 5 and $count_in_cart < 21){
-    
-    $string_out = $str_product[2];
-    
-}else{
-    $cic = strval($count_in_cart);
-    
-    $cic = substr($cic, -1);
-    
-    if($cic == '1'){
-       $string_out = $str_product[0]; 
-    }else if($cic =='2' or $cic == '3' or $cic == '4'){
-        $string_out = $str_product[1];
-    }else{
-        $string_out = $str_product[2];
-    }
-}
+// if(!isset ($_SESSION[auth]) or $_SESSION[auth] == 0){
+//    
+//    $cod = quote_smart($attributes[cod]);
 //
-$string_count = '';
-
-if($count_in_cart == 0){
-    
-    $string_count = "disabled";
-    
-}
+//}
+// 
+//    $who = $_SESSION[auth]; 
+//    
+//    if(isset ($cod) && $cod == '') unset ($cod);
+//
+//$count_in_cart = 0;
+//
+//$str_product = array('товар','товара','товаров');
+//
+//if($count_in_cart > 5 and $count_in_cart < 21){
+//    
+//    $string_out = $str_product[2];
+//    
+//}else{
+//    $cic = strval($count_in_cart);
+//    
+//    $cic = substr($cic, -1);
+//    
+//    if($cic == '1'){
+//       $string_out = $str_product[0]; 
+//    }else if($cic =='2' or $cic == '3' or $cic == '4'){
+//        $string_out = $str_product[1];
+//    }else{
+//        $string_out = $str_product[2];
+//    }
+//}
+////
+//$string_count = '';
+//
+//if($count_in_cart == 0){
+//    
+//    $string_count = "disabled";
+//    
+//}
 
 unset ($prices_array);
 ?> 

@@ -44,26 +44,20 @@
              B = B.substr(1);
              C = C.substr(1); 
              
-             if(order_ready){
-//                 alert("JOPPA");
+             if(confirm("Билет не заполнен!")){
                  $.ajax({
                      url:'./action/create_order.php',
                      type:'post',
                      tataType:'json',
                      data:{uid:uid,num:N_O,A:A,B:B,C:C},
                      success:function(data){
-                        console.log(data);
-                             document.location.href = "?act=private_office"; 
+                             document.location.href = "index.php?act=private_office"; 
                          
                      },
                      error:function(data){
-                         console.log(data);
                          document.write(data['responseText']);
                      }
                  });
-                 
-             }else{
-                 alert("Билет не заполнен!");
              }
          });
          
@@ -84,7 +78,7 @@
                  data:{id:id},
                  success:function(data){
                      if(data['ok'] == 1){
-                         document.location.href = "?act=look&page="+page+"&art="+id;
+                         document.location.href = "index.php?act=look&page="+page+"&art="+id;
                      }
                  },
                  error:function(data){

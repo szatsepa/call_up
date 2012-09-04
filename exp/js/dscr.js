@@ -17,7 +17,8 @@ $(document).ready(function () {
         }else{
             out = {uid:uid,artikul:artikul,itid:window.item_id};
         }
-        console.log(out);
+        $("#add_cart").remove();
+        
         $.ajax({
             url:'./action/add_cart.php',
             type:'post',
@@ -25,7 +26,7 @@ $(document).ready(function () {
             data:out,
             success:function(data){
                 if(data['ok']){
-                    document.location.href = "?act=order&type=2";
+                    document.location.href = "index.php?act=order&type=2";
                 }
             },
             error:function(data){

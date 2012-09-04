@@ -1,56 +1,5 @@
 <?php 
 
-function count_cart($first, $who, $cod){
-    
-//    $first - ай_ди ползователя
-//    $who - значения 0 и 1 0 - пользователь с главной 1 - клиент витрины
-//    $k - третий аргумант пока хто иво знат зачем - но возможно индекс витрины
-    
-    if(isset($who) && $who == 1) {
-        $hto_tam = "user_id";
-    }else if(isset($who) && $who == 2){ 
-        $hto_tam = "customer";
-    }
-    else if(isset ($cod) && !isset ($who)){
-        $hto_tam = "cod";
-        
-        $first = $cod;
-    }
-    
-	$count = 0;
-                              
-        $query = "SELECT num_amount
-                        FROM cart
-                        WHERE $hto_tam = $first";
-            
-            
-            
-                
-                     $res = mysql_query($query) or die($query);
-                
-                while ($cnt_row = mysql_fetch_assoc($res)){
-                    
-                    $count += $cnt_row[num_amount];
-                }
-                
-        $query = "SELECT num_amount
-                        FROM reserved_items
-                        WHERE $hto_tam = $first";
-            
-            
-            
-                
-                     $res = mysql_query($query) or die($query);
-                
-                while ($cnt_row = mysql_fetch_assoc($res)){
-                    
-                    $count += $cnt_row[num_amount];
-                }  
-                  
-        if($hto_tam == 'cod')$count = 0;        
-
-	return $count;
-}
 
 function good_image($artikul){
     

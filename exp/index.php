@@ -6,7 +6,6 @@
 
 
 // Просто комменты
-//if(!isset($attributes) || !is_array($attributes)) {}
 
 $attributes = array();
 
@@ -35,47 +34,29 @@ if(!isset($_SESSION)){
 //print_r($_SESSION); 
 
 //echo "<br>";
-
+$_SESSION[res] = "call-up.ru/exp";
+$attributes[stid]=2;
 include 'main/cnt_classes.php';
 include ("main/qry_connect.php");
 include ("main/act_quotesmart.php");
-if(!isset($attributes[stid]))include 'main/qry_num_storefront.php';
+if(!isset($_SESSION[st]))include 'main/qry_num_storefront.php'; 
 include 'main/act_random_coder.php';
 include 'main/qry_advert.php';
 include 'main/dsp_advert_img.php';
 include 'main/qry_storefront_info.php';
-//
-//if(!isset ($attributes[stid])){
-//
-//    session_unset();
-//    session_destroy();
-//}
-
-
-if(isset($attributes[act]))include 'main/qry_domen.php';
-include ("main/qry_good_img.php");
+//include ("main/qry_good_img.php");
 include ("main/qry_customer.php");
 
 
 if(isset ($_SESSION[auth]) && $_SESSION[auth] > 0){
-   
-    include 'main/act_checkauth.php';
+   include 'main/act_checkauth.php';
 }
-$attributes[stid] = 2;
-$attributes[price_id]=2; 
-$_SESSION[domen] = "call-up.ru";
 
 $storefront = new Storefront();
-
-//print_r($attributes); 
-if(!isset($_SESSION[id])){
-//   $attributes[act] = 'logaut';
-}
 
 switch ($attributes[act]) {  
     
     case 'look': 
-        include 'main/qry_rubrikas.php';
         include 'main/qry_name_strf.php';
         $title = $strf_name;
         include 'main/dsp_header.php';

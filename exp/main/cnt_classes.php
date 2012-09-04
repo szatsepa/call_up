@@ -81,7 +81,7 @@ class Artikul extends Price{
     }
     
     function setArtikul($img, $name, $art, $price, $vol,$price_id){
-        $this->image = $img.".jpg";
+        $this->image = $img;
         $this->name = $name;
         $this->artikul = $art;
         $this->price = $price;
