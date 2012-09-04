@@ -6,10 +6,12 @@
 
 
 // Просто комменты
-if(!isset($attributes) || !is_array($attributes)) {
-        $attributes = array();
-        $attributes = array_merge($_GET,$_POST,$_COOKIE); 
-}
+//if(!isset($attributes) || !is_array($attributes)) {}
+
+$attributes = array();
+
+$attributes = array_merge($_GET,$_POST,$_COOKIE); 
+
 if(!isset($_SESSION)){
 
     session_start();  

@@ -13,7 +13,8 @@ if (isset($attributes[id])) {
                      comments,
                      status,
                      decline_comment,
-					 tags
+					 tags,
+        c_number
               FROM arch_zakaz 
               WHERE id=$id";
     

@@ -44,12 +44,12 @@
                if(atr != 'disabled' && uid){
                    
                     if(window.item_id == undefined){
-                            document.location.href = "?act=dscr&artikul="+artikul;
+                            document.location.href ="index.php?act=dscr&artikul="+artikul;
                         }else{
-                            document.location.href = "?act=dscr&artikul="+artikul+"&art="+item_id;
+                            document.location.href ="index.php?act=dscr&artikul="+artikul+"&art="+item_id;
                         }
                }else if (!uid){
-                   document.location.href = "?act=regs"; 
+                   document.location.href ="index.php?act=regs"; 
                }
                
            });
@@ -131,43 +131,45 @@
                     else if ((num >= 71) && (num <= 80)){check_C[7]++;}
                     else if ((num >= 81) && (num <= 90)){check_C[8]++;}
                }
-               if(A_array.length == 5 && B_array.length == 10 && C_array.length == 15){
+               if(A_array.length >= 5 && B_array.length >= 10 && C_array.length >= 15){
                    alert("Билет заполнен!");
-                   document.location.href = "?act=order&type=2&stid=2";
+                   document.location.href = "index.php?act=order&type=2";
                }
                
-               var a = (A_array.length == 5);
-               var b = (B_array.length == 10);
-               var c = (C_array.length == 15);
+               var a = (A_array.length >= 5);
+               var b = (B_array.length >= 10);
+               var c = (C_array.length >= 15);
                
 //               console.log(a && true);
-               
-               if(page == 1 && a){
-                   document.location.href = "?act=look&page=2";
+               if(page == 3 && c){  
+                   if(!a){
+                       document.location.href ="index.php?act=look&page=1";
+                   }
+                   if(!b){
+                      document.location.href ="index.php?act=look&page=2"; 
+                   }
+                   if(a && b){
+                      document.location.href ="index.php?act=order&type=2"; 
+                   }  
                }
+               
+               
                if(page == 2 && b){
                    if(!a){
-                       document.location.href = "?act=look&page=1";
+                       document.location.href ="index.php?act=look&page=1";
                    }
                    if(!c){
-                      document.location.href = "?act=look&page=3"; 
+                      document.location.href ="index.php?act=look&page=3"; 
                    }
                    if(a && c){
-                      document.location.href = "?act=order&type=2"; 
+                      document.location.href ="index.php?act=order&type=2"; 
                    }
                    
                }
-               if(page == 3 && c){
-                   if(!a){
-                       document.location.href = "?act=look&page=1";
-                   }
-                   if(!b){
-                      document.location.href = "?act=look&page=2"; 
-                   }
-                   if(a && b){
-                      document.location.href = "?act=order&type=2"; 
-                   }  
+               if(page == 1 && a){
+                   document.location.href ="index.php?act=look&page=2";
                }
+               
            });
            
 //           console.log(str); 

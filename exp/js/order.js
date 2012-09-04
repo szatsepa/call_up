@@ -22,7 +22,7 @@
          
          var str_date = dt.getDate()+"-"+month_array[dt.getMonth()]+"-"+dt.getFullYear();
          
-         $("#n_ticket").text('Билет № '+N_O+' от '+str_date+'г.')
+         $("#n_ticket").text('Билет № '+N_O+' от '+str_date+'г.');
          
          checkCart(uid);
          
@@ -52,13 +52,12 @@
                      tataType:'json',
                      data:{uid:uid,num:N_O,A:A,B:B,C:C},
                      success:function(data){
-                         
-                         //console.log(data);
-//                         if(data['query']){ }
+                        console.log(data);
                              document.location.href = "?act=private_office"; 
                          
                      },
                      error:function(data){
+                         console.log(data);
                          document.write(data['responseText']);
                      }
                  });

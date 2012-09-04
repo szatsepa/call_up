@@ -3,7 +3,9 @@
 $row = mysql_fetch_assoc($qry_archzakaz);
 
 ?>
-
+<script type="text/javascript">
+    var order = <?php echo $attributes[id];?>;
+</script>
 <br />
 <div style="margin-left:10px;">
     <p class="arh_z">Статус заказа:</p>
@@ -26,7 +28,7 @@ $row = mysql_fetch_assoc($qry_archzakaz);
 <table class="archzakaz">
 <tr>
 	<td class="archzakaz">N заказа:&nbsp;</td>
-	<td class="archzakaz"><?php echo $attributes[id]; ?></td>
+	<td class="archzakaz"><?php echo $row[c_number]; ?></td>   
 </tr>
 <tr>
 	<td class="archzakaz">Дата, время:&nbsp;</td>
@@ -61,55 +63,58 @@ $row = mysql_fetch_assoc($qry_archzakaz);
 <?php
 // Выводим корзину архивного заказа
 
-$num_rows	=	mysql_numrows($qry_archgoods);
-$num_fields	=	mysql_num_fields($qry_archgoods);
+include 'dsp_ticket.php';
 
-$field_count	=	0;
-
-$array_fields = array();
-
-while ($field_count < $num_fields) {
-
-	$array_fields[$field_count] = mysql_field_name($qry_archgoods, $field_count);
-	++$field_count;
-}
-
-$fields = array ("Наименование","Цена ед.","Кол-во (шт.)","Скидка");
-echo "<table class='cart' border='0'>";
-
-// Выводим заголовок таблицы
-$th = 0;
-while ($th < count($fields)) {
-    echo "<th class='cart'>".$fields[$th]."</th>";
-	++$th;
-}
-
-while ($row_count < $num_rows) {
-	echo "<tr>";	
-	$field_count 	= 	0;	
-	while ($field_count < $num_fields) {
-        $dat = mysql_result($qry_archgoods,$row_count,$array_fields[$field_count]);
-	    echo "<td class='cart'>".$dat."</td>";        			
-		++$field_count;
-	} 
-	echo "</tr>";
-    
-    $single_price = mysql_result($qry_archgoods,$row_count,$array_fields[1]);
-    $amount       = mysql_result($qry_archgoods,$row_count,$array_fields[2]);
-    
-	if ($amount == 0) {
-	
-		echo "<tr><td colspan='4'><strong>Внимание, позиция была удалена поставщиком!</strong></td></tr>";
-	
-	}
-	
-    $total += $single_price*$amount;
-       
-	++$row_count;
-}
-
-echo"<tr><td colspan='3'>&nbsp;</td><td class='cart'>Итого: ".$total."руб. </td></tr>";
-echo "</table>";
+//
+//$num_rows	=	mysql_numrows($qry_archgoods);
+//$num_fields	=	mysql_num_fields($qry_archgoods);
+//
+//$field_count	=	0;
+//
+//$array_fields = array();
+//
+//while ($field_count < $num_fields) {
+//
+//	$array_fields[$field_count] = mysql_field_name($qry_archgoods, $field_count);
+//	++$field_count;
+//}
+//
+//$fields = array ("Наименование","Цена ед.","Кол-во (шт.)","Скидка");
+//echo "<table class='cart' border='0'>";
+//
+//// Выводим заголовок таблицы
+//$th = 0;
+//while ($th < count($fields)) {
+//    echo "<th class='cart'>".$fields[$th]."</th>";
+//	++$th;
+//}
+//
+//while ($row_count < $num_rows) {
+//	echo "<tr>";	
+//	$field_count 	= 	0;	
+//	while ($field_count < $num_fields) {
+//        $dat = mysql_result($qry_archgoods,$row_count,$array_fields[$field_count]);
+//	    echo "<td class='cart'>".$dat."</td>";        			
+//		++$field_count;
+//	} 
+//	echo "</tr>";
+//    
+//    $single_price = mysql_result($qry_archgoods,$row_count,$array_fields[1]);
+//    $amount       = mysql_result($qry_archgoods,$row_count,$array_fields[2]);
+//    
+//	if ($amount == 0) {
+//	
+//		echo "<tr><td colspan='4'><strong>Внимание, позиция была удалена поставщиком!</strong></td></tr>";
+//	
+//	}
+//	
+//    $total += $single_price*$amount;
+//       
+//	++$row_count;
+//}
+//
+//echo"<tr><td colspan='3'>&nbsp;</td><td class='cart'>Итого: ".$total."руб. </td></tr>";
+//echo "</table>";
 
 if (!isset($attributes[zakaz])) { 
 ?>

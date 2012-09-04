@@ -4,30 +4,28 @@
 $company_id = intval($attributes[company_id]);
 
 $query = "SELECT a.c_number AS НомерЗаявки, 
-                 ag.artikul AS Артикул,  
-                 ag.amount AS Количество, 
-                (ag.amount*ag.price_single) AS СуммаСНДС, 
-                 NULL AS ИНН,
-                 CONCAT(c.surname, ' ', c.name, ' ', c.patronymic) AS НаименованиеКонтрагента, 
-                 NULL AS ЮрАдрес,
-                 NULL AS ФактАдрес, 
+                 ag.artikul AS Артикул, 
+                 p.str_group AS НаименованиеГруппы,
+                 ag.amount AS Количество,
+                 (c.id) AS ID_Контрагента,
                  a.comments AS Комментарий, 
                  p.str_name AS НаименованиеНоменклатуры , 
-                (ag.amount*p.str_volume) AS Вес, 
-                 NULL AS СтавкаНДС ,
-                 NULL AS ОКПО , 
-                 NULL AS БанкРеквизиты 
+                a.time AS Принят,
+                z.time AS ОдобренПоставщиком
            FROM arch_zakaz AS a, 
                 arch_goods AS ag , 
                 pricelist AS p,
                 price AS pr,
-                customer AS c
+                customer AS c,
+                zakaz_history AS z
           WHERE a.report = 0 
           AND a.id = ag.zakaz 
           AND ag.artikul = p.str_code1
           AND p.pricelist_id = pr.id
           AND a.customer = c.id
-          AND pr.company_id = $company_id";
+          AND z.id = a.id
+          AND pr.company_id = $company_id
+          ORDER BY a.id"; 
 
 $result = mysql_query($query) or die($query);
 
@@ -43,32 +41,29 @@ while ($var = mysql_fetch_assoc($result)){
 
 mysql_free_result($result);
 
-$query = "SELECT 
-                 a.c_number AS НомерЗаявки,
+$query = "SELECT a.c_number AS НомерЗаявки, 
                  ag.artikul AS Артикул,  
-                 ag.amount AS Количество, 
-                (ag.amount*ag.price_single) AS СуммаСНДС, 
-                 NULL AS ИНН,
-                 CONCAT(c.surname, ' ', c.name, ' ', c.patronymic) AS НаименованиеКонтрагента, 
-                 NULL AS ЮрАдрес,
-                 NULL AS ФактАдрес, 
+                 ag.amount AS Количество,
+                 p.str_group AS НаименованиеГруппы,
+                 (c.id) AS ID_Контрагента,
                  a.comments AS Комментарий, 
                  p.str_name AS НаименованиеНоменклатуры , 
-                (ag.amount*p.str_volume) AS Вес, 
-                 NULL AS СтавкаНДС ,
-                 NULL AS ОКПО , 
-                 NULL AS БанкРеквизиты 
+                a.time AS Принят,
+                z.time AS ОдобренПоставщиком
            FROM arch_zakaz AS a, 
                 arch_goods AS ag , 
                 pricelist AS p,
                 price AS pr,
-                users AS c
+                users AS c,
+                zakaz_history AS z
           WHERE a.report = 0 
           AND a.id = ag.zakaz 
           AND ag.artikul = p.str_code1
           AND p.pricelist_id = pr.id
           AND a.user_id = c.id
-          AND pr.company_id = $company_id";
+          AND z.id = a.id
+          AND pr.company_id = $company_id
+          ORDER BY a.id";
 
 $result = mysql_query($query) or die($query);
 
