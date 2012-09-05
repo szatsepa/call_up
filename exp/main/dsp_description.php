@@ -46,9 +46,6 @@
                            </p>
                         </form>
                     </div>
-<!--		<div class = "img_small">
-                <?php // $str = get_Advert(469, 91, $advert_array,2); echo $str;?>
-                </div>-->
 		</div>
 		
 <!--center модуль описания товара сюда вставить даные о литраже
@@ -59,20 +56,13 @@ $name_item = $name_artikul ->name;
 if(strlen($name_item) > 42)$go=1;
 ?>
 		<div class= "center_side">
-			<div id = "name_center"><?php echo $name_item;?><br/><br/></div>
+			<div id = "name_center"><br/><br/></div>
                         <div><p>&nbsp;<br/></p></div>
 			<div id = "prise_txt">цена (руб):</div>
-<!--			<div id = "obem_txt">объем:</div>-->
 			<div id = "price_center"><?php echo $name_artikul->volume[0][num_price_single];?> р.</div> 
 			
                         <div id = "obem_blok"> 
-                            
-                            <?php 
-foreach ($name_artikul->volume as $value) {
-    ?>
-<!--   <div id="value"><p align="center" onclick="javascript:go_Artikul('<?php echo $value[str_code1];?>','<?php echo $attributes[price_id];?>','<?php echo $attributes[stid];?>','<?php echo $attributes[cod];?>');" onmouseover="this.style.color='#CCCCCC'" onmouseout="this.style.color='#BB0D72'"><?php if($artikul == $value[str_code1])echo "<strong>"; echo $value[str_volume];echo "<small>".$name_artikul->unit."</small>";  if($artikul == $value[str_code1])echo "</strong>";?></p></div>-->
-<?php
-}?>
+ 
              </div>
                          
                 <!-- END -->
@@ -81,7 +71,7 @@ foreach ($name_artikul->volume as $value) {
 <!--                    <a id="to_cart" href="index.php?act=to_order&amp;stid=2&amp;artikul=<?php echo $attributes[artikul];?>&amp;pricelist_id=<?php echo $name_artikul->pricelist;?>&amp;amount=1&amp;type=1&cod=<?php echo $attributes[cod];?>&amp;up=1<?php echo $item_id;?>">В корзину</a>-->
                 </div>
                 <div id = "otlozit">
-<!--                    <a href="index.php?act=to_reserved&amp;stid=<?php echo $attributes[stid];?>&amp;artikul=<?php echo $attributes[artikul];?>&amp;pricelist_id=<?php echo $name_artikul->pricelist;?>&amp;amount=1&amp;type=1&amp;cod=<?php echo $attributes[cod];?>&amp;up=1">Отложить</a>-->
+                    
                 </div>
 			<div id = "opisanie_center">
                             <br/><br/>
@@ -110,7 +100,7 @@ foreach ($name_artikul->volume as $value) {
                         }
 
                     ?></div>
-                        <div id = "vopros_txt">
+                        <div id = "vopros_txt"> 
                             <a href="http://<?php echo $description[gost];?>" target="_blank"><?php echo $description[gost];?></a>
                         </div>
 		</div>
@@ -126,70 +116,16 @@ foreach ($name_artikul->volume as $value) {
 			                        
 		</div>
 
-		</div>
+		
 <div class = "all_see">
-    <p style="padding-top: 5px; margin-left: 36px;">Фавориты лотереи:</p>
+    <p style="padding-top: 5px; margin-left: 36px;"><strong>Фавориты лотереи:</strong></p>
 </div>
-		
-		
-<!--Смотрят еще 
-------------------------------------------------------------------------------->
-	
+</div>	
 		<div class = "smotrjat_sche">
                    
-                        <div class = "small_kard_2" id ="favorites"> 
-<!--                            <div class = "imag_right" style="left: 0px;">
-
-                            </div>
-                            <div class = "imag_right" style="left: 110px;">
-
-                            </div>
-                            <div class = "imag_right" style="left: 220px;">
-
-                            </div>
-                            <div class = "imag_right" style="left: 330px;">
-
-                            </div>
-                            <div class = "imag_right" style="left: 440px;">
-
-                            </div>-->
-                        </div>
-                    
-                                          
-                    
-                   <?php // } ?>
-                
-<!-- <div class = "smotrjat_sche_1">                 -->
-                      <?php // 
-                       
-//                      for($i=0;$i<5;$i++){
-                          
-//                       $str_name = $tmp_arr[$i][str_name];
-                       
-//                       $str_name = iconv("UTF-8", "WINDOWS-1251", $str_name);
-                       
-//                       if(strlen($str_name) > 127)$str_name = substr($str_name, 0,128)."...";
-                       
-//                       $str_name = iconv("WINDOWS-1251", "UTF-8", $str_name);
-                       
-                        ?>
-<!--<div class = "small_kard_3"> -->
-<!--                       <div id = "name_sk" align="justify">
-                                <?php
-                                
-//                                echo $str_name; ?>
-                        </div>
-
-                        <div id = "obem_sk">
-                        
-                        </div>
-                        <div id = "prise_sk">
+                        <div class = "small_kard_2" id ="favors">
                             
-                        </div>-->
-<!--                        <div id = "kruzki_sk">
-                        
-                        </div>  -->
-<!--                   </div>   -->
-                      <?php // }?> 
-<!-- </div>                 -->
-</div> 
+                        </div>
+
+</div>                   
+ 

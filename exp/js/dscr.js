@@ -10,6 +10,8 @@ $(document).ready(function () {
      
      var favorites = selectFavorites(window.pid);
      
+//     $("div").css('outline','1px solid #eee');
+     
      $("#add_cart").mousedown(function(){
          var str = "";
          var artikul = this.name;
@@ -48,7 +50,7 @@ $(document).ready(function () {
          }else if(simbl == 'c'){
              page = 3;
          }
-         console.log("img "+img);
+//         console.log("img "+img);
          document.location.href = "index.php?act=look&page="+page+"&fav="+img;
      });
      
@@ -62,21 +64,30 @@ $(document).ready(function () {
                 
                 var n = 0;
                 var s_max = data['artikles'][0]['hm'];
-                var s_min = data['artikles'][5]['hm'];   
-                console.log(s_max+" "+s_min);  
+                var s_min = data['artikles'][5]['hm']; 
+                var cnt = Math.ceil(parseInt(data['cnt'])/30); 
+                  
                 $.each(data['artikles'],function(){
                    
                     var item = this['artikul'];
                     
                     var img = this['img'];
                     
-                    var bu_str = '<div class="imag_right" style="left: '+(135*n)+'px;"><input class="favorites_point" type="image" id="'+item+'" src="../images/goods/'+img+'"/></div>';
+                    var rt = this['hm'];
+                    
+                    var perc = Math.ceil((rt/s_max)*100); 
+                    
+                    var bu_str = '<div class="imag_right" style="left: '+(135*n)+'px;"><div><input class="favorites_point" type="image" id="'+item+'" src="../images/goods/'+img+'" width="98" height="98"/></div><div class="favor" id="f_'+item+'"></div></div>';
                    
-                   $("#favorites").append(bu_str);
+                   $("#favors").append(bu_str); 
+                   
+                   $("#f_"+item).css('width',perc+"%")
+                   
+//                   console.log(s_max+" "+rt+" PR "+perc);
                    
                    n++;
                 });
-
+                $(".footer_box").css({'z-index':'99999'});
             },
             error:function(data){
                 console.log(data['responseText']);

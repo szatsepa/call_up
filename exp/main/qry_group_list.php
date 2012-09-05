@@ -39,7 +39,7 @@ function priceID($comid){
                       p.tags 
             FROM price AS p
             WHERE p.company_id = $comid 
-            ORDER BY p.comment";
+            ORDER BY p.id";
      
      $result = mysql_query($query) or die($query); 
      

@@ -703,11 +703,20 @@ p.description_2{
 }
 div.imag_right {
      position: absolute;
-
+     margin-left: 24px;
      width: 98px;
-     height: 98px;
-/*        outline: 1px solid green; */
-        }
+     height: 128px;
+/*    outline: 1px solid green; */
+}
+div.favor{
+    position: absolute;
+    width: 100%;
+    height: 7px;
+    top: 106px;
+    background-color: #ffcc00;
+    opacity: .7;
+/*    outline: 1px solid red;*/
+}       
 #name_sk {
      position: relative;
     z-index: 3;
@@ -806,6 +815,7 @@ div.all_see{
         position:relative;
         float: left;
         width: 100%;
+        height: 67px; 
         background-color:#ffcc00;
         background-repeat: no-repeat;
 }

@@ -12,7 +12,7 @@ $query = "SELECT str_code1 AS artikul, str_group AS simbl FROM pricelist WHERE p
 
 $result = mysql_query($query);
 
-$out = array('ok'=>NULL,'query'=>$query);
+$out = array('ok'=>NULL);
 
 $tmp = array();
 
@@ -52,7 +52,13 @@ foreach ($tmpf as $key => $value) {
      }
 }
 
-$out['query'] = $query;
+$query = "SELECT COUNT(artikul) FROM arch_goods WHERE price_id = $price";
+
+$result = mysql_query($query);
+
+$row = mysql_fetch_row($result);
+
+$out['cnt'] = $row[0];
 
 echo json_encode($out);
 

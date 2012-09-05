@@ -4,7 +4,7 @@
     
          
     foreach ($prices as $key => $value) {
-          if(isset($attributes[pid]) and $attributes[pid] == $key){ ?> 
+          if((isset($attributes[pid]) and $attributes[pid] == $key) OR $_SESSION[pid] == $key){ ?> 
               <option value="<?php echo $key;?>" selected><?php echo $value;?></option> 
          <?php 
     

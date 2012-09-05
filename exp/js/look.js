@@ -28,11 +28,15 @@
         
         var uid = $("#uid").val();
         
-        var page = $("#page").val();
+       var page = $("#page").val();
         
-        var art = $("#fav").val();
+       var art = $("#fav").val();
         
-       console.log(art); 
+       var pid = $("#pid").val();
+       
+       if(pid != 2){
+           alert("Просьба до особого распоряжения ничего не тыцать если выбран иной прайс кроме ЧИСЛОВОЙ ЛОТЕРЕИ!!!");
+       }
         
         checkButton();
         

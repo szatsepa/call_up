@@ -2,17 +2,8 @@
 
 function artikul($pid){
     
-    if($select == "default"){
-        
-        $plid = 2;
-        
-    }else{
-        
-        $plid = intval($pid);
-    }
+     $plid = intval($pid);
     
-    
-     
     $query = "SELECT    pl.id AS price_id,
                         p.comment,
                         pl.str_code1, 
@@ -21,7 +12,7 @@ function artikul($pid){
                         pl.str_state, 
                         pl.str_volume, 
                         pl.num_price_single,
-                        CONCAT(gp.id, '.',gp.extention) AS img 
+                        CONCAT(gp.id, '.',gp.extention) AS img  
                  FROM   price AS p, 
                         pricelist AS pl,
                         goods_pic AS gp
@@ -34,7 +25,7 @@ function artikul($pid){
                  ORDER BY pl.str_code1 ";
     
     $qry_images = mysql_query($query) or die($query);
-    
+//    echo "$query<br>"; 
     return $qry_images;  
-}
+} 
 ?>
