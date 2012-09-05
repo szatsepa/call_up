@@ -6,6 +6,8 @@ if(!isset($attributes[pid])){
     $attributes[pid] = 2;
 }
 
+$_SESSION[pid] = $attributes[pid];
+
  unset($_SESSION[ok]);
 
  $price = price_name($attributes[stid]);

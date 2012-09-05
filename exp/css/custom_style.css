@@ -701,12 +701,12 @@ p.description_2{
     height: 514px; 
     
 }
-#imag_right {
-     position: relative;
-    z-index: 2;
-        float: left;
-        max-width: 170px;
-/*        margin: 10px;*/
+div.imag_right {
+     position: absolute;
+
+     width: 98px;
+     height: 98px;
+/*        outline: 1px solid green; */
         }
 #name_sk {
      position: relative;
@@ -759,6 +759,8 @@ p.description_2{
     z-index: 0;
         float: left;
         width: 198px;
+        height: 198px;
+/*        outline: 1px solid red;*/
 }
 .small_kard_3 {
      position: relative;

@@ -30,6 +30,10 @@
         
         var page = $("#page").val();
         
+        var art = $("#fav").val();
+        
+       console.log(art); 
+        
         checkButton();
         
         checkCart(uid);
@@ -178,11 +182,11 @@
            });
            
 //           console.log(str); 
-            checkPage();
+            checkPage(art);
 
            return false;
        }
-       function checkPage(){ 
+       function checkPage(art){ 
            
            var i;
            var mstr = '';
@@ -253,7 +257,9 @@
                          changeBtn(i,ltr);  
                    }
            }
-//            console.log(str);
+            $("#"+art).focus();
+            $("#im_"+art+" > .my_button").css({'border': '6px solid #efe'});  
+//            console.log("#im_"+art);
            return false;
        }
        function checkButton(){
@@ -277,6 +283,7 @@
             $("#"+bid).attr({'disabled':'disabled'});
             $("#"+bid).css({'cursor':'default'});
             $("#"+bid).remove();
+            
             
             return false;
     }       

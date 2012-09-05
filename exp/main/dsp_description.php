@@ -1,4 +1,6 @@
-
+<script type="text/javascript">
+    var pid = <?php echo $_SESSION[pid];?>; 
+</script>
 <!--content----------------------------------------------------------------------------- -->
 
 	<div class="cont">
@@ -125,38 +127,39 @@ foreach ($name_artikul->volume as $value) {
 		</div>
 
 		</div>
-<!--<div class = "all_see">
-    <p style="padding-top: 5px; margin-left: 36px;">Вместе с этим товаром смотрят:</p>
-</div>-->
+<div class = "all_see">
+    <p style="padding-top: 5px; margin-left: 36px;">Фавориты лотереи:</p>
+</div>
 		
 		
 <!--Смотрят еще 
 ------------------------------------------------------------------------------->
 	
-<!--		<div class = "smotrjat_sche">
-                    
-                    <?php 
-//                    $tmp_arr = array(); 
-//                    print_r($rnd_arr);
-//                    for($i=0;$i<5;$i++){
-//                        $pos = rand(0,($count-1));
-//                        array_push($tmp_arr, $rnd_arr[$pos]);
-                                               
-			?>
+		<div class = "smotrjat_sche">
                    
-                        <div class = "small_kard_2">
-                            <div id = "imag_right" align="center">
-                                <a href="index.php?act=item_description&amp;artikul=<?php echo $rnd_arr[$pos][str_code1];?>&amp;stid=<?php echo $attributes[stid]; echo $str_code;?>&amp;price_id=<?php echo $rnd_arr[$pos][price_id];?>"/>
-                                <img src="main/act_prewiew.php?src=<?php echo "http://$_SESSION[domen]/images/goods/".$rnd_arr[$pos][id].".jpg";?>&amp;width=80&amp;height=185"  title="<?php echo $tmp_arr[$i][str_name];?>"/>
-                                </a>
+                        <div class = "small_kard_2" id ="favorites"> 
+<!--                            <div class = "imag_right" style="left: 0px;">
+
                             </div>
+                            <div class = "imag_right" style="left: 110px;">
+
+                            </div>
+                            <div class = "imag_right" style="left: 220px;">
+
+                            </div>
+                            <div class = "imag_right" style="left: 330px;">
+
+                            </div>
+                            <div class = "imag_right" style="left: 440px;">
+
+                            </div>-->
                         </div>
                     
                                           
                     
                    <?php // } ?>
                 
- <div class = "smotrjat_sche_1">                 
+<!-- <div class = "smotrjat_sche_1">                 -->
                       <?php // 
                        
 //                      for($i=0;$i<5;$i++){
@@ -170,8 +173,8 @@ foreach ($name_artikul->volume as $value) {
 //                       $str_name = iconv("WINDOWS-1251", "UTF-8", $str_name);
                        
                         ?>
-<div class = "small_kard_3"> 
-                       <div id = "name_sk" align="justify">
+<!--<div class = "small_kard_3"> -->
+<!--                       <div id = "name_sk" align="justify">
                                 <?php
                                 
 //                                echo $str_name; ?>
@@ -182,14 +185,11 @@ foreach ($name_artikul->volume as $value) {
                         </div>
                         <div id = "prise_sk">
                             
-                        </div>
-                        <div id = "kruzki_sk">
+                        </div>-->
+<!--                        <div id = "kruzki_sk">
                         
-                        </div>  
-                   </div>   
+                        </div>  -->
+<!--                   </div>   -->
                       <?php // }?> 
- </div>                 
-</div> -->
-<script type="application/javascript">
-
-</script>
+<!-- </div>                 -->
+</div> 
