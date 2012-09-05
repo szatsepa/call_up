@@ -14,6 +14,8 @@
          
          var uid = $("#uid").val();
          
+         var pid = $("#pid").val();
+         
          var month_array = new Array('01.','02','03','04','05','06','07','08','09','10','11','12');
          
          var order_ready = false;
@@ -49,7 +51,7 @@
                      url:'./action/create_order.php',
                      type:'post',
                      tataType:'json',
-                     data:{uid:uid,num:N_O,A:A,B:B,C:C},
+                     data:{uid:uid,num:N_O,A:A,B:B,C:C,pid:pid},
                      success:function(data){
                              document.location.href = "index.php?act=private_office"; 
                          
@@ -75,7 +77,7 @@
                  url:'./action/change_artikul.php',
                  type:'post',
                  dataType:'json',
-                 data:{id:id},
+                 data:{id:id,pid:pid},
                  success:function(data){
                      if(data['ok'] == 1){
                          document.location.href = "index.php?act=look&page="+page+"&art="+id;
@@ -96,7 +98,7 @@
                 url:'./query/read_cart.php',    
                 type:'post',
                 dataType:'json',
-                data:{uid:uid},
+                data:{uid:uid,pid:pid},
                 success:function(data){ 
                     if(data['ok']){
                        ready = sortingCart(data['cart']); 

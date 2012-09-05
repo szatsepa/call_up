@@ -117,10 +117,10 @@ if(strlen($name_item) > 42)$go=1;
 		</div>
 
 		
-<div class = "all_see">
+<div class = "all_see" id="see_all"> 
     <p style="padding-top: 5px; margin-left: 36px;"><strong>Фавориты лотереи:</strong></p>
 </div>
-</div>	
+</div> 	
 		<div class = "smotrjat_sche">
                    
                         <div class = "small_kard_2" id ="favors">

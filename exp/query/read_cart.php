@@ -8,6 +8,8 @@ include 'connect.php';
 
 $uid = intval($_POST[uid]);
 
+$pid = intval($_POST[pid]);
+
 $out = array();
 
 $query = "SELECT a.str_code1 AS artikul,
@@ -23,6 +25,7 @@ $query = "SELECT a.str_code1 AS artikul,
     AND gp.pictype = 1
            AND b.customer=$uid
            AND a.str_code2 <> 'X'
+AND p.id = $pid
          ORDER BY b.id";
 
 $result = mysql_query($query);

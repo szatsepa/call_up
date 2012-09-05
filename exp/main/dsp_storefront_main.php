@@ -77,17 +77,7 @@ for($i=0;$i<9;$i++){
 <!--       <input type="hidden" id="uid" value="<?php echo $_SESSION[id];?>"/>-->
        <input type="hidden" id="page" value="<?php echo $page;?>"/> 
        <input type="hidden" id="fav" value="<?php echo (intval($attributes[fav])-1);?>"/>
-       <?php
-       if(isset($_SESSION[pid])){
-       ?>
-       <input type="hidden" id="pid" value="<?php echo $_SESSION[pid];?>"/> 
-       <?php
-       }else{
-           ?>
-       <input type="hidden" id="pid" value="<?php echo $attributes[pid];?>"/> 
-       <?php
-       }
-       ?>
+       
        
 <!--       строка витрины-->
        

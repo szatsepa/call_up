@@ -41,7 +41,20 @@ if(isset($attributes[art])){
 include 'dsp_selector.php';
 ?>
     
+    
         <div id="header">
+            
+            <?php
+       if(isset($_SESSION[pid])){
+       ?>
+       <input type="hidden" id="pid" value="<?php echo $_SESSION[pid];?>"/> 
+       <?php
+       }else{
+           ?>
+       <input type="hidden" id="pid" value="<?php echo $attributes[pid];?>"/> 
+       <?php
+       }
+       ?>
             
 <input type="hidden" id="uid" value="<?php echo $_SESSION[id];?>"/>
             

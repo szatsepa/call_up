@@ -187,7 +187,7 @@ if (($_FILES['userfile_t']['type'] == 'image/jpeg' or  $_FILES['userfile_b']['ty
             $i = 0;
             while ($name = $zip->getNameIndex($i)) {
                 
-				$i_name     = substr ($name, 0, -4);
+				$i_name     = substr ($name, -4);
                 $i_name = quote_smart($i_name);
 				
 				// Удалим информацию о старой картинке

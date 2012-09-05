@@ -6,15 +6,11 @@
  */
 include 'connect.php';
 
-//$uid = intval($_POST[uid]);
+$pid = intval($_POST[pid]);
 
 $id = intval($_POST[id]);
 
-//$artikul = $_POST[artikul];
-
-//$query = "DELETE FROM cart WHERE id = $id";
-
-$query = "UPDATE cart SET artikul = 'NULL' WHERE id = $id";
+$query = "UPDATE cart SET artikul = 'NULL' WHERE id = $id AND price_id = $pid";
 
 mysql_query($query);
 

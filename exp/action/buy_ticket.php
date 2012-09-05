@@ -10,6 +10,8 @@ $out = array('ok'=>NULL);
 
 $id = intval($_POST[id]);
 
+$pid = intval($_POST[pid]);
+
 $uid = intval($_POST[uid]);
 
 $resolution = $_POST[resolution];
@@ -62,7 +64,7 @@ if(mysql_insert_id()){
     foreach ($out['simbls'] as $value) {
         $query = "INSERT INTO arch_goods (`zakaz`, `customer`, `artikul`, `price_id`, `amount`, `discount`, `name`, `price_single`)
                                     VALUES 
-                                    ($id_order,$uid,'$value',2,1,0,(SELECT str_name FROM pricelist WHERE str_code1 = '$value'),(SELECT num_price_single FROM pricelist WHERE str_code1 = '$value'))";
+                                    ($id_order,$uid,'$value',$pid,1,0,(SELECT str_name FROM pricelist WHERE str_code1 = '$value'),(SELECT num_price_single FROM pricelist WHERE str_code1 = '$value'))";
         
         mysql_query($query);
         

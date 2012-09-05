@@ -5,6 +5,8 @@ $out = array('ok'=>NULL);
         
 $uid = intval($_POST[uid]);
 
+$pid = intval($_POST[pid]);
+
 $artikul = $_POST[artikul];
 
 if(isset($_POST[itid])){
@@ -26,7 +28,7 @@ if(isset($_POST[itid])){
 		          (1,
 		           0,
 		           '$artikul',
-		           2,
+		           $pid,
 		           now(),
                            $uid)";
 }

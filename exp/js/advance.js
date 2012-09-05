@@ -11,6 +11,8 @@ $(document).ready(function(){
     
     var uid = $("#uid").val();
     
+    var pid = $("#pid").val();
+    
     var month_array = new Array('01','02','03','04','05','06','07','08','09','10','11','12');
     
     var A_array = new Array();
@@ -43,7 +45,7 @@ $(document).ready(function(){
         var mm = $("#mm :selected").val();
         var resolution = screen.width+"X"+screen.height;
         var exe_time = year+"-"+month+"-"+dey+" "+hh+":"+mm;
-        var out = {id:window.order,uid:uid,email:email,shipment:shipment,desire:desire,mark:mark,resolution:resolution,exe_time:exe_time};
+        var out = {pid:pid,id:window.order,uid:uid,email:email,shipment:shipment,desire:desire,mark:mark,resolution:resolution,exe_time:exe_time};
 
         $.ajax({
            url:'./action/buy_ticket.php',
@@ -79,8 +81,6 @@ $(document).ready(function(){
     
     $(".edit_p").live('click',function(){
         
-//        var tmp = '';
-        
                 var artikul = this.id;
                 var str = this.id;
                 str = str.substr(0,1).toUpperCase(); 
@@ -93,7 +93,7 @@ $(document).ready(function(){
                 
                 var count = 0;
                 
-                tmp = "A "+artikul+" S "+old_simbl+" m "+new_min+" "+new_num+" "+new_max+" M ";
+//                tmp = "A "+artikul+" S "+old_simbl+" m "+new_min+" "+new_num+" "+new_max+" M ";
                 
                 $.each(eval(artikul.substr(0,1).toUpperCase()+"_array"),function(){
                     var num = parseInt(this['artikul'].substr(1));
@@ -120,9 +120,9 @@ $(document).ready(function(){
                 
                 str = 'field_'+str;
                 
-               console.log(tmp);
+//               console.log(tmp);
                
-            var out = {field:str,new_artikul:this.id,old_artikul:old_simbl,order:window.order};
+            var out = {pid:pid,field:str,new_artikul:this.id,old_artikul:old_simbl,order:window.order};
             
             $.ajax({
                      url:'./action/edit_ticket.php',
@@ -153,7 +153,7 @@ $(document).ready(function(){
                 }else if(str == 'C'){
                     top=395;
                 }
-                var out = {simbl:str};
+                var out = {pid:pid,simbl:str};
                  $.ajax({
                      url:'./query/simbl_list.php',
                      type:'post',
@@ -193,10 +193,6 @@ $(document).ready(function(){
                          });
                          var sm = "c09";
                          var nm = parseInt(sm.substr(1, 2));
-//                         console.log(nm);
-//                         console.log(m);
-//                         console.log(row_str);
-//                         console.log(S_array);
                           
                      },
                      error:function(data){
@@ -207,8 +203,8 @@ $(document).ready(function(){
     });
     
     $("#delete_order").mousedown(function(){
-        var out = {id:window.order};
-//        console.log(out);
+        var out = {pid:pid,id:window.order};
+        
         if(confirm("Действительно удалить?")){ 
             $.ajax({
                 url:'./action/delete_ticket.php',
@@ -234,7 +230,7 @@ $(document).ready(function(){
                 url:'./query/read_order.php',     
                 type:'post',
                 dataType:'json',
-                data:{order:order},
+                data:{pid:pid,order:order},
                 success:function(data){ 
                     $("#n_ticket").text('Билет № '+data['ok']+' от '+str_date+'г.')
                     if(data['ok']){

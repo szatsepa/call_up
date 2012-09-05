@@ -12,7 +12,7 @@ if($_SESSION[auth] == 1){
     
 }
 
-if(!isset ($price_id)) $price_id = $attributes[price_id];
+if(!isset ($price_id)) $price_id = $_SESSION[pid];
 
     
 $qwery = "SELECT  company_id FROM price WHERE id = $price_id";

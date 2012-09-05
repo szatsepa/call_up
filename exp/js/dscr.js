@@ -8,6 +8,8 @@ $(document).ready(function () {
     
      var uid = $("#uid").val();
      
+     var pid = $("#pid").val();
+     
      var favorites = selectFavorites(window.pid);
      
 //     $("div").css('outline','1px solid #eee');
@@ -17,9 +19,9 @@ $(document).ready(function () {
          var artikul = this.name;
          var out;
          if(window.item_id == undefined){ 
-             out = {uid:uid,artikul:artikul};
+             out = {uid:uid,artikul:artikul,pid:pid};
         }else{
-            out = {uid:uid,artikul:artikul,itid:window.item_id};
+            out = {uid:uid,artikul:artikul,itid:window.item_id,pid:pid};
         }
         $("#add_cart").remove();
         
@@ -50,7 +52,6 @@ $(document).ready(function () {
          }else if(simbl == 'c'){
              page = 3;
          }
-//         console.log("img "+img);
          document.location.href = "index.php?act=look&page="+page+"&fav="+img;
      });
      
@@ -61,32 +62,39 @@ $(document).ready(function () {
             dataType:'json',
             data:{pid:pid},
             success:function(data){
-                
+                console.log(data['cnt']);
                 var n = 0;
                 var s_max = data['artikles'][0]['hm'];
                 var s_min = data['artikles'][5]['hm']; 
                 var cnt = Math.ceil(parseInt(data['cnt'])/30); 
-                  
-                $.each(data['artikles'],function(){
-                   
-                    var item = this['artikul'];
-                    
-                    var img = this['img'];
-                    
-                    var rt = this['hm'];
-                    
-                    var perc = Math.ceil((rt/s_max)*100); 
-                    
-                    var bu_str = '<div class="imag_right" style="left: '+(135*n)+'px;"><div><input class="favorites_point" type="image" id="'+item+'" src="../images/goods/'+img+'" width="98" height="98"/></div><div class="favor" id="f_'+item+'"></div></div>';
-                   
-                   $("#favors").append(bu_str); 
-                   
-                   $("#f_"+item).css('width',perc+"%")
-                   
-//                   console.log(s_max+" "+rt+" PR "+perc);
-                   
-                   n++;
-                });
+                
+                if(data['cnt'] > 0){
+                        $.each(data['artikles'],function(){
+
+                                var item = this['artikul'];
+
+                                var img = this['img'];
+
+                                var rt = this['hm'];
+                                
+                                if(rt){
+                                        var perc = Math.ceil((rt/s_max)*100); 
+
+                                        var bu_str = '<div class="imag_right" style="left: '+(135*n)+'px;"><div><input class="favorites_point" type="image" id="'+item+'" src="../images/goods/'+img+'" width="98" height="98"/></div><div class="favor" id="f_'+item+'"></div></div>';
+
+                                        $("#favors").append(bu_str); 
+
+                                        $("#f_"+item).css('width',perc+"%");
+                                }
+
+                               
+
+                                n++;
+                            });
+                }else{
+                                    $("#see_all").remove(); 
+                                }  
+                
                 $(".footer_box").css({'z-index':'99999'});
             },
             error:function(data){
