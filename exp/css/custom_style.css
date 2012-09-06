@@ -1420,6 +1420,14 @@ a.to_cart{
 a.to_cart:hover{
     color: #BB0D72;
 }
+/*#add_to_cart{
+    color: #878787;
+   text-decoration: underline;
+   cursor: pointer;
+}*/
+/*#add_to_cart:hover{
+    color: #BB0D72;
+}*/
 /*===========preloader=================================*/
 .QOverlay {
 	background-color: #aaa;
@@ -1483,4 +1491,55 @@ div.point_item{
     position: absolute;
     width: 85px;
     height: 85px;
+}
+input.footer_1{
+    color: black;
+}
+input.footer_1:hover{
+    color: gray;
+}
+div.content{
+    position: relative;
+    margin: 0 auto;
+    width: 1008px;
+    height: 600px;
+}
+div.head_wallet{
+    position: relative;
+    width: 975px;
+    height: 27px;
+    background-color: #eee;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    padding-left: 33px;
+    padding-top: 4px;
+}
+span.h_wallet{
+    color: black;
+}
+span.h_wallet:hover{
+    color: grey;
+}
+div.b_wallet{
+    position: relative;
+    width: 975px;
+    height: 97px;
+    font-size: 16px;
+    font-weight: normal;
+    color: black;
+    padding-left: 33px;
+    padding-top: 24px;
+}
+div.t_wallet{
+    position: relative;
+    width: 975px;
+    font-size: 14px;
+    font-weight: normal;
+    color: black;
+    padding-left: 33px;
+    padding-top: 24px;
+}
+#t_wallet{
+    width: 942px;
 }

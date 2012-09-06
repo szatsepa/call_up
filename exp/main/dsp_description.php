@@ -48,15 +48,15 @@
 <!--center модуль описания товара сюда вставить даные о литраже
 ------------------------------------------------------------------------------->
 <?php
-$name_item = $name_artikul ->name;
-
-if(strlen($name_item) > 42)$go=1;
+//$name_item = $name_artikul ->name;
+//
+//if(strlen($name_item) > 42)$go=1;
 ?>
 		<div class= "center_side">
 			<div id = "name_center"><br/><br/></div>
                         <div><p>&nbsp;<br/></p></div>
-			<div id = "prise_txt">цена (руб):</div>
-			<div id = "price_center"><?php echo $name_artikul->volume[0][num_price_single];?> р.</div> 
+			<div id = "prise_txt"></div>
+			<div id = "price_center"></div> 
 			
                         <div id = "obem_blok"> 
  
@@ -65,7 +65,7 @@ if(strlen($name_item) > 42)$go=1;
                 <!-- END -->
                 <div id = "v_korzinu">
                     <input type="hidden" id="artikul" value="<?php echo $attributes[artikul];?>"/> 
-                    <a class="to_cart" id="add_cart">В корзину</a>
+                    <a class="to_cart" id="add_to_cart">В корзину</a>
                 </div>
                 <div id = "otlozit">
                     

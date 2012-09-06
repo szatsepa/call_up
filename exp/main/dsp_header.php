@@ -138,7 +138,7 @@ include 'dsp_selector.php';
                     <?php } ?>
                     <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
                     <input type="hidden" name="group" value="<?php echo $price_id; ?>"/>
-                    <input type="submit" onmouseover="this.style.color='#CCCCCC'" onmouseout="this.style.color='#000000'" value="О магазине" class="footer_1"/>
+                    <input type="submit" value="О магазине" class="footer_1"/>
                 </form>
 </div> 
             <div class="bottom_btn_1">
@@ -152,7 +152,7 @@ include 'dsp_selector.php';
                     <?php } ?>
                     
                     <input type="hidden" name="stid" value="<?php echo $attributes[stid]; ?>"/>
-                    <input type="submit" onmouseover="this.style.color='#CCCCCC'" onmouseout="this.style.color='#000000'" value='/ Центральный офис'   class="footer_1"/>
+                    <input type="submit" value='/ Центральный офис'   class="footer_1"/>
                 </form>
             </div>
           <div class="bottom_btn_0">
@@ -166,7 +166,7 @@ include 'dsp_selector.php';
                     <?php } ?>
                     <input type="hidden" name="stid" value="<?php echo $attributes[stid]; ?>"/>
                     
-                    <input type="submit" onmouseover="this.style.color='#CCCCCC'" onmouseout="this.style.color='#000000'" value='/ Скидки'  class="footer_1" />
+                    <input type="submit" value='/ Скидки'  class="footer_1" />
                 </form>
           </div>
            <div class="bottom_btn">
@@ -180,7 +180,7 @@ include 'dsp_selector.php';
                     <?php } ?>
                   
                     <input type="hidden" name="stid" value="<?php echo $attributes[stid]; ?>"/>
-                    <input type="submit" onmouseover="this.style.color='#CCCCCC'" onmouseout="this.style.color='#000000'" value='/ Гарантия'   class="footer_1"/>
+                    <input type="submit" value='/ Гарантия'   class="footer_1"/>
                 </form>
            </div>
             <div class="bottom_btn">
@@ -194,8 +194,11 @@ include 'dsp_selector.php';
                     <?php } ?>
                     <input type="hidden" name="stid" value="<?php echo $attributes[stid]; ?>"/>
                     
-                    <input type="submit" onmouseover="this.style.color='#CCCCCC'" onmouseout="this.style.color='#000000'" value='/ Доставка'  class="footer_1" />
+                    <input type="submit" value='/ Доставка'  class="footer_1" />
                 </form>
+            </div>
+            <div class="bottom_btn">
+                <input id="wallet" type="button" value='/ Кошелек'  class="footer_1" />
             </div>
           </div>
 

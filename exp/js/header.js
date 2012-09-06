@@ -8,6 +8,11 @@ $(document).ready(function(){
     
     countCart(customer);
     
+     $("#wallet").mousedown(function(){
+         
+         document.location.href = "index.php?act=wallet";
+     });
+    
      $("#log_in").mousedown(function(){  
                var scr_W = screen.width;
                 var scr_H = screen.height;

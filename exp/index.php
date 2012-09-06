@@ -77,6 +77,13 @@ switch ($attributes[act]) {
         include 'main/dsp_footer.php';
         break;
     
+    case 'wallet':
+        $title = "Мой кошелек";
+        include 'main/dsp_header.php';
+        include 'main/dsp_wallet.php';
+        include 'main/dsp_footer.php'; 
+        break;
+    
     case 'info':
         $title = "Информация";
         include 'main/qry_storefront_info.php';

@@ -34,9 +34,9 @@
         
        var pid = $("#pid").val();
        
-       if(pid != 2){
-           alert("Просьба до особого распоряжения ничего не тыцать если выбран иной прайс кроме ЧИСЛОВОЙ ЛОТЕРЕИ!!!");
-       }
+//       if(pid != 2){
+//           alert("Просьба до особого распоряжения ничего не тыцать если выбран иной прайс кроме ЧИСЛОВОЙ ЛОТЕРЕИ!!!");
+//       }
         
         checkButton();
         
@@ -261,8 +261,8 @@
                          changeBtn(i,ltr);  
                    }
            }
-            $("#"+art).focus();
-            $("#im_"+art+" > .my_button").css({'border': '6px solid #efe'});  
+            $("#"+art).focus(); 
+            $("#im_"+art+" > .my_button").css({'border': '6px solid #fce'});  
 //            console.log("#im_"+art);
            return false;
        }

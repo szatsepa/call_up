@@ -8,23 +8,30 @@ $(document).ready(function () {
     
      var uid = $("#uid").val();
      
-     var pid = $("#pid").val();
+     var price_id = $("#pid").val();
      
-     selectFavorites(window.pid);
+//     $("#add_to_cart").css({'color':'#878787','text-decoration':'underline', 'cursor':'pointer'}); 
+     
+//     console.log(uid+" "+price_id); 
+     selectFavorites(price_id); 
      
 //     $("div").css('outline','1px solid #eee');
+
+//     $("#img_bg").mousedown(function(){
+//         alert('A');
+//     });
      
-     $("#add_cart").mousedown(function(){
+     $("#add_to_cart").mousedown(function(){
         
          var artikul = $("#artikul").val();
-         var out = {uid:uid,artikul:artikul,pid:pid};
+         var out = {uid:uid,artikul:artikul,pid:price_id};
          if(window.item_id != undefined){ 
-             out = {uid:uid,artikul:artikul,itid:window.item_id,pid:pid};
+             out = {uid:uid,artikul:artikul,itid:window.item_id,pid:price_id};
         }
         $("#add_cart").remove();
         
         $.ajax({
-            url:'./action/add_cart.php',
+            url:'./action/add_cart.php', 
             type:'post',
             dataType:'json',
             data:out, 
@@ -53,19 +60,17 @@ $(document).ready(function () {
          document.location.href = "index.php?act=look&page="+page+"&fav="+img;
      });
      
-    function selectFavorites(pid){
+    function selectFavorites(price_id){
         $.ajax({
             url:'./query/favorites_numbers.php',
             type:'post',
             dataType:'json',
-            data:{pid:pid},
+            data:{pid:price_id},
             success:function(data){
-//                console.log(data['cnt']);
-                var n = 0;
-                
-                if(data['cnt'] != 'NULL' && data['artikles'] != undefined){
-                    var s_max = data['artikles'][0]['hm'];
-//                    var s_min = data['artikles'][5]['hm']; 
+                if(data['cnt'] > 0){
+                    console.log(data);
+                    var n = 0;
+                    var s_max = data['artikles'][0]['hm']; 
                     var cnt = Math.ceil(parseInt(data['cnt'])/30); 
                         $.each(data['artikles'],function(){
 
@@ -82,7 +87,7 @@ $(document).ready(function () {
 
                                         $("#favors").append(bu_str); 
 
-                                        $("#f_"+item).css('width',perc+"%");
+                                        $("#f_"+item).css('width',perc+"%"); 
                                 }
 
                                
