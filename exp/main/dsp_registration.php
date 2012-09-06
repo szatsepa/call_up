@@ -44,7 +44,7 @@
                         <br/>
                         <br/>
                         
-                        <div id = "cont_reg_left_spaser_1"><p>После чего на указанный электронный ящик придет письмо с ключом доступа.</p></div>
+                        <div id = "cont_reg_left_spaser_1"><p>После чего на указанный Вами электронный ящик придет письмо с ключом доступа.</p></div>
 			 <br/>
                         <br/>
                         <br/>
@@ -53,7 +53,7 @@
                         <br/>
 			<div id = "cont_reg_left_btn">
                         <input type="hidden" name="cod" value="<?php echo $attributes[cod]; unset($attributes[cod])?>"/>
-                        <input type="image" src="http://<?php echo $_SESSION[domen];?>/images/storefront/btn_pay_for.jpg" width="259" height="29" border="0" onclick="return validatePwd();"/>
+                        <input type="image" src="../images/storefront/btn_pay_for.jpg" width="259" height="29" onclick="return validatePwd();"/>
                         </div>
                 </div>	
              </form>

@@ -65,7 +65,7 @@
                 <!-- END -->
                 <div id = "v_korzinu">
                     <input type="hidden" id="artikul" value="<?php echo $attributes[artikul];?>"/> 
-                    <a class="to_cart" id="add_to_cart">В корзину</a>
+                    <a class="to_cart" id="add_to_cart">Добавить в билет</a>
                 </div>
                 <div id = "otlozit">
                     
@@ -88,7 +88,7 @@
                             </p>
                         </div>
                         
-			<div id = "ingr_title">Ингридиенты:</div>
+			<div id = "ingr_title">Информация к размышлению:</div>
 			<div id = "ingr_txt"><?php 
 			if(!$description[ingridients]){
                             echo "Информация отсутствует.";	

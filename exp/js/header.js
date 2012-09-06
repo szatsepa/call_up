@@ -7,8 +7,8 @@ $(document).ready(function(){
     var customer = $("#uid").val();
     
     countCart(customer);
-    
-     $("#wallet").mousedown(function(){
+     $("#yor_account").css({'text-decoration':'underline','cursor':'pointer'});
+     $("#wallet,#yor_account").mousedown(function(){
          
          document.location.href = "index.php?act=wallet";
      });
@@ -44,41 +44,41 @@ $(document).ready(function(){
     }
     
     function setCartInfo(count){
-            var str_product = new Array('товар','товара','товаров');
+            var str_product = new Array('число','числа','чисел');
             var str_out = '';
             
             if(count != 0){
             
-                if(count > 5 && count < 21){
-
-                    str_out = count+" "+str_product[2];
-
-                }else if(count == '1'){
-
-                    str_out = count+" "+str_product[0]; 
-
-                }else if(count =='2' || count == '3' || count == '4'){
-
-                    str_out = count+" "+str_product[1];
-
-                }else{
-
-                    str_out = count+" "+str_product[2];
-                }
-                
-                str_out = " В корзине: "+str_out;
-                
+//                if(count > 5 && count < 21){
+//
+//                    str_out = count+" "+str_product[2];
+//
+//                }else if(count == '1'){
+//
+//                    str_out = count+" "+str_product[0]; 
+//
+//                }else if(count =='2' || count == '3' || count == '4'){
+//
+//                    str_out = count+" "+str_product[1];
+//
+//                }else{
+//
+//                    str_out = count+" "+str_product[2];
+//                }
+//                
+//                str_out = " Ваш билет: "+str_out;
+//                
             }
             if(count == 0){
                 
-                str_out = " Корзина пуста. "; 
+                str_out = "   Ваш билет."; 
                 
             $("#cart_info").remove();
-            $("#busket").append("<p style='color:#878787'> Корзина пуста. </p>");
+            $("#busket").append("<p style='color:#878787'> Ваш билет. </p>");
                 
             }
             
-            $("#cart_info").text(str_out);
+            $("#cart_info").text("    Ваш билет.");
             
             
          

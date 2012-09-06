@@ -107,7 +107,7 @@ include 'dsp_selector.php';
                                </div> 
 <!--                    <a href="<?php echo $info[about_store];?>" target="_blank" style="color: #BB0D72;" onmouseover="this.style.color='#CCCCCC'" onmouseout="this.style.color='#BB0D72'" ></a>-->
                         <div id = "tel"><p align="center"><?php echo $info[phone];?></p></div>
-                        <div id = "oplata"><a href="<?php echo $info[payment];?>" target="_blank">Способы оплаты </a></div>
+                        <div id = "oplata"><a id="yor_account" target="_blank">Ваш счет</a></div>
                         
                 </div>
         </div>
@@ -138,7 +138,7 @@ include 'dsp_selector.php';
                     <?php } ?>
                     <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
                     <input type="hidden" name="group" value="<?php echo $price_id; ?>"/>
-                    <input type="submit" value="О магазине" class="footer_1"/>
+                    <input type="submit" value="О проекте" class="footer_1"/>
                 </form>
 </div> 
             <div class="bottom_btn_1">
@@ -152,7 +152,7 @@ include 'dsp_selector.php';
                     <?php } ?>
                     
                     <input type="hidden" name="stid" value="<?php echo $attributes[stid]; ?>"/>
-                    <input type="submit" value='/ Центральный офис'   class="footer_1"/>
+                    <input type="submit" value='/ Партнерам'   class="footer_1"/>
                 </form>
             </div>
           <div class="bottom_btn_0">
@@ -166,7 +166,7 @@ include 'dsp_selector.php';
                     <?php } ?>
                     <input type="hidden" name="stid" value="<?php echo $attributes[stid]; ?>"/>
                     
-                    <input type="submit" value='/ Скидки'  class="footer_1" />
+                    <input type="submit" value='/ Выплаты'  class="footer_1" />
                 </form>
           </div>
            <div class="bottom_btn">
