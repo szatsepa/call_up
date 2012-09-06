@@ -1,13 +1,10 @@
-<script type="text/javascript">
-    var pid = <?php echo $_SESSION[pid];?>; 
-</script>
 <!--content----------------------------------------------------------------------------- -->
 
 	<div class="cont">
             
  <?php
      $artikul = $attributes[artikul];
-     $item_id = "&art=".$attributes[art];
+     $item_id = "&art=".$attributes[art]; 
  
  ?>           
 	
@@ -23,7 +20,7 @@
                             <?php  } ?>
                                 <input type="hidden" name="artikul" value="<?php echo $attributes[artikul];?>"/>
                                 <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
-                                <input type="hidden" name="price_id" value="<?php echo $attributes[price_id];?>"/>
+                                <input type="hidden" name="price_id" value="<?php echo $_SESSION[pid];?>"/>
                                 <input type="image" src="http://call-up.ru/images/storefront/back_btn.jpg" <?php echo $btn[status];?> />
                             </p>
                         </form>
@@ -41,7 +38,7 @@
                                 <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
                                 <input type="hidden" name="artikul" value="<?php echo $attributes[artikul];?>"/>
                                 <input type="hidden" name="img" value="<?php echo ($img + 1);?>"/>
-                                <input type="hidden" name="price_id" value="<?php echo $attributes[price_id];?>"/>
+                                <input type="hidden" name="price_id" value="<?php echo $_SESSION[pid];?>"/>
                                <input type="image" src="http://call-up.ru/images/storefront/next_btn.jpg" <?php echo $btn[status];?>/>
                            </p>
                         </form>
@@ -67,8 +64,8 @@ if(strlen($name_item) > 42)$go=1;
                          
                 <!-- END -->
                 <div id = "v_korzinu">
-                    <a class="to_cart" id="add_cart" name="<?php echo $attributes[artikul];?>">В корзину</a>
-<!--                    <a id="to_cart" href="index.php?act=to_order&amp;stid=2&amp;artikul=<?php echo $attributes[artikul];?>&amp;pricelist_id=<?php echo $name_artikul->pricelist;?>&amp;amount=1&amp;type=1&cod=<?php echo $attributes[cod];?>&amp;up=1<?php echo $item_id;?>">В корзину</a>-->
+                    <input type="hidden" id="artikul" value="<?php echo $attributes[artikul];?>"/> 
+                    <a class="to_cart" id="add_cart">В корзину</a>
                 </div>
                 <div id = "otlozit">
                     

@@ -49,10 +49,12 @@ include 'dsp_selector.php';
        ?>
        <input type="hidden" id="pid" value="<?php echo $_SESSION[pid];?>"/> 
        <?php
-       }else{
+       }
+       if(isset($attributes[pid])){
            ?>
        <input type="hidden" id="pid" value="<?php echo $attributes[pid];?>"/> 
        <?php
+       $_SESSION[pid] = $attributes[pid];
        }
        ?>
             

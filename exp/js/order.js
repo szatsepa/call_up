@@ -26,7 +26,7 @@
          
          $("#n_ticket").text('Билет № '+N_O+' от '+str_date+'г.');
          
-         checkCart(uid);
+         checkCart(uid, pid);
          
          $("#make_order").mousedown(function(){
              
@@ -90,7 +90,7 @@
              });
          });
      
-            function checkCart(uid){ 
+            function checkCart(uid, pid){ 
                 
                 var ready;
                 
@@ -100,6 +100,7 @@
                 dataType:'json',
                 data:{uid:uid,pid:pid},
                 success:function(data){ 
+                    console.log(data['cart']); 
                     if(data['ok']){
                        ready = sortingCart(data['cart']); 
                        buildTicket();

@@ -10,18 +10,16 @@ $(document).ready(function () {
      
      var pid = $("#pid").val();
      
-     var favorites = selectFavorites(window.pid);
+     selectFavorites(window.pid);
      
 //     $("div").css('outline','1px solid #eee');
      
      $("#add_cart").mousedown(function(){
-         var str = "";
-         var artikul = this.name;
-         var out;
-         if(window.item_id == undefined){ 
-             out = {uid:uid,artikul:artikul,pid:pid};
-        }else{
-            out = {uid:uid,artikul:artikul,itid:window.item_id,pid:pid};
+        
+         var artikul = $("#artikul").val();
+         var out = {uid:uid,artikul:artikul,pid:pid};
+         if(window.item_id != undefined){ 
+             out = {uid:uid,artikul:artikul,itid:window.item_id,pid:pid};
         }
         $("#add_cart").remove();
         
@@ -29,7 +27,7 @@ $(document).ready(function () {
             url:'./action/add_cart.php',
             type:'post',
             dataType:'json',
-            data:out,
+            data:out, 
             success:function(data){
                 if(data['ok']){
                     document.location.href = "index.php?act=order&type=2";
@@ -62,13 +60,13 @@ $(document).ready(function () {
             dataType:'json',
             data:{pid:pid},
             success:function(data){
-                console.log(data['cnt']);
+//                console.log(data['cnt']);
                 var n = 0;
-                var s_max = data['artikles'][0]['hm'];
-                var s_min = data['artikles'][5]['hm']; 
-                var cnt = Math.ceil(parseInt(data['cnt'])/30); 
                 
-                if(data['cnt'] > 0){
+                if(data['cnt'] != 'NULL' && data['artikles'] != undefined){
+                    var s_max = data['artikles'][0]['hm'];
+//                    var s_min = data['artikles'][5]['hm']; 
+                    var cnt = Math.ceil(parseInt(data['cnt'])/30); 
                         $.each(data['artikles'],function(){
 
                                 var item = this['artikul'];
@@ -95,7 +93,7 @@ $(document).ready(function () {
                                     $("#see_all").remove(); 
                                 }  
                 
-                $(".footer_box").css({'z-index':'99999'});
+//                $(".footer_box").css({'z-index':'99999'});
             },
             error:function(data){
                 console.log(data['responseText']);

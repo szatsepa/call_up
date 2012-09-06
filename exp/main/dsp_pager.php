@@ -32,7 +32,7 @@ for($i=($page-1);$i<($page+2);$i++){
     }
   if($page < $pages){  
     ?>
-        <a href="<?php echo "index.php?act=look&page=".($page+1);?>" style="font-size: 16px;color:#990033;" onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'">&nbsp;Следующая</a>
+        <a href="index.php?act=look&page=<?php echo ($page+1);?>" style="font-size: 16px;color:#990033;" onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'">&nbsp;Следующая</a>
         <a href="<?php echo "index.php?act=look&page=".$pages;?>" style="font-size: 16px;color:#990033;" onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'">&nbsp;Последняя&nbsp;>> </a>
     </p>
  </div>    

@@ -12,6 +12,8 @@ $(document).ready(function () {
     
     var uid = $("#uid").val();
     
+    var pid = $("#pid").val();
+    
     var desk = new Array();
 
     for(var i =0;i<10;i++){
@@ -35,10 +37,10 @@ $(document).ready(function () {
     $("#good_luck").mousedown(function(){
         var ct = $("#cart_info").text(); 
         if(!ct){
-            goodLuck();
+            goodLuck(pid);
         }else{
             if(confirm("Корзина не пуста, если продолжить даные будут заменены!")){
-                goodLuck();
+                goodLuck(pid);
             }
         }
         
@@ -61,7 +63,7 @@ $(document).ready(function () {
         document.location.href = "?act=advance&ticket="+id;
     });
         
-   function goodLuck(){
+   function goodLuck(pid){
         
         var r,c,num;
         var point;
@@ -163,7 +165,7 @@ $(document).ready(function () {
                 url:'./action/add_good_luck.php',
                 type:'post',
                 dataType:'json', 
-                data:{uid:uid,artikuls:str},
+                data:{pid:pid,uid:uid,artikuls:str},
                 success:function(data){
                    console.log(data['artikuls']); 
                    if(data['ok']==30){

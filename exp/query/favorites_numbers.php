@@ -12,7 +12,7 @@ $query = "SELECT str_code1 AS artikul, str_group AS simbl FROM pricelist WHERE p
 
 $result = mysql_query($query);
 
-$out = array('ok'=>NULL);
+$out = array('ok'=>NULL,'cnt'=>NULL);
 
 $tmp = array();
 
@@ -29,7 +29,7 @@ foreach ($tmp as $value) {
     }else if($value[simbl]=='C'){
         $cnt = 15;
     }
-    $query = "SELECT (COUNT(ag.`artikul`)/$cnt) AS hm, ag.artikul AS artikul, CONCAT(gp.id,'.',gp.extention) AS img  FROM `arch_goods`  AS ag , pricelist AS pl, goods_pic AS gp WHERE  ag.artikul = '$value[artikul]' AND ag.artikul = pl.str_code1 AND pl.str_barcode = gp.barcode";
+    $query = "SELECT (COUNT(ag.`artikul`)/$cnt) AS hm, ag.artikul AS artikul, CONCAT(gp.id,'.',gp.extention) AS img  FROM `arch_goods`  AS ag , pricelist AS pl, goods_pic AS gp WHERE  ag.artikul = '$value[artikul]'AND pl.pricelist_id = $price AND ag.artikul = pl.str_code1 AND pl.str_barcode = gp.barcode";
     
     $result = mysql_query($query);
     
@@ -58,7 +58,7 @@ $result = mysql_query($query);
 
 $row = mysql_fetch_row($result);
 
-$out['cnt'] = $row[0];
+if($row[0])$out['cnt'] = $row[0];
 
 echo json_encode($out);
 

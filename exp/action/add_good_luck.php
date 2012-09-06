@@ -8,6 +8,8 @@ include 'connect.php';
 
 $uid = intval($_POST[uid]);
 
+$pid = intval($_POST[pid]);
+
 $artikuls = explode(':',$_POST[artikuls]);
 
 $out = array('ok'=>NULL);
@@ -30,7 +32,7 @@ foreach ($artikuls as $value) {
                             1,
                             0,
                             '$value',
-                            2,
+                            $pid,
                             now())";
                        
 

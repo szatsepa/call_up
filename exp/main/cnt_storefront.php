@@ -2,11 +2,11 @@
 
 include 'qry_artikuls.php'; 
 
-if(!isset($attributes[pid])){
-    $attributes[pid] = 2;
-}
-
-$_SESSION[pid] = $attributes[pid];
+//if(!isset($attributes[pid])){
+//    $attributes[pid] = 2;
+//}
+//
+//$_SESSION[pid] = $attributes[pid];
 
  unset($_SESSION[ok]);
 
@@ -29,7 +29,7 @@ if(!isset($attributes[page]) && isset($_SESSION[page])){
 
 $tmp_array = array();
 
-$qry_images = artikul($attributes[pid]);
+$qry_images = artikul($_SESSION[pid]); 
 
 
 if($qry_images){

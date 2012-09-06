@@ -9,7 +9,7 @@ function art_Images($artikul){
     
     $artikul = quote_smart($artikul);
     
-    $query = "SELECT gp.id, gp.extention, gp.pictype FROM `goods_pic` AS gp, `pricelist` AS p WHERE gp.barcode = p.str_barcode AND p.str_code1 = $artikul AND gp.pictype = 1";
+    $query = "SELECT gp.id, gp.extention, gp.pictype FROM `goods_pic` AS gp, `pricelist` AS p WHERE gp.barcode = p.str_barcode AND p.str_code1 = $artikul AND gp.pictype = 1 AND p.pricelist_id = $_SESSION[pid]";
     
     $result = mysql_query($query) or die ($query);
     

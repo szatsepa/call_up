@@ -32,8 +32,9 @@ if(!isset($_SESSION)){
      } 
 
 //print_r($_SESSION); 
-
+//
 //echo "<br>";
+
 $_SESSION[res] = "call-up.ru/exp";
 $attributes[stid]=2;
 include 'main/cnt_classes.php';
@@ -47,7 +48,9 @@ include 'main/qry_storefront_info.php';
 //include ("main/qry_good_img.php");
 include ("main/qry_customer.php");
 
-
+if(!isset($attributes[pid]) && !isset($_SESSION[pid])){
+    $_SESSION[pid]=2;
+}
 if(isset ($_SESSION[auth]) && $_SESSION[auth] > 0){
    include 'main/act_checkauth.php';
 }

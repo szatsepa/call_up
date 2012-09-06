@@ -1,16 +1,15 @@
 <?php
 
-$storefront_id = quote_smart($attributes[stid]);
+//$storefront_id = quote_smart($attributes[stid]); 
+
+$pid = intval($_SESSION[pid]);
 
 $query = "SELECT pl.id, pl.str_code1 AS artikul
-            FROM storefront AS s, 
-                  storefront_data AS  sdt, 
+            FROM  
                   price AS p, 
                   pricelist AS pl, 
                   goods_pic AS gp
-             WHERE s.id = $storefront_id 
-               AND s.id = sdt.storefront_id 
-               AND sdt.price_id = p.id 
+             WHERE p.id = $pid 
                AND p.id = pl.pricelist_id 
                AND pl.str_barcode = gp.barcode
                AND p.status <> 2
