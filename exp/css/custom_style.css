@@ -1543,3 +1543,9 @@ div.t_wallet{
 #t_wallet{
     width: 942px;
 }
+#your_mind{
+    color: #BB0D72;
+}
+#your_mind:hover{
+    color:gray;
+}

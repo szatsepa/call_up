@@ -8,11 +8,21 @@ include 'connect.php';
 
 $price = intval($_POST[pid]);
 
-$query = "SELECT ag.`artikul`FROM `arch_goods` AS ag WHERE ag.`price_id`= $price GROUP BY ag.artikul";
+$page = intval($_POST[page]);
+
+$simbl = 'a';
+
+if($page == 2){
+    $simbl='b';
+}else if($page == 3){
+    $simbl = 'c';
+}
+
+$query = "SELECT SUBSTRING(artikul,-2) AS N FROM arch_goods WHERE price_id = $price GROUP BY N";
 
 $result = mysql_query($query);
 
-$out = array('ok'=>NULL,'cnt'=>NULL);
+$out = array('cnt'=>NULL);
 
 $tmp = array();
 
@@ -23,13 +33,17 @@ while ($row = mysql_fetch_assoc($result)){
 $tmpf = array();
 
 foreach ($tmp as $value) {
-    $cnt = 1;
-    if($value[simbl]=='B'){
-        $cnt = 2;
-    }else if($value[simbl]=='C'){
-        $cnt = 3;
-    }
-    $query = "SELECT (COUNT(ag.`artikul`)/$cnt) AS hm, ag.artikul AS artikul, CONCAT(gp.id,'.',gp.extention) AS img  FROM `arch_goods`  AS ag , pricelist AS pl, goods_pic AS gp WHERE  ag.artikul = '$value[artikul]'AND pl.pricelist_id = $price AND ag.artikul = pl.str_code1 AND pl.str_barcode = gp.barcode";
+   
+    $query = "SELECT (COUNT(SUBSTRING(ag.`artikul`,-2))) AS hm,
+                        '$simbl$value[N]' AS artikul, 
+                        (SELECT CONCAT(id,'.',extention) AS img 
+                           FROM goods_pic 
+                           WHERE 
+                                (SELECT str_barcode FROM pricelist WHERE str_code1 = '$simbl$value[N]' AND pricelist_id = $price) = barcode) AS img 
+                    FROM   arch_goods  AS ag , pricelist AS pl 
+                    WHERE  ag.artikul LIKE '%$value[N]' AND
+                           pl.pricelist_id = 2 AND
+                           ag.artikul = pl.str_code1";
     
     $result = mysql_query($query);
     
@@ -44,7 +58,7 @@ reset($tmpf);
 
 $n = 0;
 
-//$out['$query'] = $query;
+//$out['query'] = $tmpf;
 
 foreach ($tmpf as $key => $value) {
     $out['artikles'][$key] = $value;
@@ -54,15 +68,7 @@ foreach ($tmpf as $key => $value) {
      }
 }
 
-$query = "SELECT (COUNT(artikul)/30) FROM arch_goods WHERE price_id = $price";
-
-$result = mysql_query($query);
-
-$row = mysql_fetch_row($result);
-
-
-
-if($row[0])$out['cnt'] = $row[0];
+$out['page'] = $page; 
 
 echo json_encode($out);
 

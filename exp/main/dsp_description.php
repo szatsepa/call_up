@@ -15,31 +15,28 @@
 
                         <form action="index.php?act=item_description" method="post">
                             <p align="center">
-                             <?php if(isset ($attributes[cod])){ ?>
-                                <input type="hidden" name="cod" values="<?php echo $attributes[cod];?>"/>
-                            <?php  } ?>
+                             
                                 <input type="hidden" name="artikul" value="<?php echo $attributes[artikul];?>"/>
                                 <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
                                 <input type="hidden" name="price_id" value="<?php echo $_SESSION[pid];?>"/>
-                                <input type="image" src="http://call-up.ru/images/storefront/back_btn.jpg" <?php echo $btn[status];?> />
+<!--                                <input type="image" src="../images/storefront/back_btn.jpg" <?php echo $btn[status];?> />-->
                             </p>
                         </form>
                     </div>
                     <div id = "img_bg">
+                        <input type="hidden" id="this_page" value="<?php echo $_SESSION[page];?>"/> 
                         <img src="main/act_prewiew.php?src=http://call-up.ru/images/goods/<?php echo $item_img;?>&width=338&height=411"/>
                     </div>
                     <div id = "next">
 
                         <form action="index.php?act=item_description" method="post">
                             <p align="center">
-                             <?php if(isset ($attributes[cod])){ ?>
-                                <input type="hidden" name="cod" values="<?php echo $attributes[cod];?>"/>
-                            <?php   } ?>
+                             
                                 <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
                                 <input type="hidden" name="artikul" value="<?php echo $attributes[artikul];?>"/>
                                 <input type="hidden" name="img" value="<?php echo ($img + 1);?>"/>
                                 <input type="hidden" name="price_id" value="<?php echo $_SESSION[pid];?>"/>
-                               <input type="image" src="http://call-up.ru/images/storefront/next_btn.jpg" <?php echo $btn[status];?>/>
+<!--                               <input type="image" src="../images/storefront/next_btn.jpg" <?php echo $btn[status];?>/>-->
                            </p>
                         </form>
                     </div>
@@ -88,12 +85,12 @@
                             </p>
                         </div>
                         
-			<div id = "ingr_title">Информация к размышлению:</div>
+                <div id = "ingr_title"><p id="your_mind">Информация к размышлению:</p></div>
 			<div id = "ingr_txt"><?php 
 			if(!$description[ingridients]){
-                            echo "Информация отсутствует.";	
+                            echo "<br/>Информация отсутствует.";	
                         }else{
-                            echo $description[ingridients];
+                            echo "<br/>".$description[ingridients];
                         }
 
                     ?></div>
@@ -114,7 +111,7 @@
 		</div>
 
 		
-<div class = "all_see" id="see_all"> 
+<div class = "all_see" id="see_all" style="visibility: hidden;"> 
     <p style="padding-top: 5px; margin-left: 36px;"><strong>Фавориты лотереи:</strong></p>
 </div>
 </div> 	

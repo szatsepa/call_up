@@ -10,9 +10,10 @@ $(document).ready(function () {
      
      var price_id = $("#pid").val();
      
-//     $("#add_to_cart").css({'color':'#878787','text-decoration':'underline', 'cursor':'pointer'}); 
      
-//     console.log(uid+" "+price_id); 
+     
+//     $("#your_mind").css({'text-decoration':'underline','cursor':'pointer'});
+     
      selectFavorites(price_id); 
      
 //     $("div").css('outline','1px solid #eee');
@@ -60,18 +61,18 @@ $(document).ready(function () {
          document.location.href = "index.php?act=look&page="+page+"&fav="+img;
      });
      
-    function selectFavorites(price_id){
+    function selectFavorites(price_id){ 
+        var page = $("#this_page").val();
         $.ajax({
             url:'./query/favorites_numbers.php',
             type:'post',
             dataType:'json',
-            data:{pid:price_id},
+            data:{pid:price_id,page:page}, 
             success:function(data){
-                if(data['cnt'] > 0){
-                    console.log(data);
-                    var n = 0;
-                    var s_max = data['artikles'][0]['hm']; 
-                    var cnt = Math.ceil(parseInt(data['cnt'])/30); 
+console.log(data);                     
+                    if(data['artikles']){ 
+                        var n = 0;
+                        var s_max = data['artikles'][0]['hm'];
                         $.each(data['artikles'],function(){
 
                                 var item = this['artikul'];
@@ -80,23 +81,23 @@ $(document).ready(function () {
 
                                 var rt = this['hm'];
                                 
-                                if(rt){
-                                        var perc = Math.ceil((rt/s_max)*100); 
+//                                console.log(data);  
 
-                                        var bu_str = '<div class="imag_right" style="left: '+(135*n)+'px;"><div><input class="favorites_point" type="image" id="'+item+'" src="../images/goods/'+img+'" width="98" height="98"/></div><div class="favor" id="f_'+item+'"></div></div>';
+                                var perc = Math.ceil((rt/s_max)*100); 
 
-                                        $("#favors").append(bu_str); 
+                                        var bu_str = '<div class="imag_right" style="left: '+(135*n)+'px;"><div><input class="favorites_point" type="image" id="'+this['artikul']+'" src="../images/goods/'+img+'" width="98" height="98"/></div><div class="favor" id="f_'+item+'"></div></div>';
 
-                                        $("#f_"+item).css('width',perc+"%"); 
-                                }
+                                $("#favors").append(bu_str); 
 
+                                $("#f_"+n).css('width',perc+"%"); 
+                                
+                                if(n == 1)$("#see_all").css('visibility','visible');
                                
-
                                 n++;
                             });
-                }else{
-                                    $("#see_all").remove(); 
-                                }  
+                         }   
+                            $("#v_korzinu").css('z-index', '99999'); 
+//                  console.log($("#add_to_cart"));
                 
 //                $(".footer_box").css({'z-index':'99999'});
             },

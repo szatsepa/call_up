@@ -45,7 +45,7 @@
            $(".my_button").mousedown(function(){
                var id = this.id;
                var atr = $("#"+id).attr('disabled');  
-               var code = $("#cod").val();
+//               var code = $("#cod").val();
                var artikul = this.name;
               
                 
@@ -54,7 +54,7 @@
                     if(window.item_id == undefined){
                             document.location.href ="index.php?act=dscr&artikul="+artikul;
                         }else{
-                            document.location.href ="index.php?act=dscr&artikul="+artikul+"&art="+item_id;
+                            document.location.href ="index.php?act=dscr&artikul="+artikul+"&art="+window.item_id;
                         }
                }else if (!uid){
                    document.location.href ="index.php?act=regs"; 
@@ -66,10 +66,10 @@
        
        $("#sel_price").change(function(){
            
-           var pid = this.options[this.selectedIndex].value;
+           var pid = this.options[this.selectedIndex].value; 
            
            if(pid == 0){
-               document.location.href='index.php?act=look';
+               document.location.href='index.php?act=look&pid=2';
            }else{
                document.location.href='index.php?act=look&pid='+pid;
            }
