@@ -44,30 +44,11 @@ $(document).ready(function(){
     }
     
     function setCartInfo(count){
-            var str_product = new Array('число','числа','чисел');
-            var str_out = '';
+//            var str_product = new Array('число','числа','чисел');
+//            var str_out = '';
             
             if(count != 0){
-            
-//                if(count > 5 && count < 21){
-//
-//                    str_out = count+" "+str_product[2];
-//
-//                }else if(count == '1'){
-//
-//                    str_out = count+" "+str_product[0]; 
-//
-//                }else if(count =='2' || count == '3' || count == '4'){
-//
-//                    str_out = count+" "+str_product[1];
-//
-//                }else{
-//
-//                    str_out = count+" "+str_product[2];
-//                }
-//                
-//                str_out = " Ваш билет: "+str_out;
-//                
+               
             }
             if(count == 0){
                 

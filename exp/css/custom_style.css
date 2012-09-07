@@ -481,7 +481,7 @@ p.sum_vsego{
 
 .cont {
        width: 98%;
-        height: 576px;       
+        height: 476px;       
 }
 
 /* левая сторона
@@ -616,7 +616,7 @@ p.sum_vsego{
         font: 22px Arial;
         color: #330000;
         float: left;
-        width: 172px;
+        width: 272px;
         height: 29px;
 }
 #otlozit {
@@ -796,11 +796,15 @@ div.favor{
 }
 div.all_see{
     position: relative;
+    top: 140px; 
        width: 1008px;
-        height: 29px;
+        height: 19px;
         font: 16px Arial;
         color: #BB0D72;
         font-style: italic;
+        font-weight: bold;
+        visibility: hidden;
+        text-align: left;
 }
 /* Footer
 -----------------------------------------------------------------------------*/

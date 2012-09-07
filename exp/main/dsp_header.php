@@ -80,23 +80,12 @@ include 'dsp_selector.php';
                     
                       <div id = "busket">           
  <?php 
- $type = 0;
+ $type = $_SESSION[auth];
  
- if(isset ($_SESSION[auth])){
-     
-     $str_query = "&amp;stid=$attributes[stid]";
-     
-     $type = $_SESSION[auth]; 
-     
- }else{
-     
-     $str_query = "&amp;stid=$attributes[stid]&amp;cod=$attributes[cod]";
-     
- }
-     
+    
         ?>
                     
-                          <a id="cart_info" href="index.php?act=order&amp;type=<?php echo $type.$str_query;?>"></a>
+                          <a id="cart_info" href="index.php?act=order&amp;type=<?php echo $type;?>"></a>
                                 <?php
                                 
          if($string_count !='disabled'){                               }else{

@@ -10,19 +10,13 @@ $(document).ready(function () {
      
      var price_id = $("#pid").val();
      
-     
-     
-//     $("#your_mind").css({'text-decoration':'underline','cursor':'pointer'});
-     
+//     $("#see_all").css('outline','1px solid grey');
+//     
+//     $("#see_all").css('visibility','visible');
+          
      selectFavorites(price_id); 
      
-//     $("div").css('outline','1px solid #eee');
-
-//     $("#img_bg").mousedown(function(){
-//         alert('A');
-//     });
-     
-     $("#add_to_cart").mousedown(function(){
+     $("#add_to_cart").live('mousedown',function(){
         
          var artikul = $("#artikul").val();
          var out = {uid:uid,artikul:artikul,pid:price_id};
@@ -69,7 +63,7 @@ $(document).ready(function () {
             dataType:'json',
             data:{pid:price_id,page:page}, 
             success:function(data){
-console.log(data);                     
+                
                     if(data['artikles']){ 
                         var n = 0;
                         var s_max = data['artikles'][0]['hm'];
@@ -81,15 +75,19 @@ console.log(data);
 
                                 var rt = this['hm'];
                                 
-//                                console.log(data);  
+//                                var perc = Math.ceil(((6-n)/6)*100);
 
-                                var perc = Math.ceil((rt/s_max)*100); 
+                                var perc = Math.pow((0.12*(6-n)),2)*100+36;
+                                
+//                                console.log(Math.pow((0.12*(6-n)),2)*100+36);   
 
-                                        var bu_str = '<div class="imag_right" style="left: '+(135*n)+'px;"><div><input class="favorites_point" type="image" id="'+this['artikul']+'" src="../images/goods/'+img+'" width="98" height="98"/></div><div class="favor" id="f_'+item+'"></div></div>';
+                                var bu_str = '<div class="imag_right" style="left: '+(135*n)+'px;"><div><img class="favorites_point" id="'+this['artikul']+'" src="../images/goods/'+img+'" width="98" height="98"/></div><div class="favor" id="f_'+n+'"></div></div>';
 
                                 $("#favors").append(bu_str); 
 
                                 $("#f_"+n).css('width',perc+"%"); 
+                                
+                                $("#"+this['artikul']).css('cursor', 'pointer');
                                 
                                 if(n == 1)$("#see_all").css('visibility','visible');
                                

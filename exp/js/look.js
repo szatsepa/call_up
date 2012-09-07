@@ -33,14 +33,10 @@
        var art = $("#fav").val();
         
        var pid = $("#pid").val();
-       
-//       if(pid != 2){
-//           alert("Просьба до особого распоряжения ничего не тыцать если выбран иной прайс кроме ЧИСЛОВОЙ ЛОТЕРЕИ!!!");
-//       }
         
         checkButton();
         
-        checkCart(uid);
+        checkCart(uid,pid);
                
            $(".my_button").mousedown(function(){
                var id = this.id;
@@ -76,12 +72,12 @@
               
        });
        
-       function checkCart(uid){ 
+       function checkCart(uid,pid){ 
             $.ajax({ 
                 url:'./query/check_cart.php',    
                 type:'post',
                 dataType:'json',
-                data:{uid:uid},
+                data:{uid:uid,pid:pid},
                 success:function(data){ 
                     if(data['ok']){
                        sortingCart(data['cart']);  

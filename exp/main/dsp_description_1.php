@@ -116,11 +116,53 @@
 		<div class = "smotrjat_sche">
                    
                         <div class = "small_kard_2" id ="favors">
+                            <div class="imag_right" style="left: 0px;">
+                                <div>
+                                    <img class="favorites_point" id="0" src="" alt="" width="98" height="98"/>
+                                </div>
+                                <div class="favor" id="f_0"></div>
+                                    
+                             </div>
+                            <div class="imag_right" style="left: 132px;">
+                                <div>
+                                    <img class="favorites_point" id="1" src="" alt="" width="98" height="98"/>
+                                </div>
+                                <div class="favor" id="f_1"></div>
+                                    
+                             </div>
+                            <div class="imag_right" style="left: 264px;">
+                                <div>
+                                    <img class="favorites_point" id="2" src="" alt="" width="98" height="98"/>
+                                </div>
+                                <div class="favor" id="f_2"></div>
+                                    
+                             </div>
+                            <div class="imag_right" style="left: 396px;">
+                                <div>
+                                    <img class="favorites_point" id="3" src="" alt="" width="98" height="98"/>
+                                </div>
+                                <div class="favor" id="f_3"></div>
+                                    
+                             </div>
+                            <div class="imag_right" style="left: 528px;">
+                                <div>
+                                    <img class="favorites_point" id="4" src="" alt="" width="98" height="98"/>
+                                </div>
+                                <div class="favor" id="f_4"></div>
+                                    
+                             </div>
+                            <div class="imag_right" style="left: 660px;">  
+                                <div>
+                                    <img class="favorites_point" id="5" src="" alt="" width="98" height="98"/>
+                                </div>
+                                <div class="favor" id="f_5"></div>
+                                    
+                             </div>
+                        </div>   
+    <div class = "all_see" id="see_all" style="visibility: hidden;"> 
+    <p style="padding-top: 5px; margin-left: 36px;"><strong>Фавориты лотереи:</strong></p>
+</div>                            
                             
-                        </div>
-                    
-<div class = "all_see" id="see_all">   
-    <p style="padding-top: 5px; margin-left: 16px;text-align: left;">Фавориты лотереи:</p>
-</div>
+
 </div>                   
  
