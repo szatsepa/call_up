@@ -4,6 +4,7 @@
 }
 /*all styles*/
 body {
+    position: relative;
         font: 12px/18px Arial, Tahoma, Verdana, sans-serif;
         width: 100%;
         margin: 0;
@@ -809,7 +810,8 @@ div.all_see{
 /* Footer
 -----------------------------------------------------------------------------*/
 .footer_box{
-        position:relative;
+        position:absolute;
+        bottom: 0;
         float: left;
         width: 1008px;
 /*       outline: 1px solid gold; */
