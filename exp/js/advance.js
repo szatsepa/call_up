@@ -13,6 +13,8 @@ $(document).ready(function(){
     
     var pid = $("#pid").val();
     
+    var position;
+    
     var month_array = new Array('01','02','03','04','05','06','07','08','09','10','11','12');
     
     var A_array = new Array();
@@ -22,6 +24,8 @@ $(document).ready(function(){
     var C_array = new Array();
     
     var S_array = new Array();
+    
+    var ticket_complite = true;
     
     var edit = false;
     
@@ -120,9 +124,9 @@ $(document).ready(function(){
                 
                 str = 'field_'+str;
                 
-//               console.log(tmp);
+//               console.log(new_num);
                
-            var out = {pid:pid,field:str,new_artikul:this.id,old_artikul:old_simbl,order:window.order};
+            var out = {position:position,pid:pid,field:str,new_artikul:this.id,old_artikul:old_simbl,order:window.order};
             console.log(out);
             $.ajax({
                      url:'./action/edit_ticket.php', 
@@ -150,9 +154,12 @@ $(document).ready(function(){
                 var top=45;
                 if(str == 'B'){
                     top=185;
-                }else if(str == 'C'){
+                }else if(str == 'C'){ 
                     top=395;
                 }
+                position = this.alt;
+                position = parseInt(position.substr(1));
+                console.log(position);
                 var out = {pid:pid,simbl:str};
                  $.ajax({
                      url:'./query/simbl_list.php',
@@ -166,7 +173,7 @@ $(document).ready(function(){
                          for(var i = 0;i<9;i++){
                                     $("#simbl_points tbody").append("<tr id='"+i+"_r'></tr>");   
                           } 
-                         var row_str = 'ALL ';
+//                         var row_str = 'ALL ';
                          var tmp_1_arr = new Array(); 
                          $.each($("#simbl_points tbody tr"),function(){
                              var id = this.id;
@@ -176,12 +183,12 @@ $(document).ready(function(){
                                  
                                    $("#"+id).append("<td id='"+u+"_c'><input type='image'  class='edit_p' id='"+data['simbls'][num*10+i]['artikul']+"' src='../images/goods/"+data['simbls'][num*10+i]['img']+"' width='80' height='80'/></td>");
                                tmp_1_arr.push(data['simbls'][num*10+i]['artikul']);
-                               row_str +=  u+";";
+//                               row_str +=  u+";";
                              }
-                            row_str +=  "\n";
+//                            row_str +=  "\n";
                          });
                          var tmp_arr = new Array();
-                         var m = "DELL ";
+//                         var m = "DELL ";
                          $.each(S_array,function(){
                              
                              var num_a = this;
@@ -189,10 +196,10 @@ $(document).ready(function(){
                                  $("#"+num_a+"_c").empty();
                                  tmp_arr.push(this);
 //                             
-                             m += this+";"; 
+//                             m += this+";"; 
                          });
-                         var sm = "c09";
-                         var nm = parseInt(sm.substr(1, 2));
+//                         var sm = "c09";
+//                         var nm = parseInt(sm.substr(1, 2));
                           
                      },
                      error:function(data){
@@ -258,6 +265,10 @@ $(document).ready(function(){
                
                simbl = this['simbl'];
                weight = this['artikul'];
+               if(weight.length > 3){
+                   ticket_complite=false;
+               }
+               
                img = this['img'];
                id = this['id'];
                num = weight.substr(1,2);
@@ -281,44 +292,57 @@ $(document).ready(function(){
                }
            });
            
-//           S_array = A_array.concat(B_array,C_array);
-$.each(A_array,function(){
-    S_array.push(this['artikul'].substr(1, 2));
+//           console.log("ticket_C "+ticket_complite);
+           
+           if(!ticket_complite){
+               
+               edit = !edit;
+               
+               $(".artikul_t").attr('title','Изменить?').css('cursor','pointer');
+               
+               $("#edit_order").css('background-color','green');
+                
+               $("#orderonosets").remove();
+            }
+           
+       
+            $.each(A_array,function(){
+                S_array.push(this['artikul'].substr(1, 2));
+            });
+            $.each(B_array,function(){
+                S_array.push(this['artikul'].substr(1, 2));
+            });
+            $.each(C_array,function(){
+                S_array.push(this['artikul'].substr(1, 2));
 });
-$.each(B_array,function(){
-    S_array.push(this['artikul'].substr(1, 2));
-});
-$.each(C_array,function(){
-    S_array.push(this['artikul'].substr(1, 2));
-});
-//S_array.sort();
+
            return false 
        }
        
        function buildTicket(){
            
-           var str = '';
+//           var str = '';
            var a = 0;
            
            $.each(A_array, function(){
-               str = this['img'];
-               $("#TA_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' />")
+//               str = this['img'];
+               $("#TA_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='a"+a+"' src='../images/goods/"+this['img']+"' width='80' height='80' />")
                a++;
 //                title='Изменить?'
            });
            a=0;
-           $.each(B_array, function(){
-               str = this['img'];
-               $("#TB_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' />")
+           $.each(B_array, function(){  
+//               str = this['img'];
+               $("#TB_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='b"+a+"' src='../images/goods/"+this['img']+"' width='80' height='80' />")
                a++;
            });
            a=0;
            $.each(C_array, function(){
-               str = this['img'];
-               $("#TC_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' />")
+//               str = this['img'];
+               $("#TC_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='c"+a+"' src='../images/goods/"+this['img']+"' width='80' height='80' />")
                a++;
            });
-           $(".artikul_t").css('cursor','default');
+           $(".artikul_t").css('cursor','pointer'); 
            
            return false;
        } 

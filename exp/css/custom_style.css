@@ -1555,3 +1555,6 @@ div.t_wallet{
 #your_mind:hover{
     color:gray;
 }
+input.artartikul_t{
+    cursor: pointer; 
+}
