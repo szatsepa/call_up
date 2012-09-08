@@ -52,17 +52,15 @@ if($_SESSION[authentication] == 1){
                     </td>
                     <td  align="right">
                         <form action="index.php?act=private_office" method="post">
-                         <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
-                         <input type="submit" onmouseover="this.style.color='#CCCCCC'" onmouseout="this.style.color='#FFFFFF'" value="Личный кабинет" class="my_cab"/> 
+                         <input type="submit"  value="Личный кабинет" class="submit2"/> 
                      </form>
 <!--                        оставим пока кнопочку без дела но надо будет приаттачить-->
                         
                     </td>
                     <td  align="left">
-                        <form action="index.php?act=mark_s" method="post">
-                         <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
-                         <input type="submit" onmouseover="this.style.color='#CCCCCC'" onmouseout="this.style.color='#FFFFFF'" value="/ Отметить витрину" class="submit2"/>
-                     </form>
+                        
+                         <input id="check_group" type="button"  value="/ Отметить группу" class="submit2"/>
+                    
                     </td> 
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>

@@ -30,8 +30,8 @@ $pictyre_array = array();
 while ($var = mysql_fetch_assoc($result)){
     $pictyre_array[$var[str_code1]] = $var[img];
 }
-
+$pictyre_array['00'] = 'no_pic.jpg';
 mysql_free_result($result);
 
-
+//print_r($pictyre_array);
 ?>

@@ -13,7 +13,7 @@ for($i = 0;$i<4;$i++){
 
             $num = rand(0, 51);
 
-            $string .= $bukoff_arr[$num];
+            $string .= $bukoff_arr[$num]; 
 
 	}
 
@@ -45,11 +45,11 @@ $secret_key = "$str_date$str_phone";
 
 //$secret_key = $string.'_'.$attributes[phone];
 
-$msg_key = $secret_key;
+//$msg_key = $secret_key;
 
 $storefront = quote_smart($attributes[stid]);
 
-$secret_key = quote_smart($secret_key);
+$secret_key = $secret_key;
 
 $query = "SELECT Count(id) FROM customer WHERE cod = $key"; 
 
@@ -63,7 +63,7 @@ if($log == 0){
     
     $log = 0;
 
-$query = "SELECT Count(id) FROM customer WHERE secret_key = $secret_key";
+$query = "SELECT Count(id) FROM customer WHERE secret_key = '$secret_key'";
 
 $count = mysql_query($query) or die ($query);
 
@@ -108,7 +108,7 @@ if(strlen($secret_key)<12)$secret_key .= rand (0, 9);
                                 $phone,
                                 $e_mail,
                                 $key,
-                               $secret_key,
+                               '$secret_key',
                                 $ip,
                                 $storefront)";
 
@@ -128,7 +128,7 @@ if(strlen($secret_key)<12)$secret_key .= rand (0, 9);
      
       
         
-            $message ="Здравствуйте $attributes[surname] $attributes[name]! Вы зарегистрировались на сайте $_SERVER[SERVER_NAME]. Ваш индивидуальный ключ - $msg_key.\n C уважением. Администрация. ";              
+            $message ="Здравствуйте $attributes[surname] $attributes[name]! Вы зарегистрировались на сайте $_SERVER[SERVER_NAME]. Ваш индивидуальный ключ - '$secret_key'.\n C уважением. Администрация. ";              
              
              $headers = 'From: administrator@'. $_SERVER[SERVER_NAME]. "\r\n";
             
@@ -136,9 +136,9 @@ if(strlen($secret_key)<12)$secret_key .= rand (0, 9);
             
             $headers .= 'Content-type: text/plain; charset=utf-8' . "\r\n";
         
-             if (mail($attributes[e_mail], 'Регистрация на shop-animals.ru', $message, $headers)){
+             if (mail($attributes[e_mail], 'Регистрация на call-up.ru', $message, $headers)){
                 
-                 $query = "UPDATE cart SET cod = $secret_key,user_id = 0, customer = $_SESSION[id] WHERE cod = $key";
+                 $query = "UPDATE cart SET cod = $secret_key, user_id = 0, customer = $_SESSION[id] WHERE cod = $key";
                  
                  $result = mysql_query($query) or die ($query);
                  

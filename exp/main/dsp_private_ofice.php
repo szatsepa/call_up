@@ -1,88 +1,52 @@
 <?php 
 
-$st_id = $attributes[stid];
-
- if(count($messages_arr) > 0){
-     
-//     print_r($messages_arr);
-//     
-//     echo "<br/>";
-     
-//     $str_message = iconv("UTF-8", "WINDOWS-1251", $messages_arr[0][message]);
-
-     $str_message = iconv_substr($messages_arr[0][message], 0, 192);
-     
-//     $str_message = iconv("WINDOWS-1251", "UTF-8", $messages_arr[0][message]);
-
+$st_id = 2;
 ?>
-<div class="message">
-   &nbsp;&nbsp;&nbsp; <a href="index.php?act=to_message&amp;mes=<?php echo $messages_arr[0][id];?>&amp;stid=<?php echo $attributes[stid];?>"  target="_blank"><?php    echo "$str_message"; ?>&nbsp;&nbsp;>>></a> 
-</div>
-
-<?php } ?>
 
 <div class="favorites">
-<table width="100%" border="0" cellpaddin="0" cellspacing="0">
+<table width="100%" border="0" cellpaddin="0" cellspacing="0"> 
     <tr>
         <td valign="top" class="kab">
-            <table border="0" cellpadding="5" cellspacing="5" width="230">
-                <tr>
-                	<td>
-                            <div class="kab">Любимые витрины:</div>
-                        </td>
-                </tr>
-<?php 
-
-$rowcount = 1;
-
-//print_r($fav_array);
-
-foreach ($fav_array as $value) {
-   
-   if($st_id){
-              ?>
-                <tr>
-                    <td>
-                        <a href="index.php?act=look&stid=<?php echo $st_id;?>"><?php echo "$rowcount. $value[name]";?></a>
-                    </td>
-                </tr>
-                
-                <?php ++$rowcount;
-   }
-    
-   
-	// Ограничим вывод любимых компаний
-    if ($rowcount == 7) break;
-}
-
-if ($rowcount == 1){
-    
-echo "<tr><td class='smallmessage'>Нет витрин для отображения. Для добавления используйте кнопку &quot;Добавить в избранное&quot; на витрине.</td></tr>";
-
-
-}
-?>                        
-            </table></td>
+            <table id="msg" border="0" cellpadding="5" cellspacing="5" width="430">
+                    <thead>
+                    <tr>
+                            <td>
+                                <div class="kab"><strong>Информационное сообщение администрации:</strong></div>
+                            </td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                    </tbody>                
+            </table>
+        </td>
 		<td valign="top" class="kab">
-            <table border="0" cellpadding="5" cellspacing="5" width="230">
-                <tr>
-                	<td><div class="kab">Любимые группы товаров:</div></td>
-                </tr>
+            <table id="fav_g" border="0" cellpadding="5" cellspacing="5" width="230">
+                <thead>
+                    <tr>
+                        <td><div class="kab"><strong>Любимые группы товаров:</strong></div></td>
+                    </tr>
+                </thead>
+                <tbody>
 <?php 
 
 $rowcount = 1;
 //// To do Буквенный параметр для JS-функции?
-foreach ($fav_group as $value) {
+foreach ($fav_array as $value) {
     
-      if($value[group]){
+      if($value[comment]){
               ?>
                 <tr>
                     <td>
-                        <a href="index.php?act=look&stid=<?php echo $st_id;?>&amp;select=group&amp;group=<?php echo $value[group];?>"><?php echo "$rowcount. $value[group]";?></a>
+                        <a href="index.php?act=look&page=1&pid=<?php echo $value[pid];?>"><?php echo "$value[comment]";?></a> 
                     </td>
                 </tr>
                 
-                <?php  ++$rowcount;
+                <?php  ++$rowcount;  
       }
        
 	//  // Ограничим вывод любимых групп
@@ -93,7 +57,7 @@ foreach ($fav_group as $value) {
 if ($rowcount == 1){
 	echo "<tr><td class='smallmessage'>Нет выбранных групп для отображения. Для добавления группы используйте кнопку &quot;Добавить группу&quot;.</td></tr>";
 }
-?>                       
+?>                </tbody>       
             </table>
         </td>  
         

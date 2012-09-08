@@ -31,22 +31,39 @@
          $("#make_order").mousedown(function(){
              
              var A = '';
-             $.each(A_array,function(){
-                 A += ':'+this['artikul'];
-             });
+             var n = 0;
+             for(var i = 0;i<5;i++){
+                    if(A_array[i]!=undefined){
+                        A += ':'+A_array[i]['artikul']; 
+                    }else{
+                        A += ':a00'+n;
+                    }
+                    n++;
+                }
              var B = '';
-             $.each(B_array,function(){
-                 B += ':'+this['artikul'];
-             });
+             for(i = 0;i<10;i++){
+                    if(B_array[i]!=undefined){
+                        B += ':'+B_array[i]['artikul']; 
+                    }else{
+                        B += ':b00'+n;
+                    }
+                    n++;
+                }
              var C = '';
-             $.each(C_array,function(){
-                 C += ':'+this['artikul'];
-             });
+             for(i = 0;i<15;i++){
+                    if(C_array[i]!=undefined){
+                        C += ':'+C_array[i]['artikul']; 
+                    }else{
+                        C += ':c00'+n;
+                    }
+                    n++
+                }
+
+
              A = A.substr(1);
              B = B.substr(1);
              C = C.substr(1); 
-             
-             if(confirm("Билет не заполнен!")){
+//             console.log(A+'\n'+B+'\n'+C);
                  $.ajax({
                      url:'./action/create_order.php',
                      type:'post',
@@ -60,11 +77,11 @@
                          document.write(data['responseText']);
                      }
                  });
-             }
+             
          });
          
          $(".artikul_t").live('mousedown',function(){
-             var artikul = this.id;
+             var artikul = this.id; 
              var id = this.alt;
              var page = 1;
              var simbl = artikul.substr(0,1);
@@ -100,7 +117,7 @@
                 dataType:'json',
                 data:{uid:uid,pid:pid},
                 success:function(data){ 
-                    console.log(data['cart']); 
+//                    console.log(data['cart']); 
                     if(data['ok']){
                        ready = sortingCart(data['cart']); 
                        buildTicket();

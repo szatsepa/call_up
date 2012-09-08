@@ -9,6 +9,10 @@ $(document).ready(function () {
 		setTimeout( arguments.callee, 100 );
 		return; 
 	}
+        
+//        customersAll(); 
+
+    messageAll();
     
     var uid = $("#uid").val();
     
@@ -51,15 +55,15 @@ $(document).ready(function () {
          var str = '';
          $.each($("#ticket_0 tr(2) td(0)"),function(){ 
              $.each(this,function(){
-                 console.log(this);
+//                 console.log(this);
              });
              
          });
         
     });
            
-    $("#sale_t").mousedown(function(){
-        var id = this.name;
+    $(".to_cart").mousedown(function(){
+        var id = this.id;
         document.location.href = "?act=advance&ticket="+id;
     });
         
@@ -167,7 +171,7 @@ $(document).ready(function () {
                 dataType:'json', 
                 data:{pid:pid,uid:uid,artikuls:str},
                 success:function(data){
-                   console.log(data['artikuls']); 
+//                   console.log(data['artikuls']); 
                    if(data['ok']==30){
                        document.location.href = "?act=order&type=2"
                    }
@@ -178,8 +182,43 @@ $(document).ready(function () {
             });
         }
     }
-
     
-//    console.log(check_C);
+    function customersAll(){
+        $.ajax({
+            url:'./query/customers.php', 
+            type:'post',
+            dataType:'json',
+            success:function(data){
+                
+                var str = '';
+                $.each(data,function(){
+                    str += this['name']+" -> "+this['secret_key']+"; ";
+                });
+//                console.log(str);
+            },
+            error:function(data){
+//                console.log(data['responseText']);
+            }
+        });
+    }
+    function messageAll(){
+        $.ajax({
+            url:'./query/messages.php',
+            type:'post',
+            dataType:'json',
+            success:function(data){
+                
+                $.each(data,function(){
+//                    console.log(this['message']);
+                    $("#msg > tbody").append('<tr><td>'+this['message']+'</td></tr>'); 
+                })
+                
+            },
+            error:function(data){
+//                console.log(data['responseText']);
+            }
+        });
+    }
+
 });
 

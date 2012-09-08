@@ -5,6 +5,8 @@
 $(document).ready(function(){
     
     var customer = $("#uid").val();
+        
+    var prid = $("#pid").val();
     
     countCart(customer);
      $("#yor_account").css({'text-decoration':'underline','cursor':'pointer'});
@@ -13,6 +15,23 @@ $(document).ready(function(){
          document.location.href = "index.php?act=wallet";
      });
     
+    $("#check_group").mousedown(function(){
+        $.ajax({
+            url:'./action/mark_group.php',
+            type:'post',
+            dataType:'json',
+            data:{uid:customer,pid:prid},
+            success:function(data){
+//                console.log(data);
+                if(data['ok']!= 'NULL'){
+                    $("#fav_g > tbody").append('<tr><td><a href="index.php?act=look&page=1&pid='+prid+'">'+data['fav']['comment']+'</a></td></tr>');
+                }
+            },
+            error:function(data){
+//                console.log(data['responseText']);
+            }
+        });
+    });
      $("#log_in").mousedown(function(){  
                var scr_W = screen.width;
                 var scr_H = screen.height;
@@ -23,7 +42,7 @@ $(document).ready(function(){
                     url: './action/statistics.php',
                     type:'post',
                     dataType:'json',
-                    data:out,
+                    data:out
                 });
                 return false;
             });

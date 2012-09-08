@@ -10,7 +10,7 @@ $simbl = $_POST[simbl];
 
 $pid = intval($_POST[pid]);
 
-$out = array('ok'=>NULL);
+$out = array('ok'=>NULL); 
 
 $query = "SELECT  pl.str_code1 AS artikul, 
                        CONCAT(gp.id,'.',gp.extention) AS img
@@ -20,7 +20,7 @@ $query = "SELECT  pl.str_code1 AS artikul,
         AND pl.str_code2 <> 'X'
         AND gp.pictype = 1
         AND pl.str_group = '$simbl'
-        AND pl.pricelist = $pid
+        AND pl.pricelist_id = $pid 
         ORDER BY pl.id";
 
 $result = mysql_query($query);

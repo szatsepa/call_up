@@ -810,8 +810,8 @@ div.all_see{
 /* Footer
 -----------------------------------------------------------------------------*/
 .footer_box{
-        position:absolute;
-        bottom: 0;
+        position:relative;
+/*        bottom: 0;*/
         float: left;
         width: 1008px;
 /*       outline: 1px solid gold; */

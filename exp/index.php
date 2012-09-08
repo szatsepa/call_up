@@ -220,17 +220,6 @@ switch ($attributes[act]) {
            include 'main/dsp_header.php';
            include 'main/dsp_registration.php'; 
            include 'main/dsp_footer.php';
-           break; 
-       
-       case "mark_s":
-//           include 'main/cnt_header.php';
-           if(isset($attributes[group])){
-               include 'main/act_add_favorites_group.php';
-           }else{
-                include 'main/act_mark_fav.php';
-           }
-          
-           
            break;
        
        case "view_arch_order":

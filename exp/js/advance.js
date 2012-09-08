@@ -29,7 +29,7 @@ $(document).ready(function(){
     
     var str_date = dt.getDate()+"-"+month_array[dt.getMonth()]+"-"+dt.getFullYear();
     
-    readOrder(window.order); 
+    readOrder(window.order,pid); 
     
     firstSelect();
     
@@ -123,14 +123,14 @@ $(document).ready(function(){
 //               console.log(tmp);
                
             var out = {pid:pid,field:str,new_artikul:this.id,old_artikul:old_simbl,order:window.order};
-            
+            console.log(out);
             $.ajax({
-                     url:'./action/edit_ticket.php',
+                     url:'./action/edit_ticket.php', 
                      type:'post',
                      dataType:'json', 
                      data:out,
                      success:function(data){
-                         
+                         console.log(data);
                          document.location.href = "?act=advance&ticket="+window.order;
                          
                      },
@@ -224,7 +224,7 @@ $(document).ready(function(){
             });
         }
     });
-    function readOrder(order){ 
+    function readOrder(order,pid){ 
                    
             $.ajax({ 
                 url:'./query/read_order.php',     
@@ -232,6 +232,7 @@ $(document).ready(function(){
                 dataType:'json',
                 data:{pid:pid,order:order},
                 success:function(data){ 
+//                    console.log(data['artikuls']); 
                     $("#n_ticket").text('Билет № '+data['ok']+' от '+str_date+'г.')
                     if(data['ok']){
                        sortingCart(data['artikuls']); 
