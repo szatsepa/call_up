@@ -7,7 +7,8 @@ $fav_array = array();
 
 $query = "SELECT f.price_id AS pid, 
                 f.group, 
-                p.comment 
+                p.comment,
+                p.tags
             FROM favorites AS f,
                 price AS p
             WHERE customer = $user_id 

@@ -42,7 +42,7 @@ foreach ($fav_array as $value) {
               ?>
                 <tr>
                     <td>
-                        <a href="index.php?act=look&page=1&pid=<?php echo $value[pid];?>"><?php echo "$value[comment]";?></a> 
+                        <a href="index.php?act=look&page=1&pid=<?php echo $value[pid];?>"><?php echo "$value[tags]";?></a> 
                     </td>
                 </tr>
                 

@@ -28,6 +28,15 @@
          
          checkCart(uid, pid);
          
+         $("#sel_price").change(function(){
+           
+           var pid = this.options[this.selectedIndex].value;  
+           
+           document.location.href='index.php?act=order&type=2&pid='+pid;
+           
+              
+       });
+         
          $("#make_order").mousedown(function(){
              
              var A = '';

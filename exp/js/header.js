@@ -52,9 +52,12 @@ $(document).ready(function(){
             url:'./query/count_in_cart.php',
             type:'post',
             dataType:'json',
-            data:{uid:customer},
+            data:{uid:customer,pid:prid},
             success:function(data){
-                setCartInfo(data['ok']);
+                var prices = data['prices'];
+//                console.log(data['prices']);
+                
+                setCartInfo(data['ok'],prices);  
             },
             error:function(data){
                 document.write(data['responseText']);
@@ -62,28 +65,29 @@ $(document).ready(function(){
         });
     }
     
-    function setCartInfo(count){
-//            var str_product = new Array('число','числа','чисел');
-//            var str_out = '';
+    function setCartInfo(count,prices){
+        
+            var pid = 2;
             
-            if(count != 0){
-               
+            $.each(prices, function(){
+                if(this['pid']!=prid){
+                    pid = this['pid'];
+                }
+            });
+            if(count == 0 && prices.length ==0){
+                $("#cart_info").remove();
+                $("#busket").append("<p style='color:#878787'> Ваш билет. </p>");
+            } 
+            if(count > 0 && prices.length == 0){
+                $("#cart_info").text("Ваш билет.").attr('href',"index.php?act=order&type=2");
+            } 
+            if(count == 0 && prices.length >0){
+                $("#cart_info").text("Ваш билет в другом прайсе.").attr('href',"index.php?act=order&type=2&pid="+pid);;
             }
-            if(count == 0){
-                
-                str_out = "   Ваш билет."; 
-                
-            $("#cart_info").remove();
-            $("#busket").append("<p style='color:#878787'> Ваш билет. </p>");
-                
+            if(count > 0 && prices.length >0){
+                $("#cart_info").text("Ваши билеты.");
             }
-            
-            $("#cart_info").text("    Ваш билет.");
-            
-            
-         
-
-        return false;         
+       return false;         
             
     }
 });

@@ -50,6 +50,8 @@ include ("main/qry_customer.php");
 
 if(!isset($attributes[pid]) && !isset($_SESSION[pid])){
     $_SESSION[pid]=2;
+}else if(isset ($attributes[pid])){
+    $_SESSION[pid] = $attributes[pid];
 }
 if(isset ($_SESSION[auth]) && $_SESSION[auth] > 0){
    include 'main/act_checkauth.php';
@@ -134,8 +136,8 @@ switch ($attributes[act]) {
     case "advance":
         
         $title = "Оформление заказа";
-        include 'main/qry_archzakaz.php';
-        include 'main/qry_cart_for_ofice.php';
+//        include 'main/qry_archzakaz.php';
+//        include 'main/qry_cart_for_ofice.php';
         include 'main/dsp_header.php';
         include 'main/dsp_advance_order.php'; 
         include 'main/dsp_footer.php';

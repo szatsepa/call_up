@@ -7,10 +7,11 @@
 $n = 0;
 if($tickets_array){
     foreach ($tickets_array as $value) {
-        $A_array = explode(":", $value[field_A]);
-    $B_array = explode(":", $value[field_B]);
-    $C_array = explode(":", $value[field_C]);
-//    print_r($C_array);
+        $A_array = explode(":", $value[field_A]); 
+        $B_array = explode(":", $value[field_B]);
+        $C_array = explode(":", $value[field_C]);
+        $pid = $value[price_id];
+//    print_r($value);
 ?> 
         <table class="btp" border="1" id="ticket_<?php echo $n;?>"> 
             <thead class="btp">
@@ -45,10 +46,13 @@ if($tickets_array){
                             <tr>
                                 <?php
                                     foreach($A_array as $var){ 
-                                        if($var == 'NULL')$var = '00';
+                                        $img = $pictyre_array[$pid][$var];
+                                        if(strlen($var) > 3){
+                                           $img = "no_pic.jpg"; 
+                                        }
                                         ?>
                                  <td>
-                                    <input class='my_button' id='<?php echo $var;?>' name ="<?php echo $artikul_i;?>" type="image" src="main/act_prewiew.php?src=http://call-up.ru/images/goods/<?php echo $pictyre_array[$var];?>&amp;width=30&amp;height=30" disabled/>
+                                    <input class='my_button' alt="<?php echo strlen($var);?>" id='<?php echo $var;?>' name ="<?php echo $artikul_i;?>" type="image" src="main/act_prewiew.php?src=http://call-up.ru/images/goods/<?php echo $img;?>&amp;width=28&amp;height=28" disabled/>
                                     
                                 </td>
 <?php
@@ -62,10 +66,13 @@ if($tickets_array){
                             <tr>
                                 <?php
                                     foreach($B_array as $var){ 
-                                        if($var == 'NULL')$var = '00';
+                                        $img = $pictyre_array[$pid][$var];
+                                        if(strlen($var) > 3){
+                                           $img = "no_pic.jpg"; 
+                                        }
                                         ?>
                                  <td>
-                                    <input class='my_button' id='<?php echo $var;?>' name ="<?php echo $artikul_i;?>" type="image" src="main/act_prewiew.php?src=http://call-up.ru/images/goods/<?php echo $pictyre_array[$var];?>&amp;width=30&amp;height=30" disabled/>
+                                    <input class='my_button' id='<?php echo $var;?>' name ="<?php echo $artikul_i;?>" type="image" src="main/act_prewiew.php?src=http://call-up.ru/images/goods/<?php echo $img;?>&amp;width=28&amp;height=28" disabled/>
                                     
                                 </td>
 <?php
@@ -79,10 +86,13 @@ if($tickets_array){
                             <tr>
                                 <?php
                                     foreach($C_array as $var){
-                                        if($var == 'NULL')$var = '00'; 
+                                        $img = $pictyre_array[$pid][$var];
+                                        if(strlen($var) > 3){
+                                           $img = "no_pic.jpg";
+                                        } 
                                         ?>
                                 <td>
-                                    <input class='my_button' id='<?php echo $var;?>' name ="<?php echo $artikul_i;?>" type="image" src="main/act_prewiew.php?src=http://call-up.ru/images/goods/<?php echo $pictyre_array[$var];?>&amp;width=30&amp;height=30" disabled/>
+                                    <input class='my_button' id='<?php echo $var;?>' name ="<?php echo $artikul_i;?>" type="image" src="main/act_prewiew.php?src=http://call-up.ru/images/goods/<?php echo $img;?>&amp;width=28&amp;height=28" disabled/>
                                     
                                 </td>
 <?php
@@ -94,8 +104,9 @@ if($tickets_array){
 <!--                    <td class="btp" >
                         <a class="to_cart" id="dele_t" name="<?php echo $value[id];?>">&nbsp;&nbsp;Удалить&nbsp;&nbsp;</a>
                     </td>-->
-                    <td class="btp" >
-                        <a class="to_cart" id="<?php echo $value[id];?>" title="Произвести некоторые действия над лотерейным билетом">&nbsp;&nbsp;ACTION!!!&nbsp;&nbsp;</a>
+                    <td class="btp_create" >
+                        
+                        <a class="to_cart" id="<?php echo $value[id]."&pid=".$pid;?>" title="Произвести некоторые действия над лотерейным билетом">&nbsp;&nbsp;Оформить!&nbsp;&nbsp;</a>
                     </td>
                 </tr>
                 

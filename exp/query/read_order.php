@@ -30,7 +30,7 @@ $n = 0;
 
 foreach ($tmp as $value) {
     
-        if($value != 'NULL'){
+        if(strlen($value)==3){
                 $query = "SELECT a.str_code1 AS artikul, 
                                 a.id,
                                 CONCAT(gp.id,'.',gp.extention) AS img,
@@ -62,7 +62,7 @@ foreach ($tmp as $value) {
              array_push($art_arr, $art);
         }
                  
-    $n++;
+    $n++; 
 }
 
 $out = array('ok'=>$row[num_order],'artikuls'=>$art_arr, 'A'=>$row[field_A],'B'=>$row[field_B],'C'=>$row[field_C]);

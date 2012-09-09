@@ -103,11 +103,11 @@ include 'dsp_selector.php';
         </div>
                 
 
-        <div class="header_2">
+        <div class="header_2"> 
 
                 <div >
                    <?php
-                   if(isset($attributes[act]) and $attributes[act] == 'look'){
+                   if(isset($attributes[act]) and ($attributes[act] == 'look' OR $attributes[act] == 'order')){
                        include 'qry_group_list.php';
                        include 'dsp_sorting.php';
                    } ?>

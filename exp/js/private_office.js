@@ -64,6 +64,7 @@ $(document).ready(function () {
            
     $(".to_cart").mousedown(function(){
         var id = this.id;
+        console.log(id);
         document.location.href = "?act=advance&ticket="+id;
     });
         

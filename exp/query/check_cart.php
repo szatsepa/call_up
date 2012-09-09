@@ -16,9 +16,9 @@ $out['uid'] = $uid;
 
 if($uid && $uid != 0){
     
-    $query = "SELECT c.artikul, pl.str_group AS simbl FROM cart AS c, pricelist AS pl WHERE c.customer = $uid AND c.artikul = pl.str_code1 AND price_id = $pid";
+    $query = "SELECT c.artikul, UPPER(SUBSTRING(c.artikul,1,1)) AS simbl FROM cart AS c WHERE c.customer = 1 AND c.price_id = $pid";
 
-    $out['query'] = $query; 
+//    $out['query'] = $query; 
 
     $result = mysql_query($query);
 

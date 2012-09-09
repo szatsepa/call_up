@@ -21,17 +21,40 @@ while ($var = mysql_fetch_assoc($result)){
 
 mysql_free_result($result);
 
-$query = "SELECT p.`str_code1`, CONCAT(g.id,'.',g.extention) AS img FROM `pricelist` AS p, goods_pic AS g WHERE  p.`pricelist_id`=2 AND p.`str_barcode` = g.barcode AND g.pictype = 1";
+$query = "SELECT price_id AS pid FROM tickets WHERE customer = $uid GROUP BY price_id";
 
 $result = mysql_query($query) or die($query);
 
-$pictyre_array = array();
+$pid_array = array();
 
 while ($var = mysql_fetch_assoc($result)){
-    $pictyre_array[$var[str_code1]] = $var[img];
+    array_push($pid_array, $var[pid]);
 }
-$pictyre_array['00'] = 'no_pic.jpg';
+
 mysql_free_result($result);
+
+$pictyre_array = array();
+
+//print_r($pid_array);
+
+foreach ($pid_array as $value) {
+    
+    $tmp = array();
+    
+            $query = "SELECT p.`str_code1`, CONCAT(g.id,'.',g.extention) AS img FROM `pricelist` AS p, goods_pic AS g WHERE  p.`pricelist_id`=$value AND p.`str_barcode` = g.barcode AND g.pictype = 1";
+
+            $result = mysql_query($query) or die($query);
+
+            while ($var = mysql_fetch_assoc($result)){
+                $tmp[$var[str_code1]] = $var[img];
+            }
+            
+            $pictyre_array[$value] = $tmp; 
+            
+            mysql_free_result($result);
+}
+
+
 
 //print_r($pictyre_array);
 ?>

@@ -70,7 +70,7 @@
                document.location.href='index.php?act=look&pid='+pid;
            }
               
-       });
+       });  
        
        function checkCart(uid,pid){ 
             $.ajax({ 
@@ -78,7 +78,8 @@
                 type:'post',
                 dataType:'json',
                 data:{uid:uid,pid:pid},
-                success:function(data){ 
+                success:function(data){
+//                    console.log(data['cart']);
                     if(data['ok']){
                        sortingCart(data['cart']);  
                     }
@@ -150,29 +151,37 @@
                
                
                if(page == 1 && a){
-                    
+//                   console.log("page = 1 A_array >= 5"); 
                    document.location.href ="index.php?act=look&page=2";
                }else{
                    if(page == 2 && b){
+//                       console.log("page = 2 B_array >= 10");
                         if(!a){
+//                            console.log("A_array >= 5"); 
                             document.location.href ="index.php?act=look&page=1";
                         }
                         if(!c){
+//                            console.log("C_array >= 15");
                             document.location.href ="index.php?act=look&page=3"; 
                         }
                         if(a && c){
+//                             console.log("A_array >= 5 && C_array >= 15");
                             document.location.href ="index.php?act=order&type=2"; 
                         }
 
                     }else{
-                        if(page == 3 && c){  
+                        if(page == 3 && c){ 
+//                            console.log("page = 3 C_array >= 15");
                             if(!a){
+//                                 console.log("A_array >= 5"); 
                                 document.location.href ="index.php?act=look&page=1";
                             }
                             if(!b){
+//                                 console.log("B_array >= 10"); 
                                 document.location.href ="index.php?act=look&page=2"; 
                             }
                             if(a && b){
+//                                console.log("A_array >= 5 && B_array >= 10");
                                 document.location.href ="index.php?act=order&type=2"; 
                             }  
                         }

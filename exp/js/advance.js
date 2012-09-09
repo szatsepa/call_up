@@ -135,7 +135,7 @@ $(document).ready(function(){
                      data:out,
                      success:function(data){
                          console.log(data);
-                         document.location.href = "?act=advance&ticket="+window.order;
+                         document.location.href = "?act=advance&ticket="+window.order+"&pid="+pid;
                          
                      },
                      error:function(data){
@@ -239,7 +239,7 @@ $(document).ready(function(){
                 dataType:'json',
                 data:{pid:pid,order:order},
                 success:function(data){ 
-//                    console.log(data['artikuls']); 
+                    console.log(data['artikuls']);  
                     $("#n_ticket").text('Билет № '+data['ok']+' от '+str_date+'г.')
                     if(data['ok']){
                        sortingCart(data['artikuls']); 
