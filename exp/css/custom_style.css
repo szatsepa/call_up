@@ -1555,6 +1555,13 @@ div.t_wallet{
 #your_mind:hover{
     color:gray;
 }
-input.artartikul_t{
+input.artartikul_t{ 
     cursor: pointer; 
+}
+#cont_reg_left_44{
+    position: absolute;
+    left: 64px;
+    top: 320px;
+    width: 480px;
+    height: 33px;
 }

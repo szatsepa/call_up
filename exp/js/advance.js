@@ -37,6 +37,16 @@ $(document).ready(function(){
     
     firstSelect();
     
+    $("#select_draw").live('change',function(){
+        var ch = this.checked;
+        console.log(ch); 
+        if(ch){
+            $("#d_draw").append('<input type="text" id="draw" maxlength="8" size="9" placeholder="Тираж"/>');
+        }else{
+            $("#d_draw").empty().html('<label><input type="checkbox" id="select_draw" value="1"><span>&nbsp;&nbsp;&nbspВыбрать любой тираж.&nbsp;&nbsp;&nbsp</span></label>');
+        }
+    });
+    
     $("#orderonosets").mousedown(function(){
         var email = $("#to_email").val();
         var shipment = document.getElementById("to_shipment").value;
@@ -127,14 +137,14 @@ $(document).ready(function(){
 //               console.log(new_num);
                
             var out = {position:position,pid:pid,field:str,new_artikul:this.id,old_artikul:old_simbl,order:window.order};
-            console.log(out);
+//            console.log(out);
             $.ajax({
                      url:'./action/edit_ticket.php', 
                      type:'post',
                      dataType:'json', 
                      data:out,
                      success:function(data){
-                         console.log(data);
+//                         console.log(data);
                          document.location.href = "?act=advance&ticket="+window.order+"&pid="+pid;
                          
                      },
@@ -159,7 +169,7 @@ $(document).ready(function(){
                 }
                 position = this.alt;
                 position = parseInt(position.substr(1));
-                console.log(position);
+//                console.log(position);
                 var out = {pid:pid,simbl:str};
                  $.ajax({
                      url:'./query/simbl_list.php',
@@ -239,7 +249,7 @@ $(document).ready(function(){
                 dataType:'json',
                 data:{pid:pid,order:order},
                 success:function(data){ 
-                    console.log(data['artikuls']);  
+//                    console.log(data['artikuls']);  
                     $("#n_ticket").text('Билет № '+data['ok']+' от '+str_date+'г.')
                     if(data['ok']){
                        sortingCart(data['artikuls']); 

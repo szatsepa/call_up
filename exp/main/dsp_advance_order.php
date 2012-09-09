@@ -80,7 +80,14 @@ include 'dsp_ticket.php';
                           
                             </select>
                         &nbsp;чч-мм
-                        <br />
+                        <br /> 
+                    </div>
+                    <div id = "cont_reg_left_44">
+                        <div style="position: relative;float: left;">Тираж:&nbsp;&nbsp;&nbsp;</div>
+                        <div style="position: relative;float: left;">
+                             <p id="d_draw"><label><input type="checkbox" id="select_draw" value="1"> 
+                             <span>&nbsp;&nbsp;&nbsp;Выбрать любой тираж.&nbsp;&nbsp;&nbsp;</span></label></p>
+                        </div>
                     </div>
     
     </div>
