@@ -102,37 +102,99 @@ $(document).ready(function(){
                 var new_num = parseInt(artikul.substr(1));
                 var old_num = parseInt(old_simbl.substr(1)); 
                 
-                var new_min = (Math.floor(new_num/10))*10+1;
+                var new_min = (Math.floor((new_num-1)/10))*10+1;
                 var new_max = new_min+9;
                 
-                var count = 0;
                 
-//                tmp = "A "+artikul+" S "+old_simbl+" m "+new_min+" "+new_num+" "+new_max+" M ";
+                var count_1 = 0;
                 
-                $.each(eval(artikul.substr(0,1).toUpperCase()+"_array"),function(){
-                    var num = parseInt(this['artikul'].substr(1));
-                    if(num >= new_min && num <= new_max){
-                        count++;
-                    }
-                });
+                var count_2 = 0;
                 
-                var nu_sho = false;
-
-                if(str == 'A' && count == 1){
-
-                        nu_sho = true;
-                }else if(str == 'B' && count == 2){
-                        nu_sho = true;
-                }else if(str == 'C' && count == 3){
-                        nu_sho = true;
+                var count_3 = 0;
+                
+                var num = 0;
+                
+                var simbl = artikul.substr(0,1).toUpperCase();
+                
+                var lim = 1;
+                
+                if(simbl == 'B'){
+                    lim = 2;
+                }else if(simbl == 'C'){
+                    lim = 3;
                 }
                 
+                var nu_sho = false;
+                
+                var n = 0;
+                
+                var row = 1;
+                
+                if((15/position)>=1 && (15/position)<1.4){
+                    row = 3;
+                }else if((15/position)>1.4 && (15/position) < 3){
+                    row = 2;
+                }
+
+
+                        $.each(eval(simbl+"_array"),function(){
+
+                            num = parseInt(this['artikul'].substr(1));
+                            
+                                if(row == 1){
+                                    if(num >= new_min && num <= new_max){
+
+                                        count_1++;
+                                        if(count_1 == lim){
+                                            nu_sho = true;
+                                            return false;
+
+                                        }
+                                    }
+
+                                }
+                                if(row == 2){
+                                    if(num >= new_min && num <= new_max){
+
+                                        count_2++;
+
+                                    }
+                                    if(count_2 == lim){
+
+                                            nu_sho = true;
+                                            return false;
+                                    }
+                                }
+                                if(row == 3){
+                                    if(num >= new_min && num <= new_max){ 
+
+                                        count_3++;
+
+                                    }
+                                    if(count_3 == lim){
+
+                                            nu_sho = true;
+                                            return false;
+                                    }
+                                }
+                          if(this['artikul'].length > 3){
+                                nu_sho = false;
+                                return false;
+                            } 
+                            n++;
+                        });
+                         
+                
+                
+//                console.log("; POS "+position+" ROW "+row+";  m "+new_min+"; new "+new_num+"; M "+new_max+"; C1 "+count_1+"; C2 "+count_2+"; C3 "+count_3);           
+                
                 if(nu_sho){
+                     
                     alert("В этой строке уже выбрано возможное число символов!");
                     return false; 
                 }
                 
-                str = 'field_'+str;
+                str = 'field_'+simbl;
                 
 //               console.log(new_num);
                
@@ -158,8 +220,8 @@ $(document).ready(function(){
     $(".artikul_t").live('click',function(){
         if(edit){
              
-             old_simbl = this.id;
-            var str = this.id;
+                old_simbl = this.id;
+                var str = this.id;
                 str = str.substr(0,1).toUpperCase(); 
                 var top=45;
                 if(str == 'B'){
