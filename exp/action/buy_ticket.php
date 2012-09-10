@@ -50,7 +50,7 @@ $ip = $_SERVER['REMOTE_ADDR'];
 
 $agent = $_SERVER["HTTP_USER_AGENT"];
 
-$query = "INSERT INTO arch_zakaz (customer,email,shipment,comments,ip,resolution,agent,tags,c_number) VALUES ($uid,'$email','$shipment','$desire','$ip','$resolution','$agent','$mark','$num_order')";
+$query = "INSERT INTO arch_zakaz (customer,email,shipment,comments,ip,resolution,agent,tags,c_number,exe_time) VALUES ($uid,'$email','$shipment','$desire','$ip','$resolution','$agent','$mark','$num_order','$exe_time')";
 
 mysql_query($query);
 
@@ -64,7 +64,7 @@ if(mysql_insert_id()){
     foreach ($out['simbls'] as $value) {
         $query = "INSERT INTO arch_goods (`zakaz`, `customer`, `artikul`, `price_id`, `amount`, `discount`, `name`, `price_single`)
                                     VALUES 
-                                    ($id_order,$uid,'$value',$pid,1,0,(SELECT str_name FROM pricelist WHERE str_code1 = '$value'),(SELECT num_price_single FROM pricelist WHERE str_code1 = '$value'))";
+                                    ($id_order,$uid,'$value',$pid,1,0,(SELECT str_name FROM pricelist WHERE str_code1 = '$value' AND pricelist_id = $pid),(SELECT num_price_single FROM pricelist WHERE str_code1 = '$value' AND pricelist_id = $pid))";
         
         mysql_query($query);
         
@@ -73,6 +73,8 @@ if(mysql_insert_id()){
 }
 
 $out['ok']=$num_rows;
+
+$out['query'] = $query;
 
 $query = "DELETE FROM tickets WHERE id = $id";
 

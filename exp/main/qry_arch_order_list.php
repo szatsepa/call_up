@@ -18,7 +18,7 @@ $query = "SELECT DISTINCT a.id,
                       WHERE a.customer=$uid
                         AND a.id=g.zakaz 
                         AND p.id=g.price_id
-                       AND TO_DAYS(NOW()) - TO_DAYS(a.time) <= 54  
+                        AND a.time >=(TO_DAYS(NOW()) - 54)   
                       ORDER BY weekday,
                             a.id DESC"; 
 
@@ -46,7 +46,7 @@ $query = "SELECT DISTINCT a.id,
                       FROM arch_zakaz AS a,
                            arch_goods AS g,
                            price AS p
-                      WHERE a.customer=$uid
+                      WHERE a.customer=$uid 
                         AND a.id=g.zakaz 
                         AND p.id=g.price_id
                       ORDER BY weekday,

@@ -39,7 +39,7 @@ $(document).ready(function(){
     
     $("#select_draw").live('change',function(){
         var ch = this.checked;
-        console.log(ch); 
+//        console.log(ch); 
         if(ch){
             $("#d_draw").append('<input type="text" id="draw" maxlength="8" size="9" placeholder="Тираж"/>');
         }else{
@@ -60,14 +60,15 @@ $(document).ready(function(){
         var resolution = screen.width+"X"+screen.height;
         var exe_time = year+"-"+month+"-"+dey+" "+hh+":"+mm;
         var out = {pid:pid,id:window.order,uid:uid,email:email,shipment:shipment,desire:desire,mark:mark,resolution:resolution,exe_time:exe_time};
-
+//console.log(out);  
         $.ajax({
            url:'./action/buy_ticket.php',
             type:'post',
             dataType:'json',
             data:out,
             success:function(data){
-                
+//                console.log(data['simbls']);
+//                console.log(data['query']);
                 if(data['ok'] == 30){ 
                     document.location.href = "?act=private_office";
                 }

@@ -1,17 +1,9 @@
 <?php 
 
 
-$user_id = $_SESSION[user]->data[id];
+$user_id = $_SESSION[id];
 
-if($_SESSION[auth] == 1){
-    
-    $who = "user_id";
-    
-}  else {
-    
-    $who = "customer";
-    
-}
+
 
 $query = "SELECT DISTINCT a.id, 
                           a.time, 
@@ -24,10 +16,10 @@ $query = "SELECT DISTINCT a.id,
                       FROM arch_zakaz AS a,
                            arch_goods AS g,
                            price AS p
-                      WHERE a.$who=$user_id
+                      WHERE a.customer=$user_id
                         AND a.id=g.zakaz 
                         AND p.id=g.price_id
-                       AND TO_DAYS(NOW()) - TO_DAYS(a.time) <= 54  
+                       AND TO_DAYS(NOW()) - TO_DAYS(a.time) <= 34  
                       ORDER BY weekday,
                             a.id DESC";
 

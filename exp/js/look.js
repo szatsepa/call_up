@@ -20,9 +20,11 @@
         
         var C_array = new Array();
         
-        var check_B = new Array(0,0,0,0,0,0,0,0,0);
+        var check_A = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0};
+        
+        var check_B = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0};
          
-        var check_C = new Array(0,0,0,0,0,0,0,0,0);
+        var check_C = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0};
         
         var n = 0;
         
@@ -40,8 +42,7 @@
                
            $(".my_button").mousedown(function(){
                var id = this.id;
-               var atr = $("#"+id).attr('disabled');  
-//               var code = $("#cod").val();
+               var atr = $("#"+id).attr('disabled'); 
                var artikul = this.name;
               
                 
@@ -79,7 +80,7 @@
                 dataType:'json',
                 data:{uid:uid,pid:pid},
                 success:function(data){
-//                    console.log(data['cart']);
+                    console.log(data['cart']);
                     if(data['ok']){
                        sortingCart(data['cart']);  
                     }
@@ -95,93 +96,58 @@
            var num = 0;
            var simbl = '';
            var weight = ''; 
-           var str = '';
+           
            $.each(cart, function(){
                
                simbl = this['simbl'];
+               
                weight = this['artikul'];
-               num = weight.substr(1,2);
-               num_array.push(num);
-               str += weight+"; ";               
-               if(simbl == "A"){
-                   
-                   A_array.push(weight);
-               }
-               if(simbl == "B"){
-                   B_array.push(weight);
-                   weight = weight.substr(1,2);
-                   num = parseInt(weight);
-                   if ((num >= 1) && (num <= 10)){check_B[0]++;}
-                    else if ((num >= 11) && (num <= 20)){check_B[1]++;}
-                    else if ((num >= 21) && (num <= 30)){check_B[2]++;}			
-                    else if ((num >= 31) && (num <= 40)){check_B[3]++;}
-                    else if ((num >= 41) && (num <= 50)){check_B[4]++;}	
-                    else if ((num >= 51) && (num <= 60)){check_B[5]++;}			
-                    else if ((num >= 61) && (num <= 70)){check_B[6]++;}
-                    else if ((num >= 71) && (num <= 80)){check_B[7]++;}
-                    else if ((num >= 81) && (num <= 90)){check_B[8]++;}
-               }
-               if(simbl == "C"){
-                   
-                   C_array.push(weight);
-                   weight = weight.substr(1,2);
-                   num = parseInt(weight);
-                   if ((num >= 1) && (num <= 10)){check_C[0]++;}
-                    else if ((num >= 11) && (num <= 20)){check_C[1]++;}
-                    else if ((num >= 21) && (num <= 30)){check_C[2]++;}			
-                    else if ((num >= 31) && (num <= 40)){check_C[3]++;}
-                    else if ((num >= 41) && (num <= 50)){check_C[4]++;}	
-                    else if ((num >= 51) && (num <= 60)){check_C[5]++;}			
-                    else if ((num >= 61) && (num <= 70)){check_C[6]++;}
-                    else if ((num >= 71) && (num <= 80)){check_C[7]++;}
-                    else if ((num >= 81) && (num <= 90)){check_C[8]++;}
-               }
-//               if(A_array.length >= 5 && B_array.length >= 10 && C_array.length >= 15){
-//                   alert("Билет заполнен!");
-//                   document.location.href = "index.php?act=order&type=2";
-//               }
+               
+               eval(simbl+"_array").push(weight);
+
+                num = Number(weight.substr(1,2));
+                
+                num_array.push(num);
+                
+                if ((num > 0) && (num < 11)){eval('check_'+simbl)['1']++;}
+                else if ((num > 10) && (num < 21)){eval('check_'+simbl)['2']++;}
+                else if ((num > 20) && (num < 31)){eval('check_'+simbl)['3']++;}			
+                else if ((num > 30) && (num < 41)){eval('check_'+simbl)['4']++;}
+                else if ((num > 40) && (num < 51)){eval('check_'+simbl)['5']++;}	
+                else if ((num > 50) && (num < 61)){eval('check_'+simbl)['6']++;}			
+                else if ((num > 60) && (num < 71)){eval('check_'+simbl)['7']++;}
+                else if ((num > 70) && (num < 81)){eval('check_'+simbl)['8']++;}
+                else if ((num > 80) && (num < 91)){eval('check_'+simbl)['9']++;}
+              
+
                
                var a = (A_array.length >= 5);
                var b = (B_array.length >= 10);
                var c = (C_array.length >= 15);
-               
-//               console.log(a && true);
-               
-               
-               
-               
+                              
                if(page == 1 && a){
-//                   console.log("page = 1 A_array >= 5"); 
                    document.location.href ="index.php?act=look&page=2";
                }else{
                    if(page == 2 && b){
-//                       console.log("page = 2 B_array >= 10");
                         if(!a){
-//                            console.log("A_array >= 5"); 
                             document.location.href ="index.php?act=look&page=1";
                         }
                         if(!c){
-//                            console.log("C_array >= 15");
                             document.location.href ="index.php?act=look&page=3"; 
                         }
                         if(a && c){
-//                             console.log("A_array >= 5 && C_array >= 15");
                             document.location.href ="index.php?act=order&type=2"; 
                         }
 
                     }else{
                         if(page == 3 && c){ 
-//                            console.log("page = 3 C_array >= 15");
-                            if(!a){
-//                                 console.log("A_array >= 5"); 
+                            if(!a){ 
                                 document.location.href ="index.php?act=look&page=1";
                             }
                             if(!b){
-//                                 console.log("B_array >= 10"); 
                                 document.location.href ="index.php?act=look&page=2"; 
                             }
                             if(a && b){
-//                                console.log("A_array >= 5 && B_array >= 10");
                                 document.location.href ="index.php?act=order&type=2"; 
                             }  
                         }
@@ -190,7 +156,6 @@
                
            });
            
-//           console.log(str); 
             checkPage(art);
 
            return false;
@@ -198,77 +163,38 @@
        function checkPage(art){ 
            
            var i;
-           var mstr = '';
-           var str = '';
            var ltr = 'a';
            if(page == 2){
                ltr = 'b';
            }else if(page == 3){
                ltr = 'c';
            }
+           var lim_arr = (page*5);
            
            $.each(num_array, function(){
                var num = parseInt(this);
-               changeBtn((num-1),ltr);
+               changeBtn((num-1));
            });
-           if(page == 1 && A_array.length < 5){             
-               $.each(A_array, function(){
-                   var num = this;
-                   num = num.substr(1,2);
-                   num = num-1;
-                   var row = Math.floor(num/10);
-                   str += num+" - "+row+"\n";
-                   for(i = (row*10);i < (10*(row)+10);i++){
-                       str+=i+'; ';
-                      changeBtn(i,ltr);
-                   }
-                   str+="\n";
-               });
-           }
-           if(A_array.length == 5 && page == 1){
-               for(i = 0;i < 90;i++){
-                      mstr = changeBtn(i,ltr)+"; "; 
-             
-                   }
-           } 
-           if(page == 2 && B_array.length < 10){ 
-               $.each(B_array, function(){
-                   var num = this;
-                   num = num.substr(1,2);
-                   var row = Math.floor(num/10);
-                   if(check_B[row] == 2){
-                        for(i = (row*10);i < (10*(row)+9);i++){
-                            str += changeBtn(i,ltr)+"; ";
-                        } 
-                    }
-               });
-           }
-           if(B_array.length == 10 && page == 2){
-               for(i = 0;i < 90;i++){
-                         changeBtn(i,ltr);   
-//                      
-                   }
-           }
-           if(page == 3 && C_array.length < 15){ 
-               $.each(C_array, function(){
-                   var num = this;
-                   num = num.substr(1,2);
-                   var row = Math.floor(num/10);
-                   if(check_C[row] == 3){
-                        for(i = (row*10);i < (10*(row)+9);i++){ 
-                            changeBtn(i,ltr);
-                        } 
-                    }
-               });
-           }
-           if(C_array.length == 15 && page == 3){
-               for(i = 0;i < 90;i++){
-                         changeBtn(i,ltr);  
-                   }
-           }
+                      
+        if(eval(ltr.toUpperCase()+"_array").length < lim_arr){             
+                    $.each(eval(ltr.toUpperCase()+"_array"), function(){   
+                        var num = this;
+                        num = Number(num.substr(1,2));
+                       
+                        var row = Math.floor(num/10);
+                        
+                        if(eval('check_'+ltr.toUpperCase())[row+1] >= page){
+                            for(i = (row*10);i < (10*(row)+9);i++){
+                                changeBtn(i)+"; ";
+                            } 
+                        }
+                        
+                    });
+        }
+
             $("#"+art).focus(); 
             $("#im_"+art+" > .my_button").css({'border': '6px solid #fce'});  
-//            console.log("#im_"+art);
+
            return false;
        }
        function checkButton(){
@@ -283,16 +209,12 @@
             return false; 
        }
        
-       function changeBtn(id, simbl){
+       function changeBtn(id){
             var bid = (id);
             if(id<10){
                 bid="0"+bid; 
             }
-            
-            $("#"+bid).attr({'disabled':'disabled'});
-            $("#"+bid).css({'cursor':'default'});
             $("#"+bid).remove();
-            
             
             return false;
     }       
