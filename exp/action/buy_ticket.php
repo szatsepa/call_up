@@ -60,6 +60,8 @@ $out['simbls'] = array_merge($A_array,$B_array,$C_array);
 
 $num_rows = 0; 
 
+$price = 0;
+
 if(mysql_insert_id()){
     foreach ($out['simbls'] as $value) {
         $query = "INSERT INTO arch_goods (`zakaz`, `customer`, `artikul`, `price_id`, `amount`, `discount`, `name`, `price_single`)
@@ -67,6 +69,14 @@ if(mysql_insert_id()){
                                     ($id_order,$uid,'$value',$pid,1,0,(SELECT str_name FROM pricelist WHERE str_code1 = '$value' AND pricelist_id = $pid),(SELECT num_price_single FROM pricelist WHERE str_code1 = '$value' AND pricelist_id = $pid))";
         
         mysql_query($query);
+        
+        $query = "SELECT num_price_single FROM pricelist WHERE str_code1 = '$value' AND pricelist_id = $pid";
+        
+        $result = mysql_query($query);
+        
+        $row = mysql_fetch_row($result);
+        
+        $price += $row[0];
         
         $num_rows++;
     }
@@ -76,9 +86,11 @@ $out['ok']=$num_rows;
 
 $out['query'] = $query;
 
-$query = "DELETE FROM tickets WHERE id = $id";
+mysql_query("DELETE FROM tickets WHERE id = $id"); 
 
-mysql_query($query); 
+mysql_query("INSERT INTO `wallet` (`customer`,`count`,`doc`,`num_doc`,`action`) VALUES ($uid,$price,'Билет', '$num_order',0)");
+
+$out['query'] = "INSERT INTO wallet (customer,count,doc,num_doc,act) VALUES ($uid,$price,'Билет', '$num_order',0)";
 
 echo json_encode($out);
 

@@ -12,8 +12,9 @@
     </div>
     <div class="b_wallet">
         <p id="cross_ku">Конверт курс: 1 число = 1 рубль</p> 
-        <p id="account">Ваш личный счет:	1546 «чисел»</p>
-        <p id="ballans">Баланс счета</p>
+        <p>Ваш личный счет:<span>   ямс_0378_Q</span></p> 
+<!--        <p>Ваш личный счет:<span id="account"></span></p> -->
+        <p>Баланс счета:<span id="ballans"></span></p>
     </div>
     <div class="t_wallet">
         <table id="table_wallet" border="1">
@@ -26,6 +27,9 @@
                         Расход
                     </td>
                 </tr>
+                
+            </thead>
+            <tbody>
                 <tr style="font-size: 16px;font-weight: normal;background-color: #ccc">
                     <td>
                       Дата - время  
@@ -46,9 +50,7 @@
                         Номер заказа
                     </td>
                 </tr>
-            </thead>
-            <tbody>
-                <tr>
+<!--                <tr>
                     <td>
                        12-03-2012 15:50
                     </td>
@@ -107,7 +109,7 @@
                     <td>
                         
                     </td>
-                </tr>
+                </tr>--> 
             </tbody>
         </table>
     </div>

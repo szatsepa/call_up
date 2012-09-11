@@ -68,7 +68,7 @@ $(document).ready(function(){
             data:out,
             success:function(data){
 //                console.log(data['simbls']);
-//                console.log(data['query']);
+                console.log(data['query']);
                 if(data['ok'] == 30){ 
                     document.location.href = "?act=private_office";
                 }
