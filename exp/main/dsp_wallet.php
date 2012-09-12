@@ -7,14 +7,40 @@
 ?>
 <div class="content">
     <div class="head_wallet">
-        <span>Валюта счета /</span><span class="h_wallet" id="usd"> доллар </span>/<span class="h_wallet" id="euro"> евро </span>/<span class="h_wallet" id="rub"> рубль </span>/<span class="h_wallet" id="num"> число </span>/ 
-        
+            <span>Валюта счета /</span><span class="h_wallet" id="usd"> доллар </span>/<span class="h_wallet" id="euro"> евро </span>/<span class="h_wallet" id="rub"> рубль </span>/<span class="h_wallet" id="num"> число </span>/ 
     </div>
-    <div class="b_wallet">
-        <p id="cross_ku">Конверт курс: 1 число = 1 рубль</p> 
-        <p>Ваш личный счет:<span>   ямс_0378_Q</span></p> 
-<!--        <p>Ваш личный счет:<span id="account"></span></p> -->
-        <p>Баланс счета:<span id="ballans"></span></p>
+     <div class="b_wallet">
+    <table width="100%">
+        <thead>
+            
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <p id="cross_ku"><strong>Конверт курс: 1 число = 1 рубль</strong></p>  
+                </td>
+                <td>
+                    <p><strong>Курс рубля на <span id="senja"></span> г. (даные ЦБР)</strong></p>  
+                </td>                    
+            </tr>
+            <tr>
+                <td>
+                    <p>Ваш личный счет.<span></span></p>
+                </td>
+                <td>
+                    <p>Доллар США:&nbsp;<span id="c_usd"></span>&nbsp;руб.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Баланс счета:<span id="ballans"></span></p>
+                </td>
+                <td>
+                    <p>Евро:&nbsp;<span id="c_euro"></span>&nbsp;руб.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     </div>
     <div class="t_wallet">
         <table id="table_wallet" border="1">

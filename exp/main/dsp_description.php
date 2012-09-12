@@ -1,7 +1,7 @@
 <!--content----------------------------------------------------------------------------- -->
 
 	<div class="cont">
-            
+<input type="hidden" id="idc" value="<?php echo $attributes[idc];?>"/>            
  <?php
      $artikul = $attributes[artikul];
      $item_id = "&art=".$attributes[art]; 

@@ -10,6 +10,8 @@ $(document).ready(function () {
      
      var price_id = $("#pid").val();
      
+     var idc = $("#idc").val();
+     
 //     $("#see_all").css('outline','1px solid grey');
 //     
 //     $("#see_all").css('visibility','visible');
@@ -21,7 +23,7 @@ $(document).ready(function () {
          var artikul = $("#artikul").val();
          var out = {uid:uid,artikul:artikul,pid:price_id};
          if(window.item_id != undefined){ 
-             out = {uid:uid,artikul:artikul,itid:window.item_id,pid:price_id};
+             out = {uid:uid,artikul:artikul,itid:idc,pid:price_id};
         }
         $("#add_cart").remove();
         

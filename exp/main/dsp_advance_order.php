@@ -47,12 +47,12 @@ include 'dsp_ticket.php';
                     <br/>
                     <br/>
 
-                    <div id = "cont_reg_left_3">E-mail: </div>
-                    <div id = "cont_reg_left_4">
+<!--                    <div id = "cont_reg_left_3">E-mail: </div>-->
+<!--                    <div id = "cont_reg_left_4">
                         <input type="text" required id="to_email"  onblur="return isEmailCorrect()" name="e_mail" size="30" value="<?php echo $_SESSION[user]->data[email];?>"/>
-                    </div>
-                    <div id = "cont_reg_left_3">Адрес доставки: </div>
-                    <div id = "cont_reg_left_66"><textarea rows="3" id="to_shipment" cols="29" name="adress"><?php echo $_SESSION[user]->data[shipping_address];?></textarea></div>
+                    </div>-->
+<!--                    <div id = "cont_reg_left_3">Адрес доставки: </div>-->
+<!--                    <div id = "cont_reg_left_66"><textarea rows="3" id="to_shipment" cols="29" name="adress"><?php echo $_SESSION[user]->data[shipping_address];?></textarea></div>-->
                     <div id = "cont_reg_left_3">Пожелания заказчика: </div>
                     <div id = "cont_reg_left_66"><textarea rows="3" id="desire" cols="29" name="desire"></textarea></div>
                     <div id = "cont_reg_left_3">Метка: </div>

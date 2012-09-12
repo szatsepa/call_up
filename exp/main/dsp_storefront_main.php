@@ -12,7 +12,9 @@ $pages = floor(($cnt/90));
 ?>
 
 <div class = "contennt_chk" id="cont"> 
-    
+       <input type="hidden" id="idc" value="<?php echo $attributes[idc];?>"/>
+       <input type="hidden" id="page" value="<?php echo $page;?>"/> 
+       <input type="hidden" id="fav" value="<?php echo (intval($attributes[fav])-1);?>"/> 
        
   
     <?php
@@ -74,9 +76,7 @@ for($i=0;$i<9;$i++){
     
     ?>
    <div class = "stroka_vitriny"> 
-<!--       <input type="hidden" id="uid" value="<?php echo $_SESSION[id];?>"/>-->
-       <input type="hidden" id="page" value="<?php echo $page;?>"/> 
-       <input type="hidden" id="fav" value="<?php echo (intval($attributes[fav])-1);?>"/>
+
        
        
 <!--       строка витрины-->

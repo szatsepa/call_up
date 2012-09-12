@@ -28,7 +28,7 @@ $st_id = 2;
             <table id="fav_g" border="0" cellpadding="5" cellspacing="5" width="230">
                 <thead>
                     <tr>
-                        <td><div class="kab"><strong>Любимые группы товаров:</strong></div></td>
+                        <td><div class="kab"><strong>Любимые группы:</strong></div></td>
                     </tr>
                 </thead>
                 <tbody>

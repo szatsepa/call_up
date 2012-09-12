@@ -100,13 +100,13 @@
                  page = 3;
              }
              $.ajax({
-                 url:'./action/change_artikul.php',
+                 url:'./action/change_artikul.php', 
                  type:'post',
                  dataType:'json',
                  data:{id:id,pid:pid},
                  success:function(data){
                      if(data['ok'] == 1){
-                         document.location.href = "index.php?act=look&page="+page+"&art="+id;
+                         document.location.href = "index.php?act=look&page="+page+"&idc="+id;
                      }
                  },
                  error:function(data){
@@ -150,6 +150,9 @@
            $.each(cart, function(){
                
                simbl = this['simbl'];
+//               if(simbl != 'A' || simbl != 'B' || simbl != 'C'){
+//                   return false;
+//               }
                weight = this['artikul'];
                img = this['img'];
                id = this['id'];

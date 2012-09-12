@@ -33,6 +33,8 @@
        var page = $("#page").val();
         
        var art = $("#fav").val();
+       
+       var idc = $("#idc").val();
         
        var pid = $("#pid").val();
         
@@ -45,7 +47,9 @@
                var atr = $("#"+id).attr('disabled'); 
                var artikul = this.name;
               
-                
+               if(idc){
+                   document.location.href ="index.php?act=dscr&artikul="+artikul+"&idc="+idc; 
+               }  
                if(atr != 'disabled' && uid){
                    
                     if(window.item_id == undefined){
@@ -80,7 +84,7 @@
                 dataType:'json',
                 data:{uid:uid,pid:pid},
                 success:function(data){
-                    console.log(data['cart']);
+//                    console.log(data['cart']);
                     if(data['ok']){
                        sortingCart(data['cart']);  
                     }
@@ -157,7 +161,7 @@
            });
            
             checkPage(art);
-
+            
            return false;
        }
        function checkPage(art){ 
@@ -184,7 +188,7 @@
                         var row = Math.floor(num/10);
                         
                         if(eval('check_'+ltr.toUpperCase())[row+1] >= page){
-                            for(i = (row*10);i < (10*(row)+9);i++){
+                            for(i = (row*10);i < (10*(row)+10);i++){
                                 changeBtn(i)+"; ";
                             } 
                         }
@@ -210,12 +214,13 @@
        }
        
        function changeBtn(id){
+           
             var bid = (id);
             if(id<10){
                 bid="0"+bid; 
             }
             $("#"+bid).remove();
-            
+//            console.log(bid);
             return false;
     }       
 });  

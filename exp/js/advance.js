@@ -48,8 +48,8 @@ $(document).ready(function(){
     });
     
     $("#orderonosets").mousedown(function(){
-        var email = $("#to_email").val();
-        var shipment = document.getElementById("to_shipment").value;
+//        var email = $("#to_email").val();
+//        var shipment = document.getElementById("to_shipment").value;
         var desire = document.getElementById("desire").value;
         var mark = $("#marck").val();
         var dey = $("#dey :selected").val();
