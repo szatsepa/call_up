@@ -16,7 +16,7 @@ $(document).ready(function(){
     
     var senja = '';
     
-    $("td").css('width','504px');
+    $("#kurs > td").css('width','504px');
         
     readWallet(uid);
     
@@ -33,6 +33,7 @@ $(document).ready(function(){
                 $("#c_usd").text(many['usd']['cnt']);
                 $("#c_euro").text(many['euro']['cnt']); 
                 $("#senja").text(senja);
+                $(".b_wallet").css('visibility','visible');
             }
         });
         

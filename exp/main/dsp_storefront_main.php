@@ -12,9 +12,6 @@ $pages = floor(($cnt/90));
 ?>
 
 <div class = "contennt_chk" id="cont"> 
-       <input type="hidden" id="idc" value="<?php echo $attributes[idc];?>"/>
-       <input type="hidden" id="page" value="<?php echo $page;?>"/> 
-       <input type="hidden" id="fav" value="<?php echo (intval($attributes[fav])-1);?>"/> 
        
   
     <?php
@@ -50,6 +47,12 @@ if(isset ($attributes)){
     }
     
 }
+?>
+    <input type="hidden" id="idc" value="<?php echo $attributes[idc];?>"/>
+       <input type="hidden" id="page" value="<?php echo $page;?>"/> 
+       <input type="hidden" id="fav" value="<?php if(isset($attributes[fav])){echo (intval($attributes[fav])-1);}?>"/> 
+       
+    <?php
  
 include 'dsp_pager.php'; 
 

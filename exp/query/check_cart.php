@@ -12,7 +12,11 @@ $pid = intval($_POST[pid]);
 
 $out = array();
 
-$out['uid'] = $uid; 
+$out['uid'] = $uid;
+
+if(isset($_POST[idc]) && !$_POST[idc]){
+    $out['dell'] = dellNullArtikles($uid,$pid);
+}
 
 if($uid && $uid != 0){
     
@@ -41,4 +45,11 @@ if($uid && $uid != 0){
 echo json_encode($out); 
 
 mysql_close();
+
+function dellNullArtikles($uid, $pid){
+    
+    mysql_query("DELETE FROM cart WHERE price_id = $pid AND customer = $uid AND artikul = 'NULL'");
+
+    return mysql_affected_rows();
+}
 ?>

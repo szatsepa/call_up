@@ -20,6 +20,8 @@
         
         var C_array = new Array();
         
+        var N_array = new Array();
+        
         var check_A = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0};
         
         var check_B = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0};
@@ -37,6 +39,8 @@
        var idc = $("#idc").val();
         
        var pid = $("#pid").val();
+       
+//       console.log("u "+uid+"; p "+page+"; art "+art+"; idc "+idc+"; pid "+pid);
         
         checkButton();
         
@@ -76,15 +80,15 @@
            }
               
        });  
-       
+//       console.log({uid:uid,pid:pid,idc:idc});
        function checkCart(uid,pid){ 
             $.ajax({ 
                 url:'./query/check_cart.php',    
                 type:'post',
                 dataType:'json',
-                data:{uid:uid,pid:pid},
+                data:{uid:uid,pid:pid,idc:idc},
                 success:function(data){
-//                    console.log(data['cart']);
+//                    console.log(data['dell']); 
                     if(data['ok']){
                        sortingCart(data['cart']);  
                     }
@@ -180,21 +184,22 @@
                changeBtn((num-1));
            });
                       
-        if(eval(ltr.toUpperCase()+"_array").length < lim_arr){             
-                    $.each(eval(ltr.toUpperCase()+"_array"), function(){   
-                        var num = this;
-                        num = Number(num.substr(1,2));
-                       
-                        var row = Math.floor(num/10);
-                        
-                        if(eval('check_'+ltr.toUpperCase())[row+1] >= page){
-                            for(i = (row*10);i < (10*(row)+10);i++){
-                                changeBtn(i)+"; ";
-                            } 
-                        }
-                        
-                    });
-        }
+         
+            $.each(eval(ltr.toUpperCase()+"_array"), function(){   
+                var num = this;
+                num = Number(num.substr(1,2));
+
+                var row = Math.floor(num/10);
+                
+//console.log(this+">> "+row+" >= "+page);
+                if(eval('check_'+ltr.toUpperCase())[(row+1)] >= page){
+                    for(i = (row*10);i < (10*(row)+10);i++){
+                        changeBtn(i)+"; ";
+                    } 
+                }
+
+            });
+        
 
             $("#"+art).focus(); 
             $("#im_"+art+" > .my_button").css({'border': '6px solid #fce'});  

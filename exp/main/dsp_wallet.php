@@ -10,7 +10,7 @@
             <span>Валюта счета /</span><span class="h_wallet" id="usd"> доллар </span>/<span class="h_wallet" id="euro"> евро </span>/<span class="h_wallet" id="rub"> рубль </span>/<span class="h_wallet" id="num"> число </span>/ 
     </div>
      <div class="b_wallet">
-    <table width="100%">
+    <table id="kurs" width="100%">
         <thead>
             
         </thead>

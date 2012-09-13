@@ -812,7 +812,7 @@ div.all_see{
 .footer_box{
         position:relative;
 /*        bottom: 0;*/
-/*        float: left;*/
+        float: left;
         width: 1008px;
         margin: 0 auto;
 /*       outline: 1px solid gold; */
@@ -1537,6 +1537,7 @@ div.b_wallet{
     color: black;
     padding-left: 33px;
     padding-top: 24px;
+    visibility: hidden;
 }
 div.t_wallet{
     position: relative;
