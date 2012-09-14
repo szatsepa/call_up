@@ -65,88 +65,21 @@ $row = mysql_fetch_assoc($qry_archzakaz);
 
 include 'dsp_ticket.php';
 
-//
-//$num_rows	=	mysql_numrows($qry_archgoods);
-//$num_fields	=	mysql_num_fields($qry_archgoods);
-//
-//$field_count	=	0;
-//
-//$array_fields = array();
-//
-//while ($field_count < $num_fields) {
-//
-//	$array_fields[$field_count] = mysql_field_name($qry_archgoods, $field_count);
-//	++$field_count;
-//}
-//
-//$fields = array ("Наименование","Цена ед.","Кол-во (шт.)","Скидка");
-//echo "<table class='cart' border='0'>";
-//
-//// Выводим заголовок таблицы
-//$th = 0;
-//while ($th < count($fields)) {
-//    echo "<th class='cart'>".$fields[$th]."</th>";
-//	++$th;
-//}
-//
-//while ($row_count < $num_rows) {
-//	echo "<tr>";	
-//	$field_count 	= 	0;	
-//	while ($field_count < $num_fields) {
-//        $dat = mysql_result($qry_archgoods,$row_count,$array_fields[$field_count]);
-//	    echo "<td class='cart'>".$dat."</td>";        			
-//		++$field_count;
-//	} 
-//	echo "</tr>";
-//    
-//    $single_price = mysql_result($qry_archgoods,$row_count,$array_fields[1]);
-//    $amount       = mysql_result($qry_archgoods,$row_count,$array_fields[2]);
-//    
-//	if ($amount == 0) {
-//	
-//		echo "<tr><td colspan='4'><strong>Внимание, позиция была удалена поставщиком!</strong></td></tr>";
-//	
-//	}
-//	
-//    $total += $single_price*$amount;
-//       
-//	++$row_count;
-//}
-//
-//echo"<tr><td colspan='3'>&nbsp;</td><td class='cart'>Итого: ".$total."руб. </td></tr>";
-//echo "</table>";
-
-if (!isset($attributes[zakaz])) { 
-?>
+ 
+?> 
 <br />
 </div>
-<div  class="bottom_menu">
-<?php if ($total > 0) {?>
-    <div class="bottom_btn_31">
-<form action="index.php?act=create_similar&amp;id=<?php echo $attributes[id].'&amp;stid='.$attributes[stid]; ?>" method="post"><input type="Submit" onmouseover="this.style.color='#CCCCCC'" onmouseout="this.style.color='#FFFFFF'" value="Сформировать похожий заказ сейчас"   class="submit22"/></form><?php } ?>
-</div>
-&nbsp;
-
 
 <?php 
-   
-if ($row["status"] == 2){
+  
+if ($row["status"] == 2 OR $row["status"] == 1){
+    ?>
+<div  class="bottom_menu">
+    <?php
     include ("dsp_declinezakaz.php");  
-}
-} 
-if (isset($attributes[dsp]) and $attributes[dsp] == 'accept') {?>
-<br /><form action="index.php?act=zakaz_accept&amp;id=<?php echo $attributes[id].'&amp;stid='.$attributes[stid]; ?>" method="post"><input type="Submit" value="Подтвердить заказ" ><input type='hidden' name='status' value='2'></form>&nbsp;<?php include ("dsp_declinezakaz.php"); ?>
-<?php } 
-if (isset($attributes[dsp]) and $attributes[dsp] == 'accepted') {?>
-<br /><form action="index.php?act=zakaz_accept&amp;id=<?php echo $attributes[id].'&amp;stid='.$attributes[stid]; ?>" method="post"><input type="Submit" value="Заказ отгружен" ><input type='hidden' name='status' value='5'></form>&nbsp;<?php include ("dsp_declinezakaz.php"); ?>
-<?php }
-if ($row["status"] == 5) {?>
-&nbsp;
-<div class="bottom_btn_32">
-<form action="index.php?act=zakaz_accept&amp;id=<?php echo $attributes[id]; ?>" method="post"><input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/><input type="Submit"  onmouseover="this.style.color='#CCCCCC'" onmouseout="this.style.color='#FFFFFF'" value="Заказ выполнен" class="submit22"/><input type='hidden' name='status' value='6'/><input type='hidden' name='dsp' value='kabinet'/></form>
-</div>
-<?php }
-if (isset($attributes[dsp]) and $attributes[dsp] == 'shipped') {?>
-<br /><?php include ("dsp_declinezakaz.php"); ?>
-<?php } ?>
-</div>
+    ?>
+    </div>
+    <?php
+}?>
+    
+ 

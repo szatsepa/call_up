@@ -16,6 +16,7 @@ body {
        width: 1008px;
        height: auto !important;
         margin: 0px auto;
+        outline: 1px solid blueviolet;
 }
 div.outside{
     position: absolute;
@@ -815,7 +816,7 @@ div.all_see{
         float: left;
         width: 1008px;
         margin: 0 auto;
-/*       outline: 1px solid gold; */
+       outline: 1px solid gold; 
 }
 
 .footer {
@@ -850,7 +851,7 @@ div.all_see{
     color: #000000;
     position: relative;
     width: 100%;
-    height: 29px;
+    height: 49px;
     background-color: #FFFFFF; 
 } 
 .bottom_btn{
@@ -885,7 +886,8 @@ div.all_see{
 }
 .bottom_btn_32{
     position: relative; 
-    width:122px;  
+    width:122px;
+    left: 766px;
    float: left; 
 }
 .bottom_btn_33{
@@ -1243,7 +1245,7 @@ input.submit22 {
         font-weight: bold;
 	position:relative;
         background-color:#ffcc00;
-        border: 2px solid #ffcc00;;
+        border: 2px solid #ffcc0f;;
 }
 input.submit31 {
     font-family: Arial;
@@ -1257,7 +1259,8 @@ input.submit31 {
 	margin-top:0px;	
 	position:relative;
         background-color:#ffcc00;
-        border: 2px solid #ffcc00;;
+/*         border: 2px solid #000000;*/
+        border: 2px solid #ffcc0f;
 }
 input.submit222 {
     font-family: Arial;
