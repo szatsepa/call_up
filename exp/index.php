@@ -11,7 +11,7 @@ $attributes = array();
 
 $attributes = array_merge($_GET,$_POST,$_COOKIE); 
 
-if(!isset($_SESSION)){
+if(!isset($_SESSION)){ 
 
     session_start();  
 }
@@ -45,7 +45,6 @@ include 'main/act_random_coder.php';
 include 'main/qry_advert.php';
 include 'main/dsp_advert_img.php';
 include 'main/qry_storefront_info.php';
-//include ("main/qry_good_img.php");
 include ("main/qry_customer.php");
 
 if(!isset($attributes[pid]) && !isset($_SESSION[pid])){
