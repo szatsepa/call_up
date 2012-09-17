@@ -50,7 +50,7 @@ $ip = $_SERVER['REMOTE_ADDR'];
 
 $agent = $_SERVER["HTTP_USER_AGENT"];
 
-$query = "INSERT INTO arch_zakaz (customer,email,shipment,comments,ip,resolution,agent,tags,c_number,exe_time) VALUES ($uid,'$email','$shipment','$desire','$ip','$resolution','$agent','$mark','$num_order','$exe_time')";
+$query = "INSERT INTO arch_zakaz (customer,comments,ip,resolution,agent,tags,c_number,exe_time) VALUES ($uid,'$desire','$ip','$resolution','$agent','$mark','$num_order','$exe_time')";
 
 mysql_query($query);
 
@@ -84,13 +84,13 @@ if(mysql_insert_id()){
 
 $out['ok']=$num_rows;
 
-$out['query'] = $query;
+//$out['query'] = $query;
 
 mysql_query("DELETE FROM tickets WHERE id = $id"); 
 
 mysql_query("INSERT INTO `wallet` (`customer`,`count`,`doc`,`num_doc`,`action`) VALUES ($uid,$price,'Билет', '$num_order',0)");
 
-$out['query'] = "INSERT INTO wallet (customer,count,doc,num_doc,act) VALUES ($uid,$price,'Билет', '$num_order',0)";
+//$out['query'] = "INSERT INTO wallet (customer,count,doc,num_doc,act) VALUES ($uid,$price,'Билет', '$num_order',0)";
 
 echo json_encode($out);
 

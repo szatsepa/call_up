@@ -16,7 +16,7 @@ body {
        width: 1008px;
        height: auto !important;
         margin: 0px auto;
-        outline: 1px solid blueviolet;
+/*        outline: 1px solid blueviolet;*/
 }
 div.outside{
     position: absolute;

@@ -59,7 +59,7 @@ $(document).ready(function(){
         var mm = $("#mm :selected").val();
         var resolution = screen.width+"X"+screen.height;
         var exe_time = year+"-"+month+"-"+dey+" "+hh+":"+mm;
-        var out = {pid:pid,id:window.order,uid:uid,email:email,shipment:shipment,desire:desire,mark:mark,resolution:resolution,exe_time:exe_time};
+        var out = {pid:pid,id:window.order,uid:uid,desire:desire,mark:mark,resolution:resolution,exe_time:exe_time};
 //console.log(out);  
         $.ajax({
            url:'./action/buy_ticket.php',

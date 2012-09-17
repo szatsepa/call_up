@@ -8,6 +8,8 @@ $(document).ready(function(){
     
     var num_row = 0;
     
+    var is_table = false;
+    
     $("#customer").mousedown(function(){
         $.ajax({
             url:'query/customerslist.php',
@@ -15,7 +17,10 @@ $(document).ready(function(){
             dataType:'json',
             data:{uid:uid},
             success:function(data){
-                buildCustomersList(data['list']);
+                if(!is_table){
+                    buildCustomersList(data['list']);
+                    is_table = !is_table;
+                }                
             },
             error:function(data){
                 document.write(data['responseText']);
@@ -41,8 +46,12 @@ $(document).ready(function(){
                 data:out,
                 success:function(data){
                     if(data['customer']){
-                        $("#r_"+data['customer']['uid']).remove();
-                        $("#c_list > tbody").append('<tr id="r_'+data['customer']['uid']+'"><td class="dat">'+data['customer']['uid']+'</td><td class="dat">'+data['customer']['surname']+' '+data['customer']['name']+' '+data['customer']['patronymic']+' '+'</td><td class="dat">'+data['customer']['email']+'</td><td class="dat">'+data['customer']['phone']+'</td><td class="dat">'+data['customer']['shipping']+'</td><td class="dat">'+data['customer']['desire']+'</td><td class="dat"><a class="edit_customer" name="'+data['customer']['uid']+'">Редакт.</a></td><td class="dat"><a class="delete_customer" name="'+data['customer']['uid']+'">Удалить.</a></td><td class="dat"><a class="get_pwd" name="'+data['customer']['uid']+'">Пароль.</a></td></tr>');
+                        console.log($("#r_"+data['customer']['uid']+" > td:eq(0)").text());
+                        $("#r_"+data['customer']['uid']+" > td:eq(1)").text(data['customer']['surname']+' '+data['customer']['name']+' '+data['customer']['patronymic']);
+                        $("#r_"+data['customer']['uid']+" > td:eq(0)").text(data['customer']['email']);
+                        $("#r_"+data['customer']['uid']+" > td:eq(0)").text(data['customer']['phone']);
+                        $("#r_"+data['customer']['uid']+" > td:eq(0)").text(data['customer']['shipping']);
+                        $("#r_"+data['customer']['uid']+" > td:eq(0)").text(data['customer']['desire']);
                         $("#r_"+data['customer']['uid']).css('background-color','#ececfc');
                         $("#about_customer").css('display','none');
                     }
@@ -97,7 +106,7 @@ $(document).ready(function(){
     
     function buildCustomersList(customers){
         $("#cust_list").css('display','block');
-        $("#c_list > body").empty();
+//        $("#c_list > body > tr").remove();
         
         $.each(customers, function(){
             $("#c_list > tbody").append('<tr id="r_'+this['id']+'"><td class="dat">'+this['id']+'</td><td class="dat">'+this['surname']+' '+this['name']+' '+this['patronymic']+' '+'</td><td class="dat">'+this['e_mail']+'</td><td class="dat">'+this['phone']+'</td><td class="dat">'+this['shipping_address']+'</td><td class="dat">'+this['desire']+'</td><td class="dat"><a class="edit_customer" name="'+this['id']+'">Редакт.</a></td><td class="dat"><a class="delete_customer" name="'+this['id']+'">Удалить.</a></td><td class="dat"><a class="get_pwd" name="'+this['id']+'">Пароль.</a></td></tr>');

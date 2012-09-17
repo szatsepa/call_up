@@ -36,6 +36,7 @@
            
               
        });
+       
          
          $("#make_order").mousedown(function(){
              
@@ -89,31 +90,32 @@
              
          });
          
+         
          $(".artikul_t").live('mousedown',function(){
-             var artikul = this.id; 
-             var id = this.alt;
-             var page = 1;
-             var simbl = artikul.substr(0,1);
-             if(simbl == 'b'){
-                 page = 2;
-             }else if(simbl == 'c'){
-                 page = 3;
-             }
-             $.ajax({
-                 url:'./action/change_artikul.php', 
-                 type:'post',
-                 dataType:'json',
-                 data:{id:id,pid:pid},
-                 success:function(data){
-                     if(data['ok'] == 1){
-                         document.location.href = "index.php?act=look&page="+page+"&idc="+id;
-                     }
-                 },
-                 error:function(data){
-                     document.write(data['responseText']);
-                 }
-                 
-             });
+//             var artikul = this.id; 
+//             var id = this.alt;
+//             var page = 1;
+//             var simbl = artikul.substr(0,1);
+//             if(simbl == 'b'){
+//                 page = 2;
+//             }else if(simbl == 'c'){
+//                 page = 3;
+//             }
+//             $.ajax({
+//                 url:'./action/change_artikul.php', 
+//                 type:'post',
+//                 dataType:'json',
+//                 data:{id:id,pid:pid},
+//                 success:function(data){
+//                     if(data['ok'] == 1){
+//                         document.location.href = "index.php?act=look&page="+page+"&idc="+id;
+//                     }
+//                 },
+//                 error:function(data){
+//                     document.write(data['responseText']);
+//                 }
+//                 
+//             });
          });
      
             function checkCart(uid, pid){ 
@@ -192,21 +194,22 @@
            
            $.each(A_array, function(){
                str = this['img'];
-               $("#TA_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' title='Изменить?'/>")
+               $("#TA_"+a).append("<img class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80'/>")
                a++;
            });
            a=0;
            $.each(B_array, function(){
                str = this['img'];
-               $("#TB_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' title='Изменить?'/>")
+               $("#TB_"+a).append("<img class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80'/>")
                a++;
            });
            a=0;
            $.each(C_array, function(){
                str = this['img'];
-               $("#TC_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80' title='Изменить?'/>")
+               $("#TC_"+a).append("<img class='artikul_t' id='"+this['artikul']+"' alt='"+this['id']+"' src='../images/goods/"+this['img']+"' width='80' height='80'/>")
                a++;
            });
+           $(".artikul_t").css('cursor','default');
            return false;
        }
        function numOrder(){
