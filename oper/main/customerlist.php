@@ -1,4 +1,6 @@
-
+<?php
+    $title .= " - клиенты.";
+?>
 <div id="cust_list">
     
     <table class="dat" id="c_list" border="1">

@@ -35,6 +35,11 @@ switch ($attributes[act]) {
         include 'main/footer.php';
         break;
     
+    case 'ont':
+        include 'main/header.php';
+        include 'main/accountlist.php';
+        include 'main/footer.php';
+        break;    
     
     case "authentication":
        

@@ -17,16 +17,17 @@ a.header2{
 	font-weight:bold;
 	text-decoration:none;	
 	margin:0;
+        cursor: pointer;
 }
 
 a:hover.header2 {
 	background: #000000;
 	color: Yellow;
-	font-size:9pt;
+/*	font-size:9pt;
 	padding: 3px 7px;
 	font-weight:bold;
 	text-decoration:none;
-	margin:0;
+	margin:0;*/
 }
 
 div.selector {
@@ -93,37 +94,50 @@ tr.dat {
 	border: solid 1px gray;
 	
 }
-#cust_list{
+#cust_list,#account_list{
     position: relative;
     min-height: 600px;
     min-width: 1080px;
     display: none;
 }
-.edit_customer{
+/*.edit_customer{
     text-decoration: underline;
     cursor: pointer;
     color: black;
 }
 .edit_customer:hover{
     color:blueviolet;
-}
-.delete_customer{
+}*/
+/*.delete_customer{
     text-decoration: underline;
     cursor: pointer;
     color: black;
 }
 .delete_customer:hover{
     color:blueviolet;
-}
-.get_pwd{
+}*/
+.get_pwd,.view_wallet,.edit_wallet,.delete_customer,.edit_customer{
     text-decoration: underline;
     cursor: pointer;
     color: black;
 }
-.get_pwd:hover{
+.get_pwd:hover,.view_wallet:hover,.edit_wallet:hover,.delete_customer:hover,.edit_customer:hover{
     color:blueviolet;
 }
-#about_customer{
+#about_customer,#about_account{
     position: relative;
     display: none;
+}
+div.t_wallet{
+    position: relative;
+    display: none;
+    width: 975px;
+    font-size: 14px;
+    font-weight: normal;
+    color: black;
+    padding-left: 33px;
+    padding-top: 24px;
+}
+#t_wallet{
+    width: 942px;
 }

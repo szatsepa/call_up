@@ -4,7 +4,7 @@ if(!isset ($_SESSION[auth]) or $_SESSION[auth] == 0){
     
     $secret_key = quote_smart($attributes[code]);
     
-    $query = "SELECT id FROM customer WHERE secret_key = $secret_key";
+    $query = "SELECT id FROM customer WHERE secret_key = $secret_key AND `status`=1";
     
      $result = mysql_query($query) or die($query);
      

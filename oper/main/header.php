@@ -10,7 +10,8 @@ header('Content-Type: text/html; charset=utf-8');
 	<title>MENAGEMENT</title> 
 	<link rel="STYLESHEET" type="text/css" href="css/style.css">
         <script type="text/javascript" src="js/jquery-1.8b1.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/header.js"></script>
+	<script type="text/javascript" src="js/<?php echo $attributes[act];?>.js"></script>
 </head>
 
 <!--  -->
@@ -18,7 +19,7 @@ header('Content-Type: text/html; charset=utf-8');
     <input type="hidden" id="uid" value="<?php echo $_SESSION[id];?>"/>
     <div class="outside">
 <div id= "wrapper">
-<h3>&nbsp;MENAGEMENT</h3>
+<h3>&nbsp;<?php echo $title;?></h3>
 
 <div class="selector"><table border="0" width="100%"><tr>
 <?php 
@@ -32,17 +33,16 @@ if (!isset($_SESSION[id])) {?>
 </form>
 <?php } else if(isset($user) && $user->role == 7){?>
 <td>
-<!--    <a href="index.php?act=companies" class="header2">Компании</a>
-    <a href="index.php?act=users" class="header2">Пользователи</a>-->
+    <input type="hidden" id="act" value="<?php echo $attributes[act];?>"/>
     <a id="customer" class="header2">Пользователи</a>
-<!--    <a  class="header2">Изображения</a>
-    <a  class="header2">Товары</a>
+    <a id="accounts" class="header2">Счета</a>
+<!--     <a  class="header2">Товары</a>
     <a  class="header2">Реклама</a>
     <a  class="header2">Витрина</a>
     <a  class="header2">Рубрикатор</a>
     <a  class="header2">Заказы</a>
     <a  class="header2">Отчеты</a>
-    <a  class="header2">Статистика</a> -->
+    <a  class="header2">Статистика</a> --> 
 </td>
 <td width='*' align='right'>
     <small>

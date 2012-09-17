@@ -10,7 +10,8 @@ $(document).ready(function(){
     
     var is_table = false;
     
-    $("#customer").mousedown(function(){
+   
+    if($("#act").val() == 'main' && uid){
         $.ajax({
             url:'query/customerslist.php',
             type:'post',
@@ -26,7 +27,48 @@ $(document).ready(function(){
                 document.write(data['responseText']);
             }
         });
+    }
+        
+    $(".delete_customer").live('click',function(){
+        var uid = this.name;
+        if(confirm("Действительно удалить клиента?")){
+            $.ajax({
+                url:'./action/delete_customer.php',
+                type:'post',
+                dataType:'json',
+                data:{uid:uid},
+                success:function(data){
+                    var uu = "#r_"+data['uid'];
+                    $(uu).remove();
+                },
+                error:function(data){
+                    document.write(data['responseText']);
+                }
+            });
+        }
+        
     });
+    
+    $(".get_pwd").live('click',function(){
+        var uid = this.name;
+        $.ajax({
+            url:'./action/get_pwd.php',
+            type:'post',
+            dataType:'json',
+            data:{uid:uid},
+            success:function(data){
+                if(data['msg']==1){
+                    alert('Пароль отправлен в почту клиенту');
+                }
+            },
+            error:function(data){
+                document.write(data['responseText']);
+            }
+            
+        });
+        
+    });
+    
     $("#edit_cu").live('click',function(){
 
         var surname = $("#cu_surname").val();
@@ -46,12 +88,11 @@ $(document).ready(function(){
                 data:out,
                 success:function(data){
                     if(data['customer']){
-                        console.log($("#r_"+data['customer']['uid']+" > td:eq(0)").text());
                         $("#r_"+data['customer']['uid']+" > td:eq(1)").text(data['customer']['surname']+' '+data['customer']['name']+' '+data['customer']['patronymic']);
-                        $("#r_"+data['customer']['uid']+" > td:eq(0)").text(data['customer']['email']);
-                        $("#r_"+data['customer']['uid']+" > td:eq(0)").text(data['customer']['phone']);
-                        $("#r_"+data['customer']['uid']+" > td:eq(0)").text(data['customer']['shipping']);
-                        $("#r_"+data['customer']['uid']+" > td:eq(0)").text(data['customer']['desire']);
+                        $("#r_"+data['customer']['uid']+" > td:eq(2)").text(data['customer']['email']);
+                        $("#r_"+data['customer']['uid']+" > td:eq(3)").text(data['customer']['phone']);
+                        $("#r_"+data['customer']['uid']+" > td:eq(4)").text(data['customer']['shipping']);
+                        $("#r_"+data['customer']['uid']+" > td:eq(5)").text(data['customer']['desire']);
                         $("#r_"+data['customer']['uid']).css('background-color','#ececfc');
                         $("#about_customer").css('display','none');
                     }
@@ -95,18 +136,10 @@ $(document).ready(function(){
             }
         });
     });
-    $(".delete_customer").live('click', function(){
-        var id = this.name;
-        console.log(id);
-    });
-    $(".get_pwd").live('click', function(){
-        var id = this.name;
-        console.log(id);
-    });
+
     
     function buildCustomersList(customers){
         $("#cust_list").css('display','block');
-//        $("#c_list > body > tr").remove();
         
         $.each(customers, function(){
             $("#c_list > tbody").append('<tr id="r_'+this['id']+'"><td class="dat">'+this['id']+'</td><td class="dat">'+this['surname']+' '+this['name']+' '+this['patronymic']+' '+'</td><td class="dat">'+this['e_mail']+'</td><td class="dat">'+this['phone']+'</td><td class="dat">'+this['shipping_address']+'</td><td class="dat">'+this['desire']+'</td><td class="dat"><a class="edit_customer" name="'+this['id']+'">Редакт.</a></td><td class="dat"><a class="delete_customer" name="'+this['id']+'">Удалить.</a></td><td class="dat"><a class="get_pwd" name="'+this['id']+'">Пароль.</a></td></tr>');
