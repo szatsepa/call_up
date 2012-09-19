@@ -5,8 +5,6 @@
 
 $(document).ready(function(){
     
-//    alert("В свете посених заемечеаней эта страница подвегнецца коренной переломке!!!\nКой чего работаит НО еще не все!!!");
-
     var dt = new Date();
     
     var uid = $("#uid").val();
@@ -29,7 +27,9 @@ $(document).ready(function(){
     
     var edit = false;
     
-    var olld_simbl = '';
+//    var olld_simbl = '';
+    
+    var order_ready = false; 
     
     var str_date = dt.getDate()+"-"+month_array[dt.getMonth()]+"-"+dt.getFullYear();
     
@@ -38,8 +38,7 @@ $(document).ready(function(){
     firstSelect();
     
     $("#select_draw").live('change',function(){
-        var ch = this.checked;
-//        console.log(ch); 
+        var ch = this.checked; 
         if(ch){
             $("#d_draw").append('<input type="text" id="draw" maxlength="8" size="9" placeholder="Тираж"/>');
         }else{
@@ -47,37 +46,41 @@ $(document).ready(function(){
         }
     });
     
+    $("#orderonosets").attr('title', 'Билет не заполнен');
+    
     $("#orderonosets").mousedown(function(){
-//        var email = $("#to_email").val();
-//        var shipment = document.getElementById("to_shipment").value;
-        var desire = document.getElementById("desire").value;
-        var mark = $("#marck").val();
-        var dey = $("#dey :selected").val();
-        var month = $("#month :selected").val();
-        var year = $("#year :selected").val();
-        var hh = $("#hh :selected").val();
-        var mm = $("#mm :selected").val();
-        var resolution = screen.width+"X"+screen.height;
-        var exe_time = year+"-"+month+"-"+dey+" "+hh+":"+mm;
-        var out = {pid:pid,id:window.order,uid:uid,desire:desire,mark:mark,resolution:resolution,exe_time:exe_time};
-//console.log(out);  
-        $.ajax({
-           url:'./action/buy_ticket.php',
-            type:'post',
-            dataType:'json',
-            data:out,
-            success:function(data){
-//                console.log(data['simbls']);
-                console.log(data['query']);
-                if(data['ok'] == 30){ 
-                    document.location.href = "?act=private_office";
+        if(order_ready){
+            var desire = document.getElementById("desire").value;
+            var mark = $("#marck").val();
+            var dey = $("#dey :selected").val();
+            var month = $("#month :selected").val();
+            var year = $("#year :selected").val();
+            var hh = $("#hh :selected").val();
+            var mm = $("#mm :selected").val();
+            var resolution = screen.width+"X"+screen.height;
+            var exe_time = year+"-"+month+"-"+dey+" "+hh+":"+mm;
+            var out = {pid:pid,id:window.order,uid:uid,desire:desire,mark:mark,resolution:resolution,exe_time:exe_time};
+
+            $.ajax({
+            url:'./action/buy_ticket.php',
+                type:'post',
+                dataType:'json',
+                data:out,
+                success:function(data){
+                    console.log(data['query']);
+                    if(data['ok'] == 30){ 
+                        document.location.href = "?act=private_office";
+                    }
+                },
+                error:function(data){
+                    document.write(data['responseText']);
                 }
-            },
-            error:function(data){
-                document.write(data['responseText']);
-            }
-         
-        });
+
+            });
+        }else{
+            alert("Билет не заполнен!");
+        }
+        
     });
     
     $("#edit_order").mousedown(function(){ 
@@ -185,10 +188,6 @@ $(document).ready(function(){
                             n++;
                         });
                          
-                
-                
-//                console.log("; POS "+position+" ROW "+row+";  m "+new_min+"; new "+new_num+"; M "+new_max+"; C1 "+count_1+"; C2 "+count_2+"; C3 "+count_3);           
-                
                 if(nu_sho){
                      
                     alert("В этой строке уже выбрано возможное число символов!");
@@ -196,18 +195,15 @@ $(document).ready(function(){
                 }
                 
                 str = 'field_'+simbl;
-                
-//               console.log(new_num);
                
             var out = {position:position,pid:pid,field:str,new_artikul:this.id,old_artikul:old_simbl,order:window.order};
-//            console.log(out);
+
             $.ajax({
                      url:'./action/edit_ticket.php', 
                      type:'post',
                      dataType:'json', 
                      data:out,
-                     success:function(data){
-//                         console.log(data);
+                     success:function(){
                          document.location.href = "?act=advance&ticket="+window.order+"&pid="+pid;
                          
                      },
@@ -232,7 +228,6 @@ $(document).ready(function(){
                 }
                 position = this.alt;
                 position = parseInt(position.substr(1));
-//                console.log(position);
                 var out = {pid:pid,simbl:str};
                  $.ajax({
                      url:'./query/simbl_list.php',
@@ -246,7 +241,6 @@ $(document).ready(function(){
                          for(var i = 0;i<9;i++){
                                     $("#simbl_points tbody").append("<tr id='"+i+"_r'></tr>");   
                           } 
-//                         var row_str = 'ALL ';
                          var tmp_1_arr = new Array(); 
                          $.each($("#simbl_points tbody tr"),function(){
                              var id = this.id;
@@ -254,26 +248,18 @@ $(document).ready(function(){
                              for(var i=0;i<10;i++){ 
                                  var u = data['simbls'][num*10+i]['artikul'].substr(1, 2);
                                  
-                                   $("#"+id).append("<td id='"+u+"_c'><input type='image'  class='edit_p' id='"+data['simbls'][num*10+i]['artikul']+"' src='../images/goods/"+data['simbls'][num*10+i]['img']+"' width='80' height='80'/></td>");
+                               $("#"+id).append("<td id='"+u+"_c'><input type='image'  class='edit_p' id='"+data['simbls'][num*10+i]['artikul']+"' src='../images/goods/"+data['simbls'][num*10+i]['img']+"' width='80' height='80'/></td>");
                                tmp_1_arr.push(data['simbls'][num*10+i]['artikul']);
-//                               row_str +=  u+";";
                              }
-//                            row_str +=  "\n";
                          });
                          var tmp_arr = new Array();
-//                         var m = "DELL ";
                          $.each(S_array,function(){
                              
                              var num_a = this;
                              
                                  $("#"+num_a+"_c").empty();
                                  tmp_arr.push(this);
-//                             
-//                             m += this+";"; 
-                         });
-//                         var sm = "c09";
-//                         var nm = parseInt(sm.substr(1, 2));
-                          
+                         });                          
                      },
                      error:function(data){
                          document.write(data['responseText']);
@@ -292,13 +278,11 @@ $(document).ready(function(){
                 dataType:'json',
                 data:out,
                 success:function(data){
-//                    console.log(data);
                     if(data['ok']){
                         document.location.href = "?act=private_office";
                     }
                 },
                 error:function(data){
-//                    console.log(data);
                     document.write(data['responseText']);
                 }
             });
@@ -311,8 +295,7 @@ $(document).ready(function(){
                 type:'post',
                 dataType:'json',
                 data:{pid:pid,order:order},
-                success:function(data){ 
-//                    console.log(data['artikuls']);  
+                success:function(data){   
                     $("#n_ticket").text('Билет № '+data['ok']+' от '+str_date+'г.')
                     if(data['ok']){
                        sortingCart(data['artikuls']); 
@@ -365,8 +348,6 @@ $(document).ready(function(){
                }
            });
            
-//           console.log("ticket_C "+ticket_complite);
-           
            if(!ticket_complite){
                
                edit = !edit;
@@ -375,7 +356,10 @@ $(document).ready(function(){
                
                $("#edit_order").css('background-color','green');
                 
-               $("#orderonosets").remove();
+//               $("#orderonosets").remove();
+            }else{
+                $("#orderonosets").removeAttr('title'); 
+                order_ready = true;
             }
            
        
@@ -387,31 +371,29 @@ $(document).ready(function(){
             });
             $.each(C_array,function(){
                 S_array.push(this['artikul'].substr(1, 2));
-});
+            });
+            
+//            if(S_array.length == 30){
+//                
+//            }
 
            return false 
        }
        
        function buildTicket(){
-           
-//           var str = '';
            var a = 0;
            
            $.each(A_array, function(){
-//               str = this['img'];
                $("#TA_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='a"+a+"' src='../images/goods/"+this['img']+"' width='80' height='80' />")
                a++;
-//                title='Изменить?'
            });
            a=0;
-           $.each(B_array, function(){  
-//               str = this['img'];
+           $.each(B_array, function(){ 
                $("#TB_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='b"+a+"' src='../images/goods/"+this['img']+"' width='80' height='80' />")
                a++;
            });
            a=0;
            $.each(C_array, function(){
-//               str = this['img'];
                $("#TC_"+a).append("<input type='image' class='artikul_t' id='"+this['artikul']+"' alt='c"+a+"' src='../images/goods/"+this['img']+"' width='80' height='80' />")
                a++;
            });

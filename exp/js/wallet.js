@@ -16,7 +16,7 @@ $(document).ready(function(){
     
     var senja = '';
     
-    $("#kurs > td").css('width','504px');
+    $("#kurs > td").css('width','504px'); 
         
     readWallet(uid);
     
@@ -25,8 +25,7 @@ $(document).ready(function(){
             type:'post',
             dataType:'json',
             data:{},
-            success:function(data){
-//                console.log(data); 
+            success:function(data){ 
                 many['usd']['cnt'] = data['usd'];
                 many['euro']['cnt']=data['euro'];
                 senja = data['date'];
@@ -36,27 +35,20 @@ $(document).ready(function(){
                 $(".b_wallet").css('visibility','visible');
             }
         });
-        
-//        $("div").css('outline', '1px solid grey');
     
     $(".h_wallet").mousedown(function(){
         
         var id = this.id;
         
-        var cnt = many[id];    
+        var cnt = many[id]; 
         
         $("#cross_ku").text('Конверт курс: 1 число = '+(1/cnt['cnt']).toString().substr(0, 6)+" "+cnt['name']);
-        
-//        $("#account").text('  '+Math.ceil(receipt/cnt['cnt'])+" "+cnt['name']);
-        
-        $("#ballans").text('  '+Math.ceil((receipt/cnt['cnt'])-outlay/cnt['cnt'])+" "+cnt['name']);
-        
-//        console.log($("#cross_ku").text());
+
+        $("#ballans").text('  '+Math.ceil((receipt/cnt['cnt'])-outlay/cnt['cnt']).toFixed(2)+" "+cnt['name']);
         
     });
     
     function readWallet(uid){
-//        var resp = new Array();
         $.ajax({
             url:'./query/read_wallet.php', 
             type:'post',
@@ -65,7 +57,6 @@ $(document).ready(function(){
             success:function(data){
                 wallet = data['wallet'];
                 $.each(data['wallet'],function(){
-//                    console.log(this['count']+"; => "+this['action']);
                     if(this['action']==1){
                         receipt += Number(this['count']);
                         $("#table_wallet > tbody").append('<tr><td>'+this['time']+'</td><td>'+this['count']+'</td><td>'+this['doc']+" №"+this['num_doc']+'</td><td></td><td></td><td></td></tr>');
@@ -75,7 +66,7 @@ $(document).ready(function(){
                     }
                 });
                 $("#account").text('      '+receipt+" чисел");
-                $("#ballans").text('  '+(receipt-outlay)+" чисел");
+                $("#ballans").text('  '+(receipt-outlay).toFixed(2)+" чисел");
             },
             error:function(data){
                 console.log(data['responseText']);
@@ -84,12 +75,5 @@ $(document).ready(function(){
         });
     }
     
-//    http://cbrates.rbc.ru/tsv/840/2012/09/12.tsv
-//где
-//*1* - код валюты по ЦБ (978-евро 840 - доллар и т.д.)
-//*2* - год
-//*3* - месяц
-//*4* - день
-//     
 });
 

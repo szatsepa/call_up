@@ -27,13 +27,16 @@ if ($title != '') echo "<br/><h2>".$title."</h2><br/>";
             <td class="btp">
                 <input  id="delete_order" type='button' value='Удалить'  class="submit2" />
             </td>
+            <td class="btp">
+                <input  id="orderonosets" type='button' value='Отправить заказ'  class="submit2" title=""/>
+            </td>
         </tr>
     </tbody>
 </table>
 <br />
-
+ 
 <?php 
-
+ 
 $price = 2;
 
 include 'dsp_ticket.php';
@@ -92,10 +95,10 @@ include 'dsp_ticket.php';
     
     </div>
     <div id = "cont_reg_right" >
-        <div id = "cont_reg_order_btn">
+<!--        <div id = "cont_reg_order_btn">
                         
                         <input id="orderonosets" type="button" value="Отправить заказ"   class="submit2" /> 
-                        </div>
+                        </div>-->
         
     </div>
 </div>

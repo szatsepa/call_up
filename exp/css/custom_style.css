@@ -1045,13 +1045,13 @@ div.selector {
 }       
        
 div.selector13 {
-         position: relative;
+        position: relative;
         right: 15px;
-        margin:0 0 0 0;
+/*        margin:0 0 0 0;*/
         padding-top: 1px;
         font-size: 10pt;
         width: 96%;
-         float: right;
+        float: right;
 }        
 
 span.selector { 
@@ -1209,7 +1209,8 @@ input.submit {
         font-size: 8pt;
         width:2em;
         position:relative;
-        top:-5px;      
+        top:-5px; 
+        cursor: pointer;
 }
 
 input.submit2 {
@@ -1220,7 +1221,8 @@ input.submit2 {
 	width:180px; 
 	position:relative;
         background-color:#ffcc00;
-        border: 2px solid #ffcc00;;
+        border: 2px solid #ffcc00;
+        cursor: pointer;
 }
 input.submit2:hover {
     
@@ -1245,7 +1247,8 @@ input.submit22 {
         font-weight: bold;
 	position:relative;
         background-color:#ffcc00;
-        border: 2px solid #ffcc0f;;
+        border: 2px solid #ffcc0f;
+        cursor: pointer;
 }
 input.submit31 {
     font-family: Arial;
@@ -1259,7 +1262,7 @@ input.submit31 {
 	margin-top:0px;	
 	position:relative;
         background-color:#ffcc00;
-/*         border: 2px solid #000000;*/
+        cursor: pointer;
         border: 2px solid #ffcc0f;
 }
 input.submit222 {
@@ -1269,7 +1272,8 @@ input.submit222 {
         font-weight: bold;
 	position:relative;
         background-color:#ffcc00;
-        border: 2px solid #ffcc00;;
+        border: 2px solid #ffcc00;
+        cursor: pointer;
 }
 input.submit3 {
     font-family: Arial;
@@ -1280,7 +1284,8 @@ input.submit3 {
 	margin-bottom: 0px;
 	margin-right: 0px;
 	margin-top:0px;	
-	position:relative;	
+	position:relative;
+        cursor: pointer;
 }
 
 input.submit4 {
@@ -1289,7 +1294,8 @@ input.submit4 {
 	font-size: 8pt;
 	width:13em;
 	position:absolute;
-	top:-5px;	
+	top:-5px;
+        cursor: pointer;
 }
 
 input.zakaz {

@@ -38,14 +38,14 @@ $(document).ready(function(){
         carrency = this.options[this.selectedIndex].value;
     });
     
-    $("a_list >tr").live('click',function(){
-        console.log(this.id)
+    $("#a_list tbody tr").live('click',function(){
+//        console.log(this.id)
         $("#"+num_row).css('background-color','inherit');
         num_row = this.id; 
         $("#"+num_row).css('background-color','#ecfcec');
     });
     
-    if($("#act").val() == 'ont' && uid){
+    if($("#act").val() == 'ont' && uid){ 
             $.ajax({
                 url:'query/accountlist.php',
                 type:'post',
@@ -81,11 +81,12 @@ $(document).ready(function(){
              dataType:'json',
              data:out,
              success:function(data){
-                 console.log("#r_"+$("#customer_id").val());
+                 console.log($("#r_"+$("#customer_id").val()+">td:eq(4)").text());
                  if(data['ins']){
                     $("#about_account").css('display', 'none');
                     $("#r_"+$("#customer_id").val()).css('background-color','#fcecec');
-                    $("#r_"+$("#customer_id").val()+">eq(4)").text(data['ball']);
+                    $("#r_"+$("#customer_id").val()+">td:eq(4)").text(data['ball']);
+                    console.log($("#r_"+$("#customer_id").val()+">td:eq(4)").text()); 
                  }
              },
              error:function(data){

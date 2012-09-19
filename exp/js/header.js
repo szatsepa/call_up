@@ -9,7 +9,17 @@ $(document).ready(function(){
     var prid = $("#pid").val();
     
     countCart(customer);
-     $("#yor_account").css({'text-decoration':'underline','cursor':'pointer'});
+    
+//    $("div").css('outline','1px solid red');
+    
+     $("#yor_account, #go_reg").css({'text-decoration':'underline','cursor':'pointer'});
+     
+     $("#go_reg").css({'color':'#330000'});
+     
+     $("#go_reg").mousedown(function(){
+         document.location.href='index.php?act=regs';
+     });
+     
      $("#wallet,#yor_account").mousedown(function(){
          
          document.location.href = "index.php?act=wallet";

@@ -16,7 +16,6 @@ header('Content-Type: text/html; charset=utf-8');
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> 
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="./css/custom_style.css" type="text/css" media="screen, projection" />
-<!--        <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js'></script>-->
         <script type="text/javascript" src="./js/jquery-1.8b1.js"></script>
         <script type="text/javascript" src="./js/psw_validation.js"></script>
         <script type="text/javascript" src="./js/my_function.js"></script>
@@ -76,30 +75,25 @@ include 'dsp_selector.php';
                     
                     </div>
                 </div>
-                <div class = "korzina">
-                    
-                      <div id = "busket">           
+            <div class = "korzina">
+                          
  <?php 
- $type = $_SESSION[auth];
+ if(isset($_SESSION[user])){
  
-    
+    $type = $_SESSION[auth];
         ?>
-                    
-                          <a id="cart_info" href="index.php?act=order&amp;type=<?php echo $type;?>"></a>
-                                <?php
-                                
-         if($string_count !='disabled'){                               }else{
-//                                              echo  " В корзине: ".$count_in_cart." ".$string_out;
-                                        }
-                               if(!isset($_SESSION[admin]) or $_SESSION[admin] != 1){  }else{
-                                    
-                                    ?><?php } ?>
-                               </div> 
-<!--                    <a href="<?php echo $info[about_store];?>" target="_blank" style="color: #BB0D72;" onmouseover="this.style.color='#CCCCCC'" onmouseout="this.style.color='#BB0D72'" ></a>-->
-                        <div id = "tel"><p align="center"><?php echo $info[phone];?></p></div>
-                        <div id = "oplata"><a id="yor_account" target="_blank">Ваш счет</a></div>
-                        
-                </div>
+        <div id = "busket">
+            <a id="cart_info" href="index.php?act=order&amp;type=<?php echo $type;?>"></a>
+        </div> 
+        <div id = "tel"><p align="center"></p></div>
+        <div id = "oplata">
+            <a id="yor_account" target="_blank">Ваш счет</a>
+        </div>
+                
+                <?php
+}
+?>
+            </div>
         </div>
                 
 
@@ -187,9 +181,15 @@ include 'dsp_selector.php';
                     <input type="submit" value='/ Доставка'  class="footer_1" />
                 </form>
             </div>
+    <?php 
+    if(isset($_SESSION[user])){
+    ?>
             <div class="bottom_btn">
                 <input id="wallet" type="button" value='/ Кошелек'  class="footer_1" />
             </div>
+    <?php
+    }
+    ?>
           </div>
 
 <!--end header-->
