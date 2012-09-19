@@ -141,3 +141,8 @@ div.t_wallet{
 #t_wallet{
     width: 942px;
 }
+.s_carrency{
+    color: black;
+    font-size: 12px;
+    font-weight: normal;
+}

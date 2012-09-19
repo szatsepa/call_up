@@ -10,6 +10,7 @@ header('Content-Type: text/html; charset=utf-8');
 	<title>MENAGEMENT</title> 
 	<link rel="STYLESHEET" type="text/css" href="css/style.css">
         <script type="text/javascript" src="js/jquery-1.8b1.js"></script>
+        <script type="text/javascript" src="js/my_request.js"></script>
         <script type="text/javascript" src="js/header.js"></script>
 	<script type="text/javascript" src="js/<?php echo $attributes[act];?>.js"></script>
 </head>

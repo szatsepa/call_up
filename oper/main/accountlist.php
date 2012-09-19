@@ -1,6 +1,6 @@
 <div id="account_list">
     
-    <table class="dat" id="a_list" border="1">
+    <table class="dat" id="a_list" border="0">
         <thead>
             <th class="dat">Id</th>
             <th class="dat">Ф.И.О.</th>
@@ -60,16 +60,58 @@
             </tbody>
         </table>
     </div>
-    <div id="about_account">
-        <table class="dat" id="cu_account" border="0" cellpadding="0" width="592">
+    <div id="about_account" style="padding-left: 36px">
+        <input type="hidden" id="customer_id" value=""/>
+        <table id="cu_account" border="0" cellpadding="8" width="592">
             <thead>
-                <tr class="dat" id="who_account">
-                    <td class="dat" style="background-color: #ececec;width: 592px;font-size: 16px;font-weight: bold;text-align: center;">
+                <tr id="who_account">
+                    <td  style="background-color: #ececec;width: 592px;font-size: 16px;font-weight: bold;text-align: center;">
                     </td>
                 </tr>
             </thead>
-            <tbody  style="font-size: 10px;font-weight: normal;text-align: left;">
-                
+            <tbody  style="font-size: 16px;font-weight: bold;text-align: left;">
+                <tr id="sel_type"  class="dat">
+                    <td style="text-align: center">
+                        <p>
+                            <select id="s_type" style="color: black;font-size: 16px;font-weight: bold">
+                                <option value="1" selected style="color: black;">Приход</option>
+                                <option value="0" style="color: black;">Расход</option>
+                            </select>
+                        </p>                        
+                    </td>                    
+                </tr>
+                <tr id="carrency">
+                    <td>
+                        <input type="text" size="12" id="count" placeholder="Сумма" value=""/>
+                    
+                        <select  class="s_carrency" id="sel_carrency">
+                            <option class="s_carrency" value="rub" selected>Руб</option>
+                            <option class="s_carrency" value="usd">Доллар</option>
+                            <option class="s_carrency" value="euro">Евро</option>
+                            <option class="s_carrency" value="num">Число</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" size="64" id="date_doc" placeholder="Дата документа(гггг-мм-дд)" value=""/>
+                    </td>                    
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" size="64" id="doc" placeholder="Документ" value=""/>
+                    </td>                    
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" size="64" id="num_doc" placeholder="Номер документа" value=""/>
+                    </td>                    
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" id="save_doc" value="Сохранить"/>
+                    </td>                    
+                </tr>
             </tbody>
         </table>
     </div>

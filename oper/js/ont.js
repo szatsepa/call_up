@@ -6,9 +6,44 @@ $(document).ready(function(){
     
     var uid = $("#uid").val();
         
-    var is_table = false;
+    var is_table = false; 
     
-//    var receipt = 0;var  outlay = 0;
+    var s_type = 1;
+    
+    var carrency = 'rub';
+    
+    var senja = '';
+    
+    var num_row;
+    
+    var many = {'usd':0,'euro':0,'rub':1,'num':1};
+    
+      $.ajax({
+            url:'query/how_meny.php',
+            type:'post',
+            dataType:'json',
+            data:{},
+            success:function(data){ 
+                many['usd'] = data['usd'];
+                many['euro'] = data['euro'];
+                senja = data['date'];
+                $("#date_doc").val(senja);
+            }
+        });
+    
+    $("#s_type").change(function(){
+        s_type = this.options[this.selectedIndex].value; 
+    });
+    $("#sel_carrency").change(function(){
+        carrency = this.options[this.selectedIndex].value;
+    });
+    
+    $("a_list >tr").live('click',function(){
+        console.log(this.id)
+        $("#"+num_row).css('background-color','inherit');
+        num_row = this.id; 
+        $("#"+num_row).css('background-color','#ecfcec');
+    });
     
     if($("#act").val() == 'ont' && uid){
             $.ajax({
@@ -30,15 +65,39 @@ $(document).ready(function(){
         
      $(".edit_wallet").live('click',function(){
          var uid = this.name;
-         var who = $("#r_"+uid+" > td:eq(1)").text();
+         $("#customer_id").val(uid);
          $(".t_wallet").css('display', 'none');
          $("#about_account").css('display', 'block');
-         $("#who_account >td:eq(0)").text(who);
+         $("#who_account >td:eq(0)").text($("#r_"+uid+" > td:eq(1)").text());
+     });
+     
+     $("#save_doc").mousedown(function(){
+         var count = Number($("#count").val())*many[carrency];
+         var out = {uid:$("#customer_id").val(),stype:s_type,count:count,date_doc:$("#date_doc").val(),doc:$("#doc").val(),num_doc:$("#num_doc").val()};
+         
+         $.ajax({
+             url:'./action/add_money.php',
+             type:'post',
+             dataType:'json',
+             data:out,
+             success:function(data){
+                 console.log("#r_"+$("#customer_id").val());
+                 if(data['ins']){
+                    $("#about_account").css('display', 'none');
+                    $("#r_"+$("#customer_id").val()).css('background-color','#fcecec');
+                    $("#r_"+$("#customer_id").val()+">eq(4)").text(data['ball']);
+                 }
+             },
+             error:function(data){
+                 document.write(data['responseText']);
+             }
+         });
      });
      
      $(".view_wallet").live('click',function(){
          var uid = this.name;
          $("#table_wallet > tbody").empty();
+         $("#about_account").css('display', 'none');
          $.ajax({
              url:'./query/read_wallet.php',
              type:'post',
@@ -47,14 +106,11 @@ $(document).ready(function(){
              success:function(data){
                 $.each(data['wallet'],function(){
                     if(this['action']==1){
-//                        receipt += Number(this['count']);
                         $("#table_wallet > tbody").append('<tr class="dat"><td class="dat">'+this['time']+'</td><td class="dat">'+this['count']+'</td><td class="dat">'+this['doc']+" №"+this['num_doc']+'</td><td class="dat"></td><td class="dat"></td><td class="dat"></td></tr>');
                     }else{
-//                        outlay += Number(this['count']);
                         $("#table_wallet > tbody").append('<tr class="dat"><td class="dat"></td><td class="dat"></td><td class="dat"></td><td class="dat">'+this['time']+'</td><td class="dat">'+this['count']+'</td><td class="dat">'+this['doc']+" №"+this['num_doc']+'</td></tr>');
                     }
                 }); 
-//                $("#t_wallet").css('width', '742px');
              },
              error:function(data){
                  document.write(data['responseText']);

@@ -2,7 +2,7 @@
 $secret_key = $attributes[code];
 
          
-        $query = "SELECT id FROM users WHERE pwd = '$secret_key'";
+        $query = "SELECT id, role FROM users WHERE pwd = '$secret_key'";
         
         $result = mysql_query($query) or die($query);
         
@@ -16,7 +16,13 @@ $secret_key = $attributes[code];
          
                      $_SESSION['auth'] = 1;
                      
-                     header ("location:index.php?act=main");
+                     if($row[1] != 7){
+                         header ("location:index.php?act=logout");
+                     }else{
+                         header ("location:index.php?act=main");
+                     }
+                     
+                     
          
          }  else {
              

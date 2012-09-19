@@ -39,8 +39,6 @@
        var idc = $("#idc").val();
         
        var pid = $("#pid").val();
-       
-//       console.log("u "+uid+"; p "+page+"; art "+art+"; idc "+idc+"; pid "+pid);
         
         checkButton();
         
@@ -79,8 +77,7 @@
                document.location.href='index.php?act=look&pid='+pid;
            }
               
-       });  
-//       console.log({uid:uid,pid:pid,idc:idc});
+       });
        function checkCart(uid,pid){ 
             $.ajax({ 
                 url:'./query/check_cart.php',    
@@ -88,7 +85,6 @@
                 dataType:'json',
                 data:{uid:uid,pid:pid,idc:idc},
                 success:function(data){
-//                    console.log(data['dell']); 
                     if(data['ok']){
                        sortingCart(data['cart']);  
                     }
@@ -177,22 +173,24 @@
            }else if(page == 3){
                ltr = 'c';
            }
-           var lim_arr = (page*5);
            
            $.each(num_array, function(){
                var num = parseInt(this);
                changeBtn((num-1));
            });
-                      
-         
+           
             $.each(eval(ltr.toUpperCase()+"_array"), function(){   
                 var num = this;
                 num = Number(num.substr(1,2));
 
-                var row = Math.floor(num/10);
+                var row = Math.floor((num-1)/10);
                 
-//console.log(this+">> "+row+" >= "+page);
+                if(row < 0){
+                    row = 0;
+                }
+
                 if(eval('check_'+ltr.toUpperCase())[(row+1)] >= page){
+                    
                     for(i = (row*10);i < (10*(row)+10);i++){
                         changeBtn(i)+"; ";
                     } 
@@ -225,7 +223,6 @@
                 bid="0"+bid; 
             }
             $("#"+bid).remove();
-//            console.log(bid);
             return false;
     }       
 });  

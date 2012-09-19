@@ -22,13 +22,9 @@ $(document).ready(function(){
             dataType:'json',
             data:{uid:customer,pid:prid},
             success:function(data){
-//                console.log(data);
                 if(data['ok']!= 'NULL'){
                     $("#fav_g > tbody").append('<tr><td><a href="index.php?act=look&page=1&pid='+prid+'">'+data['fav']['comment']+'</a></td></tr>');
                 }
-            },
-            error:function(data){
-//                console.log(data['responseText']);
             }
         });
     });
@@ -55,7 +51,6 @@ $(document).ready(function(){
             data:{uid:customer,pid:prid},
             success:function(data){
                 var prices = data['prices'];
-//                console.log(data['prices']);
                 
                 setCartInfo(data['ok'],prices);  
             },
