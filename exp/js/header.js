@@ -12,9 +12,15 @@ $(document).ready(function(){
     
 //    $("div").css('outline','1px solid red');
     
-     $("#yor_account, #go_reg").css({'text-decoration':'underline','cursor':'pointer'});
+     $("#yor_account, #go_reg, #hb").css({'text-decoration':'underline','cursor':'pointer'});
      
-     $("#go_reg").css({'color':'#330000'});
+     $("#go_reg").css({'color':'#330000'}); 
+     
+     $("#hb").attr('title','На главную');
+     
+     $("#hb").mousedown(function(){
+         document.location.href='index.php?act=look';
+     });
      
      $("#go_reg").mousedown(function(){
          document.location.href='index.php?act=regs';
@@ -81,16 +87,16 @@ $(document).ready(function(){
             });
             if(count == 0 && prices.length ==0){
                 $("#cart_info").remove();
-                $("#busket").append("<p style='color:#878787'> Ваш билет. </p>");
+                $("#busket").append("<p style='color:#878787'> Смотреть билет. </p>");
             } 
             if(count > 0 && prices.length == 0){
-                $("#cart_info").text("Ваш билет.").attr('href',"index.php?act=order&type=2");
+                $("#cart_info").text("Смотреть билет.").attr('href',"index.php?act=order&type=2");
             } 
             if(count == 0 && prices.length >0){
-                $("#cart_info").text("Ваш билет в другом прайсе.").attr('href',"index.php?act=order&type=2&pid="+pid);;
+                $("#cart_info").text("Смотреть билет.").attr('href',"index.php?act=order&type=2&pid="+pid);
             }
             if(count > 0 && prices.length >0){
-                $("#cart_info").text("Ваши билеты.");
+                $("#cart_info").text("Смотреть билеты.");
             }
        return false;         
             

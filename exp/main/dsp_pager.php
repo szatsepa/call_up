@@ -1,52 +1,17 @@
 <?php
 $simbl_array = array('O','A','B','C');
-if($pages >1){
 ?>
 <div class="pager">
 
-<div class="pager_1">
-    <p class="pager_2" align="center" >
- <?php 
- if($page > 1){
- ?>
-        <a href="<?php echo 'index.php?act=look&page=1';?>" style="font-size: 16px;color:#990033;" onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'"><<&nbsp;Первая &nbsp;</a>
-        <a href="<?php echo "index.php?act=look&page=".($page-1);?>" style="font-size: 16px;color:#990033;" onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'">Предыдущая&nbsp;</a>
-<?php
- }
-for($i=($page-1);$i<($page+2);$i++){ 
+    <div class="pager_1">
+        <p class="pager_2" align="center" >
 
-    if($i == ($pages) or  $page == $pages)break;
-    
-	$p = $i+1;
-        
-        ?>
+        <a class="a_pager" href="index.php?act=look&page=1">A</a>  
+        <a class="a_pager" href="index.php?act=look&page=2">B</a>
+        <a class="a_pager" href="index.php?act=look&page=3">C</a>
+    </div>
 
-    
-        <a href="<?php echo "index.php?act=look&page=$p";?>" style="font-size: 16px;color:#990033;" onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'"><?php echo $simbl_array[$p];?></a>
-    
-
-
-
-<?php 
-
-    }
-  if($page < $pages){  
-    ?>
-        <a href="index.php?act=look&page=<?php echo ($page+1);?>" style="font-size: 16px;color:#990033;" onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'">&nbsp;Следующая</a>
-        <a href="<?php echo "index.php?act=look&page=".$pages;?>" style="font-size: 16px;color:#990033;" onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'">&nbsp;Последняя&nbsp;>> </a>
-    </p>
- </div>    
-    <?php
-  }
-?>
-
+    <div class="pager_0">  
+        <p class="pager_2" style="font-size: 18px;font-weight: bold;" align="center">Страница <?php echo $simbl_array[$page];?>&nbsp;&nbsp;</p>
+    </div>
 </div>
-<div class="pager_0">  
-    <p class="pager_2" style="font-size: 18px;font-weight: bold;" align="center">Страница <?php echo $simbl_array[$page];?>&nbsp;&nbsp;</p>
-</div>
-            
-<?php
-    }
-
-
-?>

@@ -71,7 +71,7 @@ include 'dsp_selector.php';
                     </div>
                     <div class="head_frame">
                         
-                         <img src="../images/storefront/H_<?php echo $attributes[stid];?>.jpg" width="635" height="120"  alt="верхний баннер"/>
+                         <img id="hb" src="../images/storefront/H_<?php echo $attributes[stid];?>.jpg" width="635" height="120"  alt="верхний баннер"/>
                     
                     </div>
                 </div>

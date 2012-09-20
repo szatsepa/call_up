@@ -584,10 +584,11 @@ p.sum_vsego{
 }
 #price_center {
         float: left;
-        width: 109px;
+        width: 129px;
         height: 36px;
         font: 16px Arial;
         color: #BB0D72;
+        padding-top: 6px; 
  }
 #obem_blok {
         float: left;
@@ -596,24 +597,6 @@ p.sum_vsego{
         font: 16px Arial;
         color: #BB0D72;
 }
-/*#30_ml {
-    position: relative;
-        float: left;
-        width: 47px;
-        height: 26px;
-}*/
-/*#120_ml {
-     position: relative;
-        float: left;
-        width: 47px;
-        height: 26px;
-}
-#150_ml {
-    position: relative;
-        float: left;
-        width: 47px;
-        height: 26px;
-}*/
 #v_korzinu {
         font: 22px Arial;
         color: #330000;
@@ -919,6 +902,7 @@ input.footer_1{
         font: 12px Arial;
         font-style: italic;
         color: #330000;
+        padding-left: 24px; 
 }
 #cont_reg_right {
     position: relative;
@@ -1229,41 +1213,54 @@ input.submit2:hover {
     color: #999; 
 }
 
+input.advansed{
+    color: #555; 
+    font-size: 12pt;
+    font-style: italic;
+    width:180px; 
+    position:relative;
+    background-color:#ffcc00;
+    border: 2px solid #ffcc00;
+    cursor: pointer;
+}
+input.advansed:hover{
+    color: #777; 
+}
+
 input.my_cab{
    font-family: Arial;
     color: #FFFFFF;
-	font-size: 12pt;
-        font-style: italic;
-	width:136px;
-	position:relative;
-        background-color:#ffcc00;
-        border: 2px solid #ffcc00;; 
+    font-size: 12pt;
+    font-style: italic;
+    width:136px;
+    position:relative;
+    background-color:#ffcc00;
+    border: 2px solid #ffcc00;; 
 }
 
 input.submit22 {
     font-family: Arial;
     color: #FFFFFF;
-	font-size: 10pt;
-        font-weight: bold;
-	position:relative;
-        background-color:#ffcc00;
-        border: 2px solid #ffcc0f;
-        cursor: pointer;
+    font-size: 10pt;
+    font-weight: bold;
+    position:relative;
+    background-color:#ffcc00;
+    border: 2px solid #ffcc0f;
+    cursor: pointer;
 }
 input.submit31 {
-    font-family: Arial;
     color: #FFFFFF;
-	font-size: 8pt;
-	font-weight: bold;
-	width:2em;
-	margin-left: 3px;
-	margin-bottom: 0px;
-	margin-right: 0px;
-	margin-top:0px;	
-	position:relative;
-        background-color:#ffcc00;
-        cursor: pointer;
-        border: 2px solid #ffcc0f;
+    font-size: 8pt;
+    font-weight: bold;
+    width:2em;
+    margin-left: 3px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-top:0px;	
+    position:relative;
+    background-color:#ffcc00;
+    cursor: pointer;
+    border: 2px solid #ffcc0f;
 }
 input.submit222 {
     font-family: Arial;
@@ -1518,7 +1515,7 @@ div.content{
     position: relative;
     margin: 0 auto;
     width: 1008px;
-    height: 600px;
+    min-width: 600px;
 }
 div.head_wallet{
     position: relative;
@@ -1572,7 +1569,14 @@ input.artartikul_t{
 #cont_reg_left_44{
     position: absolute;
     left: 64px;
-    top: 320px;
+    top: 210px;
     width: 480px;
     height: 33px;
+}
+a.a_pager{
+    font-size: 16px;
+    color:#990033;
+}
+a.a_pager:hover{
+    color: #878787; 
 }

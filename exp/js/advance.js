@@ -35,6 +35,8 @@ $(document).ready(function(){
     
     readOrder(window.order,pid); 
     
+//    $("div").css({'outline':'1px solid grey'});
+    
     firstSelect();
     
     $("#select_draw").live('change',function(){
@@ -271,7 +273,7 @@ $(document).ready(function(){
     $("#delete_order").mousedown(function(){
         var out = {pid:pid,id:window.order};
         
-        if(confirm("Действительно удалить?")){ 
+        if(confirm("Билет будет удален!")){  
             $.ajax({
                 url:'./action/delete_ticket.php',
                 type:'post',
@@ -354,7 +356,7 @@ $(document).ready(function(){
                
                $(".artikul_t").attr('title','Изменить?').css('cursor','pointer');
                
-               $("#edit_order").css('background-color','green');
+               $("#edit_order").css('background-color','#ecfcec');
                 
 //               $("#orderonosets").remove();
             }else{

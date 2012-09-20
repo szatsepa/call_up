@@ -50,18 +50,8 @@ if (!isset ($_SESSION[user])) {
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<!--                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
--->                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<!--                    <td>Поиск:</td>-->
-<!--                    <td align="right">
-                         <form  action="index.php?act=look" method="post">
-                             Поиск:
-                            <input type="hidden" name="search" value="S"/>
-                            <input type="hidden" name="select" value="default"/>
-                            <input style="font: 10px Arial;color: #0000FF;" type="text"  name="str" value="<?php echo $attributes[str];?>"/>
-                            <input  type="submit" value="&gt;&gt;" style='color:green;font-size: 8px'/>
-                       </form>
-                    </td>-->
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
                 </tr>
             </tbody>
         </table>
@@ -73,23 +63,21 @@ if (!isset ($_SESSION[user])) {
 // To Do Если имя и фамилия очень длинные, то выводить только фамилию
     }else{
 ?>
-<!--<div class="selector22">
-        
-        
-    </div>-->
+
  <div class="selector13">
-    <table class="selector" border="0" width="100%"> 
+    <table class="selector" border="0" width="400">  
         <tbody>
             <tr>
-                <td>
+                <td width="160">
                     <form action="index.php?act=authentication" method="post">
                         Ключ:
                         <input id="pwd" type="password" required name="code" size="14" value="" style='font-size:8pt;'/>
                         <input type="hidden" name="stid" value="2"  />
                         <input id="log_in" type="submit" value="&gt;&gt;" class='submit3' style='color:green' />
-                    </form>
+                    </form>    
+                    
                 </td>
-               <td align="left">
+               <td align="center" width="240">
                     <input id="go_reg" type='button' class='submit2' value='Зарегистрироватся'/>                       
                </td>
             </tr>

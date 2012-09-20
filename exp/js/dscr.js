@@ -12,9 +12,22 @@ $(document).ready(function () {
      
      var idc = $("#idc").val();
      
-//     $("#see_all").css('outline','1px solid grey');
+//     $("div").css('outline','1px solid grey'); 
 //     
 //     $("#see_all").css('visibility','visible');
+
+     $.ajax({
+         url:'./query/artikul.php',
+         type:'post',
+         dataType:'json',
+         data:{pid:price_id,artikul:$("#artikul").val()},
+         success:function(data){
+             $("#price_center").text("Цена "+data['price']+" руб."); 
+         },
+         error:function(data){
+             console.log(data['responseText']);
+         }
+     });
           
      selectFavorites(price_id); 
      
@@ -76,13 +89,9 @@ $(document).ready(function () {
                                 var img = this['img'];
 
                                 var rt = this['hm'];
-                                
-//                                var perc = Math.ceil(((6-n)/6)*100);
 
                                 var perc = Math.pow((0.12*(6-n)),2)*100+36;
                                 
-//                                console.log(Math.pow((0.12*(6-n)),2)*100+36);   
-
                                 var bu_str = '<div class="imag_right" style="left: '+(135*n)+'px;"><div><img class="favorites_point" id="'+this['artikul']+'" src="../images/goods/'+img+'" width="98" height="98"/></div><div class="favor" id="f_'+n+'"></div></div>';
 
                                 $("#favors").append(bu_str); 
@@ -96,10 +105,7 @@ $(document).ready(function () {
                                 n++;
                             });
                          }   
-                            $("#v_korzinu").css('z-index', '99999'); 
-//                  console.log($("#add_to_cart"));
-                
-//                $(".footer_box").css({'z-index':'99999'});
+                            $("#v_korzinu").css('z-index', '99999');
             },
             error:function(data){
                 console.log(data['responseText']);
