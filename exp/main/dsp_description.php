@@ -51,6 +51,7 @@
 			<div id = "v_korzinu">
                             <input type="hidden" id="artikul" value="<?php echo $attributes[artikul];?>"/> 
                             <a class="to_cart" id="add_to_cart">Добавить в билет</a>
+                            <br/>
                         </div> 
                         <div id = "price_center"></div> 
                 
@@ -58,19 +59,7 @@
 			<div id = "opisanie_center">
                             <br/>
                             <p class="description">Описание:</p>
-                            <p class="description_2">
-                    <?php 
-			if(!$description[short_description]){
-                            echo "Описание товара отсутствует.";	
-                        }else{
-                            echo $description[short_description];
-                            ?>
-                               <br/>
-                               <a href='index.php?act=view_descr&amp;artikul=<?php echo $attributes[artikul];?>' target='_blank' style="font-family: Arial;font-size: 12px;color: #990033;" onmouseover="this.style.color='#878787'" onmouseout="this.style.color='#990033'" > &nbsp;Подробно...</a>
-                                <?php 
-                        }
-                         ?>
-                            </p>
+                            <p class="description_2">Описание товара отсутствует.</p>
                         </div>
                         
                 <div id = "ingr_title"><p id="your_mind">Информация к размышлению:</p></div>

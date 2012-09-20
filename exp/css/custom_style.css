@@ -531,6 +531,7 @@ p.sum_vsego{
 .center_side {  
         float: left;
         width: 318px;
+        padding-top: 24px;
 /*        height: 520px;*/
 }
 #name_center {
@@ -602,7 +603,7 @@ p.sum_vsego{
         color: #330000;
         float: left;
         width: 272px;
-        height: 29px;
+        height: 49px;
 }
 #otlozit {
         font: 22px Arial;
