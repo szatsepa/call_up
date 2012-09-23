@@ -51,12 +51,6 @@ $storefront = quote_smart($attributes[stid]);
 
 $secret_key = $secret_key;
 
-$query = "SELECT Count(id) FROM customer WHERE cod = $key"; 
-
-$count = mysql_query($query) or die ($query);
-
-$is_log = mysql_fetch_row($count);
-
 $log = 0;
 
 if($log == 0){
@@ -81,7 +75,7 @@ if(strlen($secret_key)<12)$secret_key .= rand (0, 9);
 
 
     
-    $query = "SELECT Count(id) FROM customer WHERE registration_ip = $ip";
+    $query = "SELECT Count(id) FROM customer WHERE registration_ip = '$ip'";
     
     $count_ip = mysql_query($query) or die ($qyery);
     
