@@ -64,5 +64,6 @@ foreach ($zakaz as $dat) {
 </tbody>
 </table>
     
-    <p><a href="index.php?act=all_orders" class="help" style="text-decoration:underline;">Архив заказов</a>&nbsp;&nbsp;<a id="good_luck" class="help" style="text-decoration:underline;cursor: pointer" title="Заполнить билет случайным образом!">Good Luck</a></p>
+    <p><a href="index.php?act=all_orders" class="help" style="text-decoration:underline;">Архив заказов</a></p>
 </div>
+<!--&nbsp;&nbsp;<a id="good_luck" class="help" style="text-decoration:underline;cursor: pointer" title="Заполнить билет случайным образом!">Good Luck</a>-->

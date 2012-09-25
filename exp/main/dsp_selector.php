@@ -65,10 +65,10 @@ if (!isset ($_SESSION[user])) {
 ?>
 
  <div class="selector13">
-    <table class="selector" border="0" width="400">  
+    <table class="selector" border="0" width="480">  
         <tbody>
             <tr>
-                <td width="160">
+                <td width="200">
                     <form action="index.php?act=authentication" method="post">
                         Ключ:
                         <input id="pwd" type="password" required name="code" size="14" value="" style='font-size:8pt;'/>

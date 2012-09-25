@@ -19,7 +19,7 @@ $query = "SELECT p.id,
             FROM arch_goods AS a,
                  pricelist AS p,
                  goods_pic AS gp  
-           WHERE a.zakaz = 22 AND 
+           WHERE a.zakaz = $order AND 
                  a.artikul = p.str_code1 AND 
                  p.str_barcode = gp.barcode AND 
                  gp.pictype = 1";

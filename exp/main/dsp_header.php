@@ -17,7 +17,6 @@ header('Content-Type: text/html; charset=utf-8');
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="./css/custom_style.css" type="text/css" media="screen, projection" />
         <script type="text/javascript" src="./js/jquery-1.8b1.js"></script>
-        <script type="text/javascript" src="./js/psw_validation.js"></script>
         <script type="text/javascript" src="./js/my_function.js"></script>
         <script type="text/javascript" src="./js/my_request.js"></script>
         <script type="text/javascript" src="./js/<?php echo $attributes[act];?>.js"></script>
@@ -62,12 +61,10 @@ include 'dsp_selector.php';
             
                 <div class = "head">
                     <div class="head_logo">
-                        <form action="index.php?act=look" method="post">
-                             <input type="hidden" name="stid" value="<?php echo $attributes[stid];?>"/>
-                             <input type="hidden" name="cod" value="<?php echo $attributes[cod];?>"/>
-                             <input type="image" src="../images/storefront/logo_<?php echo $attributes[stid];?>.jpg" title="На главную" alt="На главную"/>
+                        
+                             <input type="image" id="good_luck" src="../images/storefront/logo_<?php echo $attributes[stid];?>.jpg" title="Счастливый случай!"/>
                     
-                        </form> 
+                         
                     </div>
                     <div class="head_frame">
                         
@@ -87,7 +84,7 @@ include 'dsp_selector.php';
         </div> 
         <div id = "tel"><p align="center"></p></div>
         <div id = "oplata">
-            <a id="yor_account" target="_blank">Ваш счет</a>
+<!--            <a id="yor_account" target="_blank">Ваш счет</a>-->
         </div>
                 
                 <?php
