@@ -41,19 +41,21 @@ if(strlen($secret_key)<12)$secret_key .= rand (0, 9);
 
 
     
-$query = "SELECT Count(id) FROM customer WHERE registration_ip = '$ip'";
-
-$count_ip = mysql_query($query);
-
-$is_ip = mysql_fetch_row($count_ip);
-
-$isip = $is_ip[0];
+//$query = "SELECT Count(id) FROM customer WHERE registration_ip = '$ip'";
+//
+//$count_ip = mysql_query($query);
+//
+//$is_ip = mysql_fetch_row($count_ip);
+//
+//$isip = $is_ip[0];
 
 $out = array('ip'=>NULL);
 
-if($isip != 0){
-    $out['ip']=1;
-}
+$isip = 0;
+
+//if($isip != 0){
+//    $out['ip']=1;
+//}
     
 if($isip == 0){
     

@@ -16,7 +16,11 @@ $(document).ready(function(){
     
     var senja = '';
     
+    var page = 1;
+    
     $("#kurs > td").css('width','504px'); 
+//    $(".a_pager").css({'color':'#666'});
+//    $(".a_pager:hover").css('color','#ccc');
         
     readWallet(uid);
     
@@ -34,6 +38,12 @@ $(document).ready(function(){
                 $("#senja").text(senja);
                 $(".b_wallet").css('visibility','visible');
             }
+        });
+        
+        $(".a_pager").live('click',function(){ 
+            var id=this.id;
+            page = $("#"+id).text();
+            buildWallet((page*12));
         });
     
     $(".h_wallet").mousedown(function(){
@@ -56,23 +66,53 @@ $(document).ready(function(){
             data:{uid:uid},
             success:function(data){
                 wallet = data['wallet'];
-                $.each(data['wallet'],function(){
-                    if(this['action']==1){
-                        receipt += Number(this['count']);
-                        $("#table_wallet > tbody").append('<tr><td>'+this['time']+'</td><td>'+this['count']+'</td><td>'+this['doc']+" №"+this['num_doc']+'</td><td></td><td></td><td></td></tr>');
-                    }else{
-                        outlay += Number(this['count']);
-                        $("#table_wallet > tbody").append('<tr><td></td><td></td><td></td><td>'+this['time']+'</td><td>'+this['count']+'</td><td>'+this['doc']+" №"+this['num_doc']+'</td></tr>');
-                    }
-                });
-                $("#account").text('      '+receipt+" чисел");
-                $("#ballans").text('  '+(receipt-outlay).toFixed(2)+" чисел");
+                buildWallet(0);
             },
             error:function(data){
                 console.log(data['responseText']);
             }
             
         });
+    }
+    function buildWallet(pos){  
+        
+        $("#table_wallet > tbody").empty();
+//        $(".a_pager").remove();
+        var ps = pos;
+        var len = wallet.length;
+        var pages = Math.floor(len/12);
+        
+        if(len > 12 && pos == 0){
+                    for(var i = 0;i<(pages);i++){
+                        $("#p_pager").append('<a class="a_pager" id="p_'+(i+1)+'">&nbsp;'+(i+1)+'&nbsp;</a>');
+                    }
+                    $("#p_pager").append('&nbsp;&nbsp;&nbsp;Страница&nbsp;'+page);
+                }
+        
+        for(var j = pos;j<(pos+12);j++){
+            
+            if(pos == 0){
+                if(wallet[j]['action']==1){
+                        receipt += Number(wallet[j]['count']);
+                    }else{
+                        outlay += Number(wallet[j]['count']);
+                        
+                    }
+                    $("#account").text('      '+receipt+" чисел");
+                    $("#ballans").text('  '+(receipt-outlay).toFixed(2)+" чисел");
+                } 
+                if(wallet[j]==undefined){ 
+                    return;
+                }
+                
+                
+                if(wallet[j]['action']==1){
+                        $("#table_wallet > tbody").append('<tr><td>'+(j+1)+'</td><td>'+wallet[j]['time']+'</td><td>'+wallet[j]['count']+'</td><td>'+wallet[j]['doc']+" №"+wallet[j]['num_doc']+'</td><td></td><td></td><td></td></tr>');
+                    }else{
+                        $("#table_wallet > tbody").append('<tr><td>'+(j+1)+'</td><td></td><td></td><td></td><td>'+wallet[j]['time']+'</td><td>'+wallet[j]['count']+'</td><td>'+wallet[j]['doc']+" №"+wallet[j]['num_doc']+'</td></tr>');
+                    }                 
+                }   
+                return false;
     }
     
 });

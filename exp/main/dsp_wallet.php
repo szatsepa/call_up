@@ -46,18 +46,15 @@
         <table id="table_wallet" border="1">
             <thead style="font-size: 18px;font-weight: bold;text-align: center;">
                 <tr  bgcolor="#eeeeee">
-                    <td colspan="3" style="color: green;">
+                    <td colspan="4" style="color: green;">
                         Приход
                     </td>
                     <td colspan="3" style="color: red;">
                         Расход
                     </td>
                 </tr>
-                
-            </thead>
-            <tbody>
                 <tr style="font-size: 16px;font-weight: normal;background-color: #ccc">
-                    <td>
+                    <td colspan="2">
                       Дата - время  
                     </td>
                     <td>
@@ -76,9 +73,19 @@
                         Номер заказа
                     </td>
                 </tr>
+            </thead>
+            <tbody>
+                
 
             </tbody>
         </table>
     </div>
+    <div class="pager">
+
+    <div class="pager_1">
+        <p class="pager_2" id="p_pager" align="center" >
+            
+        </p>
+    </div>>
     
 </div>

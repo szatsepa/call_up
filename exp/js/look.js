@@ -85,6 +85,7 @@
                 dataType:'json',
                 data:{uid:uid,pid:pid,idc:idc},
                 success:function(data){
+//                    console.log(data);
                     if(data['ok']){
                        sortingCart(data['cart']);  
                     }
@@ -100,7 +101,7 @@
            var num = 0;
            var simbl = '';
            var weight = ''; 
-           
+//          console.log(cart); 
            $.each(cart, function(){
                
                simbl = this['simbl'];
@@ -179,7 +180,8 @@
                changeBtn((num-1));
            });
            
-            $.each(eval(ltr.toUpperCase()+"_array"), function(){   
+            $.each(eval(ltr.toUpperCase()+"_array"), function(){ 
+//                console.log(ltr.toUpperCase()+"_array => "+this);
                 var num = this;
                 num = Number(num.substr(1,2));
 

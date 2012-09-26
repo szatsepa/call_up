@@ -58,8 +58,6 @@ reset($tmpf);
 
 $n = 0;
 
-//$out['query'] = $tmpf;
-
 foreach ($tmpf as $key => $value) {
     $out['artikles'][$key] = $value;
     $n++;

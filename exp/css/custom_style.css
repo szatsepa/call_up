@@ -6,6 +6,7 @@
 body {
     position: relative;
         font: 12px/18px Arial, Tahoma, Verdana, sans-serif;
+        color: black;
         width: 100%;
         margin: 0;
         padding: 0;
@@ -1575,6 +1576,7 @@ input.artartikul_t{
     height: 33px;
 }
 a.a_pager{
+    cursor: pointer; 
     font-size: 16px;
     color:#990033;
 }
