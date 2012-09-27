@@ -11,10 +11,10 @@ $row = mysql_fetch_assoc($qry_archzakaz);
     <p class="arh_z">Статус заказа:</p>
     <p class="arh_o"><?php
     if($row["status"] == 1) echo "рассматривается поставщиком";
-    if($row["status"] == 2) echo "подтвержден поставщиком";
+    if($row["status"] == 2) echo "pассмотрен поставщиком";
     if($row["status"] == 3) echo "отменен";
-    if($row["status"] == 4) echo "демо-заказ";
-    if($row["status"] == 5) echo "отгружен поставщиком";
+    if($row["status"] == 4) echo "проигрыш";
+    if($row["status"] == 5) echo "выигрыш";
     if($row["status"] == 6) echo "выполнен";
    
     

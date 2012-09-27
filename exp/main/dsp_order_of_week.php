@@ -24,9 +24,9 @@ while ($row = mysql_fetch_assoc($qry_zakazweek)) {
         $dsp    = "&amp;dsp=decline";
     }
     if($row["status"] == 3) $status = "<span class='edit4'>Отменен</span>";
-    if($row["status"] == 4) $status = "<span class='edit2'>Демо</span>";
+    if($row["status"] == 4) $status = "<span class='edit2'>Проигрыш</span>";
     if($row["status"] == 5) {
-        $status = "<span class='edit3'>Отгружен</span>";
+        $status = "<span class='edit3'>Выигрыш</span>";
         $dsp    = "&amp;dsp=fin";
     }
     if($row["status"] == 6) $status = "<span class='edit5'>Выполнен</span>"; 

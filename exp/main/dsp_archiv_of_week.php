@@ -30,6 +30,21 @@ foreach ($old_order_array as $row) {
     
     $dsp = '';
     
+    if($row["status"] == 1) {
+        $status = "<span class='edit2'>Новый</span>";
+        $dsp    = "&amp;dsp=decline";
+    }
+    if($row["status"] == 2) {
+        $status = "<span class='edit'>Рассмотрен</span>";
+        $dsp    = "&amp;dsp=decline";
+    }
+    if($row["status"] == 3) $status = "<span class='edit4'>Отменен</span>";
+    if($row["status"] == 4) $status = "<span class='edit2'>Проигрыш</span>";
+    if($row["status"] == 5) {
+        $status = "<span class='edit3'>Выигрыш</span>";
+        $dsp    = "&amp;dsp=fin";
+    }
+    
    if($row["status"] == 6) $status = "<span class='edit5'>Выполнен</span>";
     
     $dat = $zakaz[$row["weekday"]]."<p style='margin-left:2px;margin-top:5px;margin-bottom:10px;margin-right:3px;'><a href='index.php?act=view_arch_order&stid=".$attributes[stid]."&id=".$row["id"]."'>N".$row["c_number"]."<br />".$row["zakaz_date"]."<br />".$row["price_name"]."</a><br />".$status."</p>";
