@@ -86,6 +86,6 @@
         <p class="pager_2" id="p_pager" align="center" >
             
         </p>
-    </div>>
+    </div>
     
 </div>

@@ -54,8 +54,12 @@ input {
    position: relative;
    float: left;
    width: 154px;
-       height: 120px;
+   height: 120px;
+   background-color: inherit;
 }
+/*.head_logo:hover{
+   background-color: #eee; 
+}*/
 .head_frame{
     position: relative;
     float: right;
@@ -1582,4 +1586,10 @@ a.a_pager{
 }
 a.a_pager:hover{
     color: #878787; 
+}
+#good_luck{
+    border: none;
+}
+#good_luck:hover{
+    border: 2px solid #eee;
 }

@@ -61,10 +61,7 @@ include 'dsp_selector.php';
             
                 <div class = "head">
                     <div class="head_logo">
-                        
-                             <input type="image" id="good_luck" src="../images/storefront/logo_<?php echo $attributes[stid];?>.jpg" title="Счастливый случай!"/>
-                    
-                         
+                        <img id="good_luck" src="../images/storefront/logo_<?php echo $attributes[stid];?>.jpg" title=""/>
                     </div>
                     <div class="head_frame">
                         
@@ -84,7 +81,6 @@ include 'dsp_selector.php';
         </div> 
         <div id = "tel"><p align="center"></p></div>
         <div id = "oplata">
-<!--            <a id="yor_account" target="_blank">Ваш счет</a>-->
         </div>
                 
                 <?php

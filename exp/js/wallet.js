@@ -12,15 +12,13 @@ $(document).ready(function(){
     
     var wallet = new Array();
     
-    var receipt = 0;var  outlay = 0;
+    var receipt = 0;var  outlay = 0; 
     
     var senja = '';
     
-    var page = 1;
+    var page = 0;
     
     $("#kurs > td").css('width','504px'); 
-//    $(".a_pager").css({'color':'#666'});
-//    $(".a_pager:hover").css('color','#ccc');
         
     readWallet(uid);
     
@@ -43,7 +41,8 @@ $(document).ready(function(){
         $(".a_pager").live('click',function(){ 
             var id=this.id;
             page = $("#"+id).text();
-            buildWallet((page*12));
+            page = Number(page)-1;
+            buildWallet((page));
         });
     
     $(".h_wallet").mousedown(function(){
@@ -74,22 +73,15 @@ $(document).ready(function(){
             
         });
     }
-    function buildWallet(pos){  
+    function buildWallet(page){   
         
         $("#table_wallet > tbody").empty();
-//        $(".a_pager").remove();
-        var ps = pos;
-        var len = wallet.length;
-        var pages = Math.floor(len/12);
         
-        if(len > 12 && pos == 0){
-                    for(var i = 0;i<(pages);i++){
-                        $("#p_pager").append('<a class="a_pager" id="p_'+(i+1)+'">&nbsp;'+(i+1)+'&nbsp;</a>');
-                    }
-                    $("#p_pager").append('&nbsp;&nbsp;&nbsp;Страница&nbsp;'+page);
-                }
+        var rows = 36;
+        var pos = rows*page;
+        pager(rows);
         
-        for(var j = pos;j<(pos+12);j++){
+        for(var j = pos;j<(pos+rows);j++){
             
             if(pos == 0){
                 if(wallet[j]['action']==1){
@@ -113,6 +105,21 @@ $(document).ready(function(){
                     }                 
                 }   
                 return false;
+    }
+    
+    function pager(rows){
+        
+        $("#p_pager").empty();
+        
+        var len = wallet.length;
+        var pages = Math.ceil(len/rows);
+        
+        if(len > rows){
+                    for(var i = 0;i<(pages);i++){
+                        $("#p_pager").append('<a class="a_pager" id="p_'+(i+1)+'">&nbsp;'+(i+1)+'&nbsp;</a>');
+                    }
+                    $("#p_pager").append('<a style="color: black">&nbsp;&nbsp;&nbsp;Страница&nbsp;'+(page+1)+'</a>');
+                }
     }
     
 });

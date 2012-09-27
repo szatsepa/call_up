@@ -4,9 +4,9 @@
  */
 $(document).ready(function(){
     
-    var customer = $("#uid").val();
+    var customer = $("#uid").val();//ай ди клиента
         
-    var prid = $("#pid").val();
+    var prid = $("#pid").val();//ИД прайслиста
     
         var desk = new Array();
 
@@ -122,15 +122,25 @@ $(document).ready(function(){
             
     }
     
-        $("#good_luck").mousedown(function(){
+    if(customer == undefined || !customer){
+        $("#good_luck").css('cursor','default');   
+        $("#good_luck").attr('title', ''); 
+    }else{
+        $("#good_luck").attr('title', 'Счастливый случай!');
+        $("#good_luck").css('cursor','pointer');
+    }
+    
+    $("#good_luck").mousedown(function(){
         var ct = $("#cart_info").text(); 
-        if(!ct){
-            goodLuck(prid);
-        }else{
-            if(confirm("Корзина не пуста, если продолжить даные будут заменены!")){
+        if(customer && customer != undefined){ 
+            if(!ct){
                 goodLuck(prid);
+            }else{
+                if(confirm("Корзина не пуста, если продолжить даные будут заменены!")){
+                    goodLuck(prid);
+                }
             }
-        }      
+        }    
     });
     
             
