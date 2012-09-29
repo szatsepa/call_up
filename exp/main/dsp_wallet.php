@@ -42,6 +42,15 @@
         </tbody>
     </table>
     </div>
+        <div class="pager" id="d_pager">
+
+    <div class="pager_1">
+        <p class="pager_2" id="p_page">
+            
+        </p>
+    </div>
+    
+</div>
     <div class="t_wallet">
         <table id="table_wallet" border="1">
             <thead style="font-size: 18px;font-weight: bold;text-align: center;">

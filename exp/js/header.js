@@ -137,9 +137,11 @@ $(document).ready(function(){
                 goodLuck(prid);
             }else{
                 if(confirm("Корзина не пуста, если продолжить даные будут заменены!")){
-                    goodLuck(prid);
+                    goodLuck(prid); 
                 }
             }
+        }else{
+            document.location.href ="index.php?act=regs"; 
         }    
     });
     

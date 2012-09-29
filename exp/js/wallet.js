@@ -109,16 +109,15 @@ $(document).ready(function(){
     
     function pager(rows){
         
-        $("#p_pager").empty();
+        $("#p_pager, #p_page").empty();
         
-        var len = wallet.length;
         var pages = Math.ceil(len/rows);
         
-        if(len > rows){
+        if(wallet.length > rows){
                     for(var i = 0;i<(pages);i++){
                         $("#p_pager").append('<a class="a_pager" id="p_'+(i+1)+'">&nbsp;'+(i+1)+'&nbsp;</a>');
                     }
-                    $("#p_pager").append('<a style="color: black">&nbsp;&nbsp;&nbsp;Страница&nbsp;'+(page+1)+'</a>');
+                    $("#p_page").append('<a style="color: black">&nbsp;&nbsp;&nbsp;Страница&nbsp;'+(page+1)+'</a>');
                 }
     }
     
