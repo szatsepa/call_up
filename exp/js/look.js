@@ -10,6 +10,8 @@
 		return; 
 	}
         
+//        $("div").css('outline','1px solid grey');
+        
         var input_array = new Array(); 
         
         var num_array = new Array();
@@ -78,14 +80,14 @@
            }
               
        });
-       function checkCart(uid,pid){ 
+       
+       function checkCart(uid,pid){  
             $.ajax({ 
                 url:'./query/check_cart.php',    
                 type:'post',
                 dataType:'json',
                 data:{uid:uid,pid:pid,idc:idc},
                 success:function(data){
-//                    console.log(data);
                     if(data['ok']){
                        sortingCart(data['cart']);  
                     }

@@ -1,7 +1,6 @@
 /* 
- * 30/5/2012
+ * created by arcady.1254@gmail.com 22/2/2012
  */
-				
 /* Создание нового объекта XMLHttpRequest для общения с Web-сервером */
 function getHTTPRequestObject() {
   var xmlHttpRequest;
@@ -31,3 +30,18 @@ function getHTTPRequestObject() {
 }
  
 var httpRequester = getHTTPRequestObject(); /* Когда страница загрузилась, создаем xml http объект */
+
+function go_Artikul(artikul,price_id, stid, cod){
+     
+//      var str_out = '';
+      var out = '';
+      
+    if(!cod){
+        out = "index.php?act=item_description&artikul="+artikul+"&price_id="+price_id+"&stid="+stid;
+    }else{
+        out = "index.php?act=item_description&artikul="+artikul+"&price_id="+price_id+"&stid="+stid+"&cod="+cod;
+    }
+    
+    document.location.href = out; 
+}
+

@@ -75,18 +75,20 @@ class Artikul extends Price{
     var $volume;
     var $barcod;
     var $price_id;
+    var $rating;
     
     function Artikul(){
         
     }
     
-    function setArtikul($img, $name, $art, $price, $vol,$price_id){
+    function setArtikul($img, $name, $art, $price, $vol,$price_id,$rating){
         $this->image = $img;
         $this->name = $name;
         $this->artikul = $art;
         $this->price = $price;
         $this->volume = $vol;
-        $this->price_id = $price_id;       
+        $this->price_id = $price_id; 
+        $this->rating = $rating;
     }
 }
 class Name_artikul{

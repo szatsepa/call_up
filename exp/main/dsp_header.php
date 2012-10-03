@@ -17,8 +17,7 @@ header('Content-Type: text/html; charset=utf-8');
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="./css/custom_style.css" type="text/css" media="screen, projection" />
         <script type="text/javascript" src="./js/jquery-1.8b1.js"></script>
-        <script type="text/javascript" src="./js/my_function.js"></script>
-        <script type="text/javascript" src="./js/my_request.js"></script>
+        <script type="text/javascript" src="./js/js_function.js"></script>
         <script type="text/javascript" src="./js/<?php echo $attributes[act];?>.js"></script>
         <script type="text/javascript" src="./js/header.js"></script>
  </head>
