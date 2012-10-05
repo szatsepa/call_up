@@ -187,8 +187,8 @@ if (($_FILES['userfile_t']['type'] == 'image/jpeg' or  $_FILES['userfile_b']['ty
             $i = 0;
             while ($name = $zip->getNameIndex($i)) {
                 
-                                $pos_end = strlen($name);
-				$i_name     = substr ($name, 7,$pos_end);
+//                                $pos_end = strlen($name);
+				$i_name     = substr ($name, 7,-4);
                                 $i_name = quote_smart($i_name);
 //                                $str .= $i_name."; ";
 				
@@ -199,18 +199,22 @@ if (($_FILES['userfile_t']['type'] == 'image/jpeg' or  $_FILES['userfile_b']['ty
 				$qry_delpic = mysql_query($query) or die($query);
 				
 				// Запоминаем инфу о картинке
-				$query2 = "INSERT INTO goods_pic 
-									   (barcode, 
-									    pictype, 
-										extention)
-								 VALUES ($i_name,
-								 		1,
-										'jpg')";
+                                if($i_name){
+                                        $query2 = "INSERT INTO goods_pic 
+                                                                (barcode, 
+                                                                pictype, 
+                                                                extention)
+                                                        VALUES ($i_name,
+                                                                1,
+                                                                'jpg')";
+
+                                        $qry_addpic = mysql_query($query2) or die($query2);
+
+                                        $newname  = mysql_insert_id();
+                                        $newname .= ".jpg";
+                                
+                                }
 				
-				$qry_addpic = mysql_query($query2) or die($query2);
-				
-				$newname  = mysql_insert_id();
-				$newname .= ".jpg";
 				
 				
 				$zip->renameName($name,$newname);
