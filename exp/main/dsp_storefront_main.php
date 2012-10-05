@@ -120,9 +120,9 @@ for($i=0;$i<9;$i++){
                             <div class = "img_vtrn" id="im_<?php echo $ind;?>">
                                     <input class='my_button' id='<?php echo $ind;?>' name ="<?php echo $artikul_i;?>" type="image" src="main/act_prewiew.php?src=http://call-up.ru/images/goods/<?php echo $image;?>&amp;width=60&amp;height=60" disabled/>
                             </div>
-                        <div class="price_rating" style="position: absolute;width: 90px;height: 32px;top:80px;text-align: center;">
+                        <div class="price_rating" style="position: absolute;width: 90px;height: 32px;top:80px;text-align: center;font-weight: bold;">
                             <p><?php echo $price;?> ч.</p>
-                            <p style="color: gold;font-size: 16px">
+                            <p style="color: red;font-size: 20px">
                                 <?php echo $rate;?>
                             </p>
                         </div>

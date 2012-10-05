@@ -908,25 +908,26 @@ input.footer_1{
 #cont_reg_left {
     position: relative;
         float: left;
-        width: 470px;
+        width: 1008px;
         height: 415px;
         font: 12px Arial;
         font-style: italic;
         color: #330000;
-        padding-left: 24px; 
+        padding-left: 24px;
+/*        outline: 1px solid green;*/
 }
-#cont_reg_right {
+/*#cont_reg_right {
     position: relative;
         float: right;
         width: 470px;
         height: 415px;
-}
+}*/
 #cont_reg_left_1 {
         float: left;
         width: 104px;
         height: 115px;
 }
-#cont_reg_left_spaser {
+/*#cont_reg_left_spaser {
      font: 22px Arial;
     color: #BB0D72;
     text-align: center;
@@ -943,7 +944,7 @@ input.footer_1{
         float: left;
         width: 100%;
         height: 215px;
-}
+}*/
 
 #cont_reg_left_btn 
 {
@@ -965,36 +966,48 @@ input.footer_1{
         margin-right: auto;
         margin-top: 322px;
 }
-#cont_reg_left_6{
+/*#cont_reg_left_6{
     position: relative;
         float: left;
         width: 255px;
         height: 120px;
-}
+}*/
 #cont_reg_left_66{
     position: relative;
         float: left;
-        width: 255px;
-        height: 80px;
+        width: 92%;
+        height: 110px;
+        padding-top: 4px;
+        padding-left: 6px;
 }
-#cont_reg_left_3 {
+/*#cont_reg_left_3 {
     position: relative;
         float: left;
         width: 115px;
         height: 30px;
         font-size: 14px;
-}
+}*/
 #cont_reg_left_4 {
     position: relative;
         float: left;
-        width: 355px;
-        height: 30px;
+        width: 92%;
+        height: 52px;
+        padding-top: 4px;
+        padding-left: 6px;
+}
+/*#cont_reg_left_44{
+    position: relative;
+    float: left;
+    left: 64px;
+    top: 210px;
+    width: 955px;
+    height: 53px;
 }
 #cont_reg_left_5 {
         float: left;
         width: 255px;
         height: 70px;
-}
+}*/
 
 .vstup_reg {
     font: 18px Arial;
@@ -1577,13 +1590,7 @@ div.t_wallet{
 input.artartikul_t{ 
     cursor: pointer; 
 }
-#cont_reg_left_44{
-    position: absolute;
-    left: 64px;
-    top: 210px;
-    width: 480px;
-    height: 33px;
-}
+
 a.a_pager{
     cursor: pointer; 
     font-size: 16px;

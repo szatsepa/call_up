@@ -10,7 +10,7 @@
              $("#ajax_result").load('index.php',{'act':'sendpsw',
                                        'id':$(this).attr("id")}); 
             
-            //alert ($(this).attr("id"));
+//            alert ($(this).attr("id"));
             
             return false;
         }); 

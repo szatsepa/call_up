@@ -49,31 +49,41 @@ include 'dsp_ticket.php';
         <br/>
         <br/>
         <br/>
-        <div id = "cont_reg_left_3">Пожелания заказчика: </div>
-        <div id = "cont_reg_left_66"><textarea rows="3" id="desire" cols="29" name="desire"></textarea></div>
-        <div id = "cont_reg_left_3">Метка: </div>
-        <div id = "cont_reg_left_4"><input id="marck" type="text" name="mark" size="30"/></div>
-        <div id = "cont_reg_left_3">Отсрочить до: </div>
+        <div id = "cont_reg_left_4">
+            <p><strong>Окончание регистрации на ближайший тираж: <?php echo $str_next_draw;?> г. 24:00</strong></p>
+        </div>
+<!--        <div id = "cont_reg_left_3">Пожелания заказчика: </div>-->
+        <div id = "cont_reg_left_66">
+            <p>Пожелания заказчика: </p>
+            <textarea rows="3" id="desire" cols="29" name="desire"></textarea>
+        </div>
+<!--        <div id = "cont_reg_left_3">Метка: </div>-->
+        <div id = "cont_reg_left_4">
+            <p>Метка: </p>
+            <input id="marck" type="text" name="mark" size="30"/>
+        </div>
+<!--        <div id = "cont_reg_left_3">Отсрочить до: </div>-->
         <div id = "cont_reg_left_4" >
-            <select class="date_select" id="dey" name="day" class="step1"></select>
+            <p>Отсрочить до: </p>
+            <select class="date_select" id="dey" name="day"></select>
             -
-            <select class="date_select" id="month" name="mon" class="step1"></select>
+            <select class="date_select" id="month" name="mon"></select>
             -
-            <select class="date_select" id="year" name="year" class="step1"></select>
+            <select class="date_select" id="year" name="year"></select>
 
             &nbsp;дд-мм-гггг&nbsp;&nbsp;
-            <select class="date_select" id="hh" name="hh" class="step1"></select>
+            <select class="date_select" id="hh" name="hh"></select>
             -
-            <select class="date_select" id="mm" name="mm" class="step1"></select>
+            <select class="date_select" id="mm" name="mm"></select>
             &nbsp;чч-мм
             <br /> 
         </div>
-            <div id = "cont_reg_left_44">
-                <div style="position: relative;float: left;">Тираж:&nbsp;&nbsp;&nbsp;</div>
-                <div style="position: relative;float: left;">
-                        <p id="d_draw"><label><input type="checkbox" id="select_draw" value="1"> 
-                        <span>&nbsp;&nbsp;&nbsp;Выбрать любой тираж.&nbsp;&nbsp;&nbsp;</span></label></p>
-                </div>
-            </div>
+        <div id = "cont_reg_left_4">
+            <p>Тираж:&nbsp;&nbsp;&nbsp;</p>
+            
+                    <p id="d_draw"><label><input type="checkbox" id="select_draw" value="1"> 
+                    <span>&nbsp;&nbsp;&nbsp;Выбрать любой тираж.&nbsp;&nbsp;&nbsp;</span></label></p>
+<!--            <div style="position: relative;float: left;"></div>-->
+        </div>
     </div>
 </div>

@@ -58,6 +58,22 @@ if(isset ($_SESSION[auth]) && $_SESSION[auth] > 0){
 
 $storefront = new Storefront();
 
+//$days_name = array('вс','пн','вт','ср','чт','пт','сб');
+$month_name = array('','января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря');
+
+$dayofweek = date("w");
+
+if($dayofweek > 3){
+        $delta = (6 - $dayofweek)+4;
+        
+    }else{
+        $delta = 3-$dayofweek;
+    }
+
+$next_draw  = mktime(0, 0, 0, date("m")  , date("d")+$delta, date("Y"));
+$month = intval(date(m,$next_draw));
+$str_next_draw = date("d $month_name[$month] Y",$next_draw); 
+
 switch ($attributes[act]) {  
     
     case 'look': 

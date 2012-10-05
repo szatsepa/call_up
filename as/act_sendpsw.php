@@ -7,7 +7,7 @@ if (isset($attributes[id])) {
 	
 	$user_check = query_user($id);
 	
-	$to  = $user["email"].",7905415@mail.ru";
+	$to  = $user_check["email"].",7905415@mail.ru";
 
 	// subject
 	$subject = 'Напоминание для пользователя '.$user_check["surname"]." ".$user_check["name"];
@@ -22,7 +22,7 @@ if (isset($attributes[id])) {
 	
 	
 	// Additional headers
-	$headers .= 'From: noreply@shop.animals-food.ru \r\n';
+	$headers .= 'From: noreply@call-up.ru \r\n'; 
 	
 	//if ($environment == "pro") {
 	
@@ -36,5 +36,5 @@ if (isset($attributes[id])) {
 }
 ?>
 <script type="text/javascript">
-	alert ('Пароль пользователя <?php echo $user_check["surname"];?> выслан на Ваш e-mail.');
+	alert ('Пароль пользователя <?php echo $user_check["surname"];?> выслан на e-mail пользователя.');
 </script>
