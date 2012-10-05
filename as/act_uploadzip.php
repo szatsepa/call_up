@@ -183,12 +183,14 @@ if (($_FILES['userfile_t']['type'] == 'image/jpeg' or  $_FILES['userfile_b']['ty
         
         if ($zip->open($uploadfile_zip) === TRUE) {
             
-		
+//		$str = '';
             $i = 0;
             while ($name = $zip->getNameIndex($i)) {
                 
-				$i_name     = substr ($name, -4);
-                $i_name = quote_smart($i_name);
+                                $pos_end = strlen($name);
+				$i_name     = substr ($name, 7,$pos_end);
+                                $i_name = quote_smart($i_name);
+//                                $str .= $i_name."; ";
 				
 				// Удалим информацию о старой картинке
 				$query = "DELETE FROM goods_pic 
@@ -215,7 +217,8 @@ if (($_FILES['userfile_t']['type'] == 'image/jpeg' or  $_FILES['userfile_b']['ty
 				
                 ++$i;
             }
-            $zip->close();  
+            $zip->close();
+//            echo $str;
         }
         
 		

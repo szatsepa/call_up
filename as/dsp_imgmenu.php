@@ -6,19 +6,20 @@
     <tr>
         <td align="left" valign="top"><strong>Загрузка изображений товаров</strong><br><br></td>
     </tr>
-    <form enctype="multipart/form-data" action="index.php?act=upload_zipimg" method="post">
+    <td>
+        <form enctype="multipart/form-data" action="index.php?act=upload_zipimg" method="post">
 	
-	<td><input type="hidden" name="MAX_FILE_SIZE" value="8192000"/>   
-		<input type="hidden" name="filetype" value="zip"/>
- 	
-        <input name="userfile" type="file" size="20"/>
-        <input type="submit" value="Загрузить zip-архив" id="knob"/>
-    </form>
-    <br /><br />
-<small>Максимальный объем загружаемого файла не должен превышать 8 Мегабайт (zip-архив).<br />
-	   Загружаются основные изображения товара. Формат изображений - JPG.
-</small>
-</td>
+            <input type="hidden" name="MAX_FILE_SIZE" value="8192000"/>   
+                    <input type="hidden" name="filetype" value="zip"/>
+
+            <input name="userfile" type="file"/>
+            <input type="submit" value="Загрузить zip-архив" id="knob"/>
+        </form>
+        <br /><br />
+        <small>Максимальный объем загружаемого файла не должен превышать 8 Мегабайт (zip-архив).<br />
+                Загружаются основные изображения товара. Формат изображений - JPG.
+        </small>
+    </td>
 	
 
 </table>
