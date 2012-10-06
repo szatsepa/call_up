@@ -9,8 +9,6 @@ $(document).ready(function () {
 		setTimeout( arguments.callee, 100 );
 		return; 
 	}
-        
-//        customersAll(); 
 
     messageAll();
     
@@ -18,25 +16,18 @@ $(document).ready(function () {
     
     var pid = $("#pid").val();
     
-//    var desk = new Array();
-//
-//    for(var i =0;i<10;i++){
-//        var rows = new Array();
-//        for(var n = 0;n<10;n++){
-//            rows.push({dis:true,weight:(n+1)});
-//        }
-//        desk.push(rows);
-//    } 
-//    
-//    var A_array = new Array();
-//        
-//    var B_array = new Array();
-//
-//    var C_array = new Array();
-//
-//    var check_B = new Array(0,0,0,0,0,0,0,0,0);
-//
-//    var check_C = new Array(0,0,0,0,0,0,0,0,0);
+    $.ajax({
+        url:'./query/video_link.php',
+        type:'post',
+        dataType:'json',
+        success:function(data){
+            $("#msg > tbody").append('<tr><td><strong>Последний розыгрыш можно посмотреть по ссылке:</strong></td></tr>');
+            $("#msg > tbody").append('<tr><td><a href="'+data['vl']+'" target="_blank">'+data['vl']+'</a></td></tr>');
+        },
+        error:function(data){
+            console.log(data['responseText']);
+        }
+    });
 
     
      $('tr').click(function(){

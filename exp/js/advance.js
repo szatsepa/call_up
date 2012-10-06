@@ -33,17 +33,17 @@ $(document).ready(function(){
     
     var str_date = dt.getDate()+"-"+month_array[dt.getMonth()]+"-"+dt.getFullYear();
     
-    $.ajax({
-        url:'./query/video_link.php',
-        type:'post',
-        dataType:'json',
-        success:function(data){
-            $("#vi_l").html('<a href="'+data['vl']+'">'+data['vl']+'</a>');
-        },
-        error:function(data){
-            console.log(data['responseText']);
-        }
-    });
+//    $.ajax({
+//        url:'./query/video_link.php',
+//        type:'post',
+//        dataType:'json',
+//        success:function(data){
+//            $("#vi_l").html('<a href="'+data['vl']+'">'+data['vl']+'</a>');
+//        },
+//        error:function(data){
+//            console.log(data['responseText']);
+//        }
+//    });
     
     readOrder(window.order,pid); 
     
