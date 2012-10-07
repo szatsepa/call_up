@@ -151,8 +151,6 @@ switch ($attributes[act]) {
     case "advance":
         
         $title = "Оформление заказа";
-//        include 'main/qry_archzakaz.php';
-//        include 'main/qry_cart_for_ofice.php';
         include 'main/dsp_header.php';
         include 'main/dsp_advance_order.php'; 
         include 'main/dsp_footer.php';
@@ -246,6 +244,13 @@ switch ($attributes[act]) {
         include ("main/dsp_arch_order.php");
         include 'main/dsp_footer.php';
     
+    break;
+
+case 'all_draws':
+    $title = "Все розыгрыши";
+    include 'main/dsp_header.php';
+    include 'main/dsp_draws.php'; 
+    include 'main/dsp_footer.php';
     break;
 
 case "create_similar":

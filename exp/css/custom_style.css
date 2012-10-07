@@ -1380,9 +1380,13 @@ td.kab {
 	border-right:1px dashed #a7a7a7;
 }
 a.help  {
-	 text-decoration: none;
+	 text-decoration: underline;
+         cursor: pointer;
 	 color:#BB0D72;
 	 font-size: 14pt;
+}
+a.help:hover{
+    color: #ccc;
 }
 select.common {
     max-width: 140px;
@@ -1604,4 +1608,11 @@ a.a_pager:hover{
 }
 #good_luck:hover{
     border: 2px solid #eee;
+}
+a.see_one,a.see_tickets,#back_t{
+    cursor: pointer;
+    text-decoration: underline;
+}
+a.see_one:hover,a.see_tickets:hover,#back_t:hover{
+    color: #990033;
 }

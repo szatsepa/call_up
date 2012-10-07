@@ -50,7 +50,7 @@ include 'dsp_ticket.php';
         <br/>
         <br/>
         <div id = "cont_reg_left_4">
-            <p><strong>Окончание регистрации на актуальный розыгрыш: <?php echo $str_next_draw;?> г. 24:00</strong></p>
+            <p><strong>Окончание регистрации на актуальный розыгрыш: <?php echo $str_next_draw;?> г. 23:59</strong></p>
             <p id="vi_l"></p>
         </div>
 <!--        <div id = "cont_reg_left_3">Пожелания заказчика: </div>-->

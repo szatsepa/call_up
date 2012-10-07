@@ -111,6 +111,8 @@ $(document).ready(function(){
         
         $("#p_pager, #p_page").empty();
         
+         var len = wallet.length;
+        
         var pages = Math.ceil(len/rows);
         
         if(wallet.length > rows){

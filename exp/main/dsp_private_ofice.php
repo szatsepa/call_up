@@ -49,7 +49,7 @@ foreach ($fav_array as $value) {
                 <?php  ++$rowcount;  
       }
        
-	//  // Ограничим вывод любимых групп
+	//  // Ограничим вывод любимых групп   
     if ($rowcount == 7) break;
     
 }
@@ -60,56 +60,14 @@ if ($rowcount == 1){
 ?>                </tbody>       
             </table>
         </td>  
-        
-<!--    <td valign="top" class="kab"><table border="0" cellpadding="5" cellspacing="5" width="230">
-                <tr>
-                	<td><div class="kab">Любимые товары</div></td>
-                </tr>
-                <?php 
-                $rowcount = 1;
 
-                foreach ($goods_arr as $row) { 
-                    if ($row["num_amount"] == 999999999) {
-                        
-                        ?>
-                
-                  <tr>
-                      <td>
-                          <a href='index.php?act=item_description&amp;artikul=<?php echo $row[str_code1];?>&amp;stid=<?php echo $st_id;?>'><?php echo $row["str_name"];?></a>
-                      </td>
-                  </tr>
-               
- <?php
-              } else {
-                  
-                  ?>
-                  <tr>
-                      <td>
-                          <a href='index.php?act=item_description&amp;artikul=<?php echo $row[str_code1];?>&amp;stid=<?php echo $st_id;?>'><?php echo $row["str_name"];?></a>&nbsp;<small><?php echo $row["num_amount"];?></small>
-                      </td>
-                  </tr>
-                  <?php
-                           
-                        }
-                    ++$rowcount;
-                    
-                    // Ограничим вывод любимых товаров
-                    if ($rowcount == 7) break;
-                }
-//                
-                if ($rowcount == 1){
-                echo "<tr><td class='smallmessage'>Нет любимых товаров</td></tr>";
-                }
-$rowcount = 1;
-            ?>
-                    
-            </table></td>-->
     
 	<td valign="top"><table border="0" cellpadding="5" cellspacing="5" width="230">
                 <tr>
                 	<td><div class="kab">Метки</div></td>
                 </tr>
                 <?php 
+            $rowcount = 1;
             foreach ($all_order_array as $row){ 
 				 
 					 if ($row["tags"] != '') {
