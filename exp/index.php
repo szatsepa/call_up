@@ -33,7 +33,7 @@ if(!isset($_SESSION)){
 
 //print_r($_SESSION); 
 //print_r($attributes);
-//echo "<br>";
+//echo "<br>";  
 
 $_SESSION[res] = "call-up.ru/exp";
 $attributes[stid]=2;

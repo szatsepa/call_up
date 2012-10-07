@@ -11,10 +11,11 @@ $cart_list_arr = array();
                 b.id,
 		gp.id AS imagin,
                 a.pricelist_id AS price_id
-         FROM pricelist a, cart b, price p,companies c, goods_pic gp
+         FROM pricelist a, cart b, price p,companies c, goods_pic gp,storefront_data std
          WHERE a.str_code1 = b.artikul
            AND a.pricelist_id = b.price_id
            AND a.pricelist_id = p.id
+AND std.price_id =p.id AND std.storefront_id = $_SESSION[st]
     AND p.company_id=c.id
            AND gp.barcode = a.str_barcode
     AND gp.pictype = 1
