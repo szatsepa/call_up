@@ -33,17 +33,6 @@ $(document).ready(function(){
     
     var str_date = dt.getDate()+"-"+month_array[dt.getMonth()]+"-"+dt.getFullYear();
     
-//    $.ajax({
-//        url:'./query/video_link.php',
-//        type:'post',
-//        dataType:'json',
-//        success:function(data){
-//            $("#vi_l").html('<a href="'+data['vl']+'">'+data['vl']+'</a>');
-//        },
-//        error:function(data){
-//            console.log(data['responseText']);
-//        }
-//    });
     
     readOrder(window.order,pid); 
     
@@ -309,10 +298,12 @@ $(document).ready(function(){
                 type:'post',
                 dataType:'json',
                 data:{pid:pid,order:order},
-                success:function(data){   
+                success:function(data){
+//                    console.log(data['gl']);
                     $("#n_ticket").text('Билет № '+data['ok']+' от '+str_date+'г.')
                     if(data['ok']){
-                       sortingCart(data['artikuls']); 
+                       sortingCart(data['artikuls']);
+                       sortingForGoodLuck(data['gl']);
                        buildTicket();
                     }
                 },
@@ -488,4 +479,74 @@ $(document).ready(function(){
            $("#year, #month, #dey").empty();
            buildSelect(mdt,mn);
        }
+       
+           
+//    sche odyn GoodLuck
+
+        var AA_array = new Array(4);
+
+        var BB_array = new Array(9);
+
+        var CC_array = new Array(14);
+        
+        var desk = new Array();//виртуальная доска
+
+        var check_A = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0};
+        
+        var check_B = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0};
+         
+        var check_C = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0};
+           
+       
+       function sortingForGoodLuck(cart){
+           
+            var r,c,num;
+            var point;
+            var str = '';
+            var arr = new Array('AA_array','BB_array','CC_array');
+           
+            for(var i =0;i<10;i++){
+                var rows = new Array();//ряд виртуальной доски
+                for(var n = 0;n<10;n++){
+                    rows.push({dis:true,weight:(n+1)});//ячейка вирт доски
+                }
+                desk.push(rows);
+            } 
+                       
+           var simbl = '';  
+           
+            for(i = 0;i < 3;i++){
+                var num = 0;
+                $.each(cart[i], function(){
+               
+                    simbl = this.substr(0,1).toUpperCase();
+                    if(this.length == 3){
+                        eval(simbl+simbl+"_array")[num] = {val:this.substr(1),simbl:this.substr(0,1)};
+                    }
+
+                    num++;
+
+                });
+                
+            }
+            var str = '';
+           var n = 0; 
+           for(i = 0;i < 3;i++){
+               $.each(eval(arr[i]),function(){
+                    var r;
+                    var c;
+
+                    if(this['val'] != undefined){
+                            r = Math.floor(Number(this['val'])/10);
+                            c = Math.floor(Number(this['val'])-(r*10))-1; 
+                            desk[r][c]['dis'] = false;
+                            desk[r][c]['simbl'] = this['simbl'];
+                            str += this['val']+" "+r+' '+c+' '+desk[r][c]['dis']+' '+desk[r][c]['weight']+' '+desk[r][c]['simbl']+'| ';
+                        }   
+                        n++;
+                }); 
+           } 
+           return false;
+       }
+
 });

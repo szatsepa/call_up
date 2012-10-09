@@ -65,7 +65,16 @@ foreach ($tmp as $value) {
     $n++; 
 }
 
-$out = array('ok'=>$row[num_order],'artikuls'=>$art_arr, 'A'=>$row[field_A],'B'=>$row[field_B],'C'=>$row[field_C]);
+$ar_A = explode(':', $row[field_A]);
+//array_pop($ar_A);
+$ar_B = explode(':', $row[field_B]);
+//array_pop($ar_B);
+$ar_C = explode(':', $row[field_C]);
+//array_pop($ar_C);
+
+$for_good_luck = array('0'=>$ar_A,'1'=>$ar_B,'2'=>$ar_C);
+
+$out = array('ok'=>$row[num_order],'artikuls'=>$art_arr, 'A'=>$row[field_A],'B'=>$row[field_B],'C'=>$row[field_C],'gl'=>$for_good_luck);
 
 echo json_encode($out);
 
