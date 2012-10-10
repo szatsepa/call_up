@@ -33,7 +33,7 @@ if (min==0 && sec==0)
   {
     clearInterval(timerid); /* останавливаем таймер */ 
 
-document.location.reload();
+//document.location.reload();
 
    
   }
@@ -144,7 +144,7 @@ timerid = setInterval(timer,1000); /* запускаем таймер */
                                 
 					// Выводим только подтвержденные и отгруженные заказы
 					if ($row["status"] == 2 or $row["status"] == 5) {
-						echo "<p style='color: ".$color.";'>N".$row["c_number"]."&nbsp;".$row["zakaz_date"];
+						echo "<p style='color: ".$color.";'>N".$row["id"]."&nbsp;&nbsp;&nbsp;".$row["zakaz_date"];
 						
 						// Отсроченный заказ?
 						if ($row["exe_date"] != '') {

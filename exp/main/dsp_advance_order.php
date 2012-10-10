@@ -30,6 +30,9 @@ if ($title != '') echo "<br/><h2>".$title."</h2><br/>";
             <td class="btp">
                 <input  id="orderonosets" type='button' value='Оформить'  class="advansed" title=""/>
             </td>
+            <td class="btp">
+                <input  id="luck" type='button' value='Good Luck'  class="advansed" title=""/>
+            </td>
         </tr>
     </tbody>
 </table>

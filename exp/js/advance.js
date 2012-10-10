@@ -90,7 +90,7 @@ $(document).ready(function(){
         $(".artikul_t").attr('title','Изменить?').css('cursor','pointer');
         edit = !edit;
         if(edit){
-          $("#edit_order").css('background-color','green'); 
+          $("#edit_order").css('background-color','#ecfcec'); 
           
         }else{
           $("#edit_order").css('background-color','#ffcc00');
@@ -291,6 +291,12 @@ $(document).ready(function(){
             });
         }
     });
+    
+     $("#luck").mousedown(function(){
+            goodLuck(pid);
+    });
+        
+        
     function readOrder(order,pid){ 
                    
             $.ajax({ 
@@ -483,6 +489,8 @@ $(document).ready(function(){
            
 //    sche odyn GoodLuck
 
+       
+
         var AA_array = new Array(4);
 
         var BB_array = new Array(9);
@@ -514,7 +522,7 @@ $(document).ready(function(){
             } 
                        
            var simbl = '';  
-           
+//заполняем масивы уже выбранными числами
             for(i = 0;i < 3;i++){
                 var num = 0;
                 $.each(cart[i], function(){
@@ -522,15 +530,18 @@ $(document).ready(function(){
                     simbl = this.substr(0,1).toUpperCase();
                     if(this.length == 3){
                         eval(simbl+simbl+"_array")[num] = {val:this.substr(1),simbl:this.substr(0,1)};
-                    }
+//заполняем массив контроля правил игры
+                        checkNum(this.substr(1),simbl);
+                }
 
                     num++;
 
                 });
                 
             }
-            var str = '';
-           var n = 0; 
+//            var str = '';
+//To Do а нужен ли блок см ниже?
+           n = 0; 
            for(i = 0;i < 3;i++){
                $.each(eval(arr[i]),function(){
                     var r;
@@ -540,13 +551,61 @@ $(document).ready(function(){
                             r = Math.floor(Number(this['val'])/10);
                             c = Math.floor(Number(this['val'])-(r*10))-1; 
                             desk[r][c]['dis'] = false;
-                            desk[r][c]['simbl'] = this['simbl'];
-                            str += this['val']+" "+r+' '+c+' '+desk[r][c]['dis']+' '+desk[r][c]['weight']+' '+desk[r][c]['simbl']+'| ';
+//                            desk[r][c]['simbl'] = this['simbl'];
+//                            str += this['val']+" "+r+' '+c+' '+desk[r][c]['dis']+' '+desk[r][c]['weight']+' '+desk[r][c]['simbl']+'| ';
                         }   
                         n++;
                 }); 
            } 
+//           console.log(check_A);
+//           console.log(check_B);
+//           console.log(check_C);
            return false;
+       }
+       
+       function checkNum(num,simbl){
+                 if ((num > 0) && (num < 11)){eval('check_'+simbl)['1']++;}
+            else if ((num > 10) && (num < 21)){eval('check_'+simbl)['2']++;}
+            else if ((num > 20) && (num < 31)){eval('check_'+simbl)['3']++;}			
+            else if ((num > 30) && (num < 41)){eval('check_'+simbl)['4']++;}
+            else if ((num > 40) && (num < 51)){eval('check_'+simbl)['5']++;}	
+            else if ((num > 50) && (num < 61)){eval('check_'+simbl)['6']++;}			
+            else if ((num > 60) && (num < 71)){eval('check_'+simbl)['7']++;}
+            else if ((num > 70) && (num < 81)){eval('check_'+simbl)['8']++;}
+            else if ((num > 80) && (num < 91)){eval('check_'+simbl)['9']++;}
+       }
+       
+       function goodLuck(pid){
+           
+        var r,c,num;
+        var point;
+//        var str = '';
+        var n = 0;
+        
+        $.each(AA_array,function(){ 
+                if(this['val'] != undefined){
+                    r = Math.floor(Number(this['val'])/10);
+
+                    $.each(desk[r],function(){
+                        this['dis']=false;
+                    });
+                    
+                }
+          });
+          
+          while(n<5){
+                r = Math.floor(Math.random()*9);
+                c = Math.floor(Math.random()*9);
+                num = 10*r+c+1;
+                point = {weight:num,row:r,cell:c};
+                if(desk[r][c]['dis']){
+                    A_array[n] = point;
+                    $.each(desk[r],function(){
+                        this['dis']=false;
+                    });
+                    n++;
+                }
+          }
        }
 
 });

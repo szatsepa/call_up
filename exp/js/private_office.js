@@ -1,4 +1,4 @@
-/* 
+///* 
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -43,7 +43,7 @@ $(document).ready(function () {
            
     $(".to_cart").mousedown(function(){
         var id = this.id;
-        console.log(id);
+//        console.log(id);
         document.location.href = "?act=advance&ticket="+id;
     });
 
