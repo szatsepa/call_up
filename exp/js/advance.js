@@ -11,6 +11,8 @@ $(document).ready(function(){
     
     var pid = $("#pid").val();
     
+    var num_order;
+    
     var position;
     
     var month_array = new Array('01','02','03','04','05','06','07','08','09','10','11','12');
@@ -292,9 +294,7 @@ $(document).ready(function(){
         }
     });
     
-     $("#luck").mousedown(function(){
-            goodLuck(pid);
-    });
+
         
         
     function readOrder(order,pid){ 
@@ -306,7 +306,8 @@ $(document).ready(function(){
                 data:{pid:pid,order:order},
                 success:function(data){
 //                    console.log(data['gl']);
-                    $("#n_ticket").text('Билет № '+data['ok']+' от '+str_date+'г.')
+                    $("#n_ticket").text('Билет № '+data['ok']+' от '+str_date+'г.');
+                    num_order = data['ok'];
                     if(data['ok']){
                        sortingCart(data['artikuls']);
                        sortingForGoodLuck(data['gl']);
@@ -367,7 +368,6 @@ $(document).ready(function(){
                
                $("#edit_order").css('background-color','#ecfcec');
                 
-//               $("#orderonosets").remove();
             }else{
                 $("#orderonosets").removeAttr('title'); 
                 order_ready = true;
@@ -383,10 +383,6 @@ $(document).ready(function(){
             $.each(C_array,function(){
                 S_array.push(this['artikul'].substr(1, 2));
             });
-            
-//            if(S_array.length == 30){
-//                
-//            }
 
            return false 
        }
@@ -488,31 +484,54 @@ $(document).ready(function(){
        
            
 //    sche odyn GoodLuck
+//обработка нажатия кнопки GoodLuck
+        $("#luck").mousedown(function(){
+            
+                var array = new Array("A","B","C");
+                var obj = {};
 
+                $.each(array, function(){
+// добавить номера в каждое поле по очереди после чего пометить клеточки
+                   obj[this] = freeCells(this);
+//                    
+                });
+                
+                setFreeCell(obj);
+                
+//создать билет и отправить в базу в соотв таблицу
+//                createTicket();
+    //            return false;
+        });
        
+//массивы полей под сервис счастливый случай
+        var AA_array = new Array(false,false,false,false,false);
 
-        var AA_array = new Array(4);
+        var BB_array = new Array(false,false,false,false,false,false,false,false,false,false);
 
-        var BB_array = new Array(9);
-
-        var CC_array = new Array(14);
+        var CC_array = new Array(false,false,false,false,false,false,false,false,false,false,false,false,false,false,false);
         
         var desk = new Array();//виртуальная доска
-
+//массивы контроля правил игры
         var check_A = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0};
         
         var check_B = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0};
          
         var check_C = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0};
+        
+        function setFreeCell(obj){
+//     бум пытаться заполнить свободные ячейки в полях БИЛЕТА       
+            $.each(obj,function(){
+                var simbl = this['simbl'];
+                
+                $.each(this['pos'],function(){
+                        getRandomPoint(simbl);
+                });
+            });
+        }
            
        
        function sortingForGoodLuck(cart){
-           
-            var r,c,num;
-            var point;
-            var str = '';
-            var arr = new Array('AA_array','BB_array','CC_array');
-           
+          
             for(var i =0;i<10;i++){
                 var rows = new Array();//ряд виртуальной доски
                 for(var n = 0;n<10;n++){
@@ -522,48 +541,30 @@ $(document).ready(function(){
             } 
                        
            var simbl = '';  
-//заполняем масивы уже выбранными числами
+            
             for(i = 0;i < 3;i++){
                 var num = 0;
                 $.each(cart[i], function(){
-               
-                    simbl = this.substr(0,1).toUpperCase();
+                    simbl = this.substr(0,1).toUpperCase(); 
                     if(this.length == 3){
+                        //заполняем масивы уже выбранными числами из билета при этом имеем в виду что длинна слова равна три (пустое место отличается количеством символов в слове)
                         eval(simbl+simbl+"_array")[num] = {val:this.substr(1),simbl:this.substr(0,1)};
-//заполняем массив контроля правил игры
+                        //заполняем массив контроля правил игры
                         checkNum(this.substr(1),simbl);
-                }
-
-                    num++;
-
+                     }
+                num++;
                 });
-                
             }
-//            var str = '';
-//To Do а нужен ли блок см ниже?
-           n = 0; 
-           for(i = 0;i < 3;i++){
-               $.each(eval(arr[i]),function(){
-                    var r;
-                    var c;
+//            использованые ячейки(КЛЕТОЧКИ) доски метим - false
+            setDesk();
+//            подготовка закончена
 
-                    if(this['val'] != undefined){
-                            r = Math.floor(Number(this['val'])/10);
-                            c = Math.floor(Number(this['val'])-(r*10))-1; 
-                            desk[r][c]['dis'] = false;
-//                            desk[r][c]['simbl'] = this['simbl'];
-//                            str += this['val']+" "+r+' '+c+' '+desk[r][c]['dis']+' '+desk[r][c]['weight']+' '+desk[r][c]['simbl']+'| ';
-                        }   
-                        n++;
-                }); 
-           } 
-//           console.log(check_A);
-//           console.log(check_B);
-//           console.log(check_C);
-           return false;
+            return false;
        }
        
        function checkNum(num,simbl){
+//           метим в соотв массиве допустимое количество символов из одной строки
+// или ряда от первого до последнего
                  if ((num > 0) && (num < 11)){eval('check_'+simbl)['1']++;}
             else if ((num > 10) && (num < 21)){eval('check_'+simbl)['2']++;}
             else if ((num > 20) && (num < 31)){eval('check_'+simbl)['3']++;}			
@@ -573,39 +574,139 @@ $(document).ready(function(){
             else if ((num > 60) && (num < 71)){eval('check_'+simbl)['7']++;}
             else if ((num > 70) && (num < 81)){eval('check_'+simbl)['8']++;}
             else if ((num > 80) && (num < 91)){eval('check_'+simbl)['9']++;}
+            
+            return false;
        }
        
-       function goodLuck(pid){
-           
-        var r,c,num;
-        var point;
-//        var str = '';
-        var n = 0;
-        
-        $.each(AA_array,function(){ 
-                if(this['val'] != undefined){
-                    r = Math.floor(Number(this['val'])/10);
+       function clearChecks(){
+           for(var i = 1;i < 10;i++){
+               check_A[i] = check_B[i] = check_C[i] = 0;
+           }
+       }
+       
 
-                    $.each(desk[r],function(){
-                        this['dis']=false;
-                    });
-                    
+       function freeCells(simbl){
+           
+            var obj = {"A":5,"B":10,"C":15};//количество чисел в поле
+            var pos = new Array();//позициi ячейek в соотв поле
+         
+             for(var i = 0;i<obj[simbl];i++){ 
+                 if(!eval(simbl+simbl+"_array")[i]){    
+                    pos.push(i);
                 }
-          });
-          
-          while(n<5){
+                
+             }
+         return {simbl:simbl,pos:pos};   
+       }
+      
+      function getRandomPoint(simbl){
+            var r,c,num;//строка столбец число в этой ячейке
+            var point;//объект вставляемый в массив
+            var mona = false;
+            
+//            while(!mona){}
+                
                 r = Math.floor(Math.random()*9);
                 c = Math.floor(Math.random()*9);
                 num = 10*r+c+1;
-                point = {weight:num,row:r,cell:c};
-                if(desk[r][c]['dis']){
-                    A_array[n] = point;
-                    $.each(desk[r],function(){
-                        this['dis']=false;
-                    });
-                    n++;
+                point = {val:num,simbl:simbl.toLowerCase()};
+                
+                mona = checkNewCell(simbl,num);
+            
+            //ToDo отут остановился сделать так: добавиь в сивол_массив на нужн поз - очистка чек_Ы 
+            // снова заполним чек_символ и все
+            
+      }
+      
+      function checkNewCell(simbl,num){
+          //проверяем соотв число правилам или нет
+          var count_rows = {"A":1,"B":2,"C":3};
+          var out = false;
+          var r = Math.floor(num/10);
+          var c = Math.floor(num-(r*10))-1;
+          out = (desk[r][c]['dis'] && eval('check_'+simbl) < count_rows[simbl]);
+         
+
+          console.log(out);
+          return out;
+      }
+      
+      function createTicket(){
+          var str_A = '';
+          $.each(AA_array, function(){
+              str_A += ": "+this['simbl']+this['val'];
+          });
+          str_A = str_A.substr(2);
+          
+          var str_B = '';
+          $.each(BB_array, function(){
+              str_B += ": "+this['simbl']+this['val'];
+          });
+          str_B = str_B.substr(2);
+          
+          var str_C = '';
+          $.each(CC_array, function(){
+              str_C += ": "+this['simbl']+this['val'];
+          });
+          str_C = str_C.substr(2);
+          
+//          console.log(str_A+"\n"+str_B+"\n"+str_C); 
+      }
+      
+      function checkArray(simbl){
+            var out = {flag:true,pos:0};  
+            var n = 0;
+            var l = eval(simbl+simbl+"_array").length;
+            var r,c,num;
+            var point;
+//            
+             for(var i = 0;i<l;i++){ 
+                 if(!eval(simbl+simbl+"_array")[i]){
+
+                    r = Math.floor(Math.random()*9);
+                    c = Math.floor(Math.random()*9);
+                    num = 10*r+c+1;
+                    point = {val:num,simbl:simbl.toLowerCase()};
+                    if(desk[r][c]['dis'] && eval("check_"+simbl)[r+1] < 3){ 
+                        eval(simbl+simbl+"_array")[n] = point;
+                        checkNum(num,simbl);
+                        
+                    }else{
+                        $.each(desk[r],function(){
+                            this['dis']=false;
+                        });
+                    } 
+
                 }
+                 n++;
+             }          
+                
+          } 
+          
+      function setDesk(){
+               var arr = new Array('AA_array','BB_array','CC_array');
+               var n = 0;
+               $.each(desk,function(){
+                    $.each(this,function(){
+                        this['dis']=true;
+                    });
+                });
+                   
+           for(var i = 0;i < 3;i++){
+               $.each(eval(arr[i]),function(){
+                    var r;
+                    var c;
+
+                    if(this['val'] != undefined){
+                            r = Math.floor(Number(this['val'])/10);
+                            c = Math.floor(Number(this['val'])-(r*10))-1; 
+                            desk[r][c]['dis'] = false;
+                        }   
+                        n++;
+                }); 
+           }
+           return false; 
           }
-       }
+      
 
 });
