@@ -49,6 +49,7 @@ include 'dsp_ticket.php';
 <br />
 <div class = "cont_reg">
     <div id = "cont_reg_left">
+        <input type="hidden" id="ticket_no" value="<?php echo $attributes[ticket];?>"/>
         <br/>
         <br/>
         <br/>

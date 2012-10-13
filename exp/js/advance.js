@@ -11,6 +11,8 @@ $(document).ready(function(){
     
     var pid = $("#pid").val();
     
+    var tid = $("#ticket_no").val();
+    
     var num_order;
     
     var position;
@@ -29,9 +31,9 @@ $(document).ready(function(){
     
     var edit = false;
     
-//    var olld_simbl = '';
-    
     var order_ready = false; 
+    
+    var gl_flag = false;
     
     var str_date = dt.getDate()+"-"+month_array[dt.getMonth()]+"-"+dt.getFullYear();
     
@@ -72,7 +74,7 @@ $(document).ready(function(){
                 dataType:'json',
                 data:out,
                 success:function(data){
-                    console.log(data['query']);
+//                    console.log(data['query']);
                     if(data['ok'] == 30){ 
                         document.location.href = "?act=private_office";
                     }
@@ -203,20 +205,20 @@ $(document).ready(function(){
                
             var out = {position:position,pid:pid,field:str,new_artikul:this.id,old_artikul:old_simbl,order:window.order};
 
-            $.ajax({
-                     url:'./action/edit_ticket.php', 
-                     type:'post',
-                     dataType:'json', 
-                     data:out,
-                     success:function(){
-                         document.location.href = "?act=advance&ticket="+window.order+"&pid="+pid;
-                         
-                     },
-                     error:function(data){
-                         
-                         document.write(data['responseText']);
-                     } 
-                 });
+        $.ajax({
+            url:'./action/edit_ticket.php', 
+            type:'post',
+            dataType:'json', 
+            data:out,
+            success:function(){
+                document.location.href = "?act=advance&ticket="+window.order+"&pid="+pid;
+
+            },
+            error:function(data){
+
+                document.write(data['responseText']);
+            } 
+        });
     });
     
     $(".artikul_t").live('click',function(){
@@ -305,7 +307,6 @@ $(document).ready(function(){
                 dataType:'json',
                 data:{pid:pid,order:order},
                 success:function(data){
-//                    console.log(data['gl']);
                     $("#n_ticket").text('Билет № '+data['ok']+' от '+str_date+'г.');
                     num_order = data['ok'];
                     if(data['ok']){
@@ -488,19 +489,14 @@ $(document).ready(function(){
         $("#luck").mousedown(function(){
             
                 var array = new Array("A","B","C");
-                var obj = {};
+                var obj = new Object();//массивчик из трех объектов а б и ц а тако же свободных позиций
 
                 $.each(array, function(){
 // добавить номера в каждое поле по очереди после чего пометить клеточки
                    obj[this] = freeCells(this);
-//                    
                 });
-                
                 setFreeCell(obj);
-                
-//создать билет и отправить в базу в соотв таблицу
-//                createTicket();
-    //            return false;
+            return false;
         });
        
 //массивы полей под сервис счастливый случай
@@ -510,36 +506,67 @@ $(document).ready(function(){
 
         var CC_array = new Array(false,false,false,false,false,false,false,false,false,false,false,false,false,false,false);
         
-        var desk = new Array();//виртуальная доска
-//массивы контроля правил игры
+        var desk = new Array(89);//виртуальная доска
+        //массивы контроля правил игры
         var check_A = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0};
         
         var check_B = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0};
          
         var check_C = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0};
         
-        function setFreeCell(obj){
-//     бум пытаться заполнить свободные ячейки в полях БИЛЕТА       
-            $.each(obj,function(){
-                var simbl = this['simbl'];
-                
-                $.each(this['pos'],function(){
-                        getRandomPoint(simbl);
-                });
-            });
-        }
-           
-       
-       function sortingForGoodLuck(cart){
-          
-            for(var i =0;i<10;i++){
-                var rows = new Array();//ряд виртуальной доски
-                for(var n = 0;n<10;n++){
-                    rows.push({dis:true,weight:(n+1)});//ячейка вирт доски
+        function setFreeCell(obj){//***
+            
+            var whot = new Object();
+            gl_flag = true;
+            var pos = obj["A"]['pos'][0];
+            var simbl = "A";
+            if(pos == undefined){
+               pos = obj["B"]['pos'][0];
+               simbl = "B";
+            }
+            if(pos == undefined){
+               pos = obj["C"]['pos'][0];
+               simbl = "C";
+            }
+            if(pos == undefined){
+               createTicket();
+            }else{ 
+                while(!whot['whot']){ 
+                    whot = getRandomPoint(simbl);
+
+                    if(whot['whot']){
+                        eval(simbl+simbl+"_array")[pos]=whot['point'];    
+                        checkNum(whot['point']['val'],simbl);
+                        obj[simbl] = freeCells(simbl);
+//                        console.log(eval('check_'+simbl));
+                        if(gl_flag){
+                            setNextCell(obj);
+                        }
+                    }
                 }
-                desk.push(rows);
+            }
+            
+            
+        }
+       
+       function setNextCell(obj){//***
+           setFreeCell(obj);
+       }
+       
+       function sortingForGoodLuck(cart){//****
+          
+            for(var i =1;i<10;i++){
+                //ряд виртуальной доски
+                var row = new Array();
+                for(var n = 1;n<11;n++){
+                    var cell = {dis:true};
+                    //ячейка вирт доски desk.push(cell);
+                    row.push(cell);
+                }
+                
+                desk.push(row);
             } 
-                       
+//            console.log(desk);           
            var simbl = '';  
             
             for(i = 0;i < 3;i++){
@@ -562,7 +589,7 @@ $(document).ready(function(){
             return false;
        }
        
-       function checkNum(num,simbl){
+       function checkNum(num,simbl){//***
 //           метим в соотв массиве допустимое количество символов из одной строки
 // или ряда от первого до последнего
                  if ((num > 0) && (num < 11)){eval('check_'+simbl)['1']++;}
@@ -577,136 +604,106 @@ $(document).ready(function(){
             
             return false;
        }
-       
-       function clearChecks(){
-           for(var i = 1;i < 10;i++){
-               check_A[i] = check_B[i] = check_C[i] = 0;
-           }
-       }
-       
-
-       function freeCells(simbl){
+ 
+       function freeCells(simbl){//***
            
-            var obj = {"A":5,"B":10,"C":15};//количество чисел в поле
-            var pos = new Array();//позициi ячейek в соотв поле
-         
-             for(var i = 0;i<obj[simbl];i++){ 
-                 if(!eval(simbl+simbl+"_array")[i]){    
-                    pos.push(i);
-                }
-                
-             }
-         return {simbl:simbl,pos:pos};   
-       }
-      
-      function getRandomPoint(simbl){
+        var obj = {"A":5,"B":10,"C":15};//количество чисел в поле
+        var pos = new Array();//позициi ячейek в соотв поле
+        var count=0;
+        for(var i = 0;i<obj[simbl];i++){ 
+            if(!eval(simbl+simbl+"_array")[i]){    
+            pos.push(i);
+        }
+        count++;
+        }
+        return {simbl:simbl,pos:pos};//возвращаем 
+     }
+            
+      function getRandomPoint(simbl){//***
             var r,c,num;//строка столбец число в этой ячейке
             var point;//объект вставляемый в массив
-            var mona = false;
-            
-//            while(!mona){}
+            var mona;
                 
-                r = Math.floor(Math.random()*9);
-                c = Math.floor(Math.random()*9);
-                num = 10*r+c+1;
-                point = {val:num,simbl:simbl.toLowerCase()};
-                
-                mona = checkNewCell(simbl,num);
+            r = Math.floor(Math.random()*9);
+            c = Math.floor(Math.random()*9);
+            num = 10*r+c+1;
+            point = {val:num,simbl:simbl.toLowerCase()};
+
+            mona = checkNewCell(simbl,num);
+                        
+            return {whot:mona,point:point}
             
-            //ToDo отут остановился сделать так: добавиь в сивол_массив на нужн поз - очистка чек_Ы 
-            // снова заполним чек_символ и все
-            
-      }
+      } 
       
-      function checkNewCell(simbl,num){
-          //проверяем соотв число правилам или нет
+      function checkNewCell(simbl,num){ //***
+          //проверяем соотв число правилам или нет      
           var count_rows = {"A":1,"B":2,"C":3};
           var out = false;
-          var r = Math.floor(num/10);
-          var c = Math.floor(num-(r*10))-1;
-          out = (desk[r][c]['dis'] && eval('check_'+simbl) < count_rows[simbl]);
-         
-
-          console.log(out);
+          var r = Math.ceil(num/10);
+          var cell = (num - 1);
+          out = (desk[cell] && eval('check_'+simbl)[r] < count_rows[simbl]);          
           return out;
       }
       
-      function createTicket(){
+      function createTicket(){//***
           var str_A = '';
           $.each(AA_array, function(){
-              str_A += ": "+this['simbl']+this['val'];
+              str_A += ":"+this['simbl']+this['val']; 
           });
-          str_A = str_A.substr(2);
+          str_A = str_A.substr(1);
           
           var str_B = '';
           $.each(BB_array, function(){
-              str_B += ": "+this['simbl']+this['val'];
+              str_B += ":"+this['simbl']+this['val'];
           });
-          str_B = str_B.substr(2);
+          str_B = str_B.substr(1);
           
           var str_C = '';
           $.each(CC_array, function(){
-              str_C += ": "+this['simbl']+this['val'];
+              str_C += ":"+this['simbl']+this['val'];
           });
-          str_C = str_C.substr(2);
+          str_C = str_C.substr(1);
           
-//          console.log(str_A+"\n"+str_B+"\n"+str_C); 
+          var out = {num_order:num_order,fA:str_A,fB:str_B,fC:str_C};
+          
+          $.ajax({
+              url:'./action/update_ticket.php',
+              type:'post',
+              dataType:'json',
+              data:out,
+              success:function(data){
+                  if(data['ok']>0){
+                      document.location.href = "index.php?act=advance&ticket="+tid+"&pid="+pid;
+                  }
+              },
+              error:function(data){
+                  console.log(data['responseText']);
+              }
+          }); 
+          return false;
       }
       
-      function checkArray(simbl){
-            var out = {flag:true,pos:0};  
-            var n = 0;
-            var l = eval(simbl+simbl+"_array").length;
-            var r,c,num;
-            var point;
-//            
-             for(var i = 0;i<l;i++){ 
-                 if(!eval(simbl+simbl+"_array")[i]){
-
-                    r = Math.floor(Math.random()*9);
-                    c = Math.floor(Math.random()*9);
-                    num = 10*r+c+1;
-                    point = {val:num,simbl:simbl.toLowerCase()};
-                    if(desk[r][c]['dis'] && eval("check_"+simbl)[r+1] < 3){ 
-                        eval(simbl+simbl+"_array")[n] = point;
-                        checkNum(num,simbl);
-                        
-                    }else{
-                        $.each(desk[r],function(){
-                            this['dis']=false;
-                        });
-                    } 
-
-                }
-                 n++;
-             }          
-                
-          } 
-          
-      function setDesk(){
+      function setDesk(){//***
                var arr = new Array('AA_array','BB_array','CC_array');
                var n = 0;
-               $.each(desk,function(){
-                    $.each(this,function(){
-                        this['dis']=true;
-                    });
-                });
+               
+           for(var i = 0;i < desk.length;i++){
+               desk[i]=true;
+           }
                    
-           for(var i = 0;i < 3;i++){
+           for(i = 0;i < 3;i++){
                $.each(eval(arr[i]),function(){
                     var r;
                     var c;
 
                     if(this['val'] != undefined){
-                            r = Math.floor(Number(this['val'])/10);
-                            c = Math.floor(Number(this['val'])-(r*10))-1; 
-                            desk[r][c]['dis'] = false;
+                            r = (this['val'])-1;
+                            desk[r] = false;
                         }   
                         n++;
                 }); 
            }
+
            return false; 
           }
-      
-
 });
