@@ -574,8 +574,9 @@ $(document).ready(function(){
                 $.each(cart[i], function(){
                     simbl = this.substr(0,1).toUpperCase(); 
                     if(this.length == 3){
+                        var val = Number(this.substr(1));
                         //заполняем масивы уже выбранными числами из билета при этом имеем в виду что длинна слова равна три (пустое место отличается количеством символов в слове)
-                        eval(simbl+simbl+"_array")[num] = {val:this.substr(1),simbl:this.substr(0,1)};
+                        eval(simbl+simbl+"_array")[num] = {val:val,simbl:this.substr(0,1)};
                         //заполняем массив контроля правил игры
                         checkNum(this.substr(1),simbl);
                      }
@@ -646,25 +647,55 @@ $(document).ready(function(){
       }
       
       function createTicket(){//***
-          var str_A = '';
-          $.each(AA_array, function(){
-              str_A += ":"+this['simbl']+this['val']; 
-          });
+          var simbl = '';
+          var val,val_1;
+          var str_A,str_B,str_C;
+          str_A=str_B=str_C='';
+
+            $.each(AA_array, function(){
+                simbl = this['simbl'];
+                val = this['val'];
+                val_1 = String(val);
+                if(val < 10){
+                    val_1 = "0"+String(val);
+                }
+
+                str_A += ":"+simbl+val_1; 
+            });
+          
+           $.each(BB_array, function(){
+                simbl = this['simbl'];
+                val = this['val'];
+                val_1 = String(val);
+                if(val < 10){
+                    val_1 = "0"+String(val);
+                }
+
+                str_B += ":"+simbl+val_1; 
+            });
+            $.each(CC_array, function(){
+                simbl = this['simbl'];
+                val = this['val'];
+                val_1 = String(val);
+                if(val < 10){
+                    val_1 = "0"+String(val);
+                }
+
+                str_C += ":"+simbl+val_1; 
+            });
+          
           str_A = str_A.substr(1);
-          
-          var str_B = '';
-          $.each(BB_array, function(){
-              str_B += ":"+this['simbl']+this['val'];
-          });
+
           str_B = str_B.substr(1);
-          
-          var str_C = '';
-          $.each(CC_array, function(){
-              str_C += ":"+this['simbl']+this['val'];
-          });
+ 
           str_C = str_C.substr(1);
           
           var out = {num_order:num_order,fA:str_A,fB:str_B,fC:str_C};
+          
+//          console.log(AA_array);
+//          console.log(BB_array);
+//          console.log(CC_array);
+//          console.log(out);
           
           $.ajax({
               url:'./action/update_ticket.php',
