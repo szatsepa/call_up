@@ -324,13 +324,13 @@ switch ($attributes[act]) {
 
 	// Витрина
 
-	case "strf":
-            include 'qry_storefront_info.php';
-    include 'qry_about_storefront.php';        
-    include 'qry_select_storefront.php';
-    include("qry_companies.php");
-    include("dsp_header.php");
-    include("dsp_storefront_menu.php");
+    case "strf":
+        include 'qry_storefront_info.php';
+        include 'qry_about_storefront.php';        
+        include 'qry_select_storefront.php';
+        include("qry_companies.php");
+        include("dsp_header.php");
+        include("dsp_storefront_menu.php");
 	break;
     
     case 'info':
