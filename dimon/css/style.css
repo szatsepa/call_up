@@ -1,0 +1,26 @@
+/* 
+    Document   : style
+    Created on : 08.11.2012, 18:13:27
+    Author     : serjoga
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+#d_wrapper{
+    position: relative;
+    width: 100%;
+    font: 1em Arial;
+}
+#d_login{
+    position: relative;
+    margin: 139px auto;
+    padding-top: 12px;
+    width: 230px;
+    height: 220px;
+}
+#d_in{
+    cursor: pointer;
+}
