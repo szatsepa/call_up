@@ -51,7 +51,7 @@ if(isset($_SESSION[auth]) && $_SESSION[auth]=='yes'){
                         dataType:'json',
                         data:out,
                         success:function(data){
-//                            console.log(data['uid']);
+                            console.log(data['uid']);
                             if(data['uid']){
                                alert("VASHOL!!!");
                                document.location.href = "index.php?act=main";

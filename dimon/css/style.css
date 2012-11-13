@@ -76,7 +76,7 @@ a:hover{
 div.left_block{
     position: relative;
     float: left;
-    width: 32%;
+    width: 39%;
     padding-top: 12px;
     padding-left: 24px;
 /*    outline: 1px solid green;*/
@@ -91,4 +91,9 @@ div.right_block{
     padding-left: 16px;
     margin-left: 8px;
 /*    outline: 1px solid grey;*/
+}
+#vpsw,#svpsw{
+    width: 4px;
+    background-color: red;
+    visibility: hidden;
 }

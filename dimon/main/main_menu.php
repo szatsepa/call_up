@@ -30,9 +30,6 @@
     </div>
     <div id="submenu">
       <ul id="s_m">
-<!--        <li class="ll" id="l1">Sub_one</li>
-        <li class="ll" id="l2">Sub_two</li>
-        <li class="ll" id="l3">Sub_tree</li>-->
       </ul>
     </div>
     

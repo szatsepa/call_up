@@ -14,7 +14,7 @@ $out = array('uid'=>NULL);
 
 $result = mysql_query("SELECT * FROM d_users WHERE login = '$login' AND password = '$password'");
 
-if($result){
+
     
     $row = mysql_fetch_assoc($result);
     
@@ -22,7 +22,7 @@ if($result){
     
     $out['uid'] = $row[id];
     
-}else{
+if(!$row){
     $result = mysql_query("SELECT id FROM d_admin WHERE login = '$login' AND password = '$password'");
 
     if($result){

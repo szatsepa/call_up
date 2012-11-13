@@ -14,10 +14,10 @@
         <input id="d_nick_name" type="text" value="" required placeholder="Введите логин"/>
         <br/>
         <br/>
-        <input id="d_pas" type="password" value="" required placeholder="Ваш пароль"/>
+        <input id="d_pas" type="password" value="" required placeholder="Ваш пароль"/><span id="vpsw">&nbsp;</span>
         <br/>
         <br/>
-        <input id="d_pas_sec" type="password" value="" required placeholder="Ваш пароль еще раз"/>
+        <input id="d_pas_sec" type="password" value="" required placeholder="Ваш пароль еще раз"/><span id="svpsw">&nbsp;</span>
         <br/>
         <br/>
         <p style="text-align: right;"><input id="d_in" type="button" value="Изменить"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
@@ -57,7 +57,32 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
-        
-        
+        $("#d_in").mousedown(function(){
+            
+        });
+        $("#d_ssave").mousedown(function(){
+            
+        });
+        $("#d_pas").change(function(){
+            var psw = $("#d_pas").val();
+            var str = '*';
+            
+            $("#vpsw").css('visibility', 'visible');
+            console.log(psw.length); 
+//            $.each(psw, function(){
+//                str += " ";
+//            });
+//            $("#d_pas").val(str);
+        });
+        function _save(url, out){
+            
+        }
+        function _pswValidation(psw,psw1){
+            
+        }
+        function checkMail(value){
+            var pattern = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            return ret = (pattern.test(value)) ? (1) : (0);
+        }
     });
 </script>
