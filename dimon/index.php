@@ -11,23 +11,26 @@ if(!isset($attributes) || !is_array($attributes)) {
 	$attributes = array_merge($_GET,$_POST,$_COOKIE); 
 }
 
-print_r($_SESSION);
+
 //echo "<br/>";
 include ("query/connect.php"); 
- 
+
+include 'main/header.php';
+print_r($_SESSION); 
 switch ($attributes[act]){
     case 'main':
-        include 'main/header.php';
+        
         include 'main/main_menu.php';
+        
         break;
     
     case 'privat':
-        include 'main/header.php';
+        
         include 'main/privat_ofice.php';
         break;
     
     case 'whot':
-        include 'main/header.php';
+        
         break;
     
     case 'where':
@@ -36,11 +39,11 @@ switch ($attributes[act]){
     
     default :
         
-        include 'main/header.php';
+        
         include 'main/main.php';
         
         break;
 }
-
+include 'main/footer.php';
 mysql_close();
 ?>
