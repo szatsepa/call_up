@@ -63,17 +63,47 @@
         $("#d_ssave").mousedown(function(){
             
         });
-        $("#d_pas").change(function(){
-            var psw = $("#d_pas").val();
-            var str = '*';
-            
-            $("#vpsw").css('visibility', 'visible');
-            console.log(psw.length); 
-//            $.each(psw, function(){
-//                str += " ";
-//            });
-//            $("#d_pas").val(str);
+        $("#d_pas").keydown(function(){
+//            var psw = $("#d_pas").val();
+            var str = '';
+            $.each($("#d_pas").val(), function(){
+                str += "*";
+            });
+            if(str.length > 0 && str.length < 6){
+              $("#vpsw").css('visibility', 'visible').css({'color':'red'});   
+            }else if(str.length > 5 && str.length < 9){
+                $("#vpsw").css({'background-color':'yellow','color':'yellow'}); 
+            }else if(str.length > 8){
+                $("#vpsw").css({'background-color':'greenyellow','color':'greenyellow'}); 
+            }
+            console.log($("#d_pas").val())
+            if(str.length < 24)$("#vpsw").text(str);
         });
+        $("#d_pas").change(function(){
+            alert("HOPPA");
+        });
+        $("#d_pas_sec").keydown(function(){
+            var psw = $("#d_pas_sec").val();
+            var count = psw.length;
+            var fpsw = $("#d_pas").val();
+            fpsw = fpsw.substr(0,count);
+            var str = '';
+            $.each(psw, function(){
+                str += "*";
+            });
+            console.log(psw+" => "+fpsw);
+            if(count > 0){
+                $("#svpsw").css('visibility', 'visible');
+            }
+            if(psw != fpsw){
+              $("#svpsw").css({'background-color':'red','color':'red'});   
+            }else{
+              $("#svpsw").css({'background-color':'greenyellow','color':'greenyellow'}); 
+            }
+            
+            if(str.length < 24)$("#svpsw").text(str);
+        });
+        
         function _save(url, out){
             
         }

@@ -94,6 +94,7 @@ div.right_block{
 }
 #vpsw,#svpsw{
     width: 4px;
+    height: 12px;
     background-color: red;
     visibility: hidden;
 }
