@@ -22,8 +22,8 @@ header('Content-Type: text/html; charset=utf-8');
 </head>
 <?php 
 // to do вынести модуль обработки ошибок отдельно
-if (isset($attributes[error])) {
-	switch ($attributes[error]) {
+if (isset($attributes['error'])) {
+	switch ($attributes['error']) {
 	    
 	    case "img_del_ok":
 		$javascript = "javascript:alert('Изображение удалено');";
@@ -52,7 +52,7 @@ if (isset($attributes[error])) {
         <input type="submit" value="&gt;&gt;" />
     </td>
 </form>
-<?php } else if(isset($user) && $user[role] == 6){?>
+<?php } else if(isset($user) && $user['role'] == 6){?>
 <td>
 <!--    <a href="index.php?act=companies" class="header2">Компании</a>
     <a href="index.php?act=users" class="header2">Пользователи</a>-->
@@ -74,7 +74,7 @@ if (isset($attributes[error])) {
         </b>
     </small>
 </td>
-<?php } else if(isset($user) && $user[role] == 1){?>
+<?php } else if(isset($user) && $user['role'] == 1){?>
 <td>
     <a href="index.php?act=companies" class="header2">Компании</a>
     <a href="index.php?act=users" class="header2">Пользователи</a>

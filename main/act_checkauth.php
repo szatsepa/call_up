@@ -1,20 +1,7 @@
 <?php
 // Проверка аутентификации
 
-//$authentication = "no";
-
-//session_cache_expire(5);
-session_start();
-
-
-// Временная заплатка для принудительной авторизации мобильных устройств
-/*if ($mobile == 'true'){
-    $authentication = "yes";
-    $attributes[auth] = 1;
-    $attributes[auth] = 19;
-}*/
-
-
+$authentication = "no";
 
 if (isset($_SESSION['auth']) and !isset($attributes[out])) {
 	

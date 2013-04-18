@@ -14,7 +14,7 @@ if(!isset($_SESSION)){
 //session_destroy();
 //
 //print_r($_SESSION);
-//echo "<br>";
+
 //print_r($attributes); 
 
 include("../main/qry_connect.php");
@@ -33,7 +33,7 @@ include("act_checkerror.php");
 switch ($attributes[act]) {
     
     case "authentication":
-    include("../main/qry_userauth.php");	
+        include("../main/qry_userauth.php");	
 	include("../main/act_authentication.php");	
 	break;
     
@@ -284,8 +284,8 @@ switch ($attributes[act]) {
         include 'qry_companies_advert.php';
         include 'qry_baners_st.php';
         include 'qry_select_storefront.php';
-    include("dsp_header.php");
-    include 'dsp_advertisement_st.php';  
+        include("dsp_header.php");
+        include 'dsp_advertisement_st.php';  
 	break;
     
     case 'ddcom':

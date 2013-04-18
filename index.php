@@ -1,6 +1,11 @@
 <?php
 // update 30.05.2011
 // Просто комменты
+if(!isset($_SESSION)){
+
+    session_start();
+}
+
 if(!isset($attributes) || !is_array($attributes)) {
 	$attributes = array();
 	$attributes = array_merge($_GET,$_POST,$_COOKIE); 
@@ -519,4 +524,6 @@ break;
 	break;
       
 	}
+        
+//        print_r($_SESSION);
 ?>
