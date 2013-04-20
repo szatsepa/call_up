@@ -1,12 +1,12 @@
 <?php
 $headers = "MIME-Version: 1.0\r\n";
-$headers .= "Content-type: text/html; charset={$_POST['db_carset']}";
+$headers .= "Content-type: text/html; charset=utf-8";
 
-mysql_connect($_POST['db_server'],$_POST['db_login'],$_POST['db_pwd']);
+mysql_connect($_POST['addr'],$_POST['login'],$_POST['password']);
 
 mysql_select_db($_POST['db_name']);
 //
-mysql_query ("SET NAMES {$_POST['db_charset']}");
+mysql_query ("SET NAMES {$_POST['charset']}");
 
 $out = mysql_errno();
 
@@ -16,43 +16,47 @@ $query = " SHOW TABLES FROM {$_POST['db_name']} WHERE Tables_in_{$_POST['db_name
 
 $result = mysql_query($query);
 
-$response = '';
+$response = '{"'.$_POST['db_name'].'":{';
 
 while ($row = mysql_fetch_row($result)){
     
     $num_rows = 0;
     
-    $response .= '{"'.$row[0].'": {"';
+    $response .= '"'.$row[0].'":[';
     
-     $us_query = "SHOW COLUMNS FROM `{$row[0]}`";
-    
-//    $us_query = "SELECT * FROM `{$row[0]}`";
+    $us_query = "SHOW COLUMNS FROM `{$row[0]}`";
     
     $us_result = mysql_query($us_query);
     
-    while ($us_row = mysql_fetch_assoc($us_result)){
+    while ($us_row = mysql_fetch_row($us_result)){
         
-        $response .= '{"'.$num_rows.'": "';
+//        $response .= $num_rows.': "';
         
-        foreach ($us_row as $key => $value) {
-            
-            if($_POST['db_charset'] == 'cp1251'){
-               $response .= '{"'.$key.'":"'.cp1251_to_utf8($value, NULL).'"}'; 
-            }else{
-               $response .= '{"'.$key.'":"'.$value.'"}';
-            }
-        } 
+        if($_POST['charset'] == 'cp1251'){
+           $response .= '"'.cp1251_to_utf8($us_row[0], NULL); 
+        }else{
+           $response .= '"'.$us_row[0];
+        }
         
-        $response .= '"}';
+        
+        $response .= '",';
       
         $num_rows++;
     }
+    $response = substr($response, 0, strlen($response)-1);
+    $response .= '],';
     
     mysql_free_result($us_result);
     
-    $response .= '"}';
+//    $response = substr($response, 0, strlen($response)-2);
+    
+//    
     
 }
+
+$response = substr($response, 0, strlen($response)-1);
+
+$response .= '}}';
 
 mysql_free_result($result);
 
