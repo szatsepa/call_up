@@ -12,113 +12,87 @@ $out = mysql_errno();
 
 if (mysql_errno() <> 0) exit("ERROR ".$out);
 
-$response = NULL;
+if(isset($_POST['customer'])){
+    $customers = json_decode($_POST['customer']);
 
-if(!isset($_POST['tablename'])){
-    $response = getDBStructure();
-}elseif (isset ($_POST['tablename'])) {
-    $response = getDBUsers();
-}
+    $where = '';
 
-echo $response;
+    $fields = "(";
 
-function getDBUsers(){
-    
-    $response = '{"'.$_POST['db_name'].'":{"'.$_POST['tablename'].'":[';
-    
-    $query = "SELECT COUNT(*) FROM {$_POST['tablename']}"; 
-    
-    $result = mysql_query($query);
-    
-    $count = mysql_result($result, 0);
-    
-    $step = ceil($count/1000);
-    
-    for($i=0;$i<$step;$i++){
-        
-        $start = ($i*1000);
-        
-        $query = "SELECT * FROM {$_POST['tablename']} LIMIT {$start}, 1000";
-        
+    $values = "(";
+
+    $set = "";
+
+    foreach ($customers as $key => $value) {
+        if(strstr($key, "mail")){
+            if($_POST['charset'] != 'utf8'){
+                $where .= " `$key` = '".  changeCharset($value, NULL)."' AND";
+
+            }  else {
+                $where .= " `$key` = '". $value."' AND";
+            }
+        }
+
+        if($_POST['charset'] != 'utf8'){
+
+            $values .= "'".changeCharset($value, NULL)."'";
+            $set .= "`$key` = '".  changeCharset($value, NULL)."',";
+
+        }  else {
+            $set .= "`$key` = '$value',";
+            $values .= "'". $value."',";
+        }
+
+        $fields .= "`$key`,";
+    }
+
+    $set = substr($set, 0, strlen($set)-1);
+
+    $fields = substr($fields, 0, strlen($fields)-1).")";
+
+    $values = substr($values, 0, strlen($values)-1).")";
+
+    $where = substr($where, 0, strlen($where)-3);
+
+    if(isset($_POST['upd']) and $_POST['upd'] == 1){
+
+        $query = "UPDATE `{$_POST['tablename']}` SET {$set} WHERE ".$where;
+
+        mysql_query($query);
+
+    }else{
+
+        $query = "SELECT COUNT(*) FROM `{$_POST['tablename']}` WHERE ".$where;
+
         $result = mysql_query($query);
-        
-        $numrow = 0;
-        
-        while ($row = mysql_fetch_assoc($result)){
-          
-            $response .= '{';
-            
-            foreach ($row as $key => $value) {
-                $response .= '"'.$key.'":"'.$value.'",';
-            }
-            
-            $response = substr($response, 0, strlen($response)-1);
-            
-            $response .= '},';
-            
-            $numrow++;
+
+        $count = mysql_result($result, 0);
+
+        mysql_free_result($result);
+
+        if($count == 0){
+
+            $query = "INSERT INTO `{$_POST['tablename']}` $fields VALUES $values";
+
+            mysql_query($query);
+
         }
     }
-       
-    $response = substr($response, 0, strlen($response)-1);
-
-    $response .= ']}}';
     
-    return $response;
     
+    
+}elseif(isset ($_POST['del'])){
+    
+    $query = "DELETE FROM `{$_POST['tablename']}` WHERE `{$_POST['field_name']}` = '{$_POST['value']}'";
+    
+    mysql_query($query);
 }
 
-function getDBStructure(){
-    
-    $query = " SHOW TABLES FROM {$_POST['db_name']} WHERE Tables_in_{$_POST['db_name']} LIKE '%user%' OR  Tables_in_{$_POST['db_name']} LIKE '%custom%'";
+echo mysql_affected_rows();
 
-    $result = mysql_query($query);
+mysql_close();
 
-    $response = '{"'.$_POST['db_name'].'":{';
-
-    while ($row = mysql_fetch_row($result)){
-
-        $num_rows = 0;
-
-        $response .= '"'.$row[0].'":[';
-
-        $us_query = "SHOW COLUMNS FROM `{$row[0]}`";
-
-        $us_result = mysql_query($us_query);
-
-        while ($us_row = mysql_fetch_row($us_result)){
-
-    //        $response .= $num_rows.': "';
-
-            if($_POST['charset'] == 'cp1251'){
-               $response .= '"'.  changeCharset($us_row[0], NULL); 
-            }else{
-               $response .= '"'.$us_row[0];
-            }
-
-
-            $response .= '",';
-
-            $num_rows++;
-        }
-        $response = substr($response, 0, strlen($response)-1);
-        $response .= '],';
-
-        mysql_free_result($us_result);
-        
-        
-    }
-
-    $response = substr($response, 0, strlen($response)-1);
-
-    $response .= '}}';
-
-    mysql_free_result($result);
-    
-    return $response;
-}
-
-function changeCharset ($txt, $utf)  {
+function changeCharset ($txt, $utf2cp)  {
     $in_arr = array (
         chr(208), chr(192), chr(193), chr(194),
         chr(195), chr(196), chr(197), chr(168),
@@ -171,4 +145,5 @@ function changeCharset ($txt, $utf)  {
     
     return $txt;
 }
+
 ?>

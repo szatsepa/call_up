@@ -3,18 +3,18 @@
 
 $authentication = "no";
 
-if (isset($_SESSION['auth']) and !isset($attributes[out])) {
+if (isset($_SESSION['auth']) and !isset($attributes['out'])) {
 	
 	// В мобильной версии запишем куку (неделя) для аутентификации
 	if ($mobile == 'true') setcookie("di", $_SESSION['id'], time()+680400);
     
 	$authentication = "yes";
     
-    $attributes[user_id] = $_SESSION['id'];
+    $attributes['user_id'] = $_SESSION['id'];
     //include ("as/qry_user.php");
     
 	// To do переделать пользователя в объект (ООП)
-	$user = query_user($attributes[user_id]); 
+	$user = query_user($attributes['user_id']); 
         
     $_SESSION[user] = $user;
     
@@ -43,15 +43,15 @@ if (isset($_SESSION['auth']) and !isset($attributes[out])) {
 		    // Здесь обрабатывать разрегистрированного пользователя!!!!
 			
 			// Разберемся с мобильным пользователем, у него особые привелегии
-			if ($mobile == 'true' and isset($attributes[di]) and $attributes[di] > 0) {
+			if ($mobile == 'true' and isset($attributes['di']) and $attributes['di'] > 0) {
 			
 				
 			    
-			    $attributes[user_id] = $attributes[di];
+			    $attributes['user_id'] = $attributes['di'];
 			    //include ("as/qry_user.php");
 			    
 				// To do переделать пользователя в объект (ООП)
-				$user = query_user($attributes[user_id]); 
+				$user = query_user($attributes['user_id']); 
 			    
 				// Пускаем только заказчика!!!
 				if ($user["role"] == 3) {				
@@ -64,7 +64,7 @@ if (isset($_SESSION['auth']) and !isset($attributes[out])) {
 				    }
 					
 				    $_SESSION['auth'] = 1;
-					$_SESSION['id']   = $attributes[user_id];
+					$_SESSION['id']   = $attributes['user_id'];
 					$authentication   = "yes";
 					
 				} else {
@@ -80,7 +80,7 @@ if (isset($_SESSION['auth']) and !isset($attributes[out])) {
 			}
 }
 
-if (in_array($attributes[act],$rights)) {
+if (in_array($attributes['act'],$rights)) {
    //print_r ($rights);
     header ("location:index.php");
 }

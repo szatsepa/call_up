@@ -25,7 +25,7 @@ switch ($attributes[act]) {
 
     case "authentication":
     include ("main/qry_userauth.php");	
-	include ("main/act_authentication.php");	
+    include ("main/act_authentication.php");	
 break;
     
 	case "add_cart":	

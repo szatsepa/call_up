@@ -1,10 +1,10 @@
 <?php
 
-if(!isset ($_SESSION[auth]) or $_SESSION[auth] == 0){
+if(!isset ($_SESSION['auth']) or $_SESSION['auth'] == 0){
     
-    $secret_key = quote_smart($attributes[code]);
+    $secret_key = quote_smart($attributes['code']);
     
-    $query = "SELECT id FROM customer WHERE secret_key = $secret_key";
+    $query = "SELECT `id` FROM `customer` WHERE `secret_key` = MD5($secret_key)";
     
      $result = mysql_query($query) or die($query);
      
@@ -20,7 +20,7 @@ if(!isset ($_SESSION[auth]) or $_SESSION[auth] == 0){
          
      }else{
          
-        $query = "SELECT id FROM users WHERE pwd = $secret_key";
+        $query = "SELECT `id` FROM `users` WHERE `pwd` = MD5($secret_key)";
         
         $result = mysql_query($query) or die($query);
         
@@ -36,7 +36,7 @@ if(!isset ($_SESSION[auth]) or $_SESSION[auth] == 0){
          
          }  else {
              
-              header ("location:index.php?act=logout&stid=$attributes[stid]");
+              header ("location:index.php?act=logout&stid={$attributes['stid']}");
              
          }
          
