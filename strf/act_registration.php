@@ -91,6 +91,15 @@ if(strlen($secret_key)<12)$secret_key .= rand (0, 9);
     
     if($isip == 0){
         
+        $result = mysql_query("SELECT COUNT(`id`) FROM `customer` WHERE `e_mail` = {$attributes['email']}");
+
+        $count = mysql_result($result, 0);
+
+        if($count != 0){
+            header('Content-Type: text/html; charset=utf-8'); 
+            die("Пользователь с таким емейлом уже зарегистрирован!");
+        }
+        
         
         $query = "INSERT INTO customer (surname,
                                name,
@@ -122,9 +131,9 @@ if(strlen($secret_key)<12)$secret_key .= rand (0, 9);
         
         if (mysql_affected_rows() != 0) {
             
-                   $_SESSION[id] = mysql_insert_id();
+                   $_SESSION['id'] = mysql_insert_id();
 
-                   $_SESSION[auth] = 2;
+                   $_SESSION['auth'] = 2;
      
       
         

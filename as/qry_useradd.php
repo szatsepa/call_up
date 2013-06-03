@@ -8,21 +8,30 @@ $chars = 'abdefhiknrstyzABDEFGHKNQRSTYZ23456789';
     $pwd .= substr($chars, rand(1, $numChars) - 1, 1);
   }
 
-$attributes[surname] = quote_smart($attributes[surname]);
-$attributes[name] = quote_smart($attributes[name]);
-$attributes[patronymic] = quote_smart($attributes[patronymic]);
-$attributes[company_id] = intval($attributes[company_id]);
-$attributes[role] = intval($attributes[role]);
-$attributes[email] = quote_smart($attributes[email]);
-$attributes[phone] = quote_smart($attributes[phone]);
-$attributes[role] = intval($attributes[role]);
-$attributes[default_company] = intval($attributes[default_company]);
+$attributes['surname'] = quote_smart($attributes['surname']);
+$attributes['name'] = quote_smart($attributes['name']);
+$attributes['patronymic'] = quote_smart($attributes['patronymic']);
+$attributes['company_id'] = intval($attributes['company_id']);
+$attributes['role'] = intval($attributes['role']);
+$attributes['email'] = quote_smart($attributes['email']);
+$attributes['phone'] = quote_smart($attributes['phone']);
+$attributes['role'] = intval($attributes['role']);
+$attributes['default_company'] = intval($attributes['default_company']);
+
+$result = mysql_query("SELECT COUNT(`id`) FROM `users` WHERE `email` = {$attributes['email']}");
+
+$count = mysql_result($result, 0);
+
+if($count != 0){
+    header('Content-Type: text/html; charset=utf-8'); 
+    die("Пользователь с таким емейлом уже зарегистрирован!");
+}
 
   
-if ($attributes[role] > 0 ) {
+if ($attributes['role'] > 0 ) {
 
 	$query = "";
-	$result = mysql_query("SELECT name FROM roles WHERE id = $attributes[role]")
+	$result = mysql_query("SELECT `name` FROM `roles` WHERE `id` = {$attributes['role']}")
             or die("Could not query: " . mysql_error());
 	$role_name = mysql_result($result,0);
 }
@@ -44,20 +53,20 @@ $query = "INSERT INTO users
              expiration,
 			 default_company) 
 			VALUES 
-  			($attributes[role],
-			 $attributes[surname],
-			 $attributes[name],
-			 $attributes[patronymic],
-			 $attributes[email],
-			 $attributes[phone],
-			 $attributes[company_id],
+  			({$attributes['role']},
+			 {$attributes['surname']},
+			 {$attributes['name']},
+			 {$attributes['patronymic']},
+			 {$attributes['email']},
+			 {$attributes['phone']},
+			 {$attributes['company_id']},
 			 '$pwd',
 			  now(),
 			  now(),".
 			  $user['id'].",
 			  1,
               now() + INTERVAL 1 YEAR,
-			  $attributes[default_company])";
+			  {$attributes['default_company']})";
 $qry_useradd = mysql_query($query) or die($query);
 
 
@@ -65,16 +74,16 @@ $qry_useradd = mysql_query($query) or die($query);
 // Отправим письмо пользователю
 //
 
-$to  = $attributes[email];
+$to  = $attributes['email'];
 
-$attributes[name] = str_replace("'","",$attributes[name]);
-$attributes[surname] = str_replace("'","",$attributes[surname]);
+$attributes['name'] = str_replace("'","",$attributes['name']);
+$attributes['surname'] = str_replace("'","",$attributes['surname']);
 
 // subject
-$subject = $attributes[name].' '.$attributes[surname].', добро пожаловать в систему shop.animals-food.ru';
+$subject = $attributes['name'].' '.$attributes['surname'].', добро пожаловать в систему '.$_SERVER['SERVER_NAME'];
 
 // message
-$message  = 'Уважаемый '.$attributes[name]." ".$attributes[surname].", \r\n\r\n";
+$message  = 'Уважаемый '.$attributes['name']." ".$attributes['surname'].", \r\n\r\n";
 $message .= "Поздравляем с регистарцией в системе shop.animals-food.ru\r\n";
 $message .= "Ваш пароль: ";
 $message .= $pwd;

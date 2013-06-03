@@ -5,17 +5,17 @@ $ip = $_SERVER["REMOTE_ADDR"];
 
 $str_date = date("ymdH");
 
-$surname = $_POST[surname];
+$surname = $_POST['surname'];
 
-$name = $_POST[name];
+$name = $_POST['name'];
 
-$patronymic = $_POST[patronymic];
+$patronymic = $_POST['patronymic'];
 
-$phone = "$_POST[phone]";
+$phone = "{$_POST['phone']}";
 
-$email = $_POST[email];
+$email = $_POST['email'];
 
-$phone = $_POST[phone];
+$phone = $_POST['phone'];
 
 if(strlen($phone)>4)$phone = substr ($phone, 0, 4);
 
@@ -39,25 +39,20 @@ if($nk != 0){
 
 if(strlen($secret_key)<12)$secret_key .= rand (0, 9);
 
-
-    
-//$query = "SELECT Count(id) FROM customer WHERE registration_ip = '$ip'";
-//
-//$count_ip = mysql_query($query);
-//
-//$is_ip = mysql_fetch_row($count_ip);
-//
-//$isip = $is_ip[0];
-
 $out = array('ip'=>NULL);
 
 $isip = 0;
-
-//if($isip != 0){
-//    $out['ip']=1;
-//}
     
 if($isip == 0){
+    
+    $result = mysql_query("SELECT COUNT(`id`) FROM `customer` WHERE `e_mail` = {$attributes['email']}");
+
+    $count = mysql_result($result, 0);
+
+    if($count != 0){
+        header('Content-Type: text/html; charset=utf-8'); 
+        die("Пользователь с таким емейлом уже зарегистрирован!");
+    }
     
     $query = "INSERT INTO customer (surname,
                             name,
@@ -78,14 +73,12 @@ if($isip == 0){
                                 $storefront)";                              
                                      
 mysql_query($query);
-
-//$out['query1']=$query;
         
 if (mysql_insert_id() != 0) {
         
-            $message ="Здравствуйте $_POST[surname] $_POST[name]! Вы зарегистрировались на сайте call-up.ru. Ваш индивидуальный ключ - '$secret_key'.\n C уважением. Администрация. ";              
+            $message ="Здравствуйте {$_POST['surname']} {$_POST['name']}! Вы зарегистрировались на сайте call-up.ru. Ваш индивидуальный ключ - '$secret_key'.\n C уважением. Администрация. ";              
              
-            $headers = 'From: administrator@'. $_SERVER[SERVER_NAME]. "\r\n";
+            $headers = 'From: administrator@'. $_SERVER['SERVER_NAME']. "\r\n";
             
             $headers  .= 'MIME-Version: 1.0' . "\r\n";
             
